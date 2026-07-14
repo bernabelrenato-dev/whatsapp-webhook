@@ -151,6 +151,54 @@ class MessageService {
   }
 
   /**
+   * Envía un mensaje de texto a una conversación de Chatwoot.
+   * @param {string|number} conversationId ID de la conversación en Chatwoot.
+   * @param {string} text Texto del mensaje.
+   */
+  async sendChatwootMessage(conversationId, text) {
+    if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
+      logger.warn('No se puede enviar respuesta a Chatwoot: CHATWOOT_ACCESS_TOKEN o CHATWOOT_ACCOUNT_ID no configurados.');
+      return;
+    }
+
+    try {
+      logger.debug({ msg: 'Enviando mensaje a Chatwoot', conversationId, text });
+      
+      const response = await axios({
+        method: 'POST',
+        url: `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`,
+        headers: {
+          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+          'Content-Type': 'application/json'
+        },
+        data: {
+          content: text,
+          message_type: 'outgoing',
+          private: false
+        }
+      });
+
+      const sentMessageId = response.data.id;
+      // Guardar el ID para saber que este mensaje fue enviado por el bot
+      this.botSentMessageIds.add(sentMessageId);
+
+      logger.info({
+        msg: 'Mensaje de respuesta del bot enviado a Chatwoot correctamente',
+        conversationId,
+        messageId: sentMessageId
+      });
+    } catch (error) {
+      const errorResponse = error.response ? error.response.data : error.message;
+      logger.error({
+        msg: 'Fallo al enviar mensaje a Chatwoot',
+        conversationId,
+        error: errorResponse
+      });
+    }
+  }
+
+
+  /**
    * Maneja actualizaciones de estado de mensajes.
    * @param {Object} status Objeto del estado individual.
    */

@@ -22,8 +22,10 @@ app.get('/', (req, res) => {
     message: 'Servidor Webhook para WhatsApp Cloud API listo.',
     endpoints: {
       webhook_verification: 'GET /webhook',
-      webhook_events: 'POST /webhook'
+      webhook_events: 'POST /webhook',
+      chatwoot_webhook: 'POST /webhook/chatwoot-webhook'
     }
+
   });
 });
 

@@ -8,6 +8,9 @@ const environment = {
   APP_SECRET: process.env.APP_SECRET,
   ACCESS_TOKEN: process.env.ACCESS_TOKEN,
   PHONE_NUMBER_ID: process.env.PHONE_NUMBER_ID,
+  CHATWOOT_API_URL: process.env.CHATWOOT_API_URL || 'https://app.chatwoot.com',
+  CHATWOOT_ACCESS_TOKEN: process.env.CHATWOOT_ACCESS_TOKEN,
+  CHATWOOT_ACCOUNT_ID: process.env.CHATWOOT_ACCOUNT_ID,
 };
 
 // Validaciones al arrancar
