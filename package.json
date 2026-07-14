@@ -20,7 +20,8 @@
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "pino": "^9.2.0"
+    "pino": "^9.2.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "cloudflared": "^0.7.1",

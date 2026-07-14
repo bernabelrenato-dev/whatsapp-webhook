@@ -5,6 +5,8 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const logger = require('../utils/logger');
 const { SYSTEM_PROMPT } = require('../config/botPersonality');
+const catalogService = require('./catalog.service');
+
 
 class GeminiService {
   constructor() {
@@ -80,7 +82,26 @@ class GeminiService {
           topK: 40,
           maxOutputTokens: 500, // Limitar para WhatsApp (mensajes cortos)
         },
+        tools: [{
+          functionDeclarations: [
+            {
+              name: 'searchCatalog',
+              description: 'Busca productos en el catálogo consolidado de JGIS Publicidad. Retorna el código de producto, nombre, descripción, stock, color, procedencia (origen) y escala de precios (precio unitario para 500+ unidades, 50+ unidades y 1-49 unidades). Debe usarse obligatoriamente siempre que el cliente solicite precios, cotizaciones, stock, colores, o pregunte si contamos con algún artículo de merchandising.',
+              parameters: {
+                type: 'OBJECT',
+                properties: {
+                  query: {
+                    type: 'STRING',
+                    description: 'Término de búsqueda del producto (ej: "taza", "tomatodo metal", "bolsa notex")',
+                  },
+                },
+                required: ['query'],
+              },
+            },
+          ],
+        }],
       });
+
       logger.info('🧠 Servicio de Gemini AI inicializado correctamente.');
       return true;
     } catch (error) {
@@ -161,8 +182,33 @@ class GeminiService {
       });
 
       // Enviar mensaje y obtener respuesta
-      const result = await chat.sendMessage(contextualMessage);
+      let result = await chat.sendMessage(contextualMessage);
+      
+      // Manejar llamadas a funciones de catálogo si el modelo lo solicita
+      while (result.response.functionCalls && result.response.functionCalls.length > 0) {
+        const functionCalls = result.response.functionCalls;
+        const functionResponses = [];
+
+        for (const call of functionCalls) {
+          if (call.name === 'searchCatalog') {
+            const query = call.args.query;
+            const searchResults = catalogService.searchCatalog(query);
+            
+            functionResponses.push({
+              functionResponse: {
+                name: 'searchCatalog',
+                response: { results: searchResults }
+              }
+            });
+          }
+        }
+
+        logger.debug({ msg: 'Enviando respuestas de función al modelo', count: functionResponses.length });
+        result = await chat.sendMessage(functionResponses);
+      }
+
       const response = result.response.text();
+
 
       // Guardar en historial
       this.addToHistory(phoneNumber, 'user', contextualMessage);
