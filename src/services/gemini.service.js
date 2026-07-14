@@ -185,8 +185,8 @@ class GeminiService {
       let result = await chat.sendMessage(contextualMessage);
       
       // Manejar llamadas a funciones de catálogo si el modelo lo solicita
-      while (result.response.functionCalls && result.response.functionCalls.length > 0) {
-        const functionCalls = result.response.functionCalls;
+      let functionCalls = result.response.functionCalls();
+      while (functionCalls && functionCalls.length > 0) {
         const functionResponses = [];
 
         for (const call of functionCalls) {
@@ -205,7 +205,9 @@ class GeminiService {
 
         logger.debug({ msg: 'Enviando respuestas de función al modelo', count: functionResponses.length });
         result = await chat.sendMessage(functionResponses);
+        functionCalls = result.response.functionCalls();
       }
+
 
       const response = result.response.text();
 
