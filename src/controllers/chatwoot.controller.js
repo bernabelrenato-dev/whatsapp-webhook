@@ -21,9 +21,10 @@ exports.receiveChatwootMessage = async (req, res, next) => {
       const messageId = payload.id;
 
       // Obtener el número de teléfono del contacto como identificador único
-      const contact = payload.conversation.contact;
-      const from = contact.phone_number || contact.id.toString();
-      const profileName = contact.name || 'Cliente';
+      const contact = payload.contact || payload.sender || (payload.conversation && payload.conversation.contact);
+      const from = contact ? (contact.phone_number || contact.id.toString()) : 'unknown';
+      const profileName = contact ? (contact.name || 'Cliente') : 'Cliente';
+
 
       if (messageType === 'incoming') {
         const body = payload.content;
