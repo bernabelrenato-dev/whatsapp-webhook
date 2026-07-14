@@ -10,10 +10,53 @@ class GeminiService {
   constructor() {
     this.genAI = null;
     this.model = null;
-    // Almacén de historial de conversación por número de teléfono (en memoria)
+    // Almacén de historial de conversación por número de teléfono
     this.conversationHistory = new Map();
-    // Máximo de mensajes de historial por conversación (para no exceder tokens)
+    // Almacén de números pausados (para traspaso a humanos). Clave: número, Valor: timestamp expiración
+    this.pausedConversations = new Map();
     this.MAX_HISTORY = 20;
+    // Duración de la pausa por defecto (2 horas en milisegundos)
+    this.DEFAULT_PAUSE_DURATION = 2 * 60 * 60 * 1000;
+  }
+
+  /**
+   * Pausa las respuestas automáticas del bot para un número de teléfono.
+   * @param {string} phoneNumber Número del cliente.
+   * @param {number} durationMs Duración de la pausa en milisegundos.
+   */
+  pauseConversation(phoneNumber, durationMs = this.DEFAULT_PAUSE_DURATION) {
+    const expiration = Date.now() + durationMs;
+    this.pausedConversations.set(phoneNumber, expiration);
+    logger.info(`⏸️ Respuestas del bot pausadas para ${phoneNumber} hasta las ${new Date(expiration).toLocaleTimeString()}`);
+  }
+
+  /**
+   * Verifica si la conversación con un número está actualmente pausada.
+   * @param {string} phoneNumber Número del cliente.
+   * @returns {boolean} True si está pausada.
+   */
+  isConversationPaused(phoneNumber) {
+    if (!this.pausedConversations.has(phoneNumber)) {
+      return false;
+    }
+    const expiration = this.pausedConversations.get(phoneNumber);
+    if (Date.now() > expiration) {
+      this.pausedConversations.delete(phoneNumber); // Expiró, limpiar
+      logger.info(`▶️ Pausa expirada. Bot reactivado para ${phoneNumber}`);
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Despausa inmediatamente una conversación.
+   * @param {string} phoneNumber Número del cliente.
+   */
+  unpauseConversation(phoneNumber) {
+    if (this.pausedConversations.has(phoneNumber)) {
+      this.pausedConversations.delete(phoneNumber);
+      logger.info(`▶️ Bot reactivado manualmente para ${phoneNumber}`);
+    }
   }
 
   /**
@@ -85,11 +128,27 @@ class GeminiService {
    * @returns {string} Respuesta generada por la IA.
    */
   async generateResponse(phoneNumber, profileName, userMessage) {
+    // 1. Verificar si la conversación está pausada (traspaso a humano)
+    if (this.isConversationPaused(phoneNumber)) {
+      logger.debug(`⏭️ Omitiendo respuesta de IA para ${phoneNumber} porque la conversación está pausada.`);
+      return null;
+    }
+
     if (!this.model) {
       return `¡Hola, ${profileName}! Gracias por escribirnos. En este momento estoy en mantenimiento, pero un agente te atenderá pronto. 🙏`;
     }
 
     try {
+      // Si el usuario escribe palabras de parada explícitas, pausar antes de llamar a la IA
+      const cleanInput = userMessage.toLowerCase().trim();
+      const explicitTransferKeywords = ['agente', 'asesor', 'humano', 'persona', 'vendedor', 'atencion al cliente', 'atención al cliente'];
+      const matchesKeyword = explicitTransferKeywords.some(kw => cleanInput.includes(kw));
+
+      if (matchesKeyword) {
+        this.pauseConversation(phoneNumber);
+        return `Entendido, ${profileName}. Te estoy comunicando con un asesor en este momento. Por favor espera unos minutos. 🙏`;
+      }
+
       // Agregar contexto del usuario al mensaje
       const contextualMessage = `[Cliente: ${profileName}, Teléfono: ${phoneNumber}]\n${userMessage}`;
 
@@ -116,6 +175,12 @@ class GeminiService {
         inputLength: userMessage.length,
         outputLength: response.length,
       });
+
+      // Si la IA respondió diciendo que lo comunicará con un asesor, pausar la conversación
+      const lowerResponse = response.toLowerCase();
+      if (lowerResponse.includes('comunico con un asesor') || lowerResponse.includes('asesor se pondrá en contacto') || lowerResponse.includes('espera unos minutos')) {
+        this.pauseConversation(phoneNumber);
+      }
 
       return response;
     } catch (error) {

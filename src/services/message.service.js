@@ -10,6 +10,11 @@ geminiService.initialize();
  * Servicio encargado de procesar la lógica de negocio para los eventos de WhatsApp.
  */
 class MessageService {
+  constructor() {
+    // Almacena los IDs de los mensajes enviados por el bot para distinguirlos de los manuales
+    this.botSentMessageIds = new Set();
+  }
+
   /**
    * Procesa la carga útil recibida de WhatsApp.
    * @param {Object} payload Carga útil del webhook en bruto de Meta.
@@ -75,13 +80,19 @@ class MessageService {
       
       // Generar respuesta con Gemini AI
       const aiResponse = await geminiService.generateResponse(from, profileName, body);
-      await this.sendTextMessage(from, aiResponse);
+      if (aiResponse) {
+        await this.sendTextMessage(from, aiResponse);
+      }
     } else if (messageType === 'image' || messageType === 'audio' || messageType === 'video' || messageType === 'document') {
       logger.info(`📎 Mensaje de tipo "${messageType}" recibido de [${profileName}].`);
-      await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu archivo. Por el momento solo puedo procesar mensajes de texto. Si necesitas ayuda, escríbeme tu consulta y con gusto te asisto. 😊`);
+      if (!geminiService.isConversationPaused(from)) {
+        await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu archivo. Por el momento solo puedo procesar mensajes de texto. Si necesitas ayuda, escríbeme tu consulta y con gusto te asisto. 😊`);
+      }
     } else if (messageType === 'sticker') {
       logger.info(`🎉 Sticker recibido de [${profileName}].`);
-      await this.sendTextMessage(from, `😄 ¡Bonito sticker, ${profileName}! ¿En qué puedo ayudarte hoy?`);
+      if (!geminiService.isConversationPaused(from)) {
+        await this.sendTextMessage(from, `😄 ¡Bonito sticker, ${profileName}! ¿En qué puedo ayudarte hoy?`);
+      }
     } else {
       logger.info(`📎 Mensaje de tipo "${messageType}" recibido (no procesado).`);
     }
@@ -120,10 +131,14 @@ class MessageService {
         }
       });
 
+      const sentMessageId = response.data.messages[0].id;
+      // Guardar el ID para saber que este mensaje fue enviado por el bot
+      this.botSentMessageIds.add(sentMessageId);
+
       logger.info({
         msg: 'Mensaje de respuesta automática enviado correctamente a Meta',
         recipient: to,
-        messageId: response.data.messages[0].id
+        messageId: sentMessageId
       });
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
@@ -153,6 +168,19 @@ class MessageService {
 
     logger.info(`📈 Estado del mensaje [${messageId}] para [${recipient}]: ${state.toUpperCase()}`);
     
+    // Si detectamos un estado 'sent' de un mensaje que NO fue enviado por el bot,
+    // significa que un agente humano respondió desde el Meta Business Suite.
+    if (state === 'sent') {
+      if (this.botSentMessageIds.has(messageId)) {
+        // Fue el bot, removemos el ID y no pausamos
+        this.botSentMessageIds.delete(messageId);
+      } else {
+        // Fue un humano desde la bandeja de entrada, pausamos el bot por 2 horas
+        logger.info(`👤 Mensaje manual de agente detectado hacia ${recipient}. Pausando bot.`);
+        geminiService.pauseConversation(recipient);
+      }
+    }
+
     if (state === 'failed' && status.errors) {
       logger.error({
         msg: 'Error en envío de mensaje de WhatsApp',
