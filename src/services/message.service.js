@@ -1,6 +1,10 @@
 const axios = require('axios');
 const config = require('../config/environment');
 const logger = require('../utils/logger');
+const geminiService = require('./gemini.service');
+
+// Inicializar Gemini al cargar el módulo
+geminiService.initialize();
 
 /**
  * Servicio encargado de procesar la lógica de negocio para los eventos de WhatsApp.
@@ -41,7 +45,7 @@ class MessageService {
       }
     } catch (error) {
       logger.error({ msg: 'Error procesando la carga útil de WhatsApp', error: error.message });
-      throw error; // Re-lanzar para que sea capturado en la cola si es necesario
+      throw error;
     }
   }
 
@@ -51,7 +55,7 @@ class MessageService {
    * @param {Object} value Cambios del webhook.
    */
   async handleIncomingMessage(message, value) {
-    const from = message.from; // Número del cliente
+    const from = message.from;
     const messageId = message.id;
     const messageType = message.type;
     const contact = value.contacts && value.contacts[0];
@@ -69,10 +73,17 @@ class MessageService {
       const body = message.text.body;
       logger.info(`💬 Mensaje de texto de [${profileName}] (${from}): "${body}"`);
       
-      // Intentar responder automáticamente
-      await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu mensaje: "${body}"`);
+      // Generar respuesta con Gemini AI
+      const aiResponse = await geminiService.generateResponse(from, profileName, body);
+      await this.sendTextMessage(from, aiResponse);
+    } else if (messageType === 'image' || messageType === 'audio' || messageType === 'video' || messageType === 'document') {
+      logger.info(`📎 Mensaje de tipo "${messageType}" recibido de [${profileName}].`);
+      await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu archivo. Por el momento solo puedo procesar mensajes de texto. Si necesitas ayuda, escríbeme tu consulta y con gusto te asisto. 😊`);
+    } else if (messageType === 'sticker') {
+      logger.info(`🎉 Sticker recibido de [${profileName}].`);
+      await this.sendTextMessage(from, `😄 ¡Bonito sticker, ${profileName}! ¿En qué puedo ayudarte hoy?`);
     } else {
-      logger.info(`📎 Mensaje de tipo "${messageType}" recibido (multimedia o interactivo).`);
+      logger.info(`📎 Mensaje de tipo "${messageType}" recibido (no procesado).`);
     }
   }
 
