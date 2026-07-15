@@ -1,0 +1,22 @@
+{
+  "output": {
+    "filePath": "project-context.md",
+    "style": "markdown",
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "showLineNumbers": true
+  },
+  "ignore": {
+    "customPatterns": [
+      "node_modules/**",
+      ".git/**",
+      "src/public/images/**",
+      "scratch/**",
+      ".agents/**",
+      "src/config/catalog.json",
+      "package-lock.json",
+      "repomix-output.xml",
+      "project-context.md"
+    ]
+  }
+}
