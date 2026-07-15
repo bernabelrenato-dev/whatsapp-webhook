@@ -1,7 +1,10 @@
+const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const config = require('../config/environment');
 const logger = require('../utils/logger');
 const geminiService = require('./gemini.service');
+
 
 // Inicializar Gemini al cargar el módulo
 geminiService.initialize();
@@ -151,32 +154,63 @@ class MessageService {
   }
 
   /**
-   * Envía un mensaje de texto a una conversación de Chatwoot.
+   * Envía un mensaje a una conversación de Chatwoot, con soporte opcional para imagen adjunta.
    * @param {string|number} conversationId ID de la conversación en Chatwoot.
    * @param {string} text Texto del mensaje.
+   * @param {string} [imageFileName] Nombre del archivo de imagen adjunto.
    */
-  async sendChatwootMessage(conversationId, text) {
+  async sendChatwootMessage(conversationId, text, imageFileName) {
     if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
       logger.warn('No se puede enviar respuesta a Chatwoot: CHATWOOT_ACCESS_TOKEN o CHATWOOT_ACCOUNT_ID no configurados.');
       return;
     }
 
     try {
-      logger.debug({ msg: 'Enviando mensaje a Chatwoot', conversationId, text });
-      
-      const response = await axios({
-        method: 'POST',
-        url: `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`,
-        headers: {
-          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
-          'Content-Type': 'application/json'
-        },
-        data: {
-          content: text,
-          message_type: 'outgoing',
-          private: false
+      const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
+      let response;
+
+      if (imageFileName) {
+        const imagePath = path.join(__dirname, '..', 'public', 'images', imageFileName);
+        if (fs.existsSync(imagePath)) {
+          logger.debug({ msg: 'Enviando mensaje con imagen adjunta a Chatwoot', conversationId, imageFileName });
+          const formData = new FormData();
+          formData.append('content', text);
+          formData.append('message_type', 'outgoing');
+          formData.append('private', 'false');
+
+          const fileBuffer = fs.readFileSync(imagePath);
+          const ext = path.extname(imageFileName).toLowerCase();
+          const mimeType = ext === '.png' ? 'image/png' : 'image/jpeg';
+          
+          const blob = new Blob([fileBuffer], { type: mimeType });
+          formData.append('attachments[]', blob, imageFileName);
+
+          response = await axios.post(url, formData, {
+            headers: {
+              'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+            }
+          });
+        } else {
+          logger.warn({ msg: 'El archivo de imagen no existe localmente', imagePath });
         }
-      });
+      }
+
+      if (!response) {
+        logger.debug({ msg: 'Enviando mensaje de texto simple a Chatwoot', conversationId, text });
+        response = await axios({
+          method: 'POST',
+          url,
+          headers: {
+            'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+            'Content-Type': 'application/json'
+          },
+          data: {
+            content: text,
+            message_type: 'outgoing',
+            private: false
+          }
+        });
+      }
 
       const sentMessageId = response.data.id;
       // Guardar el ID para saber que este mensaje fue enviado por el bot
@@ -185,7 +219,8 @@ class MessageService {
       logger.info({
         msg: 'Mensaje de respuesta del bot enviado a Chatwoot correctamente',
         conversationId,
-        messageId: sentMessageId
+        messageId: sentMessageId,
+        hasImage: !!imageFileName
       });
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
@@ -196,6 +231,7 @@ class MessageService {
       });
     }
   }
+
 
 
   /**

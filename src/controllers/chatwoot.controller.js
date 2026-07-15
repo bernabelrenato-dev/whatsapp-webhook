@@ -40,10 +40,22 @@ exports.receiveChatwootMessage = async (req, res, next) => {
             }
 
             // Generar respuesta con Gemini AI
-            const aiResponse = await geminiService.generateResponse(from, profileName, body);
+            let aiResponse = await geminiService.generateResponse(from, profileName, body);
             if (aiResponse) {
-              await messageService.sendChatwootMessage(conversationId, aiResponse);
+              // Extraer enlace de imagen si existe y limpiarlo de la respuesta de texto
+              const regex = /📷\s*Imagen\s*(?:referencial)?:\s*https:\/\/whatsapp-webhook-bilg\.onrender\.com\/images\/([A-Za-z0-9_-]+\.[A-Za-z]+)/;
+              const match = aiResponse.match(regex);
+              let imageFileName = null;
+
+              if (match) {
+                imageFileName = match[1];
+                // Quitar el texto del enlace para que se envíe como archivo adjunto nativo
+                aiResponse = aiResponse.replace(/📷\s*Imagen\s*(?:referencial)?:\s*https:\/\/whatsapp-webhook-bilg\.onrender\.com\/images\/[A-Za-z0-9_-]+\.[A-Za-z]+/, '').trim();
+              }
+
+              await messageService.sendChatwootMessage(conversationId, aiResponse, imageFileName);
             }
+
           } catch (err) {
             logger.error({
               msg: 'Error procesando respuesta de Gemini para Chatwoot',
