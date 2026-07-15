@@ -9,7 +9,8 @@
     "price_50": 14,
     "price_1": 16,
     "source": "CHEAPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-1.jpg"
   },
   {
     "code": "SET-2",
@@ -21,7 +22,8 @@
     "price_50": 14,
     "price_1": 16,
     "source": "CHEAPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-2.jpg"
   },
   {
     "code": "SET-3",
@@ -33,7 +35,8 @@
     "price_50": 10,
     "price_1": 12,
     "source": "CHEAPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-3.jpg"
   },
   {
     "code": "LYS-01",
@@ -45,7 +48,8 @@
     "price_50": 5.2,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "LYS-01.jpg"
   },
   {
     "code": "SET-4",
@@ -57,7 +61,8 @@
     "price_50": 35,
     "price_1": 40,
     "source": "CHEAPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-4.jpg"
   },
   {
     "code": "3111",
@@ -69,7 +74,8 @@
     "price_50": 0.27,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3111.jpg"
   },
   {
     "code": "3115",
@@ -81,7 +87,8 @@
     "price_50": 0.27,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3115.jpg"
   },
   {
     "code": "3111E",
@@ -93,7 +100,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3111E.jpg"
   },
   {
     "code": "3115E",
@@ -105,7 +113,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3115E.jpg"
   },
   {
     "code": "666",
@@ -117,7 +126,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "666.jpg"
   },
   {
     "code": "667",
@@ -129,7 +139,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "667.jpg"
   },
   {
     "code": "088C",
@@ -141,7 +152,8 @@
     "price_50": 0.34,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "088C.jpg"
   },
   {
     "code": "6715C",
@@ -153,7 +165,8 @@
     "price_50": 0.36,
     "price_1": 0.6,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6715C.jpg"
   },
   {
     "code": "098C",
@@ -165,7 +178,8 @@
     "price_50": 0.37,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "098C.jpg"
   },
   {
     "code": "635C",
@@ -177,7 +191,8 @@
     "price_50": 0.38,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "635C.jpg"
   },
   {
     "code": "635D",
@@ -189,7 +204,8 @@
     "price_50": 0.38,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "635D.jpg"
   },
   {
     "code": "6716E",
@@ -201,7 +217,8 @@
     "price_50": 0.37,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6716E.jpg"
   },
   {
     "code": "098D",
@@ -213,7 +230,8 @@
     "price_50": 0.38,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "098D.jpg"
   },
   {
     "code": "086C",
@@ -225,7 +243,8 @@
     "price_50": 0.38,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "086C.jpg"
   },
   {
     "code": "2125B",
@@ -237,7 +256,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125B.jpg"
   },
   {
     "code": "2125N",
@@ -249,7 +269,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125N.jpg"
   },
   {
     "code": "2126N",
@@ -261,7 +282,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126N.jpg"
   },
   {
     "code": "N402",
@@ -273,7 +295,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "N402.jpg"
   },
   {
     "code": "6919",
@@ -285,7 +308,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6919.jpg"
   },
   {
     "code": "138B",
@@ -297,7 +321,8 @@
     "price_50": 0.47,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "138B.jpg"
   },
   {
     "code": "8609",
@@ -309,7 +334,8 @@
     "price_50": 0.48,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8609.jpg"
   },
   {
     "code": "967",
@@ -321,7 +347,8 @@
     "price_50": 0.55,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "967.jpg"
   },
   {
     "code": "2125BT",
@@ -333,7 +360,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125BT.jpg"
   },
   {
     "code": "2125T",
@@ -345,7 +373,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125T.jpg"
   },
   {
     "code": "2126T",
@@ -357,7 +386,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126T.jpg"
   },
   {
     "code": "6818E",
@@ -369,7 +399,8 @@
     "price_50": 0.6,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6818E.jpg"
   },
   {
     "code": "2128T",
@@ -381,7 +412,8 @@
     "price_50": 0.6,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2128T.jpg"
   },
   {
     "code": "830",
@@ -393,7 +425,8 @@
     "price_50": 0.62,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "830.jpg"
   },
   {
     "code": "919A",
@@ -405,7 +438,8 @@
     "price_50": 0.65,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "919A.jpg"
   },
   {
     "code": "106A",
@@ -417,7 +451,8 @@
     "price_50": 0.67,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "106A.jpg"
   },
   {
     "code": "106B",
@@ -429,7 +464,8 @@
     "price_50": 0.68,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "106B.jpg"
   },
   {
     "code": "116B",
@@ -441,7 +477,8 @@
     "price_50": 0.68,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "116B.jpg"
   },
   {
     "code": "888",
@@ -453,7 +490,8 @@
     "price_50": 0.7,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "888.jpg"
   },
   {
     "code": "186C",
@@ -465,7 +503,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "186C.jpg"
   },
   {
     "code": "919T",
@@ -477,7 +516,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "919T.jpg"
   },
   {
     "code": "SC030",
@@ -489,7 +529,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "SC030.jpg"
   },
   {
     "code": "7403",
@@ -501,7 +542,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "7403.jpg"
   },
   {
     "code": "2125R",
@@ -513,7 +555,8 @@
     "price_50": 0.85,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125R.jpg"
   },
   {
     "code": "2126R",
@@ -525,7 +568,8 @@
     "price_50": 0.85,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126R.jpg"
   },
   {
     "code": "807",
@@ -537,7 +581,8 @@
     "price_50": 0.88,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "807.jpg"
   },
   {
     "code": "6718RT",
@@ -549,7 +594,8 @@
     "price_50": 0.88,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6718RT.jpg"
   },
   {
     "code": "8336",
@@ -561,7 +607,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8336.jpg"
   },
   {
     "code": "8556",
@@ -573,7 +620,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8556.jpg"
   },
   {
     "code": "611",
@@ -585,7 +633,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "611.jpg"
   },
   {
     "code": "WBP2200",
@@ -597,7 +646,8 @@
     "price_50": null,
     "price_1": 0.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "WBP2200.jpg"
   },
   {
     "code": "3111F",
@@ -609,7 +659,8 @@
     "price_50": 0.29,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "3111F.jpg"
   },
   {
     "code": "3115F",
@@ -621,7 +672,8 @@
     "price_50": 0.29,
     "price_1": 0.8,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "3115F.jpg"
   },
   {
     "code": "923",
@@ -633,7 +685,8 @@
     "price_50": 0.32,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "923.jpg"
   },
   {
     "code": "925N",
@@ -645,7 +698,8 @@
     "price_50": 0.32,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "925N.jpg"
   },
   {
     "code": "926NN",
@@ -657,7 +711,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "926NN.jpg"
   },
   {
     "code": "930T",
@@ -669,7 +724,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "930T.jpg"
   },
   {
     "code": "700F",
@@ -681,7 +737,8 @@
     "price_50": 0.4,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "700F.jpg"
   },
   {
     "code": "2128F",
@@ -693,7 +750,8 @@
     "price_50": 0.42,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "2128F.jpg"
   },
   {
     "code": "891",
@@ -705,7 +763,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "891.jpg"
   },
   {
     "code": "892",
@@ -717,7 +776,8 @@
     "price_50": 0.46,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "892.jpg"
   },
   {
     "code": "2126F",
@@ -729,7 +789,8 @@
     "price_50": 0.48,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "2126F.jpg"
   },
   {
     "code": "929",
@@ -741,7 +802,8 @@
     "price_50": 0.62,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "929.jpg"
   },
   {
     "code": "919F",
@@ -753,7 +815,8 @@
     "price_50": 0.68,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "919F.jpg"
   },
   {
     "code": "1118T",
@@ -765,7 +828,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "1118T.jpg"
   },
   {
     "code": "730",
@@ -777,7 +841,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "730.jpg"
   },
   {
     "code": "790",
@@ -789,7 +854,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "790.jpg"
   },
   {
     "code": "928FT",
@@ -801,7 +867,8 @@
     "price_50": 0.78,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "928FT.jpg"
   },
   {
     "code": "770",
@@ -813,7 +880,8 @@
     "price_50": 0.95,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "770.jpg"
   },
   {
     "code": "780F",
@@ -825,7 +893,8 @@
     "price_50": 0.95,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "780F.jpg"
   },
   {
     "code": "785",
@@ -837,7 +906,8 @@
     "price_50": 1,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "785.jpg"
   },
   {
     "code": "922",
@@ -849,7 +919,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "922.jpg"
   },
   {
     "code": "928T",
@@ -861,7 +932,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "928T.jpg"
   },
   {
     "code": "MB047",
@@ -873,7 +945,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "MB047.jpg"
   },
   {
     "code": "753",
@@ -885,7 +958,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "753.jpg"
   },
   {
     "code": "MT05",
@@ -897,7 +971,8 @@
     "price_50": 0.95,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT05.jpg"
   },
   {
     "code": "947",
@@ -909,7 +984,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947.jpg"
   },
   {
     "code": "M04",
@@ -921,7 +997,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "M04.jpg"
   },
   {
     "code": "M04-1",
@@ -933,7 +1010,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "M04-1.jpg"
   },
   {
     "code": "ME04N",
@@ -945,7 +1023,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "ME04N.jpg"
   },
   {
     "code": "MT04",
@@ -957,7 +1036,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT04.jpg"
   },
   {
     "code": "947T",
@@ -969,7 +1049,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947T.jpg"
   },
   {
     "code": "947T-1",
@@ -981,7 +1062,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947T-1.jpg"
   },
   {
     "code": "MT08",
@@ -993,7 +1075,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT08.jpg"
   },
   {
     "code": "801",
@@ -1005,7 +1088,8 @@
     "price_50": 2,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "801.jpg"
   },
   {
     "code": "TS12",
@@ -1017,7 +1101,8 @@
     "price_50": 2.5,
     "price_1": 3,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "TS12.jpg"
   },
   {
     "code": "MN9319",
@@ -1029,7 +1114,8 @@
     "price_50": 3,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MN9319.jpg"
   },
   {
     "code": "BP106",
@@ -1041,7 +1127,8 @@
     "price_50": 3.2,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "BP106.jpg"
   },
   {
     "code": "SR10",
@@ -1053,7 +1140,8 @@
     "price_50": 3.2,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "SR10.jpg"
   },
   {
     "code": "905",
@@ -1065,7 +1153,8 @@
     "price_50": 3.3,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "905.jpg"
   },
   {
     "code": "MS10",
@@ -1077,7 +1166,8 @@
     "price_50": 4,
     "price_1": 5.5,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MS10.jpg"
   },
   {
     "code": "804",
@@ -1089,7 +1179,8 @@
     "price_50": 5.2,
     "price_1": 6,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "804.jpg"
   },
   {
     "code": "FPL01",
@@ -1101,7 +1192,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "FPL01.jpg"
   },
   {
     "code": "107",
@@ -1113,7 +1205,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "107.jpg"
   },
   {
     "code": "008",
@@ -1125,7 +1218,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "008.jpg"
   },
   {
     "code": "LU02",
@@ -1137,7 +1231,8 @@
     "price_50": 85,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "LU02.jpg"
   },
   {
     "code": "UT3678",
@@ -1149,7 +1244,8 @@
     "price_50": 90,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "UT3678.jpg"
   },
   {
     "code": "UT3933",
@@ -1161,7 +1257,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "UT3933.jpg"
   },
   {
     "code": "AD04T",
@@ -1173,7 +1270,8 @@
     "price_50": 230,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "AD04T.jpg"
   },
   {
     "code": "SJZ587",
@@ -1185,7 +1283,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ587.jpg"
   },
   {
     "code": "SJZ387",
@@ -1197,7 +1296,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ387.jpg"
   },
   {
     "code": "SJZ786",
@@ -1209,7 +1309,8 @@
     "price_50": 560,
     "price_1": 6.5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ786.jpg"
   },
   {
     "code": "CMP-01",
@@ -1221,7 +1322,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "CMP-01.jpg"
   },
   {
     "code": "VTP-03",
@@ -1233,7 +1335,8 @@
     "price_50": 380,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "VTP-03.jpg"
   },
   {
     "code": "REGLA",
@@ -1245,7 +1348,8 @@
     "price_50": 50,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "REGLA.jpg"
   },
   {
     "code": "BOLSA",
@@ -1257,7 +1361,8 @@
     "price_50": 100,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BOLSA.jpg"
   },
   {
     "code": "BSA201",
@@ -1269,7 +1374,8 @@
     "price_50": 150,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BSA201.jpg"
   },
   {
     "code": "RT333",
@@ -1281,7 +1387,8 @@
     "price_50": 170,
     "price_1": 3,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "RT333.jpg"
   },
   {
     "code": "PL10",
@@ -1293,7 +1400,8 @@
     "price_50": 2.8,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "PL10.jpg"
   },
   {
     "code": "BS288",
@@ -1305,7 +1413,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS288.jpg"
   },
   {
     "code": "BS502",
@@ -1317,7 +1426,8 @@
     "price_50": 300,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS502.jpg"
   },
   {
     "code": "BS262",
@@ -1329,7 +1439,8 @@
     "price_50": 360,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS262.jpg"
   },
   {
     "code": "BS205",
@@ -1341,7 +1452,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS205.jpg"
   },
   {
     "code": "BS309",
@@ -1353,7 +1465,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS309.jpg"
   },
   {
     "code": "AC001",
@@ -1365,7 +1478,8 @@
     "price_50": 410,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "AC001.jpg"
   },
   {
     "code": "AC453",
@@ -1377,7 +1491,8 @@
     "price_50": 410,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "AC453.jpg"
   },
   {
     "code": "STZ01",
@@ -1389,7 +1504,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "STZ01.jpg"
   },
   {
     "code": "MP01",
@@ -1401,7 +1517,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "MP01.jpg"
   },
   {
     "code": "MP02",
@@ -1413,7 +1530,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "MP02.jpg"
   },
   {
     "code": "ZH001",
@@ -1425,7 +1543,8 @@
     "price_50": 190,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ZH001.jpg"
   },
   {
     "code": "ZH002",
@@ -1437,7 +1556,8 @@
     "price_50": 450,
     "price_1": 5.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ZH002.jpg"
   },
   {
     "code": "ME003",
@@ -1449,7 +1569,8 @@
     "price_50": 500,
     "price_1": 6,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ME003.jpg"
   },
   {
     "code": "ED202",
@@ -1461,7 +1582,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED202.jpg"
   },
   {
     "code": "8111",
@@ -1473,7 +1595,8 @@
     "price_50": 0.46,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8111.jpg"
   },
   {
     "code": "8309",
@@ -1485,7 +1608,8 @@
     "price_50": 0.55,
     "price_1": 1,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8309.jpg"
   },
   {
     "code": "8310",
@@ -1497,7 +1621,8 @@
     "price_50": 0.58,
     "price_1": 1.2,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8310.jpg"
   },
   {
     "code": "8315",
@@ -1509,7 +1634,8 @@
     "price_50": 70,
     "price_1": 1.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8315.jpg"
   },
   {
     "code": "8312",
@@ -1521,7 +1647,8 @@
     "price_50": 140,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8312.jpg"
   },
   {
     "code": "PA022",
@@ -1533,7 +1660,8 @@
     "price_50": 1.5,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "PA022.jpg"
   },
   {
     "code": "FA002",
@@ -1545,7 +1673,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "FA002.jpg"
   },
   {
     "code": "LAM675",
@@ -1557,7 +1686,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "LAM675.jpg"
   },
   {
     "code": "MA26",
@@ -1569,7 +1699,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "MA26.jpg"
   },
   {
     "code": "ED201H",
@@ -1581,7 +1712,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED201H.jpg"
   },
   {
     "code": "ED202D",
@@ -1593,7 +1725,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED202D.jpg"
   },
   {
     "code": "DC301",
@@ -1605,7 +1738,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC301.jpg"
   },
   {
     "code": "DC302D",
@@ -1617,7 +1751,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC302D.jpg"
   },
   {
     "code": "DC303T",
@@ -1629,7 +1764,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC303T.jpg"
   },
   {
     "code": "DC201",
@@ -1641,7 +1777,8 @@
     "price_50": 1100,
     "price_1": 12,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC201.jpg"
   },
   {
     "code": "DC302",
@@ -1653,7 +1790,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHEAPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC302.jpg"
   },
   {
     "code": "BF556",
@@ -1665,7 +1803,8 @@
     "price_50": 2.5,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF556.jpg"
   },
   {
     "code": "BF9767",
@@ -1677,7 +1816,8 @@
     "price_50": 3,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF9767.jpg"
   },
   {
     "code": "BC904",
@@ -1689,7 +1829,8 @@
     "price_50": 320,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC904.jpg"
   },
   {
     "code": "BF453",
@@ -1701,7 +1842,8 @@
     "price_50": 3.2,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF453.jpg"
   },
   {
     "code": "BF901A",
@@ -1713,7 +1855,8 @@
     "price_50": 3.6,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF901A.jpg"
   },
   {
     "code": "BF902",
@@ -1725,7 +1868,8 @@
     "price_50": 3.6,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF902.jpg"
   },
   {
     "code": "BF537",
@@ -1737,7 +1881,8 @@
     "price_50": 3.8,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF537.jpg"
   },
   {
     "code": "BF9012B",
@@ -1749,7 +1894,8 @@
     "price_50": 3.8,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF9012B.jpg"
   },
   {
     "code": "BFB903B",
@@ -1761,7 +1907,8 @@
     "price_50": 4.7,
     "price_1": 5.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFB903B.jpg"
   },
   {
     "code": "BC907",
@@ -1773,7 +1920,8 @@
     "price_50": 580,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907.jpg"
   },
   {
     "code": "BF909A",
@@ -1785,7 +1933,8 @@
     "price_50": 5.8,
     "price_1": 6.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF909A.jpg"
   },
   {
     "code": "BC907B",
@@ -1797,7 +1946,8 @@
     "price_50": 590,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907B.jpg"
   },
   {
     "code": "BC907B-1",
@@ -1809,7 +1959,8 @@
     "price_50": 590,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907B-1.jpg"
   },
   {
     "code": "BFP904",
@@ -1821,7 +1972,8 @@
     "price_50": 6,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFP904.jpg"
   },
   {
     "code": "BC9071P",
@@ -1833,7 +1985,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC9071P.jpg"
   },
   {
     "code": "BFC977",
@@ -1845,7 +1998,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFC977.jpg"
   },
   {
     "code": "BF608A",
@@ -1857,7 +2011,8 @@
     "price_50": 7.5,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF608A.jpg"
   },
   {
     "code": "CH2519",
@@ -1869,7 +2024,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2519.jpg"
   },
   {
     "code": "CH2535",
@@ -1881,7 +2037,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2535.jpg"
   },
   {
     "code": "CH2518",
@@ -1893,7 +2050,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2518.jpg"
   },
   {
     "code": "BF106",
@@ -1905,7 +2063,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF106.jpg"
   },
   {
     "code": "KA12",
@@ -1917,7 +2076,8 @@
     "price_50": 320,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "KA12.jpg"
   },
   {
     "code": "BF15-100",
@@ -1929,7 +2089,8 @@
     "price_50": 580,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF15-100.jpg"
   },
   {
     "code": "BX02",
@@ -1941,7 +2102,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BX02.jpg"
   },
   {
     "code": "BF151",
@@ -1953,7 +2115,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF151.jpg"
   },
   {
     "code": "BF101",
@@ -1965,7 +2128,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF101.jpg"
   },
   {
     "code": "CH2515",
@@ -1977,7 +2141,8 @@
     "price_50": 110,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2515.jpg"
   },
   {
     "code": "CH2520",
@@ -1989,7 +2154,8 @@
     "price_50": 110,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2520.jpg"
   },
   {
     "code": "UT3612N",
@@ -2001,7 +2167,8 @@
     "price_50": 95,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT3612N.jpg"
   },
   {
     "code": "LCD2501",
@@ -2013,7 +2180,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LCD2501.jpg"
   },
   {
     "code": "CA9",
@@ -2025,7 +2193,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "CA9.jpg"
   },
   {
     "code": "GT01",
@@ -2037,7 +2206,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "GT01.jpg"
   },
   {
     "code": "MS1",
@@ -2049,7 +2219,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS1.jpg"
   },
   {
     "code": "MS2",
@@ -2061,7 +2232,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS2.jpg"
   },
   {
     "code": "MS3",
@@ -2073,7 +2245,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS3.jpg"
   },
   {
     "code": "MS4",
@@ -2085,7 +2258,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS4.jpg"
   },
   {
     "code": "MGP1",
@@ -2097,7 +2271,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP1.jpg"
   },
   {
     "code": "MGP2",
@@ -2109,7 +2284,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP2.jpg"
   },
   {
     "code": "MGP3",
@@ -2121,7 +2297,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP3.jpg"
   },
   {
     "code": "MGP4",
@@ -2133,7 +2310,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP4.jpg"
   },
   {
     "code": "MMC1",
@@ -2145,7 +2323,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC1.jpg"
   },
   {
     "code": "MMC2",
@@ -2157,7 +2336,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC2.jpg"
   },
   {
     "code": "MMC3",
@@ -2169,7 +2349,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC3.jpg"
   },
   {
     "code": "CA7",
@@ -2181,7 +2362,8 @@
     "price_50": 290,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "CA7.jpg"
   },
   {
     "code": "K3",
@@ -2193,7 +2375,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K3.jpg"
   },
   {
     "code": "K5",
@@ -2205,7 +2388,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K5.jpg"
   },
   {
     "code": "K7",
@@ -2217,7 +2401,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K7.jpg"
   },
   {
     "code": "MS5",
@@ -2229,7 +2414,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS5.jpg"
   },
   {
     "code": "MV7",
@@ -2241,7 +2427,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MV7.jpg"
   },
   {
     "code": "UT2212K",
@@ -2253,7 +2440,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2212K.jpg"
   },
   {
     "code": "UT2370",
@@ -2265,7 +2453,8 @@
     "price_50": 150,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2370.jpg"
   },
   {
     "code": "HLP001",
@@ -2277,7 +2466,8 @@
     "price_50": 1.6,
     "price_1": 2,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "HLP001.jpg"
   },
   {
     "code": "LW-02",
@@ -2289,7 +2479,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LW-02.jpg"
   },
   {
     "code": "UT2125",
@@ -2301,7 +2492,8 @@
     "price_50": 2.1,
     "price_1": 3,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2125.jpg"
   },
   {
     "code": "UT2356",
@@ -2313,7 +2505,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2356.jpg"
   },
   {
     "code": "UT1123",
@@ -2325,7 +2518,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT1123.jpg"
   },
   {
     "code": "UT2369",
@@ -2337,7 +2531,8 @@
     "price_50": 350,
     "price_1": 4.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2369.jpg"
   },
   {
     "code": "UT2237",
@@ -2349,7 +2544,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2237.jpg"
   },
   {
     "code": "UT2237F",
@@ -2361,7 +2557,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2237F.jpg"
   },
   {
     "code": "TSA03",
@@ -2373,7 +2570,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "TSA03.jpg"
   },
   {
     "code": "LA002",
@@ -2385,7 +2583,8 @@
     "price_50": 2,
     "price_1": 2.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LA002.jpg"
   },
   {
     "code": "LLAB301",
@@ -2397,7 +2596,8 @@
     "price_50": 220,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAB301.jpg"
   },
   {
     "code": "LLAP302",
@@ -2409,7 +2609,8 @@
     "price_50": 220,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAP302.jpg"
   },
   {
     "code": "LLAB202",
@@ -2421,7 +2622,8 @@
     "price_50": 230,
     "price_1": 3.5,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAB202.jpg"
   },
   {
     "code": "LM03P",
@@ -2433,7 +2635,8 @@
     "price_50": 270,
     "price_1": 4,
     "source": "CHEAPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LM03P.jpg"
   },
   {
     "code": "UT4532",
@@ -2445,7 +2648,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4532.jpg"
   },
   {
     "code": "UT4577",
@@ -2457,7 +2661,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4577.jpg"
   },
   {
     "code": "8005",
@@ -2469,7 +2674,8 @@
     "price_50": 600,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8005.jpg"
   },
   {
     "code": "JG401",
@@ -2481,7 +2687,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "JG401.jpg"
   },
   {
     "code": "JG400",
@@ -2493,7 +2700,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "JG400.jpg"
   },
   {
     "code": "6350V",
@@ -2505,7 +2713,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6350V.jpg"
   },
   {
     "code": "Q34700",
@@ -2517,7 +2726,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q34700.jpg"
   },
   {
     "code": "UT4550",
@@ -2529,7 +2739,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4550.jpg"
   },
   {
     "code": "6728V",
@@ -2541,7 +2752,8 @@
     "price_50": 680,
     "price_1": 7.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6728V.jpg"
   },
   {
     "code": "Q34703",
@@ -2553,7 +2765,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q34703.jpg"
   },
   {
     "code": "Q35600",
@@ -2565,7 +2778,8 @@
     "price_50": 750,
     "price_1": 8.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q35600.jpg"
   },
   {
     "code": "1062-700",
@@ -2577,7 +2791,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "1062-700.jpg"
   },
   {
     "code": "8030G",
@@ -2589,7 +2804,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8030G.jpg"
   },
   {
     "code": "6000G",
@@ -2601,7 +2817,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6000G.jpg"
   },
   {
     "code": "8019-600",
@@ -2613,7 +2830,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8019-600.jpg"
   },
   {
     "code": "3066",
@@ -2625,7 +2843,8 @@
     "price_50": 8.5,
     "price_1": 10,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "3066.jpg"
   },
   {
     "code": "3087",
@@ -2637,7 +2856,8 @@
     "price_50": 9.5,
     "price_1": 10.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "3087.jpg"
   },
   {
     "code": "8071",
@@ -2649,7 +2869,8 @@
     "price_50": 1150,
     "price_1": 13,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8071.jpg"
   },
   {
     "code": "PTKL360",
@@ -2661,7 +2882,8 @@
     "price_50": 1250,
     "price_1": 14,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "PTKL360.jpg"
   },
   {
     "code": "8077ZN",
@@ -2673,7 +2895,8 @@
     "price_50": 1280,
     "price_1": 14.5,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077ZN.jpg"
   },
   {
     "code": "8091-500",
@@ -2685,7 +2908,8 @@
     "price_50": 1280,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-500.jpg"
   },
   {
     "code": "8077Z-1",
@@ -2697,7 +2921,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077Z-1.jpg"
   },
   {
     "code": "8077ZN-1",
@@ -2709,7 +2934,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077ZN-1.jpg"
   },
   {
     "code": "8091-501",
@@ -2721,7 +2947,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-501.jpg"
   },
   {
     "code": "8091-750",
@@ -2733,7 +2960,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-750.jpg"
   },
   {
     "code": "8093-750",
@@ -2745,7 +2973,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8093-750.jpg"
   },
   {
     "code": "8091-751",
@@ -2757,7 +2986,8 @@
     "price_50": 1480,
     "price_1": 16,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-751.jpg"
   },
   {
     "code": "7071",
@@ -2769,7 +2999,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "7071.jpg"
   },
   {
     "code": "8619",
@@ -2781,7 +3012,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8619.jpg"
   },
   {
     "code": "7059",
@@ -2793,7 +3025,8 @@
     "price_50": 1400,
     "price_1": 16,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "7059.jpg"
   },
   {
     "code": "TM789",
@@ -2805,7 +3038,8 @@
     "price_50": 1450,
     "price_1": 16,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM789.jpg"
   },
   {
     "code": "TM789-1",
@@ -2817,7 +3051,8 @@
     "price_50": 1600,
     "price_1": 18,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM789-1.jpg"
   },
   {
     "code": "TM075",
@@ -2829,7 +3064,8 @@
     "price_50": 1700,
     "price_1": 18,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM075.jpg"
   },
   {
     "code": "TM075-1",
@@ -2841,7 +3077,8 @@
     "price_50": 1800,
     "price_1": 19,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM075-1.jpg"
   },
   {
     "code": "9000-501",
@@ -2853,7 +3090,8 @@
     "price_50": 1100,
     "price_1": 13,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "9000-501.jpg"
   },
   {
     "code": "TM061",
@@ -2865,7 +3103,8 @@
     "price_50": 1600,
     "price_1": 18,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM061.jpg"
   },
   {
     "code": "TM072",
@@ -2877,7 +3116,8 @@
     "price_50": 1700,
     "price_1": 18,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM072.jpg"
   },
   {
     "code": "XS005",
@@ -2889,7 +3129,8 @@
     "price_50": 1800,
     "price_1": 20,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "XS005.jpg"
   },
   {
     "code": "TM072-1",
@@ -2901,7 +3142,8 @@
     "price_50": 1800,
     "price_1": 20,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM072-1.jpg"
   },
   {
     "code": "XS005-1",
@@ -2913,7 +3155,8 @@
     "price_50": 1900,
     "price_1": 21,
     "source": "CHEAPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "XS005-1.jpg"
   },
   {
     "code": "SET-1",
@@ -2925,7 +3168,8 @@
     "price_50": 14,
     "price_1": 16,
     "source": "CHIPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-1.jpg"
   },
   {
     "code": "SET-2",
@@ -2937,7 +3181,8 @@
     "price_50": 14,
     "price_1": 16,
     "source": "CHIPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-2.jpg"
   },
   {
     "code": "SET-3",
@@ -2949,7 +3194,8 @@
     "price_50": 10,
     "price_1": 12,
     "source": "CHIPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-3.jpg"
   },
   {
     "code": "LYS-01",
@@ -2961,7 +3207,8 @@
     "price_50": 5.2,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "LYS-01.jpg"
   },
   {
     "code": "SET-4",
@@ -2973,7 +3220,8 @@
     "price_50": 35,
     "price_1": 40,
     "source": "CHIPER.xlsx",
-    "category": "0SETS EJECUTIVOS"
+    "category": "0SETS EJECUTIVOS",
+    "image": "SET-4.jpg"
   },
   {
     "code": "PT08",
@@ -2985,7 +3233,8 @@
     "price_50": 0.24,
     "price_1": 0.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "PT08.jpg"
   },
   {
     "code": "3111",
@@ -2997,7 +3246,8 @@
     "price_50": 0.27,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3111.jpg"
   },
   {
     "code": "3115",
@@ -3009,7 +3259,8 @@
     "price_50": 0.27,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3115.jpg"
   },
   {
     "code": "3111E",
@@ -3021,7 +3272,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3111E.jpg"
   },
   {
     "code": "3115E",
@@ -3033,7 +3285,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "3115E.jpg"
   },
   {
     "code": "666",
@@ -3045,7 +3298,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "666.jpg"
   },
   {
     "code": "667",
@@ -3057,7 +3311,8 @@
     "price_50": 0.28,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "667.jpg"
   },
   {
     "code": "088C",
@@ -3069,7 +3324,8 @@
     "price_50": 0.34,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "088C.jpg"
   },
   {
     "code": "6715C",
@@ -3081,7 +3337,8 @@
     "price_50": 0.36,
     "price_1": 0.6,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6715C.jpg"
   },
   {
     "code": "098C",
@@ -3093,7 +3350,8 @@
     "price_50": 0.37,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "098C.jpg"
   },
   {
     "code": "635C",
@@ -3105,7 +3363,8 @@
     "price_50": 0.38,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "635C.jpg"
   },
   {
     "code": "635D",
@@ -3117,7 +3376,8 @@
     "price_50": 0.38,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "635D.jpg"
   },
   {
     "code": "6716E",
@@ -3129,7 +3389,8 @@
     "price_50": 0.37,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6716E.jpg"
   },
   {
     "code": "098D",
@@ -3141,7 +3402,8 @@
     "price_50": 0.38,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "098D.jpg"
   },
   {
     "code": "086C",
@@ -3153,7 +3415,8 @@
     "price_50": 0.38,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "086C.jpg"
   },
   {
     "code": "2125B",
@@ -3165,7 +3428,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125B.jpg"
   },
   {
     "code": "2125N",
@@ -3177,7 +3441,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125N.jpg"
   },
   {
     "code": "2126N",
@@ -3189,7 +3454,8 @@
     "price_50": 0.44,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126N.jpg"
   },
   {
     "code": "N402",
@@ -3201,7 +3467,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "N402.jpg"
   },
   {
     "code": "6919",
@@ -3213,7 +3480,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6919.jpg"
   },
   {
     "code": "138B",
@@ -3225,7 +3493,8 @@
     "price_50": 0.47,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "138B.jpg"
   },
   {
     "code": "8609",
@@ -3237,7 +3506,8 @@
     "price_50": 0.48,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8609.jpg"
   },
   {
     "code": "967",
@@ -3249,7 +3519,8 @@
     "price_50": 0.55,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "967.jpg"
   },
   {
     "code": "2125BT",
@@ -3261,7 +3532,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125BT.jpg"
   },
   {
     "code": "2125T",
@@ -3273,7 +3545,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125T.jpg"
   },
   {
     "code": "2126T",
@@ -3285,7 +3558,8 @@
     "price_50": 0.59,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126T.jpg"
   },
   {
     "code": "6818E",
@@ -3297,7 +3571,8 @@
     "price_50": 0.6,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6818E.jpg"
   },
   {
     "code": "2128T",
@@ -3309,7 +3584,8 @@
     "price_50": 0.6,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2128T.jpg"
   },
   {
     "code": "830",
@@ -3321,7 +3597,8 @@
     "price_50": 0.62,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "830.jpg"
   },
   {
     "code": "919A",
@@ -3333,7 +3610,8 @@
     "price_50": 0.65,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "919A.jpg"
   },
   {
     "code": "106A",
@@ -3345,7 +3623,8 @@
     "price_50": 0.67,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "106A.jpg"
   },
   {
     "code": "106B",
@@ -3357,7 +3636,8 @@
     "price_50": 0.68,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "106B.jpg"
   },
   {
     "code": "116B",
@@ -3369,7 +3649,8 @@
     "price_50": 0.68,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "116B.jpg"
   },
   {
     "code": "888",
@@ -3381,7 +3662,8 @@
     "price_50": 0.7,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "888.jpg"
   },
   {
     "code": "186C",
@@ -3393,7 +3675,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "186C.jpg"
   },
   {
     "code": "919T",
@@ -3405,7 +3688,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "919T.jpg"
   },
   {
     "code": "SC030",
@@ -3417,7 +3701,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "SC030.jpg"
   },
   {
     "code": "7403",
@@ -3429,7 +3714,8 @@
     "price_50": 0.75,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "7403.jpg"
   },
   {
     "code": "2125R",
@@ -3441,7 +3727,8 @@
     "price_50": 0.85,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2125R.jpg"
   },
   {
     "code": "2126R",
@@ -3453,7 +3740,8 @@
     "price_50": 0.85,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "2126R.jpg"
   },
   {
     "code": "807",
@@ -3465,7 +3753,8 @@
     "price_50": 0.88,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "807.jpg"
   },
   {
     "code": "6718RT",
@@ -3477,7 +3766,8 @@
     "price_50": 0.88,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "6718RT.jpg"
   },
   {
     "code": "8336",
@@ -3489,7 +3779,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8336.jpg"
   },
   {
     "code": "8556",
@@ -3501,7 +3792,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "8556.jpg"
   },
   {
     "code": "611",
@@ -3513,7 +3805,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "1LAPICEROS PLASTICOS"
+    "category": "1LAPICEROS PLASTICOS",
+    "image": "611.jpg"
   },
   {
     "code": "WBP2200",
@@ -3525,7 +3818,8 @@
     "price_50": null,
     "price_1": 0.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "WBP2200.jpg"
   },
   {
     "code": "3111F",
@@ -3537,7 +3831,8 @@
     "price_50": 0.29,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "3111F.jpg"
   },
   {
     "code": "3115F",
@@ -3549,7 +3844,8 @@
     "price_50": 0.29,
     "price_1": 0.8,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "3115F.jpg"
   },
   {
     "code": "923",
@@ -3561,7 +3857,8 @@
     "price_50": 0.32,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "923.jpg"
   },
   {
     "code": "925N",
@@ -3573,7 +3870,8 @@
     "price_50": 0.32,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "925N.jpg"
   },
   {
     "code": "926NN",
@@ -3585,7 +3883,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "926NN.jpg"
   },
   {
     "code": "930T",
@@ -3597,7 +3896,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "930T.jpg"
   },
   {
     "code": "700F",
@@ -3609,7 +3909,8 @@
     "price_50": 0.4,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "700F.jpg"
   },
   {
     "code": "2128F",
@@ -3621,7 +3922,8 @@
     "price_50": 0.42,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "2128F.jpg"
   },
   {
     "code": "891",
@@ -3633,7 +3935,8 @@
     "price_50": 0.45,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "891.jpg"
   },
   {
     "code": "892",
@@ -3645,7 +3948,8 @@
     "price_50": 0.46,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "892.jpg"
   },
   {
     "code": "2126F",
@@ -3657,7 +3961,8 @@
     "price_50": 0.48,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "2126F.jpg"
   },
   {
     "code": "929",
@@ -3669,7 +3974,8 @@
     "price_50": 0.62,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "929.jpg"
   },
   {
     "code": "919F",
@@ -3681,7 +3987,8 @@
     "price_50": 0.68,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "919F.jpg"
   },
   {
     "code": "1118T",
@@ -3693,7 +4000,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "1118T.jpg"
   },
   {
     "code": "730",
@@ -3705,7 +4013,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "730.jpg"
   },
   {
     "code": "790",
@@ -3717,7 +4026,8 @@
     "price_50": 0.72,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "790.jpg"
   },
   {
     "code": "928FT",
@@ -3729,7 +4039,8 @@
     "price_50": 0.78,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "928FT.jpg"
   },
   {
     "code": "770",
@@ -3741,7 +4052,8 @@
     "price_50": 0.95,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "770.jpg"
   },
   {
     "code": "780F",
@@ -3753,7 +4065,8 @@
     "price_50": 0.95,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "780F.jpg"
   },
   {
     "code": "785",
@@ -3765,7 +4078,8 @@
     "price_50": 1,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "785.jpg"
   },
   {
     "code": "922",
@@ -3777,7 +4091,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "922.jpg"
   },
   {
     "code": "928T",
@@ -3789,7 +4104,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "928T.jpg"
   },
   {
     "code": "MB047",
@@ -3801,7 +4117,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "MB047.jpg"
   },
   {
     "code": "753",
@@ -3813,7 +4130,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "2LAPICEROS ECOLOGICOS"
+    "category": "2LAPICEROS ECOLOGICOS",
+    "image": "753.jpg"
   },
   {
     "code": "MT05",
@@ -3825,7 +4143,8 @@
     "price_50": 0.95,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT05.jpg"
   },
   {
     "code": "947",
@@ -3837,7 +4156,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947.jpg"
   },
   {
     "code": "M04",
@@ -3849,7 +4169,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "M04.jpg"
   },
   {
     "code": "M04-1",
@@ -3861,7 +4182,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "M04-1.jpg"
   },
   {
     "code": "ME04N",
@@ -3873,7 +4195,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "ME04N.jpg"
   },
   {
     "code": "MT04",
@@ -3885,7 +4208,8 @@
     "price_50": 1.2,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT04.jpg"
   },
   {
     "code": "947T",
@@ -3897,7 +4221,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947T.jpg"
   },
   {
     "code": "947T-1",
@@ -3909,7 +4234,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "947T-1.jpg"
   },
   {
     "code": "MT08",
@@ -3921,7 +4247,8 @@
     "price_50": 1.3,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MT08.jpg"
   },
   {
     "code": "801",
@@ -3933,7 +4260,8 @@
     "price_50": 2,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "801.jpg"
   },
   {
     "code": "TS12",
@@ -3945,7 +4273,8 @@
     "price_50": 2.5,
     "price_1": 3,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "TS12.jpg"
   },
   {
     "code": "MN9319",
@@ -3957,7 +4286,8 @@
     "price_50": 3,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MN9319.jpg"
   },
   {
     "code": "BP106",
@@ -3969,7 +4299,8 @@
     "price_50": 3.2,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "BP106.jpg"
   },
   {
     "code": "SR10",
@@ -3981,7 +4312,8 @@
     "price_50": 3.2,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "SR10.jpg"
   },
   {
     "code": "905",
@@ -3993,7 +4325,8 @@
     "price_50": 3.3,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "905.jpg"
   },
   {
     "code": "MS10",
@@ -4005,7 +4338,8 @@
     "price_50": 4,
     "price_1": 5.5,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "MS10.jpg"
   },
   {
     "code": "804",
@@ -4017,7 +4351,8 @@
     "price_50": 5.2,
     "price_1": 6,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "804.jpg"
   },
   {
     "code": "FPL01",
@@ -4029,7 +4364,8 @@
     "price_50": 0.35,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "FPL01.jpg"
   },
   {
     "code": "107",
@@ -4041,7 +4377,8 @@
     "price_50": 1.1,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "107.jpg"
   },
   {
     "code": "008",
@@ -4053,7 +4390,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "3LAPICEROS METALICOS"
+    "category": "3LAPICEROS METALICOS",
+    "image": "008.jpg"
   },
   {
     "code": "LU02",
@@ -4065,7 +4403,8 @@
     "price_50": 85,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "LU02.jpg"
   },
   {
     "code": "UT3678",
@@ -4077,7 +4416,8 @@
     "price_50": 90,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "UT3678.jpg"
   },
   {
     "code": "UT3678B",
@@ -4089,7 +4429,8 @@
     "price_50": 95,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "UT3678B.jpg"
   },
   {
     "code": "UT3933",
@@ -4101,7 +4442,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "UT3933.jpg"
   },
   {
     "code": "AD04T",
@@ -4113,7 +4455,8 @@
     "price_50": 230,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "AD04T.jpg"
   },
   {
     "code": "SJZ587",
@@ -4125,7 +4468,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ587.jpg"
   },
   {
     "code": "SJZ387",
@@ -4137,7 +4481,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ387.jpg"
   },
   {
     "code": "SJZ786",
@@ -4149,7 +4494,8 @@
     "price_50": 560,
     "price_1": 6.5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "SJZ786.jpg"
   },
   {
     "code": "CMP-01",
@@ -4161,7 +4507,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "CMP-01.jpg"
   },
   {
     "code": "VTP-03",
@@ -4173,7 +4520,8 @@
     "price_50": 380,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ACCES. CELULAR  Y PC"
+    "category": "ACCES. CELULAR  Y PC",
+    "image": "VTP-03.jpg"
   },
   {
     "code": "REGLA",
@@ -4185,7 +4533,8 @@
     "price_50": 50,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "REGLA.jpg"
   },
   {
     "code": "BOLSA",
@@ -4197,7 +4546,8 @@
     "price_50": 100,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BOLSA.jpg"
   },
   {
     "code": "BSA201",
@@ -4209,7 +4559,8 @@
     "price_50": 150,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BSA201.jpg"
   },
   {
     "code": "RT333",
@@ -4221,7 +4572,8 @@
     "price_50": 170,
     "price_1": 3,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "RT333.jpg"
   },
   {
     "code": "PL10",
@@ -4233,7 +4585,8 @@
     "price_50": 2.8,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "PL10.jpg"
   },
   {
     "code": "BS288",
@@ -4245,7 +4598,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS288.jpg"
   },
   {
     "code": "BS502",
@@ -4257,7 +4611,8 @@
     "price_50": 300,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS502.jpg"
   },
   {
     "code": "BS262",
@@ -4269,7 +4624,8 @@
     "price_50": 360,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS262.jpg"
   },
   {
     "code": "BS205",
@@ -4281,7 +4637,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS205.jpg"
   },
   {
     "code": "BS309",
@@ -4293,7 +4650,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS309.jpg"
   },
   {
     "code": "AC001",
@@ -4305,7 +4663,8 @@
     "price_50": 410,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "AC001.jpg"
   },
   {
     "code": "AC453",
@@ -4317,7 +4676,8 @@
     "price_50": 410,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "AC453.jpg"
   },
   {
     "code": "STZ01",
@@ -4329,7 +4689,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "STZ01.jpg"
   },
   {
     "code": "MP01",
@@ -4341,7 +4702,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "MP01.jpg"
   },
   {
     "code": "MP02",
@@ -4353,7 +4715,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "MP02.jpg"
   },
   {
     "code": "ZH001",
@@ -4365,7 +4728,8 @@
     "price_50": 190,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ZH001.jpg"
   },
   {
     "code": "ZH002",
@@ -4377,7 +4741,8 @@
     "price_50": 450,
     "price_1": 5.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ZH002.jpg"
   },
   {
     "code": "ME003",
@@ -4389,7 +4754,8 @@
     "price_50": 500,
     "price_1": 6,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ME003.jpg"
   },
   {
     "code": "ED202",
@@ -4401,7 +4767,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED202.jpg"
   },
   {
     "code": "8111",
@@ -4413,7 +4780,8 @@
     "price_50": 0.46,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8111.jpg"
   },
   {
     "code": "8309",
@@ -4425,7 +4793,8 @@
     "price_50": 0.55,
     "price_1": 1,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8309.jpg"
   },
   {
     "code": "8310",
@@ -4437,7 +4806,8 @@
     "price_50": 0.58,
     "price_1": 1.2,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8310.jpg"
   },
   {
     "code": "8315",
@@ -4449,7 +4819,8 @@
     "price_50": 70,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8315.jpg"
   },
   {
     "code": "GCL045",
@@ -4461,7 +4832,8 @@
     "price_50": 0.85,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "GCL045.jpg"
   },
   {
     "code": "8312",
@@ -4473,7 +4845,8 @@
     "price_50": 140,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "8312.jpg"
   },
   {
     "code": "PA022",
@@ -4485,7 +4858,8 @@
     "price_50": 1.5,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "PA022.jpg"
   },
   {
     "code": "FA002",
@@ -4497,7 +4871,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "FA002.jpg"
   },
   {
     "code": "LAM675",
@@ -4509,7 +4884,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "LAM675.jpg"
   },
   {
     "code": "MA26",
@@ -4521,7 +4897,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "MA26.jpg"
   },
   {
     "code": "ED201H",
@@ -4533,7 +4910,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED201H.jpg"
   },
   {
     "code": "ED202D",
@@ -4545,7 +4923,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "ED202D.jpg"
   },
   {
     "code": "DC301",
@@ -4557,7 +4936,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC301.jpg"
   },
   {
     "code": "DC302D",
@@ -4569,7 +4949,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC302D.jpg"
   },
   {
     "code": "DC303T",
@@ -4581,7 +4962,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC303T.jpg"
   },
   {
     "code": "DC201",
@@ -4593,7 +4975,8 @@
     "price_50": 1100,
     "price_1": 12,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC201.jpg"
   },
   {
     "code": "DC302",
@@ -4605,7 +4988,8 @@
     "price_50": 1000,
     "price_1": 12,
     "source": "CHIPER.xlsx",
-    "category": "ART. MÉDICOS - ANTISTRESS"
+    "category": "ART. MÉDICOS - ANTISTRESS",
+    "image": "DC302.jpg"
   },
   {
     "code": "BC907-1",
@@ -4617,7 +5001,8 @@
     "price_50": 250,
     "price_1": 3,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907-1.jpg"
   },
   {
     "code": "BF556",
@@ -4629,7 +5014,8 @@
     "price_50": 2.5,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF556.jpg"
   },
   {
     "code": "BF9767",
@@ -4641,7 +5027,8 @@
     "price_50": 3,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF9767.jpg"
   },
   {
     "code": "BC904",
@@ -4653,7 +5040,8 @@
     "price_50": 320,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC904.jpg"
   },
   {
     "code": "BF453",
@@ -4665,7 +5053,8 @@
     "price_50": 3.2,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF453.jpg"
   },
   {
     "code": "BF901A",
@@ -4677,7 +5066,8 @@
     "price_50": 3.6,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF901A.jpg"
   },
   {
     "code": "BF902",
@@ -4689,7 +5079,8 @@
     "price_50": 3.6,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF902.jpg"
   },
   {
     "code": "BF537",
@@ -4701,7 +5092,8 @@
     "price_50": 3.8,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF537.jpg"
   },
   {
     "code": "BF9012B",
@@ -4713,7 +5105,8 @@
     "price_50": 3.8,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF9012B.jpg"
   },
   {
     "code": "BFB903B",
@@ -4725,7 +5118,8 @@
     "price_50": 4.7,
     "price_1": 5.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFB903B.jpg"
   },
   {
     "code": "BC907",
@@ -4737,7 +5131,8 @@
     "price_50": 580,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907.jpg"
   },
   {
     "code": "BF909A",
@@ -4749,7 +5144,8 @@
     "price_50": 5.8,
     "price_1": 6.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF909A.jpg"
   },
   {
     "code": "BC907B",
@@ -4761,7 +5157,8 @@
     "price_50": 590,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907B.jpg"
   },
   {
     "code": "BC907B-1",
@@ -4773,7 +5170,8 @@
     "price_50": 590,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC907B-1.jpg"
   },
   {
     "code": "BFP904",
@@ -4785,7 +5183,8 @@
     "price_50": 6,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFP904.jpg"
   },
   {
     "code": "BC9071P",
@@ -4797,7 +5196,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BC9071P.jpg"
   },
   {
     "code": "BFC977",
@@ -4809,7 +5209,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BFC977.jpg"
   },
   {
     "code": "BF608A",
@@ -4821,7 +5222,8 @@
     "price_50": 7.5,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF608A.jpg"
   },
   {
     "code": "BF9535",
@@ -4833,7 +5235,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF9535.jpg"
   },
   {
     "code": "CH2519",
@@ -4845,7 +5248,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2519.jpg"
   },
   {
     "code": "CH2518",
@@ -4857,7 +5261,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2518.jpg"
   },
   {
     "code": "BF106",
@@ -4869,7 +5274,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF106.jpg"
   },
   {
     "code": "KA12",
@@ -4881,7 +5287,8 @@
     "price_50": 320,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "KA12.jpg"
   },
   {
     "code": "BF15-100",
@@ -4893,7 +5300,8 @@
     "price_50": 580,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF15-100.jpg"
   },
   {
     "code": "BX02",
@@ -4905,7 +5313,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BX02.jpg"
   },
   {
     "code": "BF151",
@@ -4917,7 +5326,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF151.jpg"
   },
   {
     "code": "BF101",
@@ -4929,7 +5339,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "BF101.jpg"
   },
   {
     "code": "CH2515",
@@ -4941,7 +5352,8 @@
     "price_50": 110,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2515.jpg"
   },
   {
     "code": "CH2520",
@@ -4953,7 +5365,8 @@
     "price_50": 110,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LIBRETAS - POSITS"
+    "category": "LIBRETAS - POSITS",
+    "image": "CH2520.jpg"
   },
   {
     "code": "UT3612",
@@ -4965,7 +5378,8 @@
     "price_50": 90,
     "price_1": 1.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT3612.jpg"
   },
   {
     "code": "UT3612N",
@@ -4977,7 +5391,8 @@
     "price_50": 95,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT3612N.jpg"
   },
   {
     "code": "LCD2501",
@@ -4989,7 +5404,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LCD2501.jpg"
   },
   {
     "code": "CA9",
@@ -5001,7 +5417,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "CA9.jpg"
   },
   {
     "code": "GT01",
@@ -5013,7 +5430,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "GT01.jpg"
   },
   {
     "code": "MS1",
@@ -5025,7 +5443,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS1.jpg"
   },
   {
     "code": "MS2",
@@ -5037,7 +5456,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS2.jpg"
   },
   {
     "code": "MS3",
@@ -5049,7 +5469,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS3.jpg"
   },
   {
     "code": "MS4",
@@ -5061,7 +5482,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS4.jpg"
   },
   {
     "code": "MGP1",
@@ -5073,7 +5495,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP1.jpg"
   },
   {
     "code": "MGP2",
@@ -5085,7 +5508,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP2.jpg"
   },
   {
     "code": "MGP3",
@@ -5097,7 +5521,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP3.jpg"
   },
   {
     "code": "MGP4",
@@ -5109,7 +5534,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MGP4.jpg"
   },
   {
     "code": "MMC1",
@@ -5121,7 +5547,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC1.jpg"
   },
   {
     "code": "MMC2",
@@ -5133,7 +5560,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC2.jpg"
   },
   {
     "code": "MMC3",
@@ -5145,7 +5573,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MMC3.jpg"
   },
   {
     "code": "CA7",
@@ -5157,7 +5586,8 @@
     "price_50": 290,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "CA7.jpg"
   },
   {
     "code": "K3",
@@ -5169,7 +5599,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K3.jpg"
   },
   {
     "code": "K5",
@@ -5181,7 +5612,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K5.jpg"
   },
   {
     "code": "K7",
@@ -5193,7 +5625,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "K7.jpg"
   },
   {
     "code": "MS5",
@@ -5205,7 +5638,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MS5.jpg"
   },
   {
     "code": "MV7",
@@ -5217,7 +5651,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "MV7.jpg"
   },
   {
     "code": "UT2212K",
@@ -5229,7 +5664,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2212K.jpg"
   },
   {
     "code": "UT2370",
@@ -5241,7 +5677,8 @@
     "price_50": 150,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2370.jpg"
   },
   {
     "code": "HLP001",
@@ -5253,7 +5690,8 @@
     "price_50": 1.6,
     "price_1": 2,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "HLP001.jpg"
   },
   {
     "code": "LW-02",
@@ -5265,7 +5703,8 @@
     "price_50": 1.6,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LW-02.jpg"
   },
   {
     "code": "UT2125",
@@ -5277,7 +5716,8 @@
     "price_50": 2.1,
     "price_1": 3,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2125.jpg"
   },
   {
     "code": "UT2356",
@@ -5289,7 +5729,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2356.jpg"
   },
   {
     "code": "UT1123",
@@ -5301,7 +5742,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT1123.jpg"
   },
   {
     "code": "UT2369",
@@ -5313,7 +5755,8 @@
     "price_50": 350,
     "price_1": 4.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2369.jpg"
   },
   {
     "code": "UT2237",
@@ -5325,7 +5768,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2237.jpg"
   },
   {
     "code": "UT2237F",
@@ -5337,7 +5781,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "UT2237F.jpg"
   },
   {
     "code": "TSA03",
@@ -5349,7 +5794,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "TSA03.jpg"
   },
   {
     "code": "LA002",
@@ -5361,7 +5807,8 @@
     "price_50": 2,
     "price_1": 2.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LA002.jpg"
   },
   {
     "code": "LLAB301",
@@ -5373,7 +5820,8 @@
     "price_50": 220,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAB301.jpg"
   },
   {
     "code": "LLAP302",
@@ -5385,7 +5833,8 @@
     "price_50": 220,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAP302.jpg"
   },
   {
     "code": "LLAB202",
@@ -5397,7 +5846,8 @@
     "price_50": 230,
     "price_1": 3.5,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LLAB202.jpg"
   },
   {
     "code": "LM03P",
@@ -5409,7 +5859,8 @@
     "price_50": 270,
     "price_1": 4,
     "source": "CHIPER.xlsx",
-    "category": "LLAVEROS - HERRAMIETAS"
+    "category": "LLAVEROS - HERRAMIETAS",
+    "image": "LM03P.jpg"
   },
   {
     "code": "UT4532",
@@ -5421,7 +5872,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4532.jpg"
   },
   {
     "code": "UT4577",
@@ -5433,7 +5885,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4577.jpg"
   },
   {
     "code": "8005",
@@ -5445,7 +5898,8 @@
     "price_50": 600,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8005.jpg"
   },
   {
     "code": "JG401",
@@ -5457,7 +5911,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "JG401.jpg"
   },
   {
     "code": "JG400",
@@ -5469,7 +5924,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "JG400.jpg"
   },
   {
     "code": "6350V",
@@ -5481,7 +5937,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6350V.jpg"
   },
   {
     "code": "Q34700",
@@ -5493,7 +5950,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q34700.jpg"
   },
   {
     "code": "UT4550",
@@ -5505,7 +5963,8 @@
     "price_50": 680,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "UT4550.jpg"
   },
   {
     "code": "6728V",
@@ -5517,7 +5976,8 @@
     "price_50": 680,
     "price_1": 7.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6728V.jpg"
   },
   {
     "code": "Q34703",
@@ -5529,7 +5989,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q34703.jpg"
   },
   {
     "code": "Q35600",
@@ -5541,7 +6002,8 @@
     "price_50": 750,
     "price_1": 8.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "Q35600.jpg"
   },
   {
     "code": "1062-700",
@@ -5553,7 +6015,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "1062-700.jpg"
   },
   {
     "code": "8030G",
@@ -5565,7 +6028,8 @@
     "price_50": 780,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8030G.jpg"
   },
   {
     "code": "6000G",
@@ -5577,7 +6041,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "6000G.jpg"
   },
   {
     "code": "8019-600",
@@ -5589,7 +6054,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8019-600.jpg"
   },
   {
     "code": "3066",
@@ -5601,7 +6067,8 @@
     "price_50": 8.5,
     "price_1": 10,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "3066.jpg"
   },
   {
     "code": "3087",
@@ -5613,7 +6080,8 @@
     "price_50": 9.5,
     "price_1": 10.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "3087.jpg"
   },
   {
     "code": "8071",
@@ -5625,7 +6093,8 @@
     "price_50": 1150,
     "price_1": 13,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8071.jpg"
   },
   {
     "code": "PTKL360",
@@ -5637,7 +6106,8 @@
     "price_50": 1250,
     "price_1": 14,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "PTKL360.jpg"
   },
   {
     "code": "8077ZN",
@@ -5649,7 +6119,8 @@
     "price_50": 1280,
     "price_1": 14.5,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077ZN.jpg"
   },
   {
     "code": "8091-500",
@@ -5661,7 +6132,8 @@
     "price_50": 1280,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-500.jpg"
   },
   {
     "code": "8077Z-1",
@@ -5673,7 +6145,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077Z-1.jpg"
   },
   {
     "code": "8077ZN-1",
@@ -5685,7 +6158,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8077ZN-1.jpg"
   },
   {
     "code": "8091-501",
@@ -5697,7 +6171,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-501.jpg"
   },
   {
     "code": "8091-750",
@@ -5709,7 +6184,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-750.jpg"
   },
   {
     "code": "8093-750",
@@ -5721,7 +6197,8 @@
     "price_50": 1380,
     "price_1": 15,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8093-750.jpg"
   },
   {
     "code": "8091-751",
@@ -5733,7 +6210,8 @@
     "price_50": 1480,
     "price_1": 16,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8091-751.jpg"
   },
   {
     "code": "7071",
@@ -5745,7 +6223,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "7071.jpg"
   },
   {
     "code": "8619",
@@ -5757,7 +6236,8 @@
     "price_50": 880,
     "price_1": 10,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "8619.jpg"
   },
   {
     "code": "7059",
@@ -5769,7 +6249,8 @@
     "price_50": 1400,
     "price_1": 16,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "7059.jpg"
   },
   {
     "code": "TM789",
@@ -5781,7 +6262,8 @@
     "price_50": 1450,
     "price_1": 16,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM789.jpg"
   },
   {
     "code": "TM789-1",
@@ -5793,7 +6275,8 @@
     "price_50": 1600,
     "price_1": 18,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM789-1.jpg"
   },
   {
     "code": "TM075",
@@ -5805,7 +6288,8 @@
     "price_50": 1700,
     "price_1": 18,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM075.jpg"
   },
   {
     "code": "TM075-1",
@@ -5817,7 +6301,8 @@
     "price_50": 1800,
     "price_1": 19,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM075-1.jpg"
   },
   {
     "code": "9000-501",
@@ -5829,7 +6314,8 @@
     "price_50": 1100,
     "price_1": 13,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "9000-501.jpg"
   },
   {
     "code": "SB04",
@@ -5841,7 +6327,8 @@
     "price_50": 1100,
     "price_1": 13,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "SB04.jpg"
   },
   {
     "code": "TM061",
@@ -5853,7 +6340,8 @@
     "price_50": 1600,
     "price_1": 18,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM061.jpg"
   },
   {
     "code": "TM072",
@@ -5865,7 +6353,8 @@
     "price_50": 1700,
     "price_1": 18,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM072.jpg"
   },
   {
     "code": "XS005",
@@ -5877,7 +6366,8 @@
     "price_50": 1800,
     "price_1": 20,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "XS005.jpg"
   },
   {
     "code": "TM072-1",
@@ -5889,7 +6379,8 @@
     "price_50": 1800,
     "price_1": 20,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "TM072-1.jpg"
   },
   {
     "code": "XS005-1",
@@ -5901,7 +6392,8 @@
     "price_50": 1900,
     "price_1": 21,
     "source": "CHIPER.xlsx",
-    "category": "TOMATODOS-MUG"
+    "category": "TOMATODOS-MUG",
+    "image": "XS005-1.jpg"
   },
   {
     "code": "1485",
@@ -5913,7 +6405,8 @@
     "price_50": 0.45,
     "price_1": 0.7,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "1485.jpeg"
   },
   {
     "code": "5013",
@@ -5925,7 +6418,8 @@
     "price_50": 0.77,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5013.png"
   },
   {
     "code": "5062",
@@ -5937,7 +6431,8 @@
     "price_50": 0.48,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5062.jpeg"
   },
   {
     "code": "5094",
@@ -5949,7 +6444,8 @@
     "price_50": 0.47,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5094.png"
   },
   {
     "code": "5155",
@@ -5961,7 +6457,8 @@
     "price_50": 0.37,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5155.png"
   },
   {
     "code": "5175",
@@ -5973,7 +6470,8 @@
     "price_50": 0.5,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5175.jpg"
   },
   {
     "code": "5228",
@@ -5985,7 +6483,8 @@
     "price_50": 0.4,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5228.jpeg"
   },
   {
     "code": "5275",
@@ -5997,7 +6496,8 @@
     "price_50": 0.45,
     "price_1": 0.7,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5275.png"
   },
   {
     "code": "6077",
@@ -6009,7 +6509,8 @@
     "price_50": 0.45,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "6077.png"
   },
   {
     "code": "6162",
@@ -6021,7 +6522,8 @@
     "price_50": 0.87,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "6162.jpeg"
   },
   {
     "code": "6163",
@@ -6033,7 +6535,8 @@
     "price_50": 0.5,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "6163.jpeg"
   },
   {
     "code": "9103",
@@ -6045,7 +6548,8 @@
     "price_50": 0.4,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "9103.jpeg"
   },
   {
     "code": "5175-SOLIDO",
@@ -6057,7 +6561,8 @@
     "price_50": 0.5,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5175-SOLIDO.png"
   },
   {
     "code": "5004-1",
@@ -6069,7 +6574,8 @@
     "price_50": 0.7,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5004-1.png"
   },
   {
     "code": "5144-1",
@@ -6081,7 +6587,8 @@
     "price_50": 0.52,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5144-1.jpeg"
   },
   {
     "code": "5175-1",
@@ -6093,7 +6600,8 @@
     "price_50": 0.5,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "5175-1.jpeg"
   },
   {
     "code": "6072-1",
@@ -6105,7 +6613,8 @@
     "price_50": 0.47,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "6072-1.jpeg"
   },
   {
     "code": "6262-1",
@@ -6117,7 +6626,8 @@
     "price_50": 0.65,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "6262-1.jpeg"
   },
   {
     "code": "9103-1",
@@ -6129,7 +6639,8 @@
     "price_50": 0.42,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "9103-1.jpeg"
   },
   {
     "code": "EF-002",
@@ -6141,7 +6652,8 @@
     "price_50": 0.35,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "EF-002.jpeg"
   },
   {
     "code": "GP-5175H",
@@ -6153,7 +6665,8 @@
     "price_50": 0.55,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "GP-5175H.jpeg"
   },
   {
     "code": "GP-18003",
@@ -6165,7 +6678,8 @@
     "price_50": 0.9,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "GP-18003.jpeg"
   },
   {
     "code": "GP-18005",
@@ -6177,7 +6691,8 @@
     "price_50": 0.7,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "GP-18005.png"
   },
   {
     "code": "LH-3029",
@@ -6189,7 +6704,8 @@
     "price_50": 1.9,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "LH-3029.png"
   },
   {
     "code": "W-24020A",
@@ -6201,7 +6717,8 @@
     "price_50": 0.78,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "W-24020A.jpeg"
   },
   {
     "code": "JC-1192",
@@ -6213,7 +6730,8 @@
     "price_50": 1.4,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "JC-1192.jpeg"
   },
   {
     "code": "MP-7009",
@@ -6225,7 +6743,8 @@
     "price_50": 0.2,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "MP-7009.jpeg"
   },
   {
     "code": "PB-007",
@@ -6237,7 +6756,8 @@
     "price_50": 0.4,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "PB-007.jpeg"
   },
   {
     "code": "PB-009",
@@ -6249,7 +6769,8 @@
     "price_50": 0.4,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "PB-009.png"
   },
   {
     "code": "PB-014",
@@ -6261,7 +6782,8 @@
     "price_50": 0.4,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "PB-014.jpeg"
   },
   {
     "code": "TBP-1327",
@@ -6273,7 +6795,8 @@
     "price_50": 0.65,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TBP-1327.png"
   },
   {
     "code": "TBP-2338A",
@@ -6285,7 +6808,8 @@
     "price_50": 0.5,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TBP-2338A.jpeg"
   },
   {
     "code": "THP-08B",
@@ -6297,7 +6821,8 @@
     "price_50": 0.83,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "THP-08B.jpeg"
   },
   {
     "code": "THP-08B-T",
@@ -6309,7 +6834,8 @@
     "price_50": 0.83,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "THP-08B-T.jpeg"
   },
   {
     "code": "THP-42",
@@ -6321,7 +6847,8 @@
     "price_50": 0.47,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "THP-42.jpeg"
   },
   {
     "code": "TTP-64",
@@ -6333,7 +6860,8 @@
     "price_50": 1.5,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TTP-64.png"
   },
   {
     "code": "TTP-02A",
@@ -6345,7 +6873,8 @@
     "price_50": 0.87,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TTP-02A.jpeg"
   },
   {
     "code": "TTPP-396B",
@@ -6357,7 +6886,8 @@
     "price_50": 0.82,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TTPP-396B.png"
   },
   {
     "code": "TVP-41B",
@@ -6369,7 +6899,8 @@
     "price_50": 0.87,
     "price_1": 1,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TVP-41B.jpeg"
   },
   {
     "code": "TVP-05A",
@@ -6381,7 +6912,8 @@
     "price_50": 0.42,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TVP-05A.jpeg"
   },
   {
     "code": "TVP-05B",
@@ -6393,7 +6925,8 @@
     "price_50": 0.42,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TVP-05B.jpeg"
   },
   {
     "code": "TW-001",
@@ -6405,7 +6938,8 @@
     "price_50": 0.43,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS DE PLASTICO"
+    "category": "LAPICEROS DE PLASTICO",
+    "image": "TW-001.jpeg"
   },
   {
     "code": "SFBP-510",
@@ -6417,7 +6951,8 @@
     "price_50": 7.8,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS PUNTERO LASER"
+    "category": "LAPICEROS PUNTERO LASER",
+    "image": "SFBP-510.png"
   },
   {
     "code": "SFBP-511",
@@ -6429,7 +6964,8 @@
     "price_50": 7.5,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS PUNTERO LASER"
+    "category": "LAPICEROS PUNTERO LASER",
+    "image": "SFBP-511.png"
   },
   {
     "code": "SFBP-520",
@@ -6441,7 +6977,8 @@
     "price_50": 6.5,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS PUNTERO LASER"
+    "category": "LAPICEROS PUNTERO LASER",
+    "image": "SFBP-520.jpeg"
   },
   {
     "code": "TC-1005",
@@ -6453,7 +6990,8 @@
     "price_50": 8,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS PUNTERO LASER"
+    "category": "LAPICEROS PUNTERO LASER",
+    "image": "TC-1005.jpeg"
   },
   {
     "code": "8033",
@@ -6465,7 +7003,8 @@
     "price_50": 3,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "8033.jpeg"
   },
   {
     "code": "8050",
@@ -6477,7 +7016,8 @@
     "price_50": 5.5,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "8050.jpeg"
   },
   {
     "code": "9016",
@@ -6489,7 +7029,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "9016.png"
   },
   {
     "code": "2010-R",
@@ -6501,7 +7042,8 @@
     "price_50": 5.2,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "2010-R.jpeg"
   },
   {
     "code": "2086-R\r\n(RP-2351)",
@@ -6549,7 +7091,8 @@
     "price_50": 4,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "A-1002R.png"
   },
   {
     "code": "A-2020B",
@@ -6561,7 +7104,8 @@
     "price_50": 4.2,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "A-2020B.jpeg"
   },
   {
     "code": "A3011-29",
@@ -6573,7 +7117,8 @@
     "price_50": 3.2,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "A3011-29.png"
   },
   {
     "code": "A-3016",
@@ -6585,7 +7130,8 @@
     "price_50": 2.8,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "A-3016.jpeg"
   },
   {
     "code": "A3016-1",
@@ -6597,7 +7143,8 @@
     "price_50": 2.8,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "A3016-1.png"
   },
   {
     "code": "B-4011-2",
@@ -6609,7 +7156,8 @@
     "price_50": 2.8,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "B-4011-2.jpeg"
   },
   {
     "code": "B-5006-5",
@@ -6621,7 +7169,8 @@
     "price_50": 2.5,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "B-5006-5.jpeg"
   },
   {
     "code": "D-55",
@@ -6633,7 +7182,8 @@
     "price_50": 5.2,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "LAPICEROS METALICOS"
+    "category": "LAPICEROS METALICOS",
+    "image": "D-55.jpeg"
   },
   {
     "code": "7278\r\n(PLASTIC BOX)",
@@ -6657,7 +7207,8 @@
     "price_50": 270,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "BX-222.jpeg"
   },
   {
     "code": "BX-403",
@@ -6669,7 +7220,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "BX-403.jpeg"
   },
   {
     "code": "BX-422",
@@ -6681,7 +7233,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "BX-422.jpeg"
   },
   {
     "code": "BX-639",
@@ -6693,7 +7246,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "BX-639.jpeg"
   },
   {
     "code": "BX-737",
@@ -6705,7 +7259,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "BX-737.jpeg"
   },
   {
     "code": "METAL BOX",
@@ -6741,7 +7296,8 @@
     "price_50": 35,
     "price_1": 0.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ESTUCHES"
+    "category": "ESTUCHES",
+    "image": "SFPS-110505.jpeg"
   },
   {
     "code": "KA-410C",
@@ -6753,7 +7309,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "CALCULADORAS"
+    "category": "CALCULADORAS",
+    "image": "KA-410C.jpeg"
   },
   {
     "code": "KA-603",
@@ -6765,7 +7322,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "CALCULADORAS"
+    "category": "CALCULADORAS",
+    "image": "KA-603.jpeg"
   },
   {
     "code": "KA-5329",
@@ -6777,7 +7335,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "CALCULADORAS"
+    "category": "CALCULADORAS",
+    "image": "KA-5329.jpeg"
   },
   {
     "code": "KA-6827A",
@@ -6789,7 +7348,8 @@
     "price_50": 1300,
     "price_1": 14,
     "source": "EFSTOCK.xlsx",
-    "category": "CALCULADORAS"
+    "category": "CALCULADORAS",
+    "image": "KA-6827A.jpeg"
   },
   {
     "code": "SFPS-466",
@@ -6801,7 +7361,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "CALCULADORAS"
+    "category": "CALCULADORAS",
+    "image": "SFPS-466.jpeg"
   },
   {
     "code": "FXA-01\r\n(TY-A01)",
@@ -6837,7 +7398,8 @@
     "price_50": 930,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "CD-03.jpeg"
   },
   {
     "code": "GP-211025B",
@@ -6849,7 +7411,8 @@
     "price_50": 670,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "GP-211025B.jpeg"
   },
   {
     "code": "JC-751",
@@ -6861,7 +7424,8 @@
     "price_50": 690,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-751.jpeg"
   },
   {
     "code": "JC-752",
@@ -6873,7 +7437,8 @@
     "price_50": 900,
     "price_1": 10.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-752.jpeg"
   },
   {
     "code": "JC-763",
@@ -6885,7 +7450,8 @@
     "price_50": 750,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-763.jpeg"
   },
   {
     "code": "JC-766",
@@ -6897,7 +7463,8 @@
     "price_50": 670,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-766.png"
   },
   {
     "code": "JC-766",
@@ -6909,7 +7476,8 @@
     "price_50": 370,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-766.png"
   },
   {
     "code": "JC-790",
@@ -6921,7 +7489,8 @@
     "price_50": 1800,
     "price_1": 19,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-790.png"
   },
   {
     "code": "JC-845",
@@ -6933,7 +7502,8 @@
     "price_50": 520,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JC-845.jpeg"
   },
   {
     "code": "LSD-2045-1",
@@ -6945,7 +7515,8 @@
     "price_50": 1600,
     "price_1": 17,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "LSD-2045-1.png"
   },
   {
     "code": "LSD-2045",
@@ -6957,7 +7528,8 @@
     "price_50": 1500,
     "price_1": 16,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "LSD-2045.jpeg"
   },
   {
     "code": "LSD-2026B",
@@ -6969,7 +7541,8 @@
     "price_50": 1500,
     "price_1": 16,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "LSD-2026B.jpeg"
   },
   {
     "code": "LSD-42005",
@@ -6981,7 +7554,8 @@
     "price_50": 2700,
     "price_1": 30,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "LSD-42005.jpeg"
   },
   {
     "code": "JS2812-SB",
@@ -6993,7 +7567,8 @@
     "price_50": 350,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JS2812-SB.jpeg"
   },
   {
     "code": "JS2812-CL",
@@ -7005,7 +7580,8 @@
     "price_50": 520,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JS2812-CL.jpeg"
   },
   {
     "code": "JS2812-BL",
@@ -7017,7 +7593,8 @@
     "price_50": 300,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "JS2812-BL.jpeg"
   },
   {
     "code": "TM-23 MATE",
@@ -7053,7 +7630,8 @@
     "price_50": 770,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "FXA-07.jpeg"
   },
   {
     "code": "FXA-10",
@@ -7065,7 +7643,8 @@
     "price_50": 970,
     "price_1": 10.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "FXA-10.png"
   },
   {
     "code": "TY-B1000",
@@ -7077,7 +7656,8 @@
     "price_50": 2200,
     "price_1": 24,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-B1000.jpeg"
   },
   {
     "code": "FXB-500-1",
@@ -7089,7 +7669,8 @@
     "price_50": 1700,
     "price_1": 18,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "FXB-500-1.jpeg"
   },
   {
     "code": "FXB-500",
@@ -7101,7 +7682,8 @@
     "price_50": 1650,
     "price_1": 17.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "FXB-500.png"
   },
   {
     "code": "GP-2027",
@@ -7113,7 +7695,8 @@
     "price_50": 3600,
     "price_1": 37,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "GP-2027.png"
   },
   {
     "code": "HY-013",
@@ -7125,7 +7708,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "HY-013.jpeg"
   },
   {
     "code": "TY-A09C",
@@ -7137,7 +7721,8 @@
     "price_50": 970,
     "price_1": 10.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-A09C.jpeg"
   },
   {
     "code": "TY-A12",
@@ -7149,7 +7734,8 @@
     "price_50": 970,
     "price_1": 11,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-A12.jpeg"
   },
   {
     "code": "TY-A29",
@@ -7161,7 +7747,8 @@
     "price_50": 1600,
     "price_1": 17,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-A29.jpeg"
   },
   {
     "code": "TYA-32A",
@@ -7173,7 +7760,8 @@
     "price_50": 1950,
     "price_1": 20,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TYA-32A.jpeg"
   },
   {
     "code": "TY-A39",
@@ -7185,7 +7773,8 @@
     "price_50": 1150,
     "price_1": 12.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-A39.jpg"
   },
   {
     "code": "TY-P35AW",
@@ -7197,7 +7786,8 @@
     "price_50": 720,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-P35AW.jpeg"
   },
   {
     "code": "TY-AW500",
@@ -7209,7 +7799,8 @@
     "price_50": 1100,
     "price_1": 12,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-AW500.jpeg"
   },
   {
     "code": "TY-MSB500",
@@ -7221,7 +7812,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-MSB500.jpeg"
   },
   {
     "code": "TY-A53",
@@ -7233,7 +7825,8 @@
     "price_50": 1450,
     "price_1": 15.5,
     "source": "EFSTOCK.xlsx",
-    "category": "JARROS MUG"
+    "category": "JARROS MUG",
+    "image": "TY-A53.jpeg"
   },
   {
     "code": "FXSB-500C",
@@ -7245,7 +7838,8 @@
     "price_50": 730,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "FXSB-500C.jpeg"
   },
   {
     "code": "FXSB-500C-1",
@@ -7257,7 +7851,8 @@
     "price_50": 730,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "FXSB-500C-1.jpeg"
   },
   {
     "code": "FXSB-750C",
@@ -7269,7 +7864,8 @@
     "price_50": 870,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "FXSB-750C.jpeg"
   },
   {
     "code": "LSD-3005",
@@ -7281,7 +7877,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "LSD-3005.jpeg"
   },
   {
     "code": "HL-5972",
@@ -7293,7 +7890,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "HL-5972.png"
   },
   {
     "code": "TY-PFB01",
@@ -7305,7 +7903,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "TY-PFB01.png"
   },
   {
     "code": "HL-9439",
@@ -7317,7 +7916,8 @@
     "price_50": 670,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "HL-9439.jpeg"
   },
   {
     "code": "JC-748",
@@ -7329,7 +7929,8 @@
     "price_50": 670,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JC-748.jpeg"
   },
   {
     "code": "JC-788",
@@ -7341,7 +7942,8 @@
     "price_50": 2500,
     "price_1": 26,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JC-788.png"
   },
   {
     "code": "JC-782",
@@ -7353,7 +7955,8 @@
     "price_50": 2350,
     "price_1": 25,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JC-782.jpeg"
   },
   {
     "code": "JC-793",
@@ -7365,7 +7968,8 @@
     "price_50": 2200,
     "price_1": 24,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JC-793.jpeg"
   },
   {
     "code": "JCG-600",
@@ -7377,7 +7981,8 @@
     "price_50": 570,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JCG-600.jpeg"
   },
   {
     "code": "JCG-604",
@@ -7389,7 +7994,8 @@
     "price_50": 870,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JCG-604.png"
   },
   {
     "code": "JCG-606",
@@ -7401,7 +8007,8 @@
     "price_50": 1850,
     "price_1": 19.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "JCG-606.png"
   },
   {
     "code": "TY-SSB750",
@@ -7413,7 +8020,8 @@
     "price_50": 970,
     "price_1": 11,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "TY-SSB750.png"
   },
   {
     "code": "GP-23501A",
@@ -7425,7 +8033,8 @@
     "price_50": 1170,
     "price_1": 12.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "GP-23501A.png"
   },
   {
     "code": "LSD-2024",
@@ -7437,7 +8046,8 @@
     "price_50": 1170,
     "price_1": 12.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "LSD-2024.png"
   },
   {
     "code": "LSD-2004",
@@ -7449,7 +8059,8 @@
     "price_50": 3000,
     "price_1": 33,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "LSD-2004.jpeg"
   },
   {
     "code": "LSD-1018",
@@ -7461,7 +8072,8 @@
     "price_50": 2500,
     "price_1": 27,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "LSD-1018.jpeg"
   },
   {
     "code": "LSD-43001",
@@ -7473,7 +8085,8 @@
     "price_50": 970,
     "price_1": 12,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "LSD-43001.jpeg"
   },
   {
     "code": "TY-KLP750P",
@@ -7485,7 +8098,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "TY-KLP750P.jpeg"
   },
   {
     "code": "WJ-748",
@@ -7497,7 +8111,8 @@
     "price_50": 1400,
     "price_1": 15,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "WJ-748.jpeg"
   },
   {
     "code": "YH-075A",
@@ -7509,7 +8124,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-075A.png"
   },
   {
     "code": "YH-075C",
@@ -7521,7 +8137,8 @@
     "price_50": 920,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-075C.png"
   },
   {
     "code": "YH-076A",
@@ -7533,7 +8150,8 @@
     "price_50": 820,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-076A.jpeg"
   },
   {
     "code": "YH-082",
@@ -7545,7 +8163,8 @@
     "price_50": 870,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-082.png"
   },
   {
     "code": "YH-082",
@@ -7557,7 +8176,8 @@
     "price_50": 530,
     "price_1": null,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-082.png"
   },
   {
     "code": "YH-082",
@@ -7569,7 +8189,8 @@
     "price_50": 530,
     "price_1": null,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-082.png"
   },
   {
     "code": "YH-082",
@@ -7581,7 +8202,8 @@
     "price_50": 530,
     "price_1": null,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-082.png"
   },
   {
     "code": "YH-082",
@@ -7593,7 +8215,8 @@
     "price_50": 530,
     "price_1": null,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-082.png"
   },
   {
     "code": "YH-152",
@@ -7605,7 +8228,8 @@
     "price_50": 520,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-152.jpeg"
   },
   {
     "code": "YH-154",
@@ -7617,7 +8241,8 @@
     "price_50": 820,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-154.png"
   },
   {
     "code": "YH-196C",
@@ -7629,7 +8254,8 @@
     "price_50": 970,
     "price_1": 11,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-196C.jpeg"
   },
   {
     "code": "YH-220",
@@ -7641,7 +8267,8 @@
     "price_50": 1600,
     "price_1": 17,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-220.png"
   },
   {
     "code": "YH-273",
@@ -7653,7 +8280,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-273.png"
   },
   {
     "code": "YH-286",
@@ -7665,7 +8293,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YH-286.jpeg"
   },
   {
     "code": "YH-469",
@@ -7689,7 +8318,8 @@
     "price_50": 820,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YHN-002.jpeg"
   },
   {
     "code": "YHN-003",
@@ -7701,7 +8331,8 @@
     "price_50": 870,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TOMATODOS"
+    "category": "TOMATODOS",
+    "image": "YHN-003.jpeg"
   },
   {
     "code": "BS-345",
@@ -7713,7 +8344,8 @@
     "price_50": 250,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS-345.jpeg"
   },
   {
     "code": "BS-373",
@@ -7725,7 +8357,8 @@
     "price_50": 550,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS-373.png"
   },
   {
     "code": "HL-9083",
@@ -7737,7 +8370,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "HL-9083.jpeg"
   },
   {
     "code": "HL-8275",
@@ -7749,7 +8383,8 @@
     "price_50": 180,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "HL-8275.jpeg"
   },
   {
     "code": "BS-404",
@@ -7761,7 +8396,8 @@
     "price_50": 85,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "BS-404.png"
   },
   {
     "code": "GSST-021M",
@@ -7773,7 +8409,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "GSST-021M.jpeg"
   },
   {
     "code": "GSPH-061",
@@ -7785,7 +8422,8 @@
     "price_50": 1200,
     "price_1": 12.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "GSPH-061.jpeg"
   },
   {
     "code": "CL-3023",
@@ -7797,7 +8435,8 @@
     "price_50": 470,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "CL-3023.jpeg"
   },
   {
     "code": "GSPH-002",
@@ -7809,7 +8448,8 @@
     "price_50": 880,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "GSPH-002.jpeg"
   },
   {
     "code": "GSPH-102A",
@@ -7821,7 +8461,8 @@
     "price_50": 1400,
     "price_1": 14.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "GSPH-102A.jpeg"
   },
   {
     "code": "HL-2606",
@@ -7833,7 +8474,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "HL-2606.jpeg"
   },
   {
     "code": "CL-3032",
@@ -7845,7 +8487,8 @@
     "price_50": 240,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "CL-3032.jpeg"
   },
   {
     "code": "CL-4007",
@@ -7857,7 +8500,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "CL-4007.jpeg"
   },
   {
     "code": "DZ-002",
@@ -7869,7 +8513,8 @@
     "price_50": 770,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "DZ-002.jpeg"
   },
   {
     "code": "JC-320",
@@ -7881,7 +8526,8 @@
     "price_50": 2700,
     "price_1": 29,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "JC-320.jpeg"
   },
   {
     "code": "HL-2948",
@@ -7893,7 +8539,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "HL-2948.png"
   },
   {
     "code": "HL-4648",
@@ -7905,7 +8552,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "HL-4648.png"
   },
   {
     "code": "MOUSE PAD",
@@ -7929,7 +8577,8 @@
     "price_50": 85,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "NB-208.png"
   },
   {
     "code": "NB-208(1)",
@@ -7941,7 +8590,8 @@
     "price_50": 130,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "NB-2081.png"
   },
   {
     "code": "NB-209",
@@ -7953,7 +8603,8 @@
     "price_50": 80,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "NB-209.jpeg"
   },
   {
     "code": "PB-0715",
@@ -7965,7 +8616,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "PB-0715.jpeg"
   },
   {
     "code": "PP-2003",
@@ -7977,7 +8629,8 @@
     "price_50": 120,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "PP-2003.jpeg"
   },
   {
     "code": "JC-233",
@@ -7989,7 +8642,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "JC-233.jpg"
   },
   {
     "code": "PB-0712",
@@ -8001,7 +8655,8 @@
     "price_50": 380,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "PB-0712.jpeg"
   },
   {
     "code": "SFPS-110201",
@@ -8013,7 +8668,8 @@
     "price_50": 720,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "SFPS-110201.jpeg"
   },
   {
     "code": "SFPS-110501",
@@ -8025,7 +8681,8 @@
     "price_50": 11,
     "price_1": 12,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "SFPS-110501.jpeg"
   },
   {
     "code": "SFPS-110501T",
@@ -8037,7 +8694,8 @@
     "price_50": 11.5,
     "price_1": 12,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "SFPS-110501T.jpeg"
   },
   {
     "code": "LS-4638",
@@ -8049,7 +8707,8 @@
     "price_50": 400,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "LS-4638.jpeg"
   },
   {
     "code": "TL-1008",
@@ -8061,7 +8720,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "TL-1008.jpeg"
   },
   {
     "code": "TL-5004",
@@ -8073,7 +8733,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "TL-5004.jpeg"
   },
   {
     "code": "TL-5025",
@@ -8085,7 +8746,8 @@
     "price_50": 180,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ESCRITORIO"
+    "category": "ART. ESCRITORIO",
+    "image": "TL-5025.png"
   },
   {
     "code": "JC-1101",
@@ -8097,7 +8759,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "JC-1101.png"
   },
   {
     "code": "JC-1105",
@@ -8109,7 +8772,8 @@
     "price_50": 280,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "JC-1105.png"
   },
   {
     "code": "JC-1102",
@@ -8121,7 +8785,8 @@
     "price_50": 380,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "JC-1102.png"
   },
   {
     "code": "JC-1176",
@@ -8133,7 +8798,8 @@
     "price_50": 400,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "JC-1176.png"
   },
   {
     "code": "1130712-4",
@@ -8145,7 +8811,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "1130712-4.jpeg"
   },
   {
     "code": "GPW-079",
@@ -8157,7 +8824,8 @@
     "price_50": 620,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "GPW-079.jpeg"
   },
   {
     "code": "GPW-081",
@@ -8169,7 +8837,8 @@
     "price_50": 420,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "GPW-081.jpeg"
   },
   {
     "code": "GPW-089",
@@ -8181,7 +8850,8 @@
     "price_50": 520,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "GPW-089.jpeg"
   },
   {
     "code": "A-5",
@@ -8193,7 +8863,8 @@
     "price_50": 520,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "A-5.jpeg"
   },
   {
     "code": "A-0934",
@@ -8205,7 +8876,8 @@
     "price_50": 750,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "A-0934.png"
   },
   {
     "code": "A-0931",
@@ -8217,7 +8889,8 @@
     "price_50": 700,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "A-0931.jpeg"
   },
   {
     "code": "M-8700",
@@ -8229,7 +8902,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-8700.jpeg"
   },
   {
     "code": "M-8787",
@@ -8241,7 +8915,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-8787.jpeg"
   },
   {
     "code": "HL-8619",
@@ -8253,7 +8928,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "HL-8619.jpeg"
   },
   {
     "code": "HL-8633",
@@ -8265,7 +8941,8 @@
     "price_50": 700,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "HL-8633.jpeg"
   },
   {
     "code": "M-0914",
@@ -8277,7 +8954,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-0914.jpeg"
   },
   {
     "code": "M-0915",
@@ -8289,7 +8967,8 @@
     "price_50": 600,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-0915.jpeg"
   },
   {
     "code": "M-3939",
@@ -8301,7 +8980,8 @@
     "price_50": 770,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-3939.jpeg"
   },
   {
     "code": "M-7084",
@@ -8313,7 +8993,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "M-7084.jpeg"
   },
   {
     "code": "R-5033B",
@@ -8325,7 +9006,8 @@
     "price_50": 470,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5033B.jpeg"
   },
   {
     "code": "R-5033A",
@@ -8337,7 +9019,8 @@
     "price_50": 400,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5033A.png"
   },
   {
     "code": "R-5400",
@@ -8349,7 +9032,8 @@
     "price_50": 670,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5400.jpeg"
   },
   {
     "code": "R-5515",
@@ -8361,7 +9045,8 @@
     "price_50": 920,
     "price_1": 10.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5515.png"
   },
   {
     "code": "R-5836",
@@ -8373,7 +9058,8 @@
     "price_50": 650,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5836.jpeg"
   },
   {
     "code": "R-5999",
@@ -8385,7 +9071,8 @@
     "price_50": 820,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-5999.jpeg"
   },
   {
     "code": "R-6201",
@@ -8397,7 +9084,8 @@
     "price_50": 75,
     "price_1": 1.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-6201.jpeg"
   },
   {
     "code": "R-6305",
@@ -8409,7 +9097,8 @@
     "price_50": 470,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-6305.jpeg"
   },
   {
     "code": "R-6556",
@@ -8421,7 +9110,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-6556.jpeg"
   },
   {
     "code": "R-7201",
@@ -8433,7 +9123,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-7201.jpeg"
   },
   {
     "code": "R-7215",
@@ -8445,7 +9136,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-7215.jpeg"
   },
   {
     "code": "R-7229",
@@ -8457,7 +9149,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-7229.jpeg"
   },
   {
     "code": "R-8001",
@@ -8469,7 +9162,8 @@
     "price_50": 570,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-8001.jpeg"
   },
   {
     "code": "R-8001A",
@@ -8481,7 +9175,8 @@
     "price_50": 600,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-8001A.jpeg"
   },
   {
     "code": "R-8500",
@@ -8493,7 +9188,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-8500.png"
   },
   {
     "code": "R-9114",
@@ -8505,7 +9201,8 @@
     "price_50": 450,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-9114.jpeg"
   },
   {
     "code": "R-9704",
@@ -8517,7 +9214,8 @@
     "price_50": 470,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-9704.jpeg"
   },
   {
     "code": "R-9934",
@@ -8529,7 +9227,8 @@
     "price_50": 1250,
     "price_1": 13.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "R-9934.jpeg"
   },
   {
     "code": "RA-512",
@@ -8541,7 +9240,8 @@
     "price_50": 1050,
     "price_1": 12,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RA-512.jpeg"
   },
   {
     "code": "RA-513",
@@ -8553,7 +9253,8 @@
     "price_50": 820,
     "price_1": 9.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RA-513.jpeg"
   },
   {
     "code": "RA-535",
@@ -8565,7 +9266,8 @@
     "price_50": 670,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RA-535.jpeg"
   },
   {
     "code": "RKN-818C",
@@ -8577,7 +9279,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RKN-818C.png"
   },
   {
     "code": "RKN-820",
@@ -8589,7 +9292,8 @@
     "price_50": 310,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RKN-820.jpeg"
   },
   {
     "code": "RN-1100",
@@ -8601,7 +9305,8 @@
     "price_50": 680,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "RN-1100.jpeg"
   },
   {
     "code": "SFPS-6027",
@@ -8613,7 +9318,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "SFPS-6027.png"
   },
   {
     "code": "TR-02",
@@ -8625,7 +9331,8 @@
     "price_50": 140,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LINEA ECOLOGICA"
+    "category": "LINEA ECOLOGICA",
+    "image": "TR-02.jpeg"
   },
   {
     "code": "GP-2048",
@@ -8637,7 +9344,8 @@
     "price_50": 530,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "GP-2048.jpeg"
   },
   {
     "code": "TL-5012",
@@ -8649,7 +9357,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5012.png"
   },
   {
     "code": "TL-5013",
@@ -8661,7 +9370,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5013.png"
   },
   {
     "code": "TL-5014",
@@ -8673,7 +9383,8 @@
     "price_50": 620,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5014.png"
   },
   {
     "code": "TL-5015",
@@ -8685,7 +9396,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5015.png"
   },
   {
     "code": "TL-5016",
@@ -8697,7 +9409,8 @@
     "price_50": 620,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5016.png"
   },
   {
     "code": "TL-5017",
@@ -8709,7 +9422,8 @@
     "price_50": 570,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "TARJETEROS"
+    "category": "TARJETEROS",
+    "image": "TL-5017.png"
   },
   {
     "code": "FJHL-086",
@@ -8721,7 +9435,8 @@
     "price_50": 270,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "FJHL-086.png"
   },
   {
     "code": "FJHL-139H",
@@ -8733,7 +9448,8 @@
     "price_50": 700,
     "price_1": 7.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "FJHL-139H.jpeg"
   },
   {
     "code": "FJHL-205",
@@ -8745,7 +9461,8 @@
     "price_50": 620,
     "price_1": 7,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "FJHL-205.jpeg"
   },
   {
     "code": "BS-202",
@@ -8757,7 +9474,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-202.png"
   },
   {
     "code": "BS-205",
@@ -8769,7 +9487,8 @@
     "price_50": 430,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-205.png"
   },
   {
     "code": "BS-206",
@@ -8781,7 +9500,8 @@
     "price_50": 200,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-206.png"
   },
   {
     "code": "BS-207",
@@ -8793,7 +9513,8 @@
     "price_50": 430,
     "price_1": 5.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-207.png"
   },
   {
     "code": "BS-214",
@@ -8805,7 +9526,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-214.png"
   },
   {
     "code": "BS-233",
@@ -8817,7 +9539,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-233.png"
   },
   {
     "code": "BS-242",
@@ -8829,7 +9552,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-242.png"
   },
   {
     "code": "BS-255",
@@ -8841,7 +9565,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-255.png"
   },
   {
     "code": "BS-262",
@@ -8853,7 +9578,8 @@
     "price_50": 370,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-262.png"
   },
   {
     "code": "BS-270",
@@ -8865,7 +9591,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-270.png"
   },
   {
     "code": "BS-605",
@@ -8877,7 +9604,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-605.png"
   },
   {
     "code": "BS-613",
@@ -8889,7 +9617,8 @@
     "price_50": 400,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-613.png"
   },
   {
     "code": "BS-635",
@@ -8901,7 +9630,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-635.png"
   },
   {
     "code": "BS-639",
@@ -8913,7 +9643,8 @@
     "price_50": 550,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-639.png"
   },
   {
     "code": "BS-645",
@@ -8925,7 +9656,8 @@
     "price_50": 2.8,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-645.png"
   },
   {
     "code": "BS-661",
@@ -8937,7 +9669,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-661.png"
   },
   {
     "code": "BS-750",
@@ -8949,7 +9682,8 @@
     "price_50": 500,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "BS-750.jpeg"
   },
   {
     "code": "JCG-423",
@@ -8961,7 +9695,8 @@
     "price_50": 350,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "JCG-423.png"
   },
   {
     "code": "JCG-424",
@@ -8973,7 +9708,8 @@
     "price_50": 370,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "JCG-424.png"
   },
   {
     "code": "JCG-438",
@@ -8985,7 +9721,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "RESALTADORES"
+    "category": "RESALTADORES",
+    "image": "JCG-438.png"
   },
   {
     "code": "A12-1",
@@ -8997,7 +9734,8 @@
     "price_50": 470,
     "price_1": 6,
     "source": "EFSTOCK.xlsx",
-    "category": "TACO CON POST IT"
+    "category": "TACO CON POST IT",
+    "image": "A12-1.jpeg"
   },
   {
     "code": "A13-5",
@@ -9009,7 +9747,8 @@
     "price_50": 900,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "TACO CON POST IT"
+    "category": "TACO CON POST IT",
+    "image": "A13-5.jpeg"
   },
   {
     "code": "A15-1",
@@ -9021,7 +9760,8 @@
     "price_50": 900,
     "price_1": 10,
     "source": "EFSTOCK.xlsx",
-    "category": "TACO CON POST IT"
+    "category": "TACO CON POST IT",
+    "image": "A15-1.jpeg"
   },
   {
     "code": "LCPU-01",
@@ -9033,7 +9773,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "LCPU-01.png"
   },
   {
     "code": "LCPU-02",
@@ -9045,7 +9786,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "LCPU-02.png"
   },
   {
     "code": "SFPU-2",
@@ -9057,7 +9799,8 @@
     "price_50": 250,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-2.png"
   },
   {
     "code": "SFPU-4",
@@ -9069,7 +9812,8 @@
     "price_50": 250,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-4.png"
   },
   {
     "code": "SFPU-40\r\n(LCPU-40)",
@@ -9117,7 +9861,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-104316.jpeg"
   },
   {
     "code": "SFPU-120601",
@@ -9129,7 +9874,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-120601.jpeg"
   },
   {
     "code": "SFPU-1908",
@@ -9141,7 +9887,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-1908.jpeg"
   },
   {
     "code": "SFPU-406",
@@ -9153,7 +9900,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-406.png"
   },
   {
     "code": "SFPU-469",
@@ -9165,7 +9913,8 @@
     "price_50": 300,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-469.jpeg"
   },
   {
     "code": "SFPU-621B",
@@ -9177,7 +9926,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-621B.jpeg"
   },
   {
     "code": "SFPU-7B\r\n(LCPU-7B)",
@@ -9201,7 +9951,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. ANTIESTRES"
+    "category": "ART. ANTIESTRES",
+    "image": "SFPU-8.jpeg"
   },
   {
     "code": "FL-3014",
@@ -9213,7 +9964,8 @@
     "price_50": 180,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "FL-3014.jpeg"
   },
   {
     "code": "FL-3023",
@@ -9225,7 +9977,8 @@
     "price_50": 180,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "FL-3023.jpg"
   },
   {
     "code": "TGP-27B",
@@ -9237,7 +9990,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "TGP-27B.png"
   },
   {
     "code": "FL-5022",
@@ -9249,7 +10003,8 @@
     "price_50": 300,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "FL-5022.png"
   },
   {
     "code": "FL-8023",
@@ -9261,7 +10016,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "FL-8023.jpeg"
   },
   {
     "code": "SFKC-1\r\n(LPKC-1)",
@@ -9285,7 +10041,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "OP-2912.jpg"
   },
   {
     "code": "PK-1003",
@@ -9297,7 +10054,8 @@
     "price_50": 500,
     "price_1": 6.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "PK-1003.jpeg"
   },
   {
     "code": "SFKC-1210",
@@ -9309,7 +10067,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFKC-1210.jpeg"
   },
   {
     "code": "SFKC-21\r\n(LFKC-38)",
@@ -9345,7 +10104,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120701.jpeg"
   },
   {
     "code": "SFPS-120702",
@@ -9357,7 +10117,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120702.jpeg"
   },
   {
     "code": "SFPS-120703",
@@ -9369,7 +10130,8 @@
     "price_50": 340,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120703.jpeg"
   },
   {
     "code": "SFPS-120704",
@@ -9381,7 +10143,8 @@
     "price_50": 350,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120704.jpeg"
   },
   {
     "code": "SFPS-120705",
@@ -9393,7 +10156,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120705.jpeg"
   },
   {
     "code": "SFPS-120706",
@@ -9405,7 +10169,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "SFPS-120706.jpeg"
   },
   {
     "code": "HL-2877",
@@ -9417,7 +10182,8 @@
     "price_50": 180,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "LLAVEROS"
+    "category": "LLAVEROS",
+    "image": "HL-2877.jpeg"
   },
   {
     "code": "TL-1012\r\n(TL-1002)",
@@ -9441,7 +10207,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "NW-101.jpeg"
   },
   {
     "code": "NW-102",
@@ -9453,7 +10220,8 @@
     "price_50": 200,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "NW-102.jpeg"
   },
   {
     "code": "NW-103",
@@ -9465,7 +10233,8 @@
     "price_50": 250,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "NW-103.jpeg"
   },
   {
     "code": "NW-104",
@@ -9477,7 +10246,8 @@
     "price_50": 150,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "NW-104.jpeg"
   },
   {
     "code": "NW-105",
@@ -9489,7 +10259,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "NW-105.jpeg"
   },
   {
     "code": "HL-7500",
@@ -9501,7 +10272,8 @@
     "price_50": 770,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "HL-7500.jpeg"
   },
   {
     "code": "HL-7501",
@@ -9513,7 +10285,8 @@
     "price_50": 720,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "HL-7501.jpeg"
   },
   {
     "code": "HL-7514",
@@ -9525,7 +10298,8 @@
     "price_50": 1900,
     "price_1": 20,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "HL-7514.png"
   },
   {
     "code": "LB-1529",
@@ -9537,7 +10311,8 @@
     "price_50": 1350,
     "price_1": 15,
     "source": "EFSTOCK.xlsx",
-    "category": "BOLSAS"
+    "category": "BOLSAS",
+    "image": "LB-1529.jpeg"
   },
   {
     "code": "HL-8146",
@@ -9549,7 +10324,8 @@
     "price_50": 770,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "HL-8146.png"
   },
   {
     "code": "IS-2010",
@@ -9561,7 +10337,8 @@
     "price_50": 320,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "IS-2010.jpg"
   },
   {
     "code": "MH-236",
@@ -9573,7 +10350,8 @@
     "price_50": 330,
     "price_1": 4.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "MH-236.jpeg"
   },
   {
     "code": "MH-243",
@@ -9585,7 +10363,8 @@
     "price_50": 800,
     "price_1": 9,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "MH-243.jpeg"
   },
   {
     "code": "MI-1012",
@@ -9597,7 +10376,8 @@
     "price_50": 300,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "MI-1012.jpeg"
   },
   {
     "code": "MI-1025",
@@ -9609,7 +10389,8 @@
     "price_50": 280,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "MI-1025.jpeg"
   },
   {
     "code": "MI-1028",
@@ -9621,7 +10402,8 @@
     "price_50": 320,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "MI-1028.jpeg"
   },
   {
     "code": "LS-4166B",
@@ -9633,7 +10415,8 @@
     "price_50": 1900,
     "price_1": 22,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "LS-4166B.jpeg"
   },
   {
     "code": "GP-2043",
@@ -9645,7 +10428,8 @@
     "price_50": 3300,
     "price_1": 35,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "GP-2043.png"
   },
   {
     "code": "JY9011-1",
@@ -9657,7 +10441,8 @@
     "price_50": 1400,
     "price_1": 15,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "JY9011-1.jpeg"
   },
   {
     "code": "JY9192-1",
@@ -9669,7 +10454,8 @@
     "price_50": 1450,
     "price_1": 15,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "JY9192-1.png"
   },
   {
     "code": "SM-100",
@@ -9681,7 +10467,8 @@
     "price_50": 980,
     "price_1": 10.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "SM-100.jpeg"
   },
   {
     "code": "SM-110",
@@ -9693,7 +10480,8 @@
     "price_50": 1200,
     "price_1": 13,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PERSONAL"
+    "category": "ART. PERSONAL",
+    "image": "SM-110.jpeg"
   },
   {
     "code": "HL- 1003",
@@ -9729,7 +10517,8 @@
     "price_50": 190,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. DE PROTECCION"
+    "category": "ART. DE PROTECCION",
+    "image": "PS-1022-1.png"
   },
   {
     "code": "PS-1011\r\n(GB-SP1)",
@@ -9753,7 +10542,8 @@
     "price_50": 150,
     "price_1": 2,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. DE PROTECCION"
+    "category": "ART. DE PROTECCION",
+    "image": "PS-1011-1.png"
   },
   {
     "code": "PS-1023",
@@ -9765,7 +10555,8 @@
     "price_50": 290,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. DE PROTECCION"
+    "category": "ART. DE PROTECCION",
+    "image": "PS-1023.png"
   },
   {
     "code": "PS-1022",
@@ -9777,7 +10568,8 @@
     "price_50": 290,
     "price_1": 4,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. DE PROTECCION"
+    "category": "ART. DE PROTECCION",
+    "image": "PS-1022.png"
   },
   {
     "code": "PS-1021",
@@ -9789,7 +10581,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. DE PROTECCION"
+    "category": "ART. DE PROTECCION",
+    "image": "PS-1021.png"
   },
   {
     "code": "BG-4008",
@@ -9801,7 +10594,8 @@
     "price_50": 420,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "BG-4008.jpeg"
   },
   {
     "code": "UB-1006\r\n(YH-816)",
@@ -9825,7 +10619,8 @@
     "price_50": 220,
     "price_1": 3,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "HL-8360.jpeg"
   },
   {
     "code": "HL-8362",
@@ -9837,7 +10632,8 @@
     "price_50": 270,
     "price_1": 3.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "HL-8362.png"
   },
   {
     "code": "HL-8379",
@@ -9849,7 +10645,8 @@
     "price_50": 720,
     "price_1": 8,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "HL-8379.jpeg"
   },
   {
     "code": "IB-001T",
@@ -9861,7 +10658,8 @@
     "price_50": 370,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "IB-001T.jpeg"
   },
   {
     "code": "IB-001",
@@ -9873,7 +10671,8 @@
     "price_50": 370,
     "price_1": 5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "IB-001.jpeg"
   },
   {
     "code": "NY-1002",
@@ -9885,7 +10684,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "NY-1002.png"
   },
   {
     "code": "SS-1006",
@@ -9897,7 +10697,8 @@
     "price_50": 700,
     "price_1": 8.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "SS-1006.jpeg"
   },
   {
     "code": "TL-6002",
@@ -9909,7 +10710,8 @@
     "price_50": 170,
     "price_1": 2.5,
     "source": "EFSTOCK.xlsx",
-    "category": "ART. PLAYA"
+    "category": "ART. PLAYA",
+    "image": "TL-6002.jpeg"
   },
   {
     "code": "MS-035W",
@@ -9921,7 +10723,8 @@
     "price_50": 26,
     "price_1": 27.5,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "MS-035W.png"
   },
   {
     "code": "MS-046E1",
@@ -9933,7 +10736,8 @@
     "price_50": 25.5,
     "price_1": 27,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "MS-046E1.png"
   },
   {
     "code": "MS-046E2",
@@ -9945,7 +10749,8 @@
     "price_50": 24,
     "price_1": 26,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "MS-046E2.png"
   },
   {
     "code": "MS-046W1",
@@ -9957,7 +10762,8 @@
     "price_50": 25.5,
     "price_1": 27,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "MS-046W1.png"
   },
   {
     "code": "UD-207",
@@ -9969,7 +10775,8 @@
     "price_50": 20.5,
     "price_1": 28.5,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-207.jpeg"
   },
   {
     "code": "UD-220",
@@ -9981,7 +10788,8 @@
     "price_50": 21,
     "price_1": 22,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-220.jpeg"
   },
   {
     "code": "UD-326",
@@ -9993,7 +10801,8 @@
     "price_50": 23.5,
     "price_1": 24.5,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-326.jpeg"
   },
   {
     "code": "UD-326",
@@ -10005,7 +10814,8 @@
     "price_50": 24.5,
     "price_1": 26,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-326.jpeg"
   },
   {
     "code": "UD-327",
@@ -10017,7 +10827,8 @@
     "price_50": 17,
     "price_1": 18,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-327",
@@ -10029,7 +10840,8 @@
     "price_50": 17,
     "price_1": 18,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-327",
@@ -10041,7 +10853,8 @@
     "price_50": 18,
     "price_1": 19,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-327",
@@ -10053,7 +10866,8 @@
     "price_50": 18,
     "price_1": 19,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-327",
@@ -10065,7 +10879,8 @@
     "price_50": 19,
     "price_1": 20,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-327",
@@ -10077,7 +10892,8 @@
     "price_50": 19,
     "price_1": 20,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-327.png"
   },
   {
     "code": "UD-439",
@@ -10089,7 +10905,8 @@
     "price_50": 17,
     "price_1": 18,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-439.png"
   },
   {
     "code": "UD-439",
@@ -10101,7 +10918,8 @@
     "price_50": 18,
     "price_1": 19,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-439.png"
   },
   {
     "code": "UD-439",
@@ -10113,7 +10931,8 @@
     "price_50": 19,
     "price_1": 20,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-439.png"
   },
   {
     "code": "UD-511",
@@ -10125,7 +10944,8 @@
     "price_50": 15.5,
     "price_1": 17,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-511.jpeg"
   },
   {
     "code": "UD-511",
@@ -10137,7 +10957,8 @@
     "price_50": 17,
     "price_1": 18,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-511.jpeg"
   },
   {
     "code": "UD-511",
@@ -10149,7 +10970,8 @@
     "price_50": 18,
     "price_1": 19,
     "source": "EFSTOCK.xlsx",
-    "category": "USB"
+    "category": "USB",
+    "image": "UD-511.jpeg"
   },
   {
     "code": "MS-114 IMPERMEABLE PEGABLE",

@@ -1,8 +1,13 @@
 const express = require('express');
+const path = require('path');
 const webhookRoutes = require('./routes/webhook.routes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
+
+// Servir imágenes estáticas de los productos del catálogo
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+
 
 // Capturamos el body original en bytes (rawBody) antes de parsearlo como JSON.
 // Esto es requerido para la verificación HMAC SHA256 de las firmas de Meta.

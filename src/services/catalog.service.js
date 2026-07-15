@@ -88,9 +88,11 @@ class CatalogService {
         color: item.color,
         stock: item.stock,
         categoria: item.category,
-        precios_venta_sin_igv: prices
+        precios_venta_sin_igv: prices,
+        link_imagen: item.image ? `https://whatsapp-webhook-bilg.onrender.com/images/${item.image}` : 'No disponible'
       };
     });
+
 
     logger.info({ msg: 'Resultados de búsqueda de catálogo procesados', count: processedResults.length, query });
     return processedResults;
