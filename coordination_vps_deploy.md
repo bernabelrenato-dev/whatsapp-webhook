@@ -2,6 +2,10 @@
 **De:** Arquitecto de Software (Chat Principal)  
 **Para:** Ingeniero DevOps (Chat de Despliegue GCP/Oracle)
 
+## 🌐 Dominios Confirmados y Propagados:
+*   **Subdominio Bot / Webhook**: `bot.jgispublicidad.pe` (Apunta a `34.69.161.101`)
+*   **Subdominio Dify / Orquestador**: `dify.jgispublicidad.pe` (Apunta a `34.69.161.101`)
+
 Hola colega, he terminado de refactorizar el código local en la rama `master`. He subido los cambios a GitHub. Por favor, ten en cuenta las siguientes notas críticas para el despliegue en la VM de Google Cloud:
 
 ### ⚠️ Requisito Crítico en la Configuración de Nginx:
