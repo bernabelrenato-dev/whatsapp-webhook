@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # 1. Gateway de Entrada (OpenClaw)
+  openclaw:
+    image: ghcr.io/openclaw/openclaw:2026.2.26
+    container_name: jgis-openclaw
+    restart: always
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - DIFY_API_URL=http://api:5001/v1
+      - DIFY_API_KEY=${DIFY_API_KEY:-}
+      - PORT=8085
+    ports:
+      - '8085:8085'
+    networks:
+      - default
+
+  # 2. OpenCode (Servidor headless para ejecución de código y CLI de terminal)
+  opencode:
+    image: ghcr.io/pilinux/opencode:1.2.5
+    container_name: jgis-opencode
+    restart: always
+    command: opencode serve --hostname 0.0.0.0 --port 4096 --auth-token ${OPENCODE_AUTH_TOKEN}
+    environment:
+      - OPENCODE_AUTH_TOKEN=${OPENCODE_AUTH_TOKEN}
+    volumes:
+      - /home/jacksmprobinson/whatsapp-webhook:/app
+    networks:
+      - default
+
+  # 3. Wrapper MCP para OpenCode (Traduce llamadas MCP a la API HTTP de OpenCode)
+  opencode-mcp:
+    image: node:20-alpine
+    container_name: jgis-opencode-mcp
+    restart: always
+    command: npx -y supergateway --port 3000 --stdio "npx -y @alaeddine/opencode-mcp"
+    environment:
+      - OPENCODE_API_URL=http://opencode:4096
+      - OPENCODE_AUTH_TOKEN=${OPENCODE_AUTH_TOKEN}
+    depends_on:
+      - opencode
+    networks:
+      - default
+
+  # 4. Wrapper MCP para OpenHands (Expone sesiones headless de OpenHands como herramientas)
+  openhands-mcp:
+    build:
+      context: ../openhands-mcp
+      dockerfile: Dockerfile
+    container_name: jgis-openhands-mcp
+    restart: always
+    environment:
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://api.openai.com/v1}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o}
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - SESSIONS_DIR=/home/jacksmprobinson/ai-agent-stack/sessions
+      - ARCHIVE_DIR=/home/jacksmprobinson/ai-agent-stack/archive
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Mapeo idéntico para evitar problemas de traducción de paths en Docker-in-Docker
+      - /home/jacksmprobinson/ai-agent-stack/sessions:/home/jacksmprobinson/ai-agent-stack/sessions
+      - /home/jacksmprobinson/ai-agent-stack/archive:/home/jacksmprobinson/ai-agent-stack/archive
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: docker_default # Red externa de Dify para intercomunicarse por nombre de servicio

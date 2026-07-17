@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.agents
+scripts
+Dockerfile
+docker-compose.yml
+.env
+.env.example
+README.md
+walkthrough.md
+resumen_avances_actuales.md
+check_quotes.js
+check_quotes.log

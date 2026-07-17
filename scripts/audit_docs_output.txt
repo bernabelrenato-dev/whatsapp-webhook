@@ -1,0 +1,11 @@
+
+================================================== 
+Auditing DOCX: COMPANY.docx 
+Size: 406.62 KB 
+Text length: 74008 characters 
+Error auditing COMPANY.docx: Cannot read properties of undefined (reading 'length') 
+
+================================================== 
+Auditing PDF: COMPANY.pdf 
+Size: 4.73 MB 
+Error auditing COMPANY.pdf: pdf is not a function 

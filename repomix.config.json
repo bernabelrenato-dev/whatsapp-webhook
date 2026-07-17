@@ -2,8 +2,8 @@
   "output": {
     "filePath": "project-context.md",
     "style": "markdown",
-    "removeComments": false,
-    "removeEmptyLines": false,
+    "removeComments": true,
+    "removeEmptyLines": true,
     "showLineNumbers": true
   },
   "ignore": {
@@ -16,7 +16,10 @@
       "src/config/catalog.json",
       "package-lock.json",
       "repomix-output.xml",
-      "project-context.md"
+      "project-context.md",
+      "scripts/database/*.sql",
+      "scripts/extract/**",
+      "*.log"
     ]
   }
 }

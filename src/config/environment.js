@@ -19,7 +19,8 @@ if (!environment.VERIFY_TOKEN) {
 }
 
 if (!environment.APP_SECRET && environment.NODE_ENV === 'production') {
-  logger.error('CRÍTICO: APP_SECRET no está configurada en producción. Las firmas no podrán ser verificadas.');
+  logger.error('CRÍTICO: APP_SECRET no está configurada en producción. Las firmas no podrán ser verificadas. Saliendo...');
+  process.exit(1);
 }
 
 module.exports = environment;

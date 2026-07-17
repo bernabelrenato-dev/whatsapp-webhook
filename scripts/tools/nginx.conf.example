@@ -1,0 +1,101 @@
+# ==============================================================================
+# Plantilla de Configuración de Nginx para GCP (Proxy Inverso + SSL)
+# Proyecto: JGIS Publicidad
+# Ubicación en VPS: /etc/nginx/sites-available/jgis-bot
+# ==============================================================================
+
+# Redirección de HTTP a HTTPS
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bot.jgispublicidad.pe; # Dominio definitivo en .pe
+
+    return 301 https://$host$request_uri;
+}
+
+# Servidor HTTPS principal
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name bot.jgispublicidad.pe; # Dominio definitivo en .pe
+
+    # Configuración de SSL (Certbot completará las llaves automáticamente)
+    ssl_certificate /etc/letsencrypt/live/bot.jgispublicidad.pe/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/bot.jgispublicidad.pe/privkey.pem; 
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    # 1. Endpoint del Webhook de WhatsApp (Node.js en puerto 3005)
+    location /webhook {
+        proxy_pass http://localhost:3005;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 2. API del cotizador/buscador de productos (Node.js puerto 3005)
+    location /api {
+        proxy_pass http://localhost:3005;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 3. Typebot Builder - Panel Visual (Docker puerto 8081)
+    location /typebot {
+        proxy_pass http://localhost:8081;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 4. Chatwoot - Bandeja de Agentes Humanos (Docker puerto 3010)
+    location /chatwoot {
+        proxy_pass http://localhost:3010;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 5. MailHog Console (Docker puerto 8025)
+    location /mailhog/ {
+        proxy_pass http://localhost:8025/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+    }
+
+    # 6. Dify.AI - Interfaz y API (Configurar puerto 8090 en Dify.env)
+    location /dify {
+        proxy_pass http://localhost:8090;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}

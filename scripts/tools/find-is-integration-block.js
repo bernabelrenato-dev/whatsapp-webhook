@@ -1,0 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+
+function search(dir) {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory()) {
+      search(fullPath);
+    } else if (file.endsWith('.js')) {
+      const content = fs.readFileSync(fullPath, 'utf8');
+      
+      const keyword = 'isIntegrationBlock';
+      let idx = content.indexOf(keyword);
+      while (idx !== -1) {
+        console.log(`\nFound "isIntegrationBlock" in: ${fullPath} at index ${idx}`);
+        console.log('Context:\n', content.slice(Math.max(0, idx - 150), idx + 250));
+        idx = content.indexOf(keyword, idx + 1);
+      }
+    }
+  }
+}
+
+try {
+  search('/app/apps/viewer/.next/server/chunks');
+} catch (err) {
+  console.error(err.message);
+}

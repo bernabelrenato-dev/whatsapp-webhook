@@ -1,0 +1,3995 @@
+{
+  "excelFiles": [
+    {
+      "fileName": "CHEAPER.xlsx",
+      "fileSizeMB": "2.65",
+      "sheets": [
+        {
+          "sheetName": "Datos Empresa",
+          "range": "B1:E35",
+          "rowCount": 35,
+          "validRows": 21,
+          "productsCount": 14,
+          "totalStock": 0,
+          "headers": [],
+          "colMap": {},
+          "sampleProducts": [
+            {
+              "code": "BANCO DE CRÉDITO DEL PERÚ (BCP) CUENTA CORRIENTE EN SOLES",
+              "name": "",
+              "desc": ""
+            },
+            {
+              "code": "CORPORACION BELLAGIO PERU E.I.R.L. - 191-1953121094",
+              "name": "",
+              "desc": ""
+            },
+            {
+              "code": "CORPORACION EVENZO PERU S.A.C. - 191-2423029039",
+              "name": "",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 1,
+            "stockColIdx": -1,
+            "colorColIdx": -1,
+            "descColIdx": -1,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "0SETS EJECUTIVOS",
+          "range": "A1:J9",
+          "rowCount": 9,
+          "validRows": 7,
+          "productsCount": 5,
+          "totalStock": 1167,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "SET-1",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA DE CORCHO + LAPICERO DE CORCHO/METAL Contienen: caja negra + ambos productos contienen sus b"
+            },
+            {
+              "code": "SET-2",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA TEXTURIZADA + LAPICERO METAL Contienen: caja negra + ambos productos contienen sus bolsas tr"
+            },
+            {
+              "code": "SET-3",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA + LAPICERO METALICO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "1LAPICEROS PLASTICOS",
+          "range": "A1:J353",
+          "rowCount": 353,
+          "validRows": 335,
+          "productsCount": 44,
+          "totalStock": 2783307,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "3111",
+              "name": "LAPICERO PLASTICO",
+              "desc": "Descripción: Lapicero plástico Color de tinta: Azul"
+            },
+            {
+              "code": "3115",
+              "name": "LAPICERO PLASTICO",
+              "desc": "Descripción: Lapicero plástico Color de tinta: Azul."
+            },
+            {
+              "code": "3111E",
+              "name": "LAPICERO PLASTICO",
+              "desc": "Lapicero plástico Tinta: azul"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "2LAPICEROS ECOLOGICOS",
+          "range": "A1:J111",
+          "rowCount": 111,
+          "validRows": 106,
+          "productsCount": 25,
+          "totalStock": 826173,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "WBP2200",
+              "name": "LAPICES",
+              "desc": "Descripción: Lápiz sin tajar con borrador"
+            },
+            {
+              "code": "3111F",
+              "name": "LAPICERO PLASTICOS",
+              "desc": "Lapicero fibra de trigo"
+            },
+            {
+              "code": "3115F",
+              "name": "LAPICERO PLASTICO",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "3LAPICEROS METALICOS",
+          "range": "A1:J90",
+          "rowCount": 90,
+          "validRows": 81,
+          "productsCount": 20,
+          "totalStock": 319178,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "MT05",
+              "name": "LAPICERO METALICO",
+              "desc": "Descripción: Lapicero metálico de sistema giratorio. Lapicero tinta seca, negro"
+            },
+            {
+              "code": "947",
+              "name": "LAPICERO METALICO TINTA AZUL",
+              "desc": "Lapiceros metálicos mate TINTA AZUL Empaque: bolsita transparente"
+            },
+            {
+              "code": "M04",
+              "name": "LAPICERO METALICO TINTA NEGRA",
+              "desc": "Descripción: Lapicero metálico de sistema Tinta seca, negro"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ACCES. CELULAR  Y PC",
+          "range": "A1:J31",
+          "rowCount": 31,
+          "validRows": 28,
+          "productsCount": 9,
+          "totalStock": 77215,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "LU02",
+              "name": "MINI LAMPARA USB",
+              "desc": "MINI LAMPARA USB Medida: largo 16.7 cm"
+            },
+            {
+              "code": "UT3678",
+              "name": "POP SOCKET",
+              "desc": "Pop socket Presentación: bolsita plástica individual."
+            },
+            {
+              "code": "UT3933",
+              "name": "BOLSILLO PARA CELULAR",
+              "desc": "BOLSILLO PARA CELULAR"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. ESCRITORIO",
+          "range": "A1:J38",
+          "rowCount": 38,
+          "validRows": 33,
+          "productsCount": 15,
+          "totalStock": 127268,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "REGLA",
+              "name": "REGLA PLASTICA EN OFERTA",
+              "desc": "Regla Medida: 20 cm. Presentación: bolsita plástica individual ."
+            },
+            {
+              "code": "BOLSA",
+              "name": "BOLSA PLASTICA EN OFERTA",
+              "desc": "Estuche plástico para útiles de oficina con cierre hermético. Medidas: 25.7*22.1 cm."
+            },
+            {
+              "code": "BSA201",
+              "name": "RESALTADOR",
+              "desc": "Resaltador plástico con mini bola antiestres. Medida: 13.5 cm"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. MÉDICOS - ANTISTRESS",
+          "range": "A1:J47",
+          "rowCount": 47,
+          "validRows": 43,
+          "productsCount": 20,
+          "totalStock": 265538,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "ZH001",
+              "name": "PELOTA ANTISTRESS",
+              "desc": "Pelota antiestres Diámetro: 6.3 cm Presentación: bolsa transparente x 50 unid."
+            },
+            {
+              "code": "ZH002",
+              "name": "DOCTOR ANTISTRESS",
+              "desc": "Doctor antiestres Medidas: 10 x 9 cm. Presentación: Bolsa transparente por 50 unid."
+            },
+            {
+              "code": "ME003",
+              "name": "MINERO ANTIESTRES",
+              "desc": "MINERO ANTIESTRES Medida: 10 cm x 7.5 de ancho"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LIBRETAS - POSITS",
+          "range": "A1:J97",
+          "rowCount": 97,
+          "validRows": 85,
+          "productsCount": 28,
+          "totalStock": 353267,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "BF556",
+              "name": "LIBRETA CON LAPICERO",
+              "desc": "Medidas: 14x 9 cm. Descripción: Libreta anillada de aprox. 70 hojas blancas rayadas; incluye 1 lapic"
+            },
+            {
+              "code": "BF9767",
+              "name": "LIBRETA CON LAPICERO",
+              "desc": "Medidas: 15 x 10 cm. Descripción: Libreta ecológica que contiene 6 tacos post it de diferentes color"
+            },
+            {
+              "code": "BC904",
+              "name": "LIBRETAS A6",
+              "desc": "Libreta de biocuero Hojas rayadas TAMAÑO A6"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LLAVEROS - HERRAMIETAS",
+          "range": "A1:J75",
+          "rowCount": 75,
+          "validRows": 68,
+          "productsCount": 37,
+          "totalStock": 298758,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "UT3612N",
+              "name": "LLAVERO DESTAPADOR",
+              "desc": "Llavero destapador metálico Medida: 6.8 cm aprox (no incluye argolla) y 8 cm incluyendo argolla área"
+            },
+            {
+              "code": "LCD2501",
+              "name": "LLAVERO DESTAPADOR TIPO CASCO",
+              "desc": "Llavero plástico destapador casco Empaque: Bolsa individual transparente"
+            },
+            {
+              "code": "CA9",
+              "name": "LLAVERO CASITA EN OFERTA",
+              "desc": "LLAVERO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "TOMATODOS-MUG",
+          "range": "A1:J114",
+          "rowCount": 114,
+          "validRows": 107,
+          "productsCount": 40,
+          "totalStock": 227707,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "UT4532",
+              "name": "TOMATODO PLASTICO",
+              "desc": "Medidas: Altura: 17.5 cm Ancho: 5.6 cm Boca Descripción: jarro de fibra de trigo con asa incluida en"
+            },
+            {
+              "code": "UT4577",
+              "name": "MUG",
+              "desc": "Medida Aprox. Altura: 16.5 cm Ancho: .7 cm Capacidad: 350 ml Descripción: Fibra deTrigo Presentación"
+            },
+            {
+              "code": "8005",
+              "name": "BOTELLA DE ALUMINIO EN OFERTA",
+              "desc": "Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo. C"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "CHIPER.xlsx",
+      "fileSizeMB": "2.68",
+      "sheets": [
+        {
+          "sheetName": "0SETS EJECUTIVOS",
+          "range": "A1:J9",
+          "rowCount": 9,
+          "validRows": 7,
+          "productsCount": 5,
+          "totalStock": 2614,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "SET-1",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA DE CORCHO + LAPICERO DE CORCHO/METAL Contienen: caja negra + ambos productos contienen sus b"
+            },
+            {
+              "code": "SET-2",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA TEXTURIZADA + LAPICERO METAL Contienen: caja negra + ambos productos contienen sus bolsas tr"
+            },
+            {
+              "code": "SET-3",
+              "name": "LIBRETA + LAPICERO",
+              "desc": "LIBRETA + LAPICERO METALICO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "1LAPICEROS PLASTICOS",
+          "range": "A1:J359",
+          "rowCount": 359,
+          "validRows": 340,
+          "productsCount": 45,
+          "totalStock": 3916509,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "PT08",
+              "name": "LAPICERO PLASTICO EN OFERTA",
+              "desc": "Descripción: Lapicero plástico con touch Color de tinta: Azul."
+            },
+            {
+              "code": "3111",
+              "name": "LAPICERO PLASTICO",
+              "desc": "Descripción: Lapicero plástico Color de tinta: Azul"
+            },
+            {
+              "code": "3115",
+              "name": "LAPICERO PLASTICO",
+              "desc": "Descripción: Lapicero plástico Color de tinta: Azul."
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "2LAPICEROS ECOLOGICOS",
+          "range": "A1:J111",
+          "rowCount": 111,
+          "validRows": 106,
+          "productsCount": 25,
+          "totalStock": 1076483,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "WBP2200",
+              "name": "LAPICES",
+              "desc": "Descripción: Lápiz sin tajar con borrador"
+            },
+            {
+              "code": "3111F",
+              "name": "LAPICERO PLASTICOS",
+              "desc": "Lapicero fibra de trigo"
+            },
+            {
+              "code": "3115F",
+              "name": "LAPICERO PLASTICO",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "3LAPICEROS METALICOS",
+          "range": "A1:J91",
+          "rowCount": 91,
+          "validRows": 82,
+          "productsCount": 20,
+          "totalStock": 512365,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "MT05",
+              "name": "LAPICERO METALICO",
+              "desc": "Descripción: Lapicero metálico de sistema giratorio. Lapicero tinta seca, negro"
+            },
+            {
+              "code": "947",
+              "name": "LAPICERO METALICO TINTA AZUL",
+              "desc": "Lapiceros metálicos mate TINTA AZUL Empaque: bolsita transparente"
+            },
+            {
+              "code": "M04",
+              "name": "LAPICERO METALICO TINTA NEGRA",
+              "desc": "Descripción: Lapicero metálico de sistema Tinta seca, negro"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ACCES. CELULAR  Y PC",
+          "range": "A1:J33",
+          "rowCount": 33,
+          "validRows": 30,
+          "productsCount": 10,
+          "totalStock": 118753,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "LU02",
+              "name": "MINI LAMPARA USB",
+              "desc": "MINI LAMPARA USB Medida: largo 16.7 cm"
+            },
+            {
+              "code": "UT3678",
+              "name": "POP SOCKET",
+              "desc": "Pop socket Presentación: bolsita plástica individual."
+            },
+            {
+              "code": "UT3678B",
+              "name": "POP SOCKET CON BAMBÚ",
+              "desc": "Pop socket con bambú Medida de impresión: 4 cm * 4 cm de diámetro Presentación: Bolsita individual t"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. ESCRITORIO",
+          "range": "A1:J40",
+          "rowCount": 40,
+          "validRows": 35,
+          "productsCount": 15,
+          "totalStock": 178575,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "REGLA",
+              "name": "REGLA PLASTICA EN OFERTA",
+              "desc": "Regla Medida: 20 cm. Presentación: bolsita plástica individual ."
+            },
+            {
+              "code": "BOLSA",
+              "name": "BOLSA PLASTICA EN OFERTA",
+              "desc": "Estuche plástico para útiles de oficina con cierre hermético. Medidas: 25.7*22.1 cm."
+            },
+            {
+              "code": "BSA201",
+              "name": "RESALTADOR",
+              "desc": "Resaltador plástico con mini bola antiestres. Medida: 13.5 cm"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. MÉDICOS - ANTISTRESS",
+          "range": "A1:J49",
+          "rowCount": 49,
+          "validRows": 44,
+          "productsCount": 21,
+          "totalStock": 342220,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "ZH001",
+              "name": "PELOTA ANTISTRESS",
+              "desc": "Pelota antiestres Diámetro: 6.3 cm Presentación: bolsa transparente x 50 unid."
+            },
+            {
+              "code": "ZH002",
+              "name": "DOCTOR ANTISTRESS",
+              "desc": "Doctor antiestres Medidas: 10 x 9 cm. Presentación: Bolsa transparente por 50 unid."
+            },
+            {
+              "code": "ME003",
+              "name": "MINERO ANTIESTRES",
+              "desc": "MINERO ANTIESTRES Medida: 10 cm x 7.5 de ancho"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LIBRETAS - POSITS",
+          "range": "A1:J93",
+          "rowCount": 93,
+          "validRows": 86,
+          "productsCount": 29,
+          "totalStock": 515419,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "BC907-1",
+              "name": "LIBRETA EN LIQUDACION (EN EL ESTADO EN QUE SE ENCUENTRE)",
+              "desc": "Libreta de biocuero A5 con separador de hojas y liga para lapiceros Medidas: 21*14.8cm"
+            },
+            {
+              "code": "BF556",
+              "name": "LIBRETA CON LAPICERO",
+              "desc": "Medidas: 14x 9 cm. Descripción: Libreta anillada de aprox. 70 hojas blancas rayadas; incluye 1 lapic"
+            },
+            {
+              "code": "BF9767",
+              "name": "LIBRETA CON LAPICERO",
+              "desc": "Medidas: 15 x 10 cm. Descripción: Libreta ecológica que contiene 6 tacos post it de diferentes color"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LLAVEROS - HERRAMIETAS",
+          "range": "A1:J76",
+          "rowCount": 76,
+          "validRows": 69,
+          "productsCount": 38,
+          "totalStock": 358837,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "UT3612",
+              "name": "MINI LLAVERO DESTAPADOR",
+              "desc": "Mini llavero destapador Material: Aluminio Medida: 7cm (incluye argolla) Empaque: Bolsita hermética "
+            },
+            {
+              "code": "UT3612N",
+              "name": "LLAVERO DESTAPADOR",
+              "desc": "Llavero destapador metálico Medida: 6.8 cm aprox (no incluye argolla) y 8 cm incluyendo argolla área"
+            },
+            {
+              "code": "LCD2501",
+              "name": "LLAVERO DESTAPADOR TIPO CASCO",
+              "desc": "Llavero plástico destapador casco Empaque: Bolsa individual transparente"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "TOMATODOS-MUG",
+          "range": "A1:J116",
+          "rowCount": 116,
+          "validRows": 109,
+          "productsCount": 41,
+          "totalStock": 290503,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "DESCRIPCIÓN"
+          ],
+          "colMap": {
+            "A": "CODIGO",
+            "B": "IMAGEN",
+            "C": "PRODUCTO",
+            "D": "COLOR",
+            "E": "STOCK FINAL",
+            "F": "PRECIO POR MILLAR (A PARTIR DE 500 UNDS)",
+            "H": "PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)",
+            "I": "PRECIO MUESTRA (MÁXIMO 5 UNIDADES)",
+            "J": "DESCRIPCIÓN"
+          },
+          "sampleProducts": [
+            {
+              "code": "UT4532",
+              "name": "TOMATODO PLASTICO",
+              "desc": "Medidas: Altura: 17.5 cm Ancho: 5.6 cm Boca Descripción: jarro de fibra de trigo con asa incluida en"
+            },
+            {
+              "code": "UT4577",
+              "name": "MUG",
+              "desc": "Medida Aprox. Altura: 16.5 cm Ancho: .7 cm Capacidad: 350 ml Descripción: Fibra deTrigo Presentación"
+            },
+            {
+              "code": "8005",
+              "name": "BOTELLA DE ALUMINIO EN OFERTA",
+              "desc": "Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo. C"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 2,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "EFSTOCK.xlsx",
+      "fileSizeMB": "8.68",
+      "sheets": [
+        {
+          "sheetName": "LAPICEROS DE PLASTICO",
+          "range": "A1:HO670",
+          "rowCount": 670,
+          "validRows": 232,
+          "productsCount": 42,
+          "totalStock": 2289371,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "1485",
+              "name": "LAPICERO PLASTICO 1000 UNID X CAJA",
+              "desc": "Medidas: 13 X 1 cm. Colores: Azul, rojo, negro, verde, anaranjado, amarillo, morado, fucsia, rosado,"
+            },
+            {
+              "code": "5013",
+              "name": "LAPICERO PLASTICO COLGANTE GIRATORIO 1000 UNID X CAJA",
+              "desc": "Medidas: 12.5 x 1.6 cm. Descripción: Lapicero plástico de sistema giratorio, de color traslúcido, co"
+            },
+            {
+              "code": "5062",
+              "name": "LAPICERO PLATICO 1000 UNID X CAJA",
+              "desc": "Medidas:13 x 1.2 cm. Descripción: Lapicero plástico retráctil de cuerpo plateado mate, y ventana con"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LAPICEROS PUNTERO LASER",
+          "range": "A1:NR7512",
+          "rowCount": 7512,
+          "validRows": 7,
+          "productsCount": 4,
+          "totalStock": 2551,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "SFBP-510",
+              "name": "LAPICERO LASER 4 FUNCIONES 200 UNID X CAJA",
+              "desc": "Medidas: Largo 14.50 cm. Diametro: 0.98 cm. Descripción del producto: Lapicero metálico de sistema g"
+            },
+            {
+              "code": "SFBP-511",
+              "name": "LAPICERO LASER 3 FUNCIONES 200 UNID X CAJA",
+              "desc": "Medidas: Largo 14.50 cm. Diametro: 0.98 cm. Descripción del producto: Lapicero metálico de sistema g"
+            },
+            {
+              "code": "SFBP-520",
+              "name": "LAPICERO LASER ESTUCHE METAL 200 UNID X CAJA",
+              "desc": "Medidas: Alto: 13 cm. Diámetro: 0.95 cm. Descripción del producto: Lapicero metálico de sistema gira"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LAPICEROS METALICOS",
+          "range": "A1:QR67",
+          "rowCount": 67,
+          "validRows": 53,
+          "productsCount": 15,
+          "totalStock": 189672,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "8033",
+              "name": "LAPICERO MADERA 1000 UNID X CAJA",
+              "desc": "Medidas: Largo: 13.5 cm. Diámetro: 1.5 cm. Descripción: Lapicero retráctil. Color: Madera. Color de "
+            },
+            {
+              "code": "8050",
+              "name": "LAPICERO MADERA 500 UNID X CAJA",
+              "desc": "Medidas: Largo: 13.5 cm. Diámetro: 1.5 cm. Descripción: Lapicero de sistema giratorio. Color: Madera"
+            },
+            {
+              "code": "9016",
+              "name": "LAPICERO MADERA 500 UNID X CAJA",
+              "desc": "Medidas: Largo: 13.5 cm. Diámetro: 1.15 cm. Descripción: Lapicero de sistema giratorio, con goma ant"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ESTUCHES",
+          "range": "A1:HO27",
+          "rowCount": 27,
+          "validRows": 9,
+          "productsCount": 9,
+          "totalStock": 114286,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "7278 (PLASTIC BOX)",
+              "name": "ESTUCHE PLASTICO PARA USB 520 UNID X CAJA",
+              "desc": "Medidas: 4.4 x 2 cm. Largo: 9.4 cm. Espesor: 2 cm. Descripción: Estuche plástico transparente. (solo"
+            },
+            {
+              "code": "BX-222",
+              "name": "ESTUCHE DE FIBRA DE TRIGO 200 UNID X CAJA",
+              "desc": "Medidas: 4.7 x 2.5 cm. Largo: 17 cm. Descripción: Estuche para lapicero de fibra de trigo, con inter"
+            },
+            {
+              "code": "BX-403",
+              "name": "ESTUCHE DE CORCHO 200 UNID X CAJA",
+              "desc": "Medidas: 5.5 x 2.5 cm. Largo: 18 cm. Descripción: Estuche para lapicero de corcho, con interior acol"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "CALCULADORAS",
+          "range": "A1:UA29",
+          "rowCount": 29,
+          "validRows": 25,
+          "productsCount": 5,
+          "totalStock": 44340,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "KA-410C",
+              "name": "CALCULADORA COLGANTE 400 UNID X CAJA",
+              "desc": "Medidas: 7.5x 12.5 cm (Aprox.) Descripción: Calculadora de plástico a pilas, con sujetador de pita d"
+            },
+            {
+              "code": "KA-603",
+              "name": "CALCULADORA 120 UNID X CAJA",
+              "desc": "Medidas: 9.5 x 17.3 cm (Aprox.) Descripción: Calculadora de plástico a pilas. Colores de botones: Ro"
+            },
+            {
+              "code": "KA-5329",
+              "name": "CALCULADORA COLGANTE 400 UNID X CAJA",
+              "desc": "Medidas: 6.5 x 10 cm. (Aprox.) Descripción: Calculadora de plástico a pilas, con sujetador de pita d"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "JARROS MUG",
+          "range": "A1:ZV248",
+          "rowCount": 248,
+          "validRows": 133,
+          "productsCount": 37,
+          "totalStock": 294587,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "FXA-01 (TY-A01)",
+              "name": "JARRO MUG 40 UNID X CAJA",
+              "desc": "Medidas: Alto: 17 cm. Diámetro: 6.3 cm. Capacidad: 450 ml. Descripción: Interior totalmente plástico"
+            },
+            {
+              "code": "FXA-02 (TY-A02)",
+              "name": "JARRO MUG 40 UNID X CAJA",
+              "desc": "Medidas: Alto: 16.5 cm. Diámetro: 6 cm. Descripción: Jarro totalmente plástico, por fuera cuerpo de "
+            },
+            {
+              "code": "CD-03",
+              "name": "MUG CERAMICA 36 UNID X CAJA",
+              "desc": "Medida: Alto: 14.5cm Diámetro: 6.2cm. Capacidad: 400 ml. Descripción: Mug Cerámico con accesorios de"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "TOMATODOS",
+          "range": "A1:AEJ412",
+          "rowCount": 412,
+          "validRows": 210,
+          "productsCount": 35,
+          "totalStock": 758390,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "FXSB-500C",
+              "name": "TOMATODO METALICO 60 UNID X CAJA",
+              "desc": "Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo.. "
+            },
+            {
+              "code": "FXSB-500C-1",
+              "name": "TOMATODO METALICO 50 UNID X CAJA",
+              "desc": "Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo. C"
+            },
+            {
+              "code": "FXSB-750C",
+              "name": "TOMATODO METALICO 50 UNID X CAJA",
+              "desc": "Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo. C"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. ESCRITORIO",
+          "range": "A1:ACO239",
+          "rowCount": 239,
+          "validRows": 121,
+          "productsCount": 32,
+          "totalStock": 390040,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "BS-345",
+              "name": "CLIP PLASTICO IMANTADO 250 UNID X CAJA",
+              "desc": "Medidas: 5 x 4 x 7.5 cm Descripción: Clip de plástico traslúcido, con imán en la parte posterior y s"
+            },
+            {
+              "code": "BS-373",
+              "name": "PORTA CELULAR CON AUDÍFONOS 250 UNID X CAJA",
+              "desc": "Medidas: Ancho: 4.8 x 2 x 9.5 cm. Descripción: Porta celular de plástico con audífonos y limpiador d"
+            },
+            {
+              "code": "HL-9083",
+              "name": "PORTA CELULAR 250 UNID X CAJA",
+              "desc": "Medidas: Ancho: 5 x 5.7 cm. Descripción: Porta celular de plástico de bordes transparentes. Colores:"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LINEA ECOLOGICA",
+          "range": "A1:ASD580",
+          "rowCount": 580,
+          "validRows": 178,
+          "productsCount": 45,
+          "totalStock": 715075,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "JC-1101",
+              "name": "SET DE COLORES CORTO 400 UNID X CAJA",
+              "desc": "Medidas: 9.9 X 3.4 Descripción: Contiene 12 colores diversos Presentación del producto: Individual, "
+            },
+            {
+              "code": "JC-1105",
+              "name": "SET DE COLORES CORTO C/ TAJADOR 400 UNID X CAJA",
+              "desc": "Medidas:10.7 X 3.4 Descripción: Contiene 12 colores diversos y tajador Presentación del producto: In"
+            },
+            {
+              "code": "JC-1102",
+              "name": "SET DE COLORES LARGO 200 UNID X CAJA",
+              "desc": "Medidas:19.2 X 3.5 Descripción: Contiene 12 colores diversos Presentación del producto: Individual"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "TARJETEROS",
+          "range": "A1:AGO27",
+          "rowCount": 27,
+          "validRows": 13,
+          "productsCount": 7,
+          "totalStock": 19130,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "GP-2048",
+              "name": "TARJETERO 300 UNID X CAJA",
+              "desc": "Medidas: 9.5 x 6.4 cm. Descripción: tarjetero metalico con cubierta de poliester Colores: negro y gr"
+            },
+            {
+              "code": "TL-5012",
+              "name": "TARJETERO 200 UNID X CAJA",
+              "desc": "Medida Largo: 10 cm Ancho: 6 cm Alt: 1 cm"
+            },
+            {
+              "code": "TL-5013",
+              "name": "TARJETERO 300 UNID X CAJA",
+              "desc": "Medida Largo: 10 cm Ancho: 6 cm Alt: 1 cm"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "RESALTADORES",
+          "range": "A1:BCN2619",
+          "rowCount": 2619,
+          "validRows": 34,
+          "productsCount": 23,
+          "totalStock": 124903,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "FJHL-086",
+              "name": "RESALTADOR 500 UNID X CAJA",
+              "desc": "Medidas: Alto: 1,4cm Diámetro: 7cm Descripción: Resaltador en forma de círculo Colores: Blanco Prese"
+            },
+            {
+              "code": "FJHL-139H",
+              "name": "RESALTADOR 80 UNID X CAJA",
+              "desc": "Medidas: Soporte: Ancho 14,6cm Alto 3cm - Resaltadores: Alto: 8cm Diámetro: 1,6cm Descripción: Resal"
+            },
+            {
+              "code": "FJHL-205",
+              "name": "RESALTADOR DE 5 PZAS. 100 UNID X CAJA",
+              "desc": "Medidas: 8.7 x 8.7 x 2.4 5 colores: Azul, Rosado, Verde, Verde Limon y Naranja. Presentación del pro"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "TACO CON POST IT",
+          "range": "A1:BGE25",
+          "rowCount": 25,
+          "validRows": 3,
+          "productsCount": 3,
+          "totalStock": 8809,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "A12-1",
+              "name": "PORTA TACO 50 UNID X CAJA",
+              "desc": "Porta Taco / Con Calendario (2024-2025), Simil Cuero Descripción: Porta taco sin calendario sobre ta"
+            },
+            {
+              "code": "A13-5",
+              "name": "PORTA TACO CON POST-IT 50 UNID X CAJA",
+              "desc": "Porta taco /sin Calendario , con señaladores Dimensiones 17.5 x 9 x 3 cm. Cuerina negra. colores dis"
+            },
+            {
+              "code": "A15-1",
+              "name": "PORTA TACO CON POST-IT 50 UNID X CAJA",
+              "desc": "Porta taco /Con Calendario (2023-2024), con señaladores Dimensiones: 13 x 10,5 x 3 cm Cuerina negra."
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. ANTIESTRES",
+          "range": "A1:BMF145",
+          "rowCount": 145,
+          "validRows": 32,
+          "productsCount": 15,
+          "totalStock": 232816,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "LCPU-01",
+              "name": "PELOTA DE FUTBOL ANTIESTRES 250 UNID X CAJA",
+              "desc": "Medidas: Diámetro: 6.3 cm. Color: Azul Oscuro - blanco Material: Espuma de goma. Presentación del pr"
+            },
+            {
+              "code": "LCPU-02",
+              "name": "PELOTA DE FUTBOL ANTIESTRES 250 UNID X CAJA",
+              "desc": "Medidas: Diámetro: 6.3 cm. Color: Negro - Blanco Material: Espuma de goma. Presentación del producto"
+            },
+            {
+              "code": "SFPU-2",
+              "name": "PELOTA DE BASKET ANTIESTRES 250 UNID X CAJA",
+              "desc": "Medidas: Diámetro: 6.3 cm. Color: Naranja: Espuma de goma. Presentación del producto: Individual, en"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "LLAVEROS",
+          "range": "A1:BIM174",
+          "rowCount": 174,
+          "validRows": 60,
+          "productsCount": 19,
+          "totalStock": 360299,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "FL-3014",
+              "name": "LLAVERO REDONDO CON LINTERNA 500 UNID X CAJA",
+              "desc": "Medidas: Diámetro: 5 cm. Material: Plástico. Colores: Anaranjado, rojo, verde, azul, negro y platead"
+            },
+            {
+              "code": "FL-3023",
+              "name": "LLAVERO LED RECTANGULAR 1000 UNID X CAJA",
+              "desc": "Medidas: Largo: 6 cm. Ancho: 2.4 cm. Esp.: 0.7 cm. (Aprox.) Colores: Anaranjado, rojo, verde, azul, "
+            },
+            {
+              "code": "TGP-27B",
+              "name": "LLAVERO LINTERNA LED 1000 UNID X CAJA",
+              "desc": "Medidas: Largo: 6.4 cm. Ancho: 1.3 cm. Material: Plástico. Colores: Azul,rojo,verde,plateado,negro."
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "BOLSAS",
+          "range": "A1:BFS106",
+          "rowCount": 106,
+          "validRows": 54,
+          "productsCount": 9,
+          "totalStock": 380740,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "NW-101",
+              "name": "BOLSO NON-WOVEN 200 UNID X CAJA",
+              "desc": "Material: Textil sin tejer de fibras sintéticas. Medidas: 30 x 24 x 15 cm Gramaje: 80gr"
+            },
+            {
+              "code": "NW-102",
+              "name": "BOLSO NON-WOVEN 200 UNID X CAJA",
+              "desc": "Material: Textil sin tejer de fibras sintéticas. Medidas: 40 x 32 x 4.5 cm Gramaje: 80gr"
+            },
+            {
+              "code": "NW-103",
+              "name": "BOLSO NON-WOVEN 200 UNID X CAJA",
+              "desc": "Material: Textil sin tejer de fibras sintéticas. Medidas: 40 x 40 x 10 cm Gramaje: 80gr"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. PERSONAL",
+          "range": "A1:BKU38",
+          "rowCount": 38,
+          "validRows": 26,
+          "productsCount": 13,
+          "totalStock": 38398,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "HL-8146",
+              "name": "TOALLA EN TUBO 96 UNID X CAJA",
+              "desc": "Medidas: Largo: 16 cm. Diámetro: 6.5 cm. Colores de tapa de acuaerdo a la tolla: Azul, Rojo,Verde,Ne"
+            },
+            {
+              "code": "IS-2010",
+              "name": "ALMOHADILLA DE CUELLO 200 UNID X CAJA",
+              "desc": "Medidas: 38 x 26.5 cm. Descripción: Almohadilla de pana inflable. Colores: Rojo, negro, gris, verde "
+            },
+            {
+              "code": "MH-236",
+              "name": "SET MANICURE PLASTICO 200 UNID X CAJA",
+              "desc": "Medidas: 10 x 2 cm. Largo: 5 cm. Descripción: Estuche plástico traslúcido que contiene: 1 pinza, 1 t"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. DE PROTECCION",
+          "range": "A1:BHG297",
+          "rowCount": 297,
+          "validRows": 71,
+          "productsCount": 9,
+          "totalStock": 205250,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "HL- 1003",
+              "name": "BOTELLA SPRAY 60 ML 850 UNID X CAJA",
+              "desc": "Medidas: 12.8 cm. Diámetro: 2.8 cm. Cuerpo:8.9 Tapa:3.9 Descripción: Botella plástico traslúcido, va"
+            },
+            {
+              "code": "N/A",
+              "name": "BOTELLA VACIA CON SILICONA DE 30ML 1000 UNID X CAJA",
+              "desc": "Medidas: Botella: 8 x 3.5 cm. Descripción: Botella vacia para gel antiséptico, con sujetador de sili"
+            },
+            {
+              "code": "PS-1021-1",
+              "name": "",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "ART. PLAYA",
+          "range": "A1:BGE92",
+          "rowCount": 92,
+          "validRows": 52,
+          "productsCount": 10,
+          "totalStock": 356373,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "BG-4008",
+              "name": "CABECERA DE PLAYA 200 UNID X CAJA",
+              "desc": "Medidas: Altura: 11 cm. Ancho: 17 cm. Esp.: 9.9 cm. (Aprox.) Colores: Verde limón, blanco, anaranjad"
+            },
+            {
+              "code": "UB-1006 (YH-816)",
+              "name": "MINI VENTILADOR CON CONEXIÓN USB 60 UNID X CAJA",
+              "desc": "Medidas: Ancho: 14.5 cm. / Alto: 14.5 cm. (Aprox.) Descripción: Ventilador de plástico conección a P"
+            },
+            {
+              "code": "HL-8360",
+              "name": "POSAVASOS CON ABRIDOR 400 UNID X CAJA",
+              "desc": "Medidas: 8.1 x 8.1 cm. (Aprox.) Colores: Azul, rojo, verde, negro y blanco. Descripción: material PE"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        },
+        {
+          "sheetName": "USB",
+          "range": "A1:DYI102",
+          "rowCount": 102,
+          "validRows": 50,
+          "productsCount": 20,
+          "totalStock": 16009,
+          "headers": [
+            "CODIGO",
+            "IMAGEN",
+            "PRODUCTO",
+            "COLOR",
+            "STOCK FINAL",
+            "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "DESCRIPCION"
+          ],
+          "colMap": {
+            "B": "CODIGO",
+            "C": "IMAGEN",
+            "D": "PRODUCTO",
+            "E": "COLOR",
+            "F": "STOCK FINAL",
+            "G": "PRECIO x MILLAR (A PARTIR DE 500 PZS.)",
+            "H": "PRECIO x CIENTO (A PARTIR DE 50 PZS.)",
+            "I": "PRECIO MUESTRA (MENOS DE 50 PZS.)",
+            "J": "DESCRIPCION"
+          },
+          "sampleProducts": [
+            {
+              "code": "MS-035W",
+              "name": "BLUETOOTH SPEAKER 50 UNID X CAJA",
+              "desc": "Medida: 7cm x 4.6cm Potencia: 3W + 5V + 300 MAH Inalambrico: Bluetooth Accesorios: 1 cable para reca"
+            },
+            {
+              "code": "MS-046E1",
+              "name": "BLUETOOTH SPEAKER 50 UNID X CAJA",
+              "desc": "Medida: 6cm x 6cm x 4.7cm Potencia: 3.7W + 5V + 300 MAH Inalambrico: Bluetooth Accesorios: 1 cable p"
+            },
+            {
+              "code": "MS-046E2",
+              "name": "BLUETOOTH SPEAKER 50 UNID X CAJA",
+              "desc": "Medida: 6cm x 6cm x 5cm Potencia: 3W Inalambrico: Bluetooth Accesorios: 1 cable para recarga Present"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 3,
+            "stockColIdx": 5,
+            "colorColIdx": 4,
+            "descColIdx": 9,
+            "priceColIdx": 8
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "PROMOPRIME.xlsx",
+      "fileSizeMB": "7.21",
+      "sheets": [
+        {
+          "sheetName": "Stock Promomerch (2)",
+          "range": "A1:R470",
+          "rowCount": 470,
+          "validRows": 453,
+          "productsCount": 177,
+          "totalStock": 1567295,
+          "headers": [
+            "Artículo",
+            "Código",
+            "Imagen Referencial",
+            "Tipo de Impresión",
+            "Descripción",
+            "Colores",
+            "X Millar (a partir de 500 pzs.)",
+            "X ciento (a partir de 50 pzs.)",
+            "Muestra",
+            "Stock",
+            "En Transito"
+          ],
+          "colMap": {
+            "A": "Artículo",
+            "D": "Código",
+            "E": "Imagen Referencial",
+            "I": "Tipo de Impresión",
+            "J": "Descripción",
+            "M": "Colores",
+            "N": "X Millar (a partir de 500 pzs.)",
+            "O": "X ciento (a partir de 50 pzs.)",
+            "P": "Muestra",
+            "Q": "Stock",
+            "R": "En Transito"
+          },
+          "sampleProducts": [
+            {
+              "code": "KIT-01",
+              "name": "KIT VIAJERO",
+              "desc": "KIT : Incluye : 1 Botella de 110 ml con tapa VALVULA y 1 botella de 110 ml para PRESS + Estuche de p"
+            },
+            {
+              "code": "FS-01",
+              "name": "Frasco Spray para Alcohol",
+              "desc": "Material Plastico , Capacidad 60 ml , incluye Arnes metalico color plata , presentacion : Bolsa x 10"
+            },
+            {
+              "code": "M-03",
+              "name": "Mascarilla 3 pliegues",
+              "desc": "3 CAPAS DE PROTECCION: 1ERA CAPA : capaprotectora de tela no tejida hilada de polipropileno . 2DA CA"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 3,
+            "nameColIdx": 0,
+            "stockColIdx": 16,
+            "colorColIdx": 12,
+            "descColIdx": 9,
+            "priceColIdx": 14
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "PROMOS.xlsx",
+      "fileSizeMB": "35.98",
+      "sheets": [
+        {
+          "sheetName": "CUIDADO PERSONAL",
+          "range": "A1:V469",
+          "rowCount": 469,
+          "validRows": 31,
+          "productsCount": 30,
+          "totalStock": 253793,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MS-114 IMPERMEABLE PEGABLE",
+              "name": "MS-114 IMPERMEABLE PEGABLE",
+              "desc": "BOLITA BLANCA CON IMPERMEABLE TRANSPARENTE PARA LLUVIA . Ganchito tipo llavero para colgar."
+            },
+            {
+              "code": "CP-65 TRAVEL KIT SPRAY",
+              "name": "CP-65 TRAVEL KIT SPRAY",
+              "desc": "KIT DE 4 FRASCOS VACIOS VIAJEROS SPRAY, PRESENTACIÓN EN ESTUCHE ZIPLOC, INCLUYE 4 MODELOS DE SPRAY ("
+            },
+            {
+              "code": "CP-65 TRAVEL KIT SPRAY B",
+              "name": "CP-65 TRAVEL KIT SPRAY B",
+              "desc": "KIT DE 4 FRASCOS VACIOS VIAJEROS, PRESENTACIÓN EN ESTUCHE ZIPLOC, INCLUYE 2 MODELOS DE SPRAY (60ml, "
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "TECNOLOGÍA",
+          "range": "A1:N35",
+          "rowCount": 35,
+          "validRows": 32,
+          "productsCount": 32,
+          "totalStock": 34912,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "TC-105 PARLANTE BLUETOOTH AZHAR CON PORTA CELULAR",
+              "name": "TC-105 PARLANTE BLUETOOTH AZHAR CON PORTA CELULAR",
+              "desc": "SOPORTE PARA CELULAR CON PARLANTE Tamano del producto: 125*75*60mm"
+            },
+            {
+              "code": "TC-103 PARLANTE BLUETOOTH RUBAB",
+              "name": "TC-103 PARLANTE BLUETOOTH RUBAB",
+              "desc": "PARLANTE BLUETOOTH, COLOR NEGRO, PRESENTACION: CAJA INDIVIDUAL"
+            },
+            {
+              "code": "TC-97 AUDIFONO AIRPODS PRO 3G GENERICO",
+              "name": "TC-97 AUDIFONO AIRPODS PRO 3G GENERICO",
+              "desc": "(GENERICO), COLOR: BLANCO, CON SPEAKER, CON DISPOSITIVO TOUCH EN EL AUDIFONO PARA CONTESTAR LLAMADAS"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "ACCESORIOS PARA CELULAR",
+          "range": "A1:N25",
+          "rowCount": 25,
+          "validRows": 19,
+          "productsCount": 19,
+          "totalStock": 62395,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "TC-106 MULTICARGADOR KHALIL BAMBU",
+              "name": "TC-106 MULTICARGADOR KHALIL BAMBU",
+              "desc": "CABLE CARGADOR CON 3 ENTRADAS (USB, MICRO B, TIPO C y LIGHTNING), MATERIAL: PLÁSTICO Y BAMBO"
+            },
+            {
+              "code": "TC-107 LLAVERO MULTICARGADOR HAKIM BAMBU",
+              "name": "TC-107 LLAVERO MULTICARGADOR HAKIM BAMBU",
+              "desc": "CABLE CARGADOR CON 3 ENTRADAS (USB, MICRO B, TIPO C y LIGHTNING), MATERIAL: PLÁSTICO Y BAMBO"
+            },
+            {
+              "code": "TC-53 CARGADOR PULPO",
+              "name": "TC-53 CARGADOR PULPO",
+              "desc": "CABLE CARGADOR CON 3 ENTRADAS PARA ANDROID, IPHONE Y TIPO C MATERIAL EXTERNO: PLASTICO MATERIAL INTE"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "HOGAR",
+          "range": "A1:N28",
+          "rowCount": 28,
+          "validRows": 22,
+          "productsCount": 22,
+          "totalStock": 19986,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "SV-08 SET DE VINO REDONDO CON PROTECTOR DE CUERINA",
+              "name": "SV-08 SET DE VINO REDONDO CON PROTECTOR DE CUERINA",
+              "desc": "SET DE VINO REDONDO DE CUERINA COLOR NEGRO, INCLUYE: SACACORCHO, ATRAPA GOTAS,TAPON, PIEZAS DE ACERO"
+            },
+            {
+              "code": "SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA",
+              "name": "SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA",
+              "desc": "SET DE PARRILLA CON MANGO DE MADERA: INCLUYE: PINZA, CUCHILLO Y TENEDOR.MATERIAL DE UTENSILIOS: TODO"
+            },
+            {
+              "code": "SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA B",
+              "name": "SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA B",
+              "desc": "SET DE PARRILLA CON MANGO DE MADERA: INCLUYE: PINZA, CUCHILLO Y TENEDOR.MATERIAL DE UTENSILIOS: TODO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "HERRAMIENTEROS",
+          "range": "A1:N20",
+          "rowCount": 20,
+          "validRows": 12,
+          "productsCount": 12,
+          "totalStock": 7910,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "HR-12 HERRAMIENTERO CIRCULAR",
+              "name": "HR-12 HERRAMIENTERO CIRCULAR COLOR NEGRO",
+              "desc": "MEDIDA: 5 CM DE ANCHO. MATERIAL DE ESTUCHE: PLASTICO. CONTIENE CUATRO PUNTAS DE DESARMADOR."
+            },
+            {
+              "code": "N/A",
+              "name": "HR-12 HERRAMIENTERO CIRCULAR COLOR TRANSPARENTE",
+              "desc": ""
+            },
+            {
+              "code": "HR-13 LINTERNA",
+              "name": "HR-13 LINTERNA NEGRA",
+              "desc": "MATERIAL : ALUMINIO DIMENSIONES: 10x1.8cm. NO INCLUYE PILAS"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "LAPICES Y LAPICEROS",
+          "range": "A1:N53",
+          "rowCount": 53,
+          "validRows": 47,
+          "productsCount": 47,
+          "totalStock": 555748,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "ECO-49 LAPIZ SEMILLA DE MADERA",
+              "name": "ECO-49 LAPIZ SEMILLA DE MADERA",
+              "desc": "LÁPIZ DE MADERA TAJADO, CON CAPSULA CON SEMILLAS, INCLUYE CARTÓN TROQUELADO CON INSTRUCCIONES DE USO"
+            },
+            {
+              "code": "ECO-76 LAPIZ SEMILLA DE CARTON",
+              "name": "ECO-76 LAPIZ SEMILLA DE CARTON",
+              "desc": "LÁPIZ DE CARTÓN TAJADO, CON CAPSULA CON SEMILLAS, INCLUYE CARTÓN TROQUELADO CON INSTRUCCIONES DE USO"
+            },
+            {
+              "code": "LE-09 LAPICERO ECO CORCHO",
+              "name": "LE-09 LAPICERO ECO CORCHO",
+              "desc": "LAPICEROO DE CORCHO RETRACTIL COLOR NATURAL MEDIDA: 14 cm. TINTA SECA COLOR AZUL."
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "RESALTADORES",
+          "range": "A1:R17",
+          "rowCount": 17,
+          "validRows": 12,
+          "productsCount": 12,
+          "totalStock": 7215,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "OF-159 RESALTADOR FLOR",
+              "name": "OF-159 RESALTADOR FLOR",
+              "desc": "RESALTADOR EN FORMA DE FLOR MATERIAL EXTERNO: PLASTICO MATERIAL INTERNO: PLASTICO, 5 COLORES"
+            },
+            {
+              "code": "OF-163 RESALTADOR MANITO",
+              "name": "OF-163 RESALTADOR MANITO",
+              "desc": "RESALTADOR EN FORMA DE MANO MATERIAL EXTERNO: PLASTICO MATERIAL INTERNO: PLASTICO. 5 COLORES"
+            },
+            {
+              "code": "OF-50 SET DE RESALTADORES X 5",
+              "name": "OF-50 SET DE RESALTADORES X 5",
+              "desc": "SET DE RESALTADOR DE 5 COLORES, POTE DE PLASTICO TRANSPARENTE MATERIAL EXTERNO: PLASTICO MATERIAL IN"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "LIBRETAS",
+          "range": "A1:O51",
+          "rowCount": 51,
+          "validRows": 45,
+          "productsCount": 45,
+          "totalStock": 74383,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS",
+              "name": "OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR ROJO",
+              "desc": "PRODUCTO: CUADERNO A5 IMANTADO, CON SEPARADOR DE HOJAS. DIMENSIONES: 20X15CM"
+            },
+            {
+              "code": "N/A",
+              "name": "OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR NEGRO",
+              "desc": ""
+            },
+            {
+              "code": "N/A",
+              "name": "OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR AZUL OSCURO",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "ART. PARA OFICINA",
+          "range": "A1:N33",
+          "rowCount": 33,
+          "validRows": 27,
+          "productsCount": 27,
+          "totalStock": 22703,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "OF-164 PORTA LAPICERO HAIDAR",
+              "name": "OF-164 PORTA LAPICERO HAIDAR",
+              "desc": "PORTA LAPICERO COLOR NEGRO MATERIAL: BIOCUERO DIMENSIONES: 10.8 x 8cm"
+            },
+            {
+              "code": "ECO-51 PIZARRA CON TRIPODE DE MADERA",
+              "name": "ECO-51 PIZARRA CON TRIPODE DE MADERA",
+              "desc": "PIZARRITA, INCLUYE 2 TIZAS, ATRIL DE MADERA. MEDIDA DE PIZARRA: 24 X 20 CM."
+            },
+            {
+              "code": "MS-110 ALCANCIA TIPO CHANCHITO",
+              "name": "MS-110 ALCANCIA TIPO CHANCHITO PLOMO OSCURO",
+              "desc": "MATERIAL: PLÁSTICO PVC/ TAMAÑO: 7 CM DE ALTO X 9 CM DE ANCHO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "ART. ECOLÓGICOS PARA OFICINA",
+          "range": "A1:N29",
+          "rowCount": 29,
+          "validRows": 23,
+          "productsCount": 23,
+          "totalStock": 34279,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "ECO-36 LIBRETA RECICLADA COLOR NATURAL",
+              "name": "ECO-36 LIBRETA RECICLADA COLOR NATURAL",
+              "desc": "CARPETA DE TAPA DURA, COLOR NATURAL, CONTIENE UN LAPICERO ECOLÓGICO CON CLI, TACO DE PAPEL DE NOTAS "
+            },
+            {
+              "code": "ECO-80 PLANNER AESTHETIC ECOLOGICO",
+              "name": "ECO-80 PLANNER AESTHETIC ECOLOGICO",
+              "desc": "PLANNER ECOLÓGICO COLOR NATURAL CON NOTAS ADHESIVAS, INCLUYE LAPICERO Y STICKY NOTES MEDIDA: 31 X 17"
+            },
+            {
+              "code": "ECO-55 CARPETA ECOLOGICA 3 CUERPOS",
+              "name": "ECO-55 CARPETA ECOLOGICA 3 CUERPOS",
+              "desc": "CARPETA DE TAPA DURA, COLOR NATURAL, CONTIENE 4O HOJAS BLANCAS RAYADAS, TAPA PRINCIPAL QUE INCLUYE U"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "TOMATODOS",
+          "range": "A1:S80",
+          "rowCount": 80,
+          "validRows": 75,
+          "productsCount": 75,
+          "totalStock": 132965,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR",
+              "name": "TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR COLOR NUDE",
+              "desc": "CON DOBLE PARED, MANTIENE FRIO Y CALOR POR MAS DE 12 HORAS. MATERIAL: METÁLICO DE ACERO INOXIDABLE. "
+            },
+            {
+              "code": "N/A",
+              "name": "TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR COLOR NEGRO",
+              "desc": ""
+            },
+            {
+              "code": "TMD-49 TOMATODO DE ALUMINIO CON ASA COLGANTE DE SILICONA",
+              "name": "TMD-49 TOMATODO DE ALUMINIO CON ASA COLGANTE DE SILICONA COLOR BLANCO",
+              "desc": "BOTELLA DE ALUMINIO CON TAPA SILICONA (INCLUYE SUJETADOR PLASTICO EN LA TAPA) CAPACIDAD: 650 ML"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "MUGS Y TAZAS",
+          "range": "A1:O44",
+          "rowCount": 44,
+          "validRows": 39,
+          "productsCount": 39,
+          "totalStock": 48026,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MUG-39 SALMA CON ABRIDOR DE BOTELLA",
+              "name": "MUG-39 SALMA CON ABRIDOR DE BOTELLA",
+              "desc": "VASO TERMICO CON ABRIDOR DE BOTELLA / COLOR NEGRO / DOBLE PARED, MANIENTE FRIO Y CALOR. CAPACIDAD: 5"
+            },
+            {
+              "code": "MUG-38 AMAL CON ASA",
+              "name": "MUG-38 AMAL CON ASA COLOR BLANCO",
+              "desc": "NUEVO MODELO 850 ml DOBLE PARED, MANTIENE, FRIO Y CALOR. PICO RETRACTIL Y ASA MATERIAL EXTERNO: ACER"
+            },
+            {
+              "code": "N/A",
+              "name": "MUG-38 AMAL CON ASA COLOR NEGRO",
+              "desc": ""
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "MOCHILAS Y BOLSOS",
+          "range": "A1:S92",
+          "rowCount": 92,
+          "validRows": 87,
+          "productsCount": 87,
+          "totalStock": 308650,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "TX-163 NECESER TALIBA",
+              "name": "TX-163 NECESER TALIBA",
+              "desc": "NECESER MULTIUSOS. COLOR BLANCO, CON BASE DE MATERIAL CORCHO, 23 de ancho x 15.5 de alto x 7 de base"
+            },
+            {
+              "code": "TX-166 MOCHILA PORTA LAPTOP JAMIL",
+              "name": "TX-166 MOCHILA PORTA LAPTOP JAMIL",
+              "desc": "MOCHILA PORTALAPTOP CON ADAPTADOR USB PARA CONECTAR CABLE (38 x 28 x 10.5 cm). MATERIAL: NYLON IMPOR"
+            },
+            {
+              "code": "TX-151 MOCHILA PORTA LAPTOP CON ACCESORIO PARA CARGADOR",
+              "name": "TX-151 MOCHILA PORTA LAPTOP CON ACCESORIO PARA CARGADOR COLOR PLOMO",
+              "desc": "MOCHILA PORTALAPTOP CON ADAPTADOR USB PARA CONECTAR CABLE (USO OPCIONAL), MATERIAL: NYLON IMPORTADO "
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "VERANO",
+          "range": "A1:N12",
+          "rowCount": 12,
+          "validRows": 2,
+          "productsCount": 2,
+          "totalStock": 587,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MS-72 TAPASOL COLAPSIBLE",
+              "name": "MS-72 TAPASOL COLAPSIBLE COLOR PLOMO",
+              "desc": "TAPASOL PARA AUTO COLOR: PLATA MATERIAL: POLYESTER PRESENTACION: POLYBAG PESO: 80 gr"
+            },
+            {
+              "code": "VP-17 RESPALDAR INFLABLE COLOR VERDE",
+              "name": "VP-17 RESPALDAR INFLABLE COLOR VERDE",
+              "desc": "FLOTADOR RESPALDAR. MATERIAL: PLÁSTICO GAMUZADO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "VIAJE",
+          "range": "A1:N17",
+          "rowCount": 17,
+          "validRows": 11,
+          "productsCount": 11,
+          "totalStock": 7936,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MS-114 IMPERMEABLE PEGABLE",
+              "name": "MS-114 IMPERMEABLE PEGABLE",
+              "desc": "BOLITA BLANCA CON IMPERMEABLE TRANSPARENTE PARA LLUVIA . Ganchito tipo llavero para colgar."
+            },
+            {
+              "code": "CP-64 TRAVEL KIT PUSH",
+              "name": "CP-64 TRAVEL KIT PUSH",
+              "desc": "KIT DE 4 FRASCOS VIAJEROS PUSH, PRESENTACIÓN EN ESTUCHE ZIPLOC, CAPACIDAD 60 ML c/u"
+            },
+            {
+              "code": "CP-64 TRAVEL KIT PUSH B",
+              "name": "CP-64 TRAVEL KIT PUSH B",
+              "desc": "KIT DE 4 FRASCOS VIAJEROS PUSH, PRESENTACIÓN EN ESTUCHE ZIPLOC, CAPACIDAD 60 ML c/u"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "FUNDAS Y ESTUCHES",
+          "range": "A1:N14",
+          "rowCount": 14,
+          "validRows": 9,
+          "productsCount": 9,
+          "totalStock": 13937,
+          "headers": [
+            "LINEA",
+            "CÓDIGO",
+            "ARTÍCULO",
+            "CÓDIGO SISTEMA",
+            "IMAGEN",
+            "COLOR",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCIÓN",
+            "PRESENTACIÓN",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "CÓDIGO",
+            "C": "ARTÍCULO",
+            "D": "CÓDIGO SISTEMA",
+            "E": "IMAGEN",
+            "F": "COLOR",
+            "G": "STOCK",
+            "H": "A PARTIR DE 500 UND",
+            "I": "A PARTIR DE 50 UNID",
+            "J": "DE 1 A 49 UNID",
+            "K": "DESCRIPCIÓN",
+            "L": "PRESENTACIÓN",
+            "M": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MS-30 FUNDA DE PANA NEGRA PARA LAPICEROS",
+              "name": "MS-30 FUNDA DE PANA NEGRA PARA LAPICEROS",
+              "desc": "Medida: 16 cm x 3 cm"
+            },
+            {
+              "code": "LE-08 FUNDA ECOLOGICA PARA LAPICERO",
+              "name": "LE-08 FUNDA ECOLOGICA PARA LAPICERO",
+              "desc": "MATERIAL: CORCHO. MEDIDA: 15 CM X 3.7 CM"
+            },
+            {
+              "code": "MS-158 ESTUCHE DE LATA GRANDE",
+              "name": "TC-54 CARGADOR USB DE PARED COLOR BLANCO",
+              "desc": "ESTUCHE DE LATA GRANDE. MEDIDA: 11.5x8.5x2 CM. CON ESPONJA INTERNA SIN TROQUEL"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 1,
+            "nameColIdx": 2,
+            "stockColIdx": 6,
+            "colorColIdx": 5,
+            "descColIdx": 10,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "REMATES!",
+          "range": "A1:L147",
+          "rowCount": 147,
+          "validRows": 54,
+          "productsCount": 54,
+          "totalStock": 103962,
+          "headers": [
+            "LINEA",
+            "ARTÍCULO",
+            "IMAGEN",
+            "STOCK",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID",
+            "DESCRIPCION",
+            "PRESENTACION DEL ARTICULO",
+            "RESERVAS",
+            "CONSULTAR OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "ARTÍCULO",
+            "D": "IMAGEN",
+            "E": "STOCK",
+            "F": "A PARTIR DE 500 UND",
+            "G": "A PARTIR DE 50 UNID",
+            "H": "DE 1 A 49 UNID",
+            "I": "DESCRIPCION",
+            "J": "PRESENTACION DEL ARTICULO",
+            "K": "RESERVAS",
+            "L": "CONSULTAR OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "MOCHILAS",
+              "name": "TX-147 MOCHILA CRUZADA DELUXE DE PU (BIOCUERO) B",
+              "desc": "MOCHILA CRUZADA CON CANDADO DE CLAVE DE 3 DÍGITOS, ETRADA USB INTERNA Y EXTERNA PARA ADPATAR CARGADO"
+            },
+            {
+              "code": "MOUSE PAD ERGONÓMICO",
+              "name": "MS-274 MOUSE PAD DE NYLON Y SILICONA ERGONOMICO ROJO",
+              "desc": "MATERIAL: BASE ANTIDESLIZANTE, EXTERIOR DE NYLON, APOYA MUÑECA CON INTERIOR DE GEL."
+            },
+            {
+              "code": "ACCESORIOS PARA CELULAR",
+              "name": "TC-51 AUDIFONO BLUETOOTH COLOR NEGRO",
+              "desc": "MEDIDA: 5.2 X 6.5 CM. INCLUYE CABLE Y MANUAL EN INGLES"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 1,
+            "stockColIdx": 4,
+            "colorColIdx": -1,
+            "descColIdx": 8,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "EN TRÁNSITO",
+          "range": "A1:H13",
+          "rowCount": 13,
+          "validRows": 11,
+          "productsCount": 11,
+          "totalStock": 43500,
+          "headers": [
+            "ARTÍCULO",
+            "DESCRIPCION",
+            "IMAGEN",
+            "CANTIDAD",
+            "A PARTIR DE 500 UND",
+            "A PARTIR DE 50 UNID",
+            "DE 1 A 49 UNID"
+          ],
+          "colMap": {
+            "B": "ARTÍCULO",
+            "C": "DESCRIPCION",
+            "D": "IMAGEN",
+            "E": "CANTIDAD",
+            "F": "A PARTIR DE 500 UND",
+            "G": "A PARTIR DE 50 UNID",
+            "H": "DE 1 A 49 UNID"
+          },
+          "sampleProducts": [
+            {
+              "code": "N/A",
+              "name": "MUG-25",
+              "desc": "TAZA CERAMICA PARA BEBIDAS CALIENTES Y FRÍAS, CON TAPA PLASTICA COLOR BLANCO Y BASE DE CORCHO, MATER"
+            },
+            {
+              "code": "N/A",
+              "name": "MUG-25",
+              "desc": "TAZA CERAMICA PARA BEBIDAS CALIENTES Y FRÍAS, CON TAPA PLASTICA COLOR NEGRO Y BASE DE CORCHO, MATERI"
+            },
+            {
+              "code": "N/A",
+              "name": "PARLANTE-NEW",
+              "desc": "PARLANTE BT COLOR NEGRO"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 1,
+            "stockColIdx": 4,
+            "colorColIdx": -1,
+            "descColIdx": 2,
+            "priceColIdx": -1
+          }
+        },
+        {
+          "sheetName": "Ofertas",
+          "range": "A1:K1055",
+          "rowCount": 1055,
+          "validRows": 140,
+          "productsCount": 140,
+          "totalStock": 269013,
+          "headers": [
+            "LINEA",
+            "ARTÍCULO",
+            "IMAGEN",
+            "STOCK",
+            "PRECIO UNIT A PARTIR DE 500 UND",
+            "PRECIO UNIT A PARTIR DE 50 UNID",
+            "PRECIO UNIT DE 1 A 49 UNID",
+            "DESCRIPCION",
+            "RESERVAS",
+            "OBSERVACIONES"
+          ],
+          "colMap": {
+            "A": "LINEA",
+            "B": "ARTÍCULO",
+            "C": "IMAGEN",
+            "D": "STOCK",
+            "E": "PRECIO UNIT A PARTIR DE 500 UND",
+            "F": "PRECIO UNIT A PARTIR DE 50 UNID",
+            "G": "PRECIO UNIT DE 1 A 49 UNID",
+            "H": "DESCRIPCION",
+            "I": "RESERVAS",
+            "J": "OBSERVACIONES"
+          },
+          "sampleProducts": [
+            {
+              "code": "POWER BANK",
+              "name": "TC-28 POWER BANK CON ARGOLLA COLOR NEGRO",
+              "desc": "POWER BANK PLÁSTICO/MEDIDA: 9.3 X 2.5 CM/ÁREA MÁXIMA DE IMPRESIÓN: 8.5 X 2 CM/TIPO DE IMPRESIÓN: SER"
+            },
+            {
+              "code": "USB",
+              "name": "USB-008 LLAVE ROJA 8GB",
+              "desc": "CAPACIDAD 8GB. PRESENTACIÓN: CAJA METÁLICA / MEDIDAS: 5.5 X 2.3 CM/ÁREA MÁXIMA DE IMPRESIÓN: 3 X 0.8"
+            },
+            {
+              "code": "USB",
+              "name": "USB-008 8GB LLAVE NEGRO",
+              "desc": "CAPACIDAD 8GB. PRESENTACIÓN: CAJA METÁLICA / MEDIDAS: 5.5 X 2.3 CM/ÁREA MÁXIMA DE IMPRESIÓN: 3 X 0.8"
+            }
+          ],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 1,
+            "stockColIdx": 3,
+            "colorColIdx": -1,
+            "descColIdx": 7,
+            "priceColIdx": 6
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "TIENDA PUBLI.xlsx",
+      "fileSizeMB": "73.10",
+      "sheets": [
+        {
+          "sheetName": "CUADERNOS Y LIBRETAS",
+          "range": "A1:I138",
+          "rowCount": 138,
+          "validRows": 123,
+          "productsCount": 0,
+          "totalStock": 77808,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "OFICINA Y ESCRITORIO",
+          "range": "A8:I95",
+          "rowCount": 88,
+          "validRows": 75,
+          "productsCount": 0,
+          "totalStock": 37171,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "RESALTADORES",
+          "range": "A9:I54",
+          "rowCount": 46,
+          "validRows": 44,
+          "productsCount": 0,
+          "totalStock": 44149,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "TOMATODOS",
+          "range": "A1:I185",
+          "rowCount": 185,
+          "validRows": 150,
+          "productsCount": 0,
+          "totalStock": 150352,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "MUG Y TERMOS",
+          "range": "A8:I172",
+          "rowCount": 165,
+          "validRows": 162,
+          "productsCount": 0,
+          "totalStock": 67034,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "ECOLOGICOS",
+          "range": "A8:I48",
+          "rowCount": 41,
+          "validRows": 36,
+          "productsCount": 0,
+          "totalStock": 38138,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "LLAVEROS",
+          "range": "A8:I82",
+          "rowCount": 75,
+          "validRows": 58,
+          "productsCount": 0,
+          "totalStock": 67054,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "HOME",
+          "range": "A8:I72",
+          "rowCount": 65,
+          "validRows": 62,
+          "productsCount": 0,
+          "totalStock": 9123,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "TECNOLOGICOS",
+          "range": "A8:I381",
+          "rowCount": 374,
+          "validRows": 327,
+          "productsCount": 0,
+          "totalStock": 57764,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "ARTICULOS DE VIAJE",
+          "range": "A9:I113",
+          "rowCount": 105,
+          "validRows": 86,
+          "productsCount": 0,
+          "totalStock": 40937,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "SALUD Y CUIDADO PERSONAL",
+          "range": "A1:I45",
+          "rowCount": 45,
+          "validRows": 31,
+          "productsCount": 0,
+          "totalStock": 81329,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "AUTOS Y HERRAMIENTAS",
+          "range": "A1:I116",
+          "rowCount": 116,
+          "validRows": 101,
+          "productsCount": 0,
+          "totalStock": 25494,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "VARIOS",
+          "range": "A8:I38",
+          "rowCount": 31,
+          "validRows": 22,
+          "productsCount": 0,
+          "totalStock": 85817,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        },
+        {
+          "sheetName": "LIQUIDACIONES",
+          "range": "A9:I162",
+          "rowCount": 154,
+          "validRows": 130,
+          "productsCount": 0,
+          "totalStock": 753,
+          "headers": [
+            "PRODUCTO",
+            "DESCRIPCION x PRODUCTO",
+            "DETALLE x CAJA",
+            "COLOR",
+            "STOCK",
+            "PU 500 A 1000",
+            "PU 50 A 499",
+            "1 A 49",
+            "PROMOCIONES"
+          ],
+          "colMap": {
+            "A": "PRODUCTO",
+            "B": "DESCRIPCION x PRODUCTO",
+            "C": "DETALLE x CAJA",
+            "D": "COLOR",
+            "E": "STOCK",
+            "F": "PU 500 A 1000",
+            "G": "PU 50 A 499",
+            "H": "1 A 49",
+            "I": "PROMOCIONES"
+          },
+          "sampleProducts": [],
+          "detectedCols": {
+            "codeColIdx": 0,
+            "nameColIdx": 0,
+            "stockColIdx": 4,
+            "colorColIdx": 3,
+            "descColIdx": 2,
+            "priceColIdx": 6
+          }
+        }
+      ]
+    }
+  ]
+}

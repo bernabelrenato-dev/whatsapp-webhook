@@ -1,0 +1,360 @@
+
+================================================== 
+Auditing DOCX: COMPANY.docx 
+Size: 406.62 KB 
+Text length: 74008 characters 
+Messages: 0 
+HTML length: 340223 characters 
+Number of tables in DOCX: 29 
+--- Raw Text Sample (first 1500 chars) --- 
+ STOCK 19 DE MARZO DEL 2026  CONTACTOS: CEL.: 991145811 943602081 
+
+ E-mail: worldimport100@gmail.com worldimportaciones8@gmail.com  
+
+ PRECIO EN SOLES NO INCLUYE EL I.G.V
+
+CÓDIGO 
+
+IMAGEN
+
+STOCK
+
+PRECIOS
+
+
+
+DESCRIPCIÓN
+
+EMPAQUE
+
+
+
+DE 1000 UND 
+
+DE 100 A 499 UND 
+
+DE 1 A 99 UNID
+
+
+
+
+
+AD-01
+
+
+
+245
+
+24.00 
+
+25.00 
+
+28.00
+
+
+
+USB DE CAPACIDAD 16 GB  
+
+MATERIAL CUERINA COLOR  NEGRO CON METAL 
+
+
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+
+
+
+
+
+
+AD-01A
+
+
+
+265 
+
+25.00 
+
+26.00 
+
+28.00
+
+
+
+USB DE CAPACIDAD 32 GB  
+
+MATERIAL CUERINA COLOR  NEGRO CON METAL 64 GB
+
+
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+750 
+
+27.00 
+
+28.00 
+
+30.00
+
+SMR-01
+
+
+
+502
+
+25.50
+
+26.00
+
+28.00
+
+
+
+USB DE CAPACIDAD 16 GB  
+
+MATERIAL CUERINA COLOR  NEGRO CON METAL 
+
+
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+
+
+smr-02
+
+
+
+608
+
+26.90
+
+27.30
+
+28.00
+
+
+
+MATERIAL CUERINA COLOR  
+
+USB DE CAPACIDAD 32 GB NEGRO CON METAL  
+
+PRESENTACION CON CAJA DE  METAL
+
+
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+
+
+SMR-1U
+
+
+
+994 
+
+17.50 
+
+18.00 
+
+21.00
+
+
+
+CAPACIDAD 8 GB MATERIAL  
+
+USB MOD TARJETA DE 
+
+PLASTICO 
+
+8.20 CM DE LARGO  5.20 CM DE ANCHO
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+884 
+
+18.50 
+
+19.00 
+
+21.00
+
+
+
+USB DE DE 16 GB
+
+850 
+
+19.50 20.50 
+
+20.00 21.00 
+
+21.00
+
+
+
+USB DE DE 32 GB
+
+888 
+
+
+
+
+
+21.00
+
+
+
+USB DE DE 64 GB
+
+SMR-2U
+
+
+
+422
+
+28.00
+
+29.00
+
+31.00
+
+
+
+USB DE CAPACIDAD 16 GB  METALICO PRESENTACION  
+
+CON CAJA DE METAL AREA  DE IMP./GRABADO 30 X 12 mm. 
+
+
+
+DISPONIBLE EN  
+
+NUESTROS  
+
+ALMACENES
+
+
+
+
+
+SMR-5U 
+
+
+
+548 
+
+27.00 
+
+28.00 
+
+30 
+--- Table HTML Sample (first 1500 chars) --- 
+<table><thead><tr><th rowspan="3"><p><strong>CÓDIGO </strong></p></th><th rowspan="3"><p><strong>IMAGEN</strong></p></th><th rowspan="3"><p><strong>STOCK</strong></p></th><th colspan="3"><p><strong>PRECIOS</strong></p></th><th></th><th rowspan="3"><p><strong>DESCRIPCIÓN</strong></p></th><th rowspan="3"><p><strong>EMPAQUE</strong></p></th><th rowspan="3"></th></tr><tr><th rowspan="2"><p><strong>DE 1000 UND </strong></p></th><th rowspan="2"><p><strong>DE 100 A 499 UND </strong></p></th><th><p>DE 1 A 99 UNID</p></th><th rowspan="2"></th></tr><tr><th></th></tr><tr><th rowspan="2"><p><strong>AD-01</strong></p></th><th rowspan="2"><p><strong><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAhCAYAAACm75niAAALMklEQVRYha2Ya2yWZZrHf8/hPbXQc/uWFqZAaeuINAuSGhMbjLGN4WAiYwzdWUaUoJ8cJoFRkiU4LdRxyq5kF4giaNUCu18cpVQUOtkuM2AQqBSQCkrXujSl0wNvD+/xOV37obxPWo4ieyX3p/u+nvv/XPd1/e//dSuO4wj3aSKCoiiICI7joCgKAKqq/iQ/AMuyEBFEhHA4zMDAAJFIhClTplBYWIjH43H30HUd/X5BAziOg6ZpN/3E3SwJ2nEcRITBwUGampro6+tjxowZBAIBent76e/vp7y8nBUrVpCenj4enP+PiCejfPnyZdra2li+fDnp6emoqoqqqojIbaPvOA6GYdDd3c2+ffuoqamhrKwMVVWxbRuA0dFRWltbOXPmDGvXriU7Oxscx5H7HZZliWVZsmfPHsnJyZGKigr58MMPJRQKiWEYYtv2HX1DoZCsW7dOLl68KLFYTCzLcudN0xTTNCUajUp7e7ts375dwuGwaK+//vof7jfitm1j2zbBYJCuri7Onj1LS0sLX3/9NUVFReTn56PrN2dlsiY6OjoQER5//HEANE1z0yiZeo7jkJWVxeDgIJqmcefquYMl89JxHHcDv9/P9u3baWhooKSkhOPHj1NTU0Nrayu2beM4jrs+6aOqKj/88ANz5sxBVVV0XZ9UH4qiuMPr9TJr1ix6e3t/PnARIR6PMzIygm3bGIbBjh07GB0dZfHixRw4cIDS0lJEhKamJkzTdP1uBBUIBIhEIpimOenHblyXZBSv13vv 
+
+================================================== 
+Auditing PDF: COMPANY.pdf 
+Size: 4.73 MB 
+Number of pages: 99 
+Text length: 63377 characters 
+Metadata: {"PDFFormatVersion":"1.7","Language":null,"EncryptFilterName":null,"IsLinearized":false,"IsAcroFormPresent":false,"IsXFAPresent":false,"IsCollectionPresent":false,"IsSignaturesPresent":false,"CreationDate":"","Creator":"PDFium","Producer":"PDFium"}
+--- PDF Text Sample (first 1500 chars) --- 
+STOCK 19 DE MARZO DEL 2026
+CONTACTOS: CEL.: 991145811 943602081
+E-mail: worldimport100@gmail.com worldimportaciones8@gmail.com
+DE 1000 UND DE 100 A 499 UND DE 1 A 99 UNID
+24.00 25.00 28.00
+265 25.00 26.00 28.00
+750 27.00 28.00 30.00
+994 17.50 18.00 21.00	
+USB MOD TARJETA DE	
+CAPACIDAD 8 GB MATERIAL	
+PLASTICO
+8.20 CM DE LARGO	
+5.20 CM DE ANCHO
+884 18.50 19.00 21.00
+850 19.50 20.00 21.00
+888 20.50 21.00 21.00
+SMR-5U 548 27.00 28.00 30.00	
+USB DE CAPACIDAD 32 GB	
+METALICO AREA DE	
+IMP./GRABADO 30 X 12 mm.
+DISPONIBLE EN
+NUESTROS
+ALMACENES
+SMR-30 326 23.00 23.00 28.00
+USB DE CAPACIDAD 16 GB	
+ACRILICO AREA DE	
+IMP./GRABADO 30 X 12 mm.	
+MEDIDA: CAJA 9 X 6 CMS.
+DISPONIBLE EN
+NUESTROS
+ALMACENES
+AD-02 650 19.00 20.00 22.00
+AD-02N 576 20.00 21.00 23.00	
+USB MODELO LLAVE NEGRO	
+DE CAPACIDAD 32 GB AREA	
+DE IMP./GRABADO 32 X 8 mm.
+DISPONIBLE EN
+NUESTROS
+ALMACENES
+USB DE MADERA DE 16 GB	
+(OVAL) CAJA DE METAL. AREA	
+DE GRABADO 52 X 20 mm.	
+MEDIDA: CAJA 9 X 6 CMS.
+ZYE-01 632 22.50 24.00 28.00
+ZYE-02 734 24.00 25.00 28.00
+ZYE-03 657 25.00 26.00 30.00
+ZJ-A 436 22.50 24.00 28.00
+ZJ-B 456 24.00 25.00 28.00
+ZJ-C 532 25.00 26.00 30.00
+ZJ-01A 788 22.50 24.00 28.00
+ZYE-02B 704 24.00 25.00 28.00
+ZYE-03C 602 25.00 26.00 30.00
+21.00 22.00 25.00
+USB DE PLASTICO DE 8 GB	
+SIN ARGOLLA Y SIN ESTUCHE	
+AREA DE GRABADO 32 X 20	
+mm. PRESENTACION CAJA DE	
+CARTON
+ZJ-03 NEGRO 225 22.50 23.00 26.00
+ZJ-03 NEGRO 350 23.50 24.00 27.00
+ZJ-03 NEGRO 256 24.40 25.00 28.00 USB COMERCIAL 64 GB	
+NEGRO . AREA DE	
+IMP./GRABADO  
+Total non-empty lines: 4205 
+--- Sample Lines (first 15) --- 
+  Line 0: STOCK 19 DE MARZO DEL 2026 
+  Line 1: CONTACTOS: CEL.: 991145811 943602081 
+  Line 2: E-mail: worldimport100@gmail.com worldimportaciones8@gmail.com 
+  Line 3: DE 1000 UND DE 100 A 499 UND DE 1 A 99 UNID 
+  Line 4: 24.00 25.00 28.00 
+  Line 5: 265 25.00 26.00 28.00 
+  Line 6: 750 27.00 28.00 30.00 
+  Line 7: 994 17.50 18.00 21.00 
+  Line 8: USB MOD TARJETA DE 
+  Line 9: CAPACIDAD 8 GB MATERIAL 
+  Line 10: PLASTICO 
+  Line 11: 8.20 CM DE LARGO 
+  Line 12: 5.20 CM DE ANCHO 
+  Line 13: 884 18.50 19.00 21.00 
+  Line 14: 850 19.50 20.00 21.00 

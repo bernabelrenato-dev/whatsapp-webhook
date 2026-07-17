@@ -1,9 +1,26 @@
 const express = require('express');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const webhookRoutes = require('./routes/webhook.routes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
+
+// Confiar en el proxy inverso (Cloudflare Tunnel) para rate-limiting correcto
+app.set('trust proxy', 1);
+
+// Configuración de rate limiting global para proteger APIs
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minuto
+  max: 60, // Limitar a 60 peticiones por minuto por IP
+  message: {
+    error: 'Demasiadas peticiones desde esta IP. Por favor, intenta de nuevo más tarde.'
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(apiLimiter);
 
 // Servir imágenes estáticas de los productos del catálogo
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
@@ -36,6 +53,10 @@ app.get('/', (req, res) => {
 
 // Rutas del Webhook
 app.use('/webhook', webhookRoutes);
+
+// Rutas de API para integraciones (Typebot, etc.)
+const apiRoutes = require('./routes/api.routes');
+app.use('/api', apiRoutes);
 
 // Manejador global de excepciones
 app.use(errorHandler);

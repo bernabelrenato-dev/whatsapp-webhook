@@ -1,0 +1,708 @@
+
+================================================== 
+Auditing: CHEAPER.xlsx 
+Size: 2.65 MB 
+Sheet names: ["Datos Empresa","0SETS EJECUTIVOS","1LAPICEROS PLASTICOS","2LAPICEROS ECOLOGICOS","3LAPICEROS METALICOS","ACCES. CELULAR  Y PC","ART. ESCRITORIO","ART. MÉDICOS - ANTISTRESS","LIBRETAS - POSITS","LLAVEROS - HERRAMIETAS","TOMATODOS-MUG"]
+Loading full workbook data... 
+Loaded in 0.10s 
+  Sheet: "Datos Empresa" | Range: B1:E35 
+    Total rows found in array: 35 
+    Header row index: 10 
+    Headers: ["SEDE LINCE"]
+    Sample rows: 
+      Row 11: ["","","LUNES A VIERNES: 9:30AM - 6:00PM","SABADOS: 9:30AM - 4:00PM"]
+      Row 12: ["","","",""]
+      Row 13: ["","","",""]
+      Row 14: ["BANCO DE CRÉDITO DEL PERÚ (BCP) CUENTA CORRIENTE EN SOLES","","",""]
+  Sheet: "0SETS EJECUTIVOS" | Range: A1:J9 
+    Total rows found in array: 9 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["SET-1","","LIBRETA + LAPICERO ","GRIS",5,"","","S/1,400.00","S/16.00","LIBRETA DE CORCHO + LAPICERO DE CORCHO/METAL\nContienen: caja negra + ambos productos contienen sus bolsas transparentes individuales \nTamaño de la caja:  20.8 CM * 22.6 CM Aprox\nTinta del lapicero:  negro "]
+      Row 2: ["SET-2","","LIBRETA + LAPICERO","NEGRO",157,"","","S/1,400.00","S/16.00","LIBRETA TEXTURIZADA + LAPICERO METAL\nContienen: caja negra + ambos productos contienen sus bolsas transparentes individuales \nTamaño de la caja:  20.8 CM * 22.6 CM Aprox\nTinta del lapicero: negro"]
+      Row 3: ["","","","","","","","","",""]
+      Row 4: ["SET-3","","LIBRETA + LAPICERO","AZUL",0,"","","S/1,000.00","S/12.00","LIBRETA + LAPICERO METALICO"]
+  Sheet: "1LAPICEROS PLASTICOS" | Range: A1:J353 
+    Total rows found in array: 353 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["3111","","LAPICERO PLASTICO","AMARILLO",25,"S/250.00","","S/27.00","S/0.80","Descripción: Lapicero plástico\nColor de tinta: Azul"]
+      Row 2: ["","","","AZUL",0,"","","","",""]
+      Row 3: ["","","","FUCSIA CLARO",14565,"","","","",""]
+      Row 4: ["","","","NARANJA",13,"","","","",""]
+  Sheet: "2LAPICEROS ECOLOGICOS" | Range: A1:J111 
+    Total rows found in array: 111 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["WBP2200","","LAPICES","AZUL",0,"S/220.00","","","S/0.50","Descripción: Lápiz sin tajar con borrador "]
+      Row 2: ["","","","BLANCO",37,"","","","",""]
+      Row 3: ["","","","NATURAL",44,"","","","",""]
+      Row 4: ["","","","ROJO",69,"","","","",""]
+  Sheet: "3LAPICEROS METALICOS" | Range: A1:J90 
+    Total rows found in array: 90 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["MT05","","LAPICERO METALICO","AZUL",5441,"S/900.00","","S/95.00","S/2.00","Descripción: Lapicero metálico de sistema giratorio.\nLapicero tinta seca, negro \n"]
+      Row 2: ["","","","BLANCO",2,"","","","",""]
+      Row 3: ["","","","DORADO",724,"","","","",""]
+      Row 4: ["","","","NEGRO",0,"","","","",""]
+  Sheet: "ACCES. CELULAR  Y PC" | Range: A1:J31 
+    Total rows found in array: 31 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["LU02","","MINI LAMPARA USB","AZUL",0,"S/820.00","","S/85.00","S/1.50","MINI LAMPARA USB \nMedida: largo 16.7 cm"]
+      Row 2: ["","","","BLANCO",0,"","","","",""]
+      Row 3: ["","","","LILA",0,"","","","",""]
+      Row 4: ["","","","NEGRO",0,"","","","",""]
+  Sheet: "ART. ESCRITORIO" | Range: A1:J38 
+    Total rows found in array: 38 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["REGLA","","REGLA PLASTICA EN OFERTA","BLANCO",39,"S/0.00","","S/50.00","S/1.00","Regla \nMedida: 20 cm.\nPresentación: bolsita plástica individual ."]
+      Row 2: ["BOLSA","","BOLSA PLASTICA EN OFERTA","TRANSPARENTE",3694,"S/1,000.00","","S/100.00","S/1.50","Estuche plástico para útiles de oficina con cierre hermético.\nMedidas: 25.7*22.1 cm."]
+      Row 3: ["","","","","","","","","",""]
+      Row 4: ["BSA201","","RESALTADOR","AMARILLO",9050,"S/1,400.00","","S/150.00","S/2.50","Resaltador plástico con mini bola antiestres.\nMedida: 13.5 cm "]
+  Sheet: "ART. MÉDICOS - ANTISTRESS" | Range: A1:J47 
+    Total rows found in array: 47 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["ZH001","","PELOTA ANTISTRESS","AMARILLO",15719,"S/1,800.00","","S/190.00","S/2.50","Pelota antiestres\nDiámetro: 6.3 cm\nPresentación: bolsa transparente x 50 unid."]
+      Row 2: ["","","","AZUL",10259,"","","","",""]
+      Row 3: ["","","","BLANCO",5,"","","","",""]
+      Row 4: ["","","","MORADO",4178,"","","","",""]
+  Sheet: "LIBRETAS - POSITS" | Range: A1:J97 
+    Total rows found in array: 97 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["BF556","","LIBRETA CON LAPICERO","AZUL",20961,"S/2,400.00","","S/250.00","S/3.50","Medidas: 14x 9 cm. \n Descripción: Libreta anillada de aprox. 70 hojas blancas rayadas; incluye 1 lapicero modelo 925n\nPresentación del producto:\nbolsita individual"]
+      Row 2: ["","","","NARANJA",3378,"","","","",""]
+      Row 3: ["","","","NEGRO",21642,"","","","",""]
+      Row 4: ["","","","ROJO",26927,"","","","",""]
+  Sheet: "LLAVEROS - HERRAMIETAS" | Range: A1:J75 
+    Total rows found in array: 75 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["UT3612N","","LLAVERO DESTAPADOR","AZUL",10613,"S/900.00","","S/95.00","S/2.00","Llavero destapador metálico\nMedida: 6.8 cm aprox (no incluye argolla) y 8 cm incluyendo argolla \nárea de imp: 5 cm aprox\nEmpaque: bolsa individual"]
+      Row 2: ["","","","NEGRO",15391,"","","","",""]
+      Row 3: ["","","","PLATA",12314,"","","","",""]
+      Row 4: ["LCD2501","","LLAVERO DESTAPADOR TIPO CASCO","AMARILLO",0,"S/1,100.00","","S/120.00","S/2.00","Llavero plástico destapador casco \nEmpaque: Bolsa individual transparente\n"]
+  Sheet: "TOMATODOS-MUG" | Range: A1:J114 
+    Total rows found in array: 114 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["UT4532","","TOMATODO PLASTICO","NATURAL",1670,"S/5,900.00","","S/620.00","S/7.50","Medidas:\nAltura: 17.5 cm Ancho: 5.6 cm Boca\nDescripción: jarro de fibra de trigo con asa incluida en la tapa para bebidas frías\n Capacidad: 350 ml.\nPresentación: Cajita ecológica "]
+      Row 2: ["","","","ROSADO",1325,"","","","",""]
+      Row 3: ["","","","TURQUESA",918,"","","","",""]
+      Row 4: ["","","","VERDE",593,"","","","",""]
+
+================================================== 
+Auditing: CHIPER.xlsx 
+Size: 2.68 MB 
+Sheet names: ["0SETS EJECUTIVOS","1LAPICEROS PLASTICOS","2LAPICEROS ECOLOGICOS","3LAPICEROS METALICOS","ACCES. CELULAR  Y PC","ART. ESCRITORIO","ART. MÉDICOS - ANTISTRESS","LIBRETAS - POSITS","LLAVEROS - HERRAMIETAS","TOMATODOS-MUG"]
+Loading full workbook data... 
+Loaded in 0.04s 
+  Sheet: "0SETS EJECUTIVOS" | Range: A1:J9 
+    Total rows found in array: 9 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["SET-1","","LIBRETA + LAPICERO ","GRIS",64,"","","S/1,400.00","S/16.00","LIBRETA DE CORCHO + LAPICERO DE CORCHO/METAL\r\nContienen: caja negra + ambos productos contienen sus bolsas transparentes individuales \r\nTamaño de la caja:  20.8 CM * 22.6 CM Aprox\r\nTinta del lapicero:  negro "]
+      Row 2: ["SET-2","","LIBRETA + LAPICERO","NEGRO",0,"","","S/1,400.00","S/16.00","LIBRETA TEXTURIZADA + LAPICERO METAL\r\nContienen: caja negra + ambos productos contienen sus bolsas transparentes individuales \r\nTamaño de la caja:  20.8 CM * 22.6 CM Aprox\r\nTinta del lapicero: negro"]
+      Row 3: ["","","","","","","","","",""]
+      Row 4: ["SET-3","","LIBRETA + LAPICERO","AZUL",0,"","","S/1,000.00","S/12.00","LIBRETA + LAPICERO METALICO"]
+  Sheet: "1LAPICEROS PLASTICOS" | Range: A1:J359 
+    Total rows found in array: 359 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["PT08","","LAPICERO PLASTICO EN OFERTA","AMARILLO",0,"S/236.00","","S/24.00","S/0.50","Descripción: Lapicero plástico con touch\r\nColor de tinta: Azul.\r\n"]
+      Row 2: ["","","","AZUL",0,"","","","",""]
+      Row 3: ["","","","NEGRO",0,"","","","",""]
+      Row 4: ["","","","ROJO",178,"","","","",""]
+  Sheet: "2LAPICEROS ECOLOGICOS" | Range: A1:J111 
+    Total rows found in array: 111 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["WBP2200","","LAPICES","AZUL",0,"S/220.00","","","S/0.50","Descripción: Lápiz sin tajar con borrador "]
+      Row 2: ["","","","BLANCO",37,"","","","",""]
+      Row 3: ["","","","NATURAL",44,"","","","",""]
+      Row 4: ["","","","ROJO",69,"","","","",""]
+  Sheet: "3LAPICEROS METALICOS" | Range: A1:J91 
+    Total rows found in array: 91 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["MT05","","LAPICERO METALICO","AZUL",6699,"S/900.00","","S/95.00","S/2.00","Descripción: Lapicero metálico de sistema giratorio.\r\nLapicero tinta seca, negro \r\n"]
+      Row 2: ["","","","BLANCO",2,"","","","",""]
+      Row 3: ["","","","DORADO",2424,"","","","",""]
+      Row 4: ["","","","NEGRO",0,"","","","",""]
+  Sheet: "ACCES. CELULAR  Y PC" | Range: A1:J33 
+    Total rows found in array: 33 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["LU02","","MINI LAMPARA USB","AZUL",0,"S/820.00","","S/85.00","S/1.50","MINI LAMPARA USB \r\nMedida: largo 16.7 cm"]
+      Row 2: ["","","","BLANCO",0,"","","","",""]
+      Row 3: ["","","","LILA",0,"","","","",""]
+      Row 4: ["","","","NEGRO",0,"","","","",""]
+  Sheet: "ART. ESCRITORIO" | Range: A1:J40 
+    Total rows found in array: 40 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["REGLA","","REGLA PLASTICA EN OFERTA","BLANCO",39,"S/0.00","","S/50.00","S/1.00","Regla \r\nMedida: 20 cm.\r\nPresentación: bolsita plástica individual ."]
+      Row 2: ["BOLSA","","BOLSA PLASTICA EN OFERTA","TRANSPARENTE",3694,"S/1,000.00","","S/100.00","S/1.50","Estuche plástico para útiles de oficina con cierre hermético.\r\nMedidas: 25.7*22.1 cm."]
+      Row 3: ["","","","","","","","","",""]
+      Row 4: ["BSA201","","RESALTADOR","AMARILLO",9105,"S/1,400.00","","S/150.00","S/2.50","Resaltador plástico con mini bola antiestres.\r\nMedida: 13.5 cm "]
+  Sheet: "ART. MÉDICOS - ANTISTRESS" | Range: A1:J49 
+    Total rows found in array: 49 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["ZH001","","PELOTA ANTISTRESS","AMARILLO",18634,"S/1,800.00","","S/190.00","S/2.50","Pelota antiestres\r\nDiámetro: 6.3 cm\r\nPresentación: bolsa transparente x 50 unid."]
+      Row 2: ["","","","AZUL",21477,"","","","",""]
+      Row 3: ["","","","BLANCO",6045,"","","","",""]
+      Row 4: ["","","","MORADO",5976,"","","","",""]
+  Sheet: "LIBRETAS - POSITS" | Range: A1:J93 
+    Total rows found in array: 93 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["BC907-1","","LIBRETA EN LIQUDACION (EN EL ESTADO EN QUE SE ENCUENTRE)","NEGRO",121,"S/0.00","","S/250.00","S/3.00","Libreta de biocuero A5 con separador de hojas y liga para lapiceros \r\nMedidas: 21*14.8cm"]
+      Row 2: ["BF556","","LIBRETA CON LAPICERO","AZUL",35367,"S/2,400.00","","S/250.00","S/3.50","Medidas: 14x 9 cm. \r\n Descripción: Libreta anillada de aprox. 70 hojas blancas rayadas; incluye 1 lapicero modelo 925n\r\nPresentación del producto:\r\nbolsita individual"]
+      Row 3: ["","","","NARANJA",4400,"","","","",""]
+      Row 4: ["","","","NEGRO",27210,"","","","",""]
+  Sheet: "LLAVEROS - HERRAMIETAS" | Range: A1:J76 
+    Total rows found in array: 76 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["UT3612","","MINI LLAVERO DESTAPADOR","NEGRO",59,"S/800.00","","S/90.00","S/1.50","Mini llavero destapador\r\nMaterial: Aluminio\r\nMedida:  7cm (incluye argolla)\r\nEmpaque: Bolsita hermética individual."]
+      Row 2: ["UT3612N","","LLAVERO DESTAPADOR","AZUL",12226,"S/900.00","","S/95.00","S/2.00","Llavero destapador metálico\r\nMedida: 6.8 cm aprox (no incluye argolla) y 8 cm incluyendo argolla \r\nárea de imp: 5 cm aprox\r\nEmpaque: bolsa individual"]
+      Row 3: ["","","","NEGRO",18809,"","","","",""]
+      Row 4: ["","","","PLATA",14058,"","","","",""]
+  Sheet: "TOMATODOS-MUG" | Range: A1:J116 
+    Total rows found in array: 116 
+    Header row index: 0 
+    Headers: ["CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO POR MILLAR (A PARTIR DE 500 UNDS)\r\n","PRECIO POR CIENTO ( A PARTIR DE 50 UNDS SOLO PARA ARTÍCULOS/ LAPICERO 100 UNDS)\r\n","PRECIO MUESTRA (MÁXIMO 5 UNIDADES)\r\n","DESCRIPCIÓN"]
+    Sample rows: 
+      Row 1: ["UT4532","","TOMATODO PLASTICO","NATURAL",2800,"S/5,900.00","","S/620.00","S/7.50","Medidas:\r\nAltura: 17.5 cm Ancho: 5.6 cm Boca\r\nDescripción: jarro de fibra de trigo con asa incluida en la tapa para bebidas frías\r\n Capacidad: 350 ml.\r\nPresentación: Cajita ecológica "]
+      Row 2: ["","","","ROSADO",1545,"","","","",""]
+      Row 3: ["","","","TURQUESA",1067,"","","","",""]
+      Row 4: ["","","","VERDE",695,"","","","",""]
+
+================================================== 
+Auditing: EFSTOCK.xlsx 
+Size: 8.68 MB 
+Sheet names: ["LAPICEROS DE PLASTICO","LAPICEROS PUNTERO LASER","LAPICEROS METALICOS","ESTUCHES","CALCULADORAS","JARROS MUG","TOMATODOS","ART. ESCRITORIO","LINEA ECOLOGICA","TARJETEROS","RESALTADORES","TACO CON POST IT","ART. ANTIESTRES","LLAVEROS","BOLSAS","ART. PERSONAL","ART. DE PROTECCION","ART. PLAYA","USB"]
+Loading full workbook data... 
+Loaded in 1.78s 
+  Sheet: "LAPICEROS DE PLASTICO" | Range: A1:HO670 
+    Total rows found in array: 670 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE            50 PZS.) ","DESCRIPCION"]
+      Row 4: ["",1485,"","LAPICERO PLASTICO\r\n1000 UNID X CAJA\r\n","AZUL",37639,420,45,0.7,"Medidas: 13 X 1 cm. \r\n Colores: Azul, rojo, negro, verde, anaranjado, amarillo, morado, fucsia, rosado, turquesa y blanco.\r\nSistema: Retráctil.\r\nColor de tinta: Azul.\r\nEmpaque:Individual, en bolsita plástica transparente."]
+      Row 5: ["","","","","ROJO",29978,"","","",""]
+      Row 6: ["","","","","NEGRO",38466,"","","",""]
+  Sheet: "LAPICEROS PUNTERO LASER" | Range: A1:NR7512 
+    Total rows found in array: 7512 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","SFBP-510","","LAPICERO LASER\r\n4 FUNCIONES                                                    \r\n200 UNID X CAJA","PLATEADO",479,7500,780,9,"Medidas: Largo 14.50 cm. Diametro: 0.98 cm.                                                                                                                                                                                                                                                                                                                   Descripción del producto: Lapicero metálico de sistema giratorio , 4 funciones (Puntero luz roja, Linterna Led luz blanca, Tinta Azul y Negro).                                                                                     Presentación del prodcuto: Viene en un estuche de metal y 3 pilas de repuesto  y caja de cartón plastificado color plomo."]
+      Row 5: ["","SFBP-511","","LAPICERO LASER\r\n3 FUNCIONES                                              \r\n200 UNID X CAJA","PLATEADO",929,7200,750,9,"Medidas: Largo 14.50 cm. Diametro: 0.98 cm.  \r\n Descripción del producto: Lapicero metálico de sistema giratorio , 3 funciones (Puntero luz roja, Tinta Azul y Negro).                                                                                     Presentación del prodcuto: Viene en un estuche de metal y 3 pilas de repuesto  y caja de cartón plastificado color plomo."]
+      Row 6: ["","SFBP-520","","LAPICERO LASER                                                  \r\nESTUCHE METAL                                                                                       \r\n200 UNID X CAJA","PLATEADO",304,6000,650,7.5,"Medidas: Alto: 13 cm. Diámetro: 0.95 cm. \r\nDescripción del producto: Lapicero metálico de sistema giratorio, con 3 funciones (Puntero luz roja, Linterna Led luz blanca y Lapicero tinta color negro)                                  Presentación del Producto: Viene en un estuche de metal y 3 pilas de repuesto  y caja de cartón plastificado color plomo."]
+  Sheet: "LAPICEROS METALICOS" | Range: A1:QR67 
+    Total rows found in array: 67 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["",8033,"","LAPICERO MADERA\r\n1000 UNID X CAJA","BAMBOO",1495,2800,300,4,"Medidas: Largo: 13.5 cm. Diámetro: 1.5 cm. \r\nDescripción: Lapicero retráctil.\r\nColor: Madera.\r\nColor de tinta: Seca color negro.\r\nPresentación del producto:\r\nIndividual, en bolsita plástica transparente."]
+      Row 5: ["",8050,"","LAPICERO MADERA\r\n500 UNID X CAJA","BAMBOO",6050,5200,550,6.5,"Medidas: Largo: 13.5 cm. Diámetro: 1.5 cm. \r\nDescripción: Lapicero de sistema giratorio.\r\nColor: Madera.\r\nColor de tinta: Seca color negro.\r\nPresentación del producto:\r\nIndividual, en bolsita plástica transparente."]
+      Row 6: ["",9016,"","LAPICERO MADERA\r\n500 UNID X CAJA                                                                               \r\n","BAMBOO",6014,3800,400,5,"Medidas: Largo: 13.5 cm. Diámetro: 1.15 cm. \r\nDescripción: Lapicero de sistema giratorio, con goma antideslizante en la punta de color negro.\r\nColor: Madera.\r\nColor de tinta: Seca color negro.\r\nPresentación del producto:\r\nIndividual, en bolsita plástica transparente."]
+  Sheet: "ESTUCHES" | Range: A1:HO27 
+    Total rows found in array: 27 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","7278\r\n(PLASTIC BOX)","","ESTUCHE PLASTICO\r\nPARA USB\r\n520 UNID X CAJA","TRANSPARENTE",201,1500,170,2.5,"Medidas: 4.4 x 2 cm. Largo: 9.4 cm. Espesor: 2 cm. \r\nDescripción: Estuche plástico transparente. (solo para USB´s del código UD-511) Color: Blanco transparente.\r\nPresentación del producto:\r\nIndividual, en bolsita plástica transparente."]
+      Row 5: ["","BX-222","","ESTUCHE DE FIBRA DE TRIGO\r\n200 UNID X CAJA\r\n","NATURAL ",4851,2500,270,4,"Medidas: 4.7 x 2.5 cm. Largo: 17 cm.\r\nDescripción: Estuche para lapicero de fibra de trigo, con interior de eva.\r\nPresentación del producto:\r\nIndividual en bolsa de plástico transparente."]
+      Row 6: ["","BX-403","","ESTUCHE DE CORCHO\r\n200 UNID X CAJA\r\n","NATURAL",4189,2200,250,3.5,"Medidas: 5.5 x 2.5 cm. Largo: 18 cm.\r\nDescripción: Estuche para lapicero de corcho, con interior acolchado y sujetador, todo de color negro.\r\nPresentación del producto:\r\nIndividual en bolsa de plástico transparente."]
+  Sheet: "CALCULADORAS" | Range: A1:UA29 
+    Total rows found in array: 29 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","KA-410C","","CALCULADORA\r\nCOLGANTE\r\n400 UNID X CAJA\r\n","AZUL",335,6200,650,7.5,"Medidas: 7.5x 12.5 cm (Aprox.)\r\nDescripción: Calculadora de plástico a pilas, con sujetador de pita de color.                                                                                                Colores: Rojo, Naranja, Verde, Azul, Negro, Gris.                  Empaque: Individual, en cajita de cartón blanco."]
+      Row 5: ["","","","","ROJO",2226,"","","",""]
+      Row 6: ["","","","","VERDE  ",2500,"","","",""]
+  Sheet: "JARROS MUG" | Range: A1:ZV248 
+    Total rows found in array: 248 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","FXA-01\r\n(TY-A01)","","JARRO MUG\r\n40 UNID X CAJA\r\n","PLATEADO",8212,7500,770,8.5,"Medidas: Alto: 17 cm. Diámetro: 6.3 cm. \r\nCapacidad: 450 ml. \r\nDescripción: Interior totalmente plástico en color negro, por fuera cuerpo de metal en color plateado, el borde del jarro, el mango (asa) y la base son de plástico color negro.\r\nPresentación del producto:\r\nIndividual en bolsa de plástico transparente dentro de una caja de cartón color blanco."]
+      Row 5: ["","FXA-02\r\n(TY-A02)","","JARRO MUG\r\n40 UNID X CAJA","AZUL",6114,5000,530,6.5,"Medidas: Alto: 16.5 cm. Diámetro: 6 cm. \r\nDescripción: Jarro totalmente plástico, por fuera cuerpo de colores traslúcidos, el borde del jarro, el mango (asa) y la base son de plástico color negro. Capacidad: 450 ml. (Aprox.) Colores: negro, verde, rojo y azul.\r\nPresentación del producto:\r\nIndividual, en bolsa de plástico transparente dentro de una caja de cartón color blanco."]
+      Row 6: ["","","","","ROJO",6415,"","","",""]
+  Sheet: "TOMATODOS" | Range: A1:AEJ412 
+    Total rows found in array: 412 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","FXSB-500C","","TOMATODO METALICO\r\n60 UNID X CAJA            ","AZUL ",5574,7000,730,8.5,"\r\n Tomatodo de ALUMINIO, con tapa de plástico negro y sujetador clip de metal del color del tomatodo..                                                                                              Capacidad: 540 ml.                                                                                     Medidas: Altura: 20.5 cm. Diámetro: 6.5 cm.\r\nPresentación del producto:\r\nIndividual, en caja de cartón blanca."]
+      Row 5: ["","","","","ROJO",10506,"","","",""]
+      Row 6: ["","","","","NEGRO",3056,"","","",""]
+  Sheet: "ART. ESCRITORIO" | Range: A1:ACO239 
+    Total rows found in array: 239 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","BS-345","","CLIP PLASTICO\r\nIMANTADO\r\n250 UNID X CAJA\r\n\r\n","AZUL",1848,2200,250,3,"Medidas:  5 x 4 x 7.5 cm                                                                                       Descripción: Clip de plástico traslúcido, con imán en la parte posterior y sujetador de lapicero en la parte delantera blanca.                                                                                         Colores: Rojo, azul y negro.                                                             Empaque: Individual, en bolsita plastica transparente."]
+      Row 5: ["","","","","ROJO",3736,"","","",""]
+      Row 6: ["","","","","NEGRO",689,"","","",""]
+  Sheet: "LINEA ECOLOGICA" | Range: A1:ASD580 
+    Total rows found in array: 580 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","JC-1101","","SET DE COLORES CORTO                                              400 UNID X CAJA  ","NATURAL",5262,2200,250,3.5,"Medidas: 9.9 X 3.4\r\nDescripción: Contiene 12 colores diversos                              Presentación del producto:                                                                         Individual, bolsa transparente\r\n"]
+      Row 5: ["","JC-1105","","SET DE COLORES CORTO C/ TAJADOR                                                      400 UNID X CAJA  ","AZUL",409,2500,280,4,"Medidas:10.7 X 3.4\r\nDescripción: Contiene 12 colores diversos  y tajador                             Presentación del producto:                                                                         Individual, bolsa transparente\r\n"]
+      Row 6: ["","","","","ROJO",0,"","","",""]
+  Sheet: "TARJETEROS" | Range: A1:AGO27 
+    Total rows found in array: 27 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","GP-2048","","TARJETERO\r\n300 UNID X CAJA\r\n","GRIS",2679,5000,530,6.5,"Medidas:  9.5 x 6.4 cm.                                                                                         Descripción: tarjetero metalico con cubierta de poliester                                                               Colores: negro y gris                                                                          Empaque:caja negra Individual y en bolsita plastica transparente."]
+      Row 5: ["","","","","NEGRO",1377,"","","",""]
+      Row 6: ["","TL-5012","","TARJETERO\r\n200 UNID X CAJA\r\n","NEGRO",1040,5500,570,7,"Medida\r\n Largo: 10 cm Ancho: 6 cm  Alt: 1 cm"]
+  Sheet: "RESALTADORES" | Range: A1:BCN2619 
+    Total rows found in array: 2619 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","FJHL-086","","RESALTADOR \r\n500 UNID X CAJA                                                                  ","BLANCO",93,2500,270,4,"Medidas:\r\nAlto: 1,4cm   Diámetro: 7cm \r\nDescripción:\r\nResaltador en forma de círculo\r\nColores: Blanco\r\nPresentación del producto:\r\nBolsita plástica transparente.\r\n"]
+      Row 5: ["","FJHL-139H","","RESALTADOR \r\n80 UNID X CAJA                                                        ","BLANCO",530,6800,700,7.5,"Medidas:\r\nSoporte: Ancho 14,6cm Alto 3cm - Resaltadores: Alto: 8cm   Diámetro: 1,6cm \r\nDescripción:\r\nResaltadores líquidos con soporte\r\nColores: Azul, Verde, Amarillo, Fucsia.\r\nPresentación del producto:\r\nBolsita plástica transparente.\r\n"]
+      Row 6: ["","FJHL-205","","RESALTADOR\r\nDE 5 PZAS.\r\n100 UNID X CAJA\r\n","BLANCO",20,6000,620,7,"Medidas: 8.7 x 8.7 x 2.4 \r\n5 colores: Azul, Rosado, Verde, Verde Limon y Naranja.                                                            Presentación del producto:\r\nBolsita plástica transparente.\r\n"]
+  Sheet: "TACO CON POST IT" | Range: A1:BGE25 
+    Total rows found in array: 25 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","A12-1","","PORTA TACO\r\n50 UNID X CAJA\r\n","NEGRO",652,4500,470,6,"Porta Taco / Con  Calendario (2024-2025),  Simil Cuero \r\nDescripción: Porta taco sin calendario sobre tapa, provee un tacos tipo post-it.  200 hojas Aprox.\r\nMaterial: Simil Cuero \r\nDimensiones: 9,5cm x 9,5cm x 3 cm\r\ncolores disponibles: Base negra"]
+      Row 5: ["","A13-5","","PORTA TACO\r\nCON POST-IT\r\n50 UNID X CAJA","NEGRO",4610,8700,900,10,"Porta taco /sin  Calendario , con señaladores\r\nDimensiones 17.5 x 9 x 3 cm. \r\nCuerina negra.\r\ncolores disponibles: Base negra"]
+      Row 6: ["","A15-1","","PORTA TACO\r\nCON POST-IT\r\n50 UNID X CAJA\r\n","NEGRO",3547,8700,900,10,"Porta taco /Con  Calendario (2023-2024),  con señaladores\r\nDimensiones: 13 x 10,5 x 3 cm \r\nCuerina negra. Post- it 8 colores en forma de flecha. \r\n2 Post-it rectangulares. 2 Post-it cuadrados.\r\ncolores disponibles: Base negra"]
+  Sheet: "ART. ANTIESTRES" | Range: A1:BMF145 
+    Total rows found in array: 145 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","LCPU-01","","PELOTA DE FUTBOL\r\nANTIESTRES\r\n250 UNID X CAJA","AZUL/BLANCO",6340,2500,270,3.5,"Medidas: Diámetro: 6.3 cm. \r\nColor: Azul Oscuro - blanco  Material: Espuma de goma. \r\nPresentación del producto:\r\nIndividual, en bolsita de plástico transparente."]
+      Row 5: ["","LCPU-02","","PELOTA DE FUTBOL\r\nANTIESTRES\r\n250 UNID X CAJA                                                                     ","NEGRO/BLANCO",19177,2500,270,3.5,"Medidas: Diámetro: 6.3 cm. \r\n  Color: Negro - Blanco Material: Espuma de goma.\r\nPresentación del producto:\r\nIndividual, en bolsita de plástico transparente."]
+      Row 6: ["","","","","ROJO/BLANCO",14294,"","","",""]
+  Sheet: "LLAVEROS" | Range: A1:BIM174 
+    Total rows found in array: 174 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","FL-3014","","LLAVERO REDONDO\r\nCON LINTERNA\r\n500 UNID X CAJA\r\n","AZUL",0,1600,180,2.5,"Medidas: Diámetro: 5 cm.\r\n  Material: Plástico.\r\n Colores: Anaranjado, rojo, verde, azul, negro y plateado."]
+      Row 5: ["","","","","ROJO",0,"","","",""]
+      Row 6: ["","","","","NEGRO",5663,"","","",""]
+  Sheet: "BOLSAS" | Range: A1:BFS106 
+    Total rows found in array: 106 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","NW-101","","BOLSO NON-WOVEN                                 200 UNID X CAJA ","AZUL",1364,1500,170,2.5,"Material: Textil sin tejer de fibras sintéticas.                                                               Medidas: 30 x 24 x 15 cm                                                   Gramaje: 80gr     "]
+      Row 5: ["","","","","ROJO",7216,"","","",""]
+      Row 6: ["","","","","VERDE",15226,"","","",""]
+  Sheet: "ART. PERSONAL" | Range: A1:BKU38 
+    Total rows found in array: 38 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","HL-8146","","TOALLA EN TUBO \r\n96 UNID X CAJA\r\n","AZUL",12,7500,770,8.5,"Medidas: Largo: 16 cm. Diámetro: 6.5 cm. \r\nColores de tapa de acuaerdo a la tolla: Azul, Rojo,Verde,Negro,Gris y Naranja. Material: Toalla Poliester , Envase Acrílico transpárente. Presentación del producto: \r\nMedidas de la toalla: Largo: 80 cm. Ancho: 30 cm. (Aprox.),Individual, en bolsita plástica transparente."]
+      Row 5: ["","","","","ROJO",3506,"","","",""]
+      Row 6: ["","","","","VERDE",65,"","","",""]
+  Sheet: "ART. DE PROTECCION" | Range: A1:BHG297 
+    Total rows found in array: 297 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","HL- 1003","","BOTELLA SPRAY  60 ML\r\n850 UNID X CAJA\r\n","TRANSPARENTE",18563,1200,140,2,"Medidas: 12.8 cm. Diámetro: 2.8 cm. Cuerpo:8.9  Tapa:3.9\r\nDescripción: Botella plástico traslúcido, vacío de 60ml. de capacidad.\r\nColores: Traslucido\r\nPresentación del producto: Individual, en bolsita plástica transparente."]
+      Row 5: ["","","","BOTELLA VACIA CON SILICONA DE 30ML                                              1000 UNID X CAJA","AZUL",285,1500,170,"S/. 2,50","Medidas: Botella: 8 x 3.5 cm.\r\nDescripción: Botella  vacia  para gel antiséptico, con sujetador de silicona de diferentes colores para llevarlo colgado y tenerlo accesible. Capacidad: 30 ml.\r\nColores de sujetador: Azul, rosado, verde limón, verde, amarillo, naranja, morado, rojo, turquesa, negro y blanco.                                                 Presentación del producto:\r\nIndividual, en bolsita plástica transparente."]
+      Row 6: ["","","","","ROJO",32069,"","","",""]
+  Sheet: "ART. PLAYA" | Range: A1:BGE92 
+    Total rows found in array: 92 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","BG-4008","","CABECERA DE PLAYA\r\n200 UNID X CAJA\r\n","AZUL",3489,4000,420,5,"Medidas: Altura: 11 cm. Ancho: 17 cm. Esp.: 9.9 cm. (Aprox.)  Colores: Verde limón, blanco, anaranjado, rojo y azul."]
+      Row 5: ["","","","","ROJO",10089,"","","",""]
+      Row 6: ["","","","","BLANCO",10966,"","","",""]
+  Sheet: "USB" | Range: A1:DYI102 
+    Total rows found in array: 102 
+    Header row index: 2 
+    Headers: ["02 DE MARZO DEL 2026","LOS PRECIOS NO INCLUYEN IGV"]
+    Sample rows: 
+      Row 3: ["","CODIGO","IMAGEN","PRODUCTO","COLOR","STOCK FINAL","PRECIO x MILLAR\r\n(A PARTIR DE 500 PZS.)","PRECIO x CIENTO\r\n(A PARTIR DE 50 PZS.) ","PRECIO MUESTRA\r\n(MENOS DE 50 PZS.) ","DESCRIPCION"]
+      Row 4: ["","MS-035W","","BLUETOOTH SPEAKER                                              50 UNID X CAJA                                                   ","NATURAL",961,"S/. 25.00 C/U","S/. 26.00 C/U","S/. 27.50 C/U","Medida: 7cm x 4.6cm                        \r\nPotencia: 3W + 5V + 300 MAH \r\nInalambrico: Bluetooth\r\nAccesorios: 1 cable para recarga                              \r\nPresentacion: 1 unidad en caja kraft"]
+      Row 5: ["","MS-046E1","","BLUETOOTH SPEAKER                                              50 UNID X CAJA                                                   ","NATRURAL",1497,"S/. 24.50 C/U","S/. 25.50 C/U","S/. 27.00 C/U","Medida: 6cm x 6cm x 4.7cm                      \r\n  Potencia: 3.7W + 5V + 300 MAH \r\nInalambrico: Bluetooth\r\nAccesorios: 1 cable para recarga                               \r\nPresentacion: 1 unidad en caja kraft"]
+      Row 6: ["","MS-046E2","","BLUETOOTH SPEAKER                                              50 UNID X CAJA                                                   ","NATURAL",1421,"S/. 23.00 C/U","S/. 24.00 C/U","S/. 26.00 C/U","Medida: 6cm x 6cm x 5cm                       \r\n Potencia: 3W                                    \r\n Inalambrico: Bluetooth\r\nAccesorios: 1 cable para recarga                            \r\n Presentacion: 1 unidad en caja kraft"]
+
+================================================== 
+Auditing: PROMOPRIME.xlsx 
+Size: 7.21 MB 
+Sheet names: ["Stock Promomerch (2)"]
+Loading full workbook data... 
+Loaded in 0.07s 
+  Sheet: "Stock Promomerch (2)" | Range: A1:R470 
+    Total rows found in array: 470 
+    Header row index: 5 
+    Headers: ["Artículo","Código","Imagen Referencial","Tipo de Impresión","Descripción","Colores","X Millar            (a partir de 500 pzs.)","X ciento       (a partir de 50 pzs.)","Muestra ","Stock","En Transito"]
+    Sample rows: 
+      Row 6: ["KIT VIAJERO","","","KIT-01","","","","","SERIGRAFIA                  TAMPOGRAFIA","KIT : Incluye : 1 Botella de 110 ml con tapa VALVULA y 1 botella de 110 ml para PRESS + Estuche de plastico pavonado CIERRE TIPO ZIPLOT "]
+      Row 7: ["Frasco Spray para Alcohol ","","","FS-01","","","","","SERIGRAFIA                  TAMPOGRAFIA","Material Plastico , Capacidad 60 ml , incluye Arnes metalico color plata , presentacion : Bolsa x 10 unds y Caja por 900 unds , Los arnes vienen separados. "]
+      Row 8: ["","","","","","","","","",""]
+      Row 9: ["Mascarilla 3 pliegues ","","","M-03","","","","","","3 CAPAS DE PROTECCION: 1ERA CAPA : capaprotectora de tela no tejida hilada de polipropileno . 2DA CAPA : Capa de hilado por soplado Melt-Blown Filter .3 ERA CAPA :capa de algodón no tejido , absorbe el aire caliente exhalado por el cuerpo . PRESENTACION: CAJA X 50 UNDS ."]
+
+================================================== 
+Auditing: PROMOS.xlsx 
+Size: 35.98 MB 
+Sheet names: ["CUIDADO PERSONAL","TECNOLOGÍA","ACCESORIOS PARA CELULAR","HOGAR","HERRAMIENTEROS","LAPICES Y LAPICEROS","RESALTADORES","LIBRETAS","ART. PARA OFICINA","ART. ECOLÓGICOS PARA OFICINA","TOMATODOS","MUGS Y TAZAS","MOCHILAS Y BOLSOS","VERANO","VIAJE","FUNDAS Y ESTUCHES","REMATES!","EN TRÁNSITO","Ofertas"]
+Loading full workbook data... 
+Loaded in 0.17s 
+  Sheet: "CUIDADO PERSONAL" | Range: A1:V469 
+    Total rows found in array: 469 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["IMPERMEABLE","MS-114 IMPERMEABLE PEGABLE","MS-114 IMPERMEABLE PEGABLE","PD00631","","",2987,5.5,5.9,6.5]
+      Row 4: ["KIT FRASCOS SPRAY","CP-65 TRAVEL KIT SPRAY","CP-65 TRAVEL KIT SPRAY","PD04619","","",9887,5.15,5.4,5.9]
+      Row 5: ["KIT FRASCOS SPRAY","CP-65 TRAVEL KIT SPRAY B","CP-65 TRAVEL KIT SPRAY B","PD04811","","",8122,5,5.2,5.5]
+      Row 6: ["FRASCO SPRAY","CP-50 FRASCO SPRAY PARA ALCOHOL 60 ML","CP-50 FRASCO SPRAY PARA ALCOHOL 60 ML","PD03756","","TRANSPARENTE",612,1.2,1.4,1.6]
+  Sheet: "TECNOLOGÍA" | Range: A1:N35 
+    Total rows found in array: 35 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["PARLANTE BLUETOOTH","TC-105 PARLANTE BLUETOOTH AZHAR CON  PORTA CELULAR","TC-105 PARLANTE BLUETOOTH AZHAR CON  PORTA CELULAR","PD04896","","NEGRO",1760,32.5,34.5,36.5]
+      Row 4: ["PARLANTE BLUETOOTH","TC-103 PARLANTE BLUETOOTH RUBAB","TC-103 PARLANTE BLUETOOTH RUBAB","PD04673","","",1814,22.5,23.5,26.5]
+      Row 5: ["AUDIFONO","TC-97 AUDIFONO AIRPODS PRO 3G GENERICO","TC-97 AUDIFONO AIRPODS PRO 3G GENERICO","PD04664","","",2640,23,24.5,26.5]
+      Row 6: ["AUDIFONOS BLUETOOTH","TC-84 AUDIFONO TIPO EARBUDS","TC-84 AUDIFONO TIPO EARBUDS COLOR NEGRO","PD04308","","NEGRO",1998,27,29,30]
+  Sheet: "ACCESORIOS PARA CELULAR" | Range: A1:N25 
+    Total rows found in array: 25 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["CARGADOR PULPO","TC-106 MULTICARGADOR KHALIL BAMBU","TC-106 MULTICARGADOR KHALIL BAMBU","PD04899","","",4637,14.1,14.6,16]
+      Row 4: ["CARGADOR PULPO","TC-107 LLAVERO MULTICARGADOR HAKIM BAMBU","TC-107 LLAVERO MULTICARGADOR HAKIM BAMBU","PD04900","","",4998,10.5,11,12]
+      Row 5: ["CARGADOR PULPO","TC-53 CARGADOR PULPO","TC-53 CARGADOR PULPO","PD04256","","",3662,10,10.5,11]
+      Row 6: ["CARGADOR PULPO","TC-95 CABLE CARABINERO CARGADOR CON 3 ENTRADAS","TC-95 CABLE CARABINERO CARGADOR CON 3 ENTRADAS","PD04536","","",2982,12,12.5,13]
+  Sheet: "HOGAR" | Range: A1:N28 
+    Total rows found in array: 28 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["SET DE VINO","SV-08 SET DE VINO REDONDO CON PROTECTOR DE CUERINA","SV-08 SET DE VINO REDONDO CON PROTECTOR DE CUERINA","PD01104","","NEGRO",868,26,27,28.5]
+      Row 4: ["SET DE PARRILLA","SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA","SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA","PD04669","","",707,25,26,27]
+      Row 5: ["SET DE PARRILLA","SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA B","SP-02 SET PARRILLERO SHAIMA CON MANGOS DE MADERA B","PD04962","","",2012,25,26,27]
+      Row 6: ["SET DE PARRILLA","SP-01 SET PARRILLERO 3 PIEZAS","SP-01 SET PARRILLERO 3 PIEZAS","PD02901","","",24,22.9,23.5,25]
+  Sheet: "HERRAMIENTEROS" | Range: A1:N20 
+    Total rows found in array: 20 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["LLAVERO HERRAMIENTERO","HR-12 HERRAMIENTERO CIRCULAR","HR-12 HERRAMIENTERO CIRCULAR COLOR NEGRO","PD03158","","NEGRO",1549,2.8,3,4.5]
+      Row 4: ["","","HR-12 HERRAMIENTERO CIRCULAR COLOR TRANSPARENTE","PD03159","","TRANSPARENTE",1435,"","",""]
+      Row 5: ["LINTERNA","HR-13 LINTERNA","HR-13 LINTERNA NEGRA","PD03787","","NEGRO",1594,6.8,7.2,8.5]
+      Row 6: ["HERRAMIENTERO LLANTA","HR-01 HERRAMIENTERO LLANTA X 24 PIEZAS","HR-01 HERRAMIENTERO LLANTA X 24 PIEZAS","PD00108","","",729,24.4,25.4,27.9]
+  Sheet: "LAPICES Y LAPICEROS" | Range: A1:N53 
+    Total rows found in array: 53 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["LAPIZ CON SEMILLAS","ECO-49 LAPIZ SEMILLA DE MADERA","ECO-49 LAPIZ SEMILLA DE MADERA","PD04906","","NATURAL",3458,1.1,1.4,2]
+      Row 4: ["LAPIZ CON SEMILLAS","ECO-76 LAPIZ SEMILLA DE CARTON","ECO-76 LAPIZ SEMILLA DE CARTON","PD04908","","NATURAL",18173,1.2,1.5,2]
+      Row 5: ["LAPICERO DE CORCHO","LE-09 LAPICERO ECO CORCHO","LE-09 LAPICERO ECO CORCHO","PD04315","","",14203,0.65,0.7,1.5]
+      Row 6: ["LAPICERO DE FIBRA DE TRIGO","LE-12 LAPICERO TOUCH DE FIBRA DE TRIGO","LE-12 LAPICERO TOUCH DE FIBRA DE TRIGO","PD04325","","",12670,0.68,0.75,1.5]
+  Sheet: "RESALTADORES" | Range: A1:R17 
+    Total rows found in array: 17 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["RESALTADOR FLOR","OF-159 RESALTADOR FLOR","OF-159 RESALTADOR FLOR","PD04631","","",1585,2.8,3,4]
+      Row 4: ["RESALTADOR MANO","OF-163 RESALTADOR MANITO","OF-163 RESALTADOR MANITO","PD04820","","",1241,2.97,3.05,4.24]
+      Row 5: ["SET DE 5 RESALTADORES","OF-50 SET DE RESALTADORES X 5","OF-50 SET DE RESALTADORES X 5","PD01322","","",468,3.2,3.4,4.2]
+      Row 6: ["RESALTADOR ESTRELLA","OF-160 RESALTADOR ESTRELLA","OF-160 RESALTADOR ESTRELLA","PD04632","","",1609,2.37,2.54,2.97]
+  Sheet: "LIBRETAS" | Range: A1:O51 
+    Total rows found in array: 51 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["LIBRETA ECOLOGICA","OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS","OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR ROJO","PD04522","","ROJO",4359,7.5,7.7,8.7]
+      Row 4: ["","","OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR NEGRO","PD04523","","NEGRO",4995,"","",""]
+      Row 5: ["","","OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR AZUL OSCURO","","","AZUL OSCURO",2998,"","",""]
+      Row 6: ["","","OF-158 CUADERNO A5 CON SEPARADOR DE HOJAS Y NOTAS ADHESIVAS COLOR AZUL","PD04629","","AZUL",435,"","",""]
+  Sheet: "ART. PARA OFICINA" | Range: A1:N33 
+    Total rows found in array: 33 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["SET DE ESCRITORIO","OF-164 PORTA LAPICERO HAIDAR","OF-164 PORTA LAPICERO HAIDAR","PD04898","","NEGRO",2926,12.5,13.5,14.5]
+      Row 4: ["PIZARRA CON TIZA","ECO-51 PIZARRA CON TRIPODE DE MADERA","ECO-51 PIZARRA CON TRIPODE DE MADERA","PD03040","","",2660,4.4,4.4,4.4]
+      Row 5: ["ALCANCIAS","MS-110 ALCANCIA TIPO CHANCHITO","MS-110 ALCANCIA TIPO CHANCHITO PLOMO OSCURO","PD03303","","PLOMO OSCURO",0,3.25,3.45,4.5]
+      Row 6: ["","","MS-110 ALCANCIA TIPO CHANCHITO ROSADO SOLIDO","PD00614","","ROSADO SOLIDO",2999,"","",""]
+  Sheet: "ART. ECOLÓGICOS PARA OFICINA" | Range: A1:N29 
+    Total rows found in array: 29 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["CARPETA ECOLOGICA","ECO-36 LIBRETA RECICLADA COLOR NATURAL","ECO-36 LIBRETA RECICLADA COLOR NATURAL","PD00432","","",3983,6.15,6.35,7.5]
+      Row 4: ["PLANNER ECOLÓGICO","ECO-80 PLANNER AESTHETIC ECOLOGICO","ECO-80 PLANNER AESTHETIC ECOLOGICO","PD04411","","",4639,8,8.4,9.9]
+      Row 5: ["CARPETA ECOLOGICA","ECO-55 CARPETA ECOLOGICA 3 CUERPOS","ECO-55 CARPETA ECOLOGICA 3 CUERPOS","PD03147","","",982,11.8,12.3,13.5]
+      Row 6: ["SET DE ESCRITORIO DE JUTE CON CIERRE","ECO-79 CARTUCHERA CON SET ECOLOGICO","ECO-79 CARTUCHERA CON SET ECOLOGICO","PD04260","","",0,4.9,5.2,6.5]
+  Sheet: "TOMATODOS" | Range: A1:S80 
+    Total rows found in array: 80 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["TOMATODO METALICO ","TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR","TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR COLOR NUDE","PD04374","","NUDE",906,30,32,35]
+      Row 4: ["","","TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR COLOR NEGRO","PD04375","","NEGRO",79,"","",""]
+      Row 5: ["TOMATODO METALICO ","TMD-49 TOMATODO DE ALUMINIO CON ASA COLGANTE DE SILICONA","TMD-49 TOMATODO DE ALUMINIO CON ASA COLGANTE DE SILICONA COLOR BLANCO","PD04873","","BLANCO",2550,6.3,6.5,7.5]
+      Row 6: ["","","TMD-49 TOMATODO DE ALUMINIO CON ASA COLGANTE DE SILICONA COLOR PLATEADO","PD04874","","SILVER",2952,"","",""]
+  Sheet: "MUGS Y TAZAS" | Range: A1:O44 
+    Total rows found in array: 44 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["MUG METALICO","MUG-39 SALMA CON ABRIDOR DE BOTELLA","MUG-39 SALMA CON ABRIDOR DE BOTELLA","PD04895","","NEGRO",1986,15.5,17.5,18.5]
+      Row 4: ["MUG METALICO","MUG-38 AMAL CON ASA","MUG-38 AMAL CON ASA COLOR BLANCO","PD04894","","BLANCO",1107,24.5,26.5,29.5]
+      Row 5: ["","","MUG-38 AMAL CON ASA COLOR NEGRO","PD04893","","NEGRO",2395,"","",""]
+      Row 6: ["MUG METALICO","MUG-37 MUG TERMICO HAIFA DOBLE PARED DE ACERO INOXIDABLE CON CAÑA FLEXIBLE","MUG-37 MUG TERMICO HAIFA DOBLE PARED DE ACERO INOXIDABLE CON CAÑA FLEXIBLE COLOR NUDE","PD04795","","NUDE",1330,35,37,40]
+  Sheet: "MOCHILAS Y BOLSOS" | Range: A1:S92 
+    Total rows found in array: 92 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["NECESER","TX-163 NECESER TALIBA","TX-163 NECESER TALIBA","PD04672","","",3872,7.5,8,9]
+      Row 4: ["MOCHILAS","TX-166 MOCHILA PORTA LAPTOP JAMIL","TX-166 MOCHILA PORTA LAPTOP JAMIL","PD04901","","NEGRO",1553,28,30,34]
+      Row 5: ["MOCHILAS","TX-151 MOCHILA PORTA LAPTOP CON ACCESORIO PARA CARGADOR","TX-151 MOCHILA PORTA LAPTOP CON ACCESORIO PARA CARGADOR COLOR PLOMO","PD04334","","PLOMO",3558,28,30,34]
+      Row 6: ["","","TX-151 MOCHILA PORTA LAPTOP CON ACCESORIO PARA CARGADOR COLOR NEGRO","PD04549","","NEGRO",1729,"","",""]
+  Sheet: "VERANO" | Range: A1:N12 
+    Total rows found in array: 12 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["TAPASOL","MS-72 TAPASOL COLAPSIBLE","MS-72 TAPASOL COLAPSIBLE COLOR PLOMO","PD01069","","PLOMO",107,6.8,7,8]
+      Row 4: ["INFLABLE","VP-17 RESPALDAR INFLABLE COLOR VERDE","VP-17 RESPALDAR INFLABLE COLOR VERDE","PD02293","","VERDE",480,12.5,12.5,12.5]
+      Row 5: ["","","","","","","","","",""]
+      Row 6: ["","","","","","","","","",""]
+  Sheet: "VIAJE" | Range: A1:N17 
+    Total rows found in array: 17 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["IMPERMEABLE","MS-114 IMPERMEABLE PEGABLE","MS-114 IMPERMEABLE PEGABLE","","","",2987,5.5,5.9,6.5]
+      Row 4: ["KIT DE FRASCOS","CP-64 TRAVEL KIT PUSH","CP-64 TRAVEL KIT PUSH","PD04613","","",327,6.5,6.9,7.5]
+      Row 5: ["KIT DE FRASCOS","CP-64 TRAVEL KIT PUSH B","CP-64 TRAVEL KIT PUSH B","PD04633","","",3983,6.5,6.9,7.5]
+      Row 6: ["CARGADOR USB","TC-54 CARGADOR USB DE PARED","TC-54 CARGADOR USB DE PARED COLOR BLANCO","PD02994","","BLANCO",610,2.2,2.4,3]
+  Sheet: "FUNDAS Y ESTUCHES" | Range: A1:N14 
+    Total rows found in array: 14 
+    Header row index: 2 
+    Headers: ["LINEA","CÓDIGO","ARTÍCULO","CÓDIGO SISTEMA","IMAGEN","COLOR","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCIÓN","PRESENTACIÓN","OBSERVACIONES"]
+    Sample rows: 
+      Row 3: ["FUNDA PANA","MS-30 FUNDA DE PANA NEGRA PARA LAPICEROS","MS-30 FUNDA DE PANA NEGRA PARA LAPICEROS","PD00980","","NEGRO",80,0.23,0.23,0.23]
+      Row 4: ["FUNDA DE CORCHO","LE-08 FUNDA ECOLOGICA PARA LAPICERO","LE-08 FUNDA ECOLOGICA PARA LAPICERO","PD03614","","",5959,0.95,0.99,1.1]
+      Row 5: ["ESTUCHE METALICO","MS-158 ESTUCHE DE LATA GRANDE","TC-54 CARGADOR USB DE PARED COLOR BLANCO","PD02994","","",610,2.2,2.2,2.8]
+      Row 6: ["ESTUCHE PLASTICO","MS-233 ESTUCHE PLASTICO GRANDE PARA USB","MS-303 BALANZA DIGITAL PORTATIL RUBBER COLOR NEGRO","PD00986","","",12,1.4,1.6,2]
+  Sheet: "REMATES!" | Range: A1:L147 
+    Total rows found in array: 147 
+    Header row index: 1 
+    Headers: ["LINEA","ARTÍCULO","IMAGEN","STOCK","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID","DESCRIPCION","PRESENTACION DEL ARTICULO","RESERVAS","CONSULTAR OBSERVACIONES"]
+    Sample rows: 
+      Row 2: ["MOCHILAS","TX-147 MOCHILA CRUZADA DELUXE DE PU (BIOCUERO) B","PD04625","",120,17,18,20,"MOCHILA CRUZADA  CON CANDADO DE CLAVE DE 3 DÍGITOS, ETRADA USB INTERNA Y EXTERNA PARA ADPATAR CARGADOR DE CELULAR PORTÁTIL, MATERIAL: PULEATHER  PRESENTACION: BOLSA INDIVIDUAL   PESO: 300 gr  DIMENSIONES:  34X17X8 cm","BOLSA PLASTICA INDIVIDUAL"]
+      Row 3: ["MOUSE PAD ERGONÓMICO","MS-274 MOUSE PAD DE NYLON Y SILICONA ERGONOMICO ROJO","PD00943","",25,7,7,7,"MATERIAL: BASE ANTIDESLIZANTE, EXTERIOR DE NYLON, APOYA MUÑECA CON INTERIOR DE GEL. ",""]
+      Row 4: ["ACCESORIOS PARA CELULAR ","TC-51 AUDIFONO BLUETOOTH COLOR NEGRO","PD04075","",580,9.9,9.9,9.9,"MEDIDA: 5.2 X 6.5 CM. INCLUYE CABLE Y MANUAL EN INGLES","BOLSITA INDIVIDUAL Y CAJA BLANCA DE CARTÓN"]
+      Row 5: ["ACCESORIOS PARA CELULAR ","MS-184 COLGADOR PARA CELULAR CON PUNTA TOUCH","PD00789","",6558,0.7,0.7,0.7,"COLOR PLATA/ MATERIAL PLÁSTICO/ TAMAÑO: 7 CM DE LARGO/ PRECIO ANTERIOR S/1.90","BOLSA PLASTICA INDIVIDUAL"]
+  Sheet: "EN TRÁNSITO" | Range: A1:H13 
+    Total rows found in array: 13 
+    Header row index: 1 
+    Headers: ["ARTÍCULO","DESCRIPCION","IMAGEN","CANTIDAD","A PARTIR DE 500 UND","A PARTIR DE 50 UNID","DE 1 A 49 UNID"]
+    Sample rows: 
+      Row 2: ["","MUG-25"," TAZA CERAMICA PARA BEBIDAS CALIENTES Y FRÍAS, CON TAPA PLASTICA COLOR BLANCO Y BASE DE CORCHO, MATERIAL: CERÁMICA, PRESENTACION: CAJA INDIVIDUAL CAPACIDAD: 350 ML","",2000,"","",""]
+      Row 3: ["","MUG-25"," TAZA CERAMICA PARA BEBIDAS CALIENTES Y FRÍAS, CON TAPA PLASTICA COLOR NEGRO Y BASE DE CORCHO, MATERIAL: CERÁMICA, PRESENTACION: CAJA INDIVIDUAL CAPACIDAD: 350 ML","",4500,"","",""]
+      Row 4: ["","PARLANTE-NEW","PARLANTE BT COLOR NEGRO","",1500,"","",""]
+      Row 5: ["","PARLANTE-NEW","PARLANTE BT COLOR NEGRO","",1500,"","",""]
+  Sheet: "Ofertas" | Range: A1:K1055 
+    Total rows found in array: 1055 
+    Header row index: 0 
+    Headers: ["       Los precios NO incluyen IGV","LE RECOMENDAMOS ADQUIRIR UNA MUESTRA, ANTES DE CONFIRMAR SU PEDIDO. DE LO CONTRARIO NO HABRÁ CAMBIOS, NI DEVOLUCIONES."]
+    Sample rows: 
+      Row 1: ["LINEA","ARTÍCULO","IMAGEN","STOCK","PRECIO UNIT  A PARTIR DE 500 UND","PRECIO UNIT A PARTIR DE 50 UNID","PRECIO UNIT DE 1 A 49 UNID","DESCRIPCION","RESERVAS","OBSERVACIONES"]
+      Row 2: ["POWER BANK","TC-28 POWER BANK CON ARGOLLA COLOR NEGRO","REMATON!!!",209,"",14.9,"","POWER BANK PLÁSTICO/MEDIDA: 9.3 X 2.5 CM/ÁREA MÁXIMA DE IMPRESIÓN: 8.5 X 2 CM/TIPO DE IMPRESIÓN: SERIGRAFIA / CAPACIDAD: 2200 MAH /PRESENTACIÓN: CAJA NEGRA DE CARTÓN","","PRECIO ÚNICO A PARTIR DE 50 UND (NO HAY DESCUENTO ADICIONAL)"]
+      Row 3: ["USB       ","USB-008 LLAVE ROJA 8GB","OFERTA!!!",132,"",18,22,"CAPACIDAD 8GB. PRESENTACIÓN: CAJA METÁLICA / MEDIDAS: 5.5 X 2.3 CM/ÁREA MÁXIMA DE IMPRESIÓN: 3 X 0.8 CM/TIPO DE IMPRESIÓN: SERIGRAFÍA O LÁSER","","PRECIO ÚNICO A PARTIR DE 50 UND (NO HAY DESCUENTO ADICIONAL)"]
+      Row 4: ["USB       ","USB-008 8GB LLAVE NEGRO","OFERTA!!!",22,"",18,22,"CAPACIDAD 8GB. PRESENTACIÓN: CAJA METÁLICA / MEDIDAS: 5.5 X 2.3 CM/ÁREA MÁXIMA DE IMPRESIÓN: 3 X 0.8 CM/TIPO DE IMPRESIÓN: SERIGRAFÍA O LÁSER","","PRECIO ÚNICO A PARTIR DE 50 UND (NO HAY DESCUENTO ADICIONAL)"]
+
+================================================== 
+Auditing: TIENDA PUBLI.xlsx 
+Size: 73.10 MB 
+Sheet names: ["CUADERNOS Y LIBRETAS","OFICINA Y ESCRITORIO","RESALTADORES","TOMATODOS","MUG Y TERMOS","ECOLOGICOS","LLAVEROS","HOME","TECNOLOGICOS","ARTICULOS DE VIAJE","SALUD Y CUIDADO PERSONAL","AUTOS Y HERRAMIENTAS","VARIOS","LIQUIDACIONES"]
+Loading full workbook data... 
+Loaded in 0.18s 
+  Sheet: "CUADERNOS Y LIBRETAS" | Range: A1:I138 
+    Total rows found in array: 138 
+    Header row index: 8 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 9: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 10: ["","CUADERNO ASHER","","NEGRO",3000,"S/ 6.84 INCLUIDO IGV","S/ 7.08 INCLUIDO IGV","S/ 8.26 INCLUIDO IGV",""]
+      Row 11: ["","Material: Tapa dura forrado en PU Bambú + RPET (abajo)","Caja x 50 unid","","","","","",""]
+      Row 12: ["","Medida: 14.5cmx21cm","Medida:  40.5x32x23.5 cm","","","","","",""]
+  Sheet: "OFICINA Y ESCRITORIO" | Range: A8:I95 
+    Total rows found in array: 88 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","MEMO CLIP BAMBÚ","","BAMBÚ",3000,"S/2.12 INCLUIDO IGV"," S/2.24 INCLUIDO IGV","S/ 3.54 INCLUIDO IGV",""]
+      Row 4: ["","Material: Clip de Metal y Base de Bambú","Caja x 500 unid","","","","","",""]
+      Row 5: ["","Medida: 3cm x 3cm x 3cm","Medida: 53x28x39 cm","","","","","",""]
+  Sheet: "RESALTADORES" | Range: A9:I54 
+    Total rows found in array: 46 
+    Header row index: 0 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 1: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 2: ["","RESALTADOR TORINO ECO","","AMARILLO ",3000,"S/ 1.89 INCLUIDO IGV","S/ 2.01 INCLUIDO IGV","S/ 2.48 INCLUIDO IGV",""]
+      Row 3: ["","Material: Fibra de Trigo","Caja x 500 unid","ROJO",3000,"","","",""]
+      Row 4: ["","Medida: 12cm x 2.5cm x 1 cm ","Medida: 64.50x40x15 cm","VERDE",3000,"","","",""]
+  Sheet: "TOMATODOS" | Range: A1:I185 
+    Total rows found in array: 185 
+    Header row index: 8 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 9: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 10: ["","BOTELLA TORRENOSTRA","","NEGRO",3500,"S/ 8.61   INCLUIDO IGV","S/ 9.09  INCLUIDO IGV","S/ 10.03 INCLUIDO IGV",""]
+      Row 11: ["","Material: Vidrio resistente + Bambú + Sujetador ","Caja x 40 unid","","","","","",""]
+      Row 12: ["","Capacidad: 500ml","Medida: 74x38x25 cm","TRANSP MATE",3500,"","","",""]
+  Sheet: "MUG Y TERMOS" | Range: A8:I172 
+    Total rows found in array: 165 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","MUG TERMICO BENICASIM","","BLANCO",1800,"S/ 21.83        INCLUIDO IGV","S/  22.30      INCLUIDO IGV","S/ 24.66       INCLUIDO IGV",""]
+      Row 4: ["","Material: Acero con aplicación de Bambú","Caja x 25 unid","","","","","",""]
+      Row 5: ["","Capacidad: 600ml","Medida: 47x47x21.5 cm","","","","","",""]
+  Sheet: "ECOLOGICOS" | Range: A8:I48 
+    Total rows found in array: 41 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","BOLSA CON FUELLE 40X40X15","","BEIGE",155,"S/ 1.95 INCLUIDO IGV","S/ 2.12 INCLUIDO IGV","S/ 2.36 INCLUIDO IGV",""]
+      Row 4: ["","Material: Notex","Caja x 250 unid","AZUL",4690,"","","",""]
+      Row 5: ["","Medida: 40cm x 40cm x 15cm","Medida:  43x50x55cm","NEGRO ",1821,"","","",""]
+  Sheet: "LLAVEROS" | Range: A8:I82 
+    Total rows found in array: 75 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","LLAVERO CASCO DESTAPADOR + LINTERNA","","BLANCO",3000,"S/ 2.12 INCLUIDO IGV","S/ 2.24 INCLUIDO IGV","S/ 2.71 INCLUIDO IGV",""]
+      Row 4: ["","Material: PVC y Metal","Caja x 500 unid","","","","","",""]
+      Row 5: ["","Medida: 5.8 cm x 4.5 cm","Medida:  37.50x27x54 cm","","","","","",""]
+  Sheet: "HOME" | Range: A8:I72 
+    Total rows found in array: 65 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","SET PARRILLERO ASADOR","","MADERA",2000,"S/ 33.68 INCLUIDO IGV","S/ 34.83  INCLUIDO IGV","S/ 36.58  INCLUIDO IGV",""]
+      Row 4: ["","Material: Acero Inoxidable con mango de madera y Nylon","Caja x 12 unid","","","","","",""]
+      Row 5: ["","Medida: 39x11x3.5cm","Medida: 46x31.5x28 cm","","","","","",""]
+  Sheet: "TECNOLOGICOS" | Range: A8:I381 
+    Total rows found in array: 374 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","CABLE CARGADOR EZIO","","FIBRA DE TRIGO",3000,"S/ 10.27 INCLUIDO IGV","S/ 10.62 INCLUIDO IGV","S/ 11.80 INCLUIDO IGV",""]
+      Row 4: ["","Material: Bambú y Fibra de trigo","Caja x 24 unid","","","","","",""]
+      Row 5: ["","Medida: 6.2x5.4x3.2 cm","Medida: 43x32x37cm","","","","","",""]
+  Sheet: "ARTICULOS DE VIAJE" | Range: A9:I113 
+    Total rows found in array: 105 
+    Header row index: 0 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 1: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 2: ["","ADAPTADOR MULTIPLE TRAVELER","","NEGRO",1000,"S/ 8.85 INCLUIDO IGV","S/ 9.20 INCLUIDO IGV","S/ 10.03 INCLUIDO IGV",""]
+      Row 3: ["","Material: Plástico (ABS)","Caja x 100 unid","","","","","",""]
+      Row 4: ["","Medida: 6.2cm x 6 cm x 4.7 cm","Medida: 37 x 27x 28 cm","","","","","",""]
+  Sheet: "SALUD Y CUIDADO PERSONAL" | Range: A1:I45 
+    Total rows found in array: 45 
+    Header row index: 8 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 9: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 10: ["","TERMOMETRO INFRARROJO DIGITAL","","BLANCO ",3,"   PU: S/ 59.00 INCLUIDO IGV                                                              ","","",""]
+      Row 11: ["","Modelo:  KY 111","Caja x 200un","","","","","",""]
+      Row 12: ["","Marca:  KANGJI","Caja Individual ","","","","","",""]
+  Sheet: "AUTOS Y HERRAMIENTAS" | Range: A1:I116 
+    Total rows found in array: 116 
+    Header row index: 8 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 9: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 10: ["","SET HERRAMIENTAS TERRANO","","BAMBÚ",1000,"S/ 28.91 INCLUIDO IGV","S/ 30.09 INCLUIDO IGV","S/31.86 INCLUIDO IGV",""]
+      Row 11: ["","Material: PVC, Metal y Bambú","Caja x 24 unid","","","","","",""]
+      Row 12: ["","Medidas cerrado: 16 diametro x 5 cm.","Medida:51x34x26.5 cm","","","","","",""]
+  Sheet: "VARIOS" | Range: A8:I38 
+    Total rows found in array: 31 
+    Header row index: 1 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 2: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 3: ["","TARJETERO DE SILICONA ","","AMARILLO",5289,"S/ 1.12 INCLUIDO IGV","S/ 1.18 INCLUIDO IGV","S/ 2.01 INCLUIDO IGV",""]
+      Row 4: ["","Material: Silicona","Caja x 1000 unid","ROJO ",8500,"","","",""]
+      Row 5: ["","Medida:  8.6cm x 5.7 cm","Medida:  37x27x2 cm","BLANCO",5000,"","","",""]
+  Sheet: "LIQUIDACIONES" | Range: A9:I162 
+    Total rows found in array: 154 
+    Header row index: 0 
+    Headers: ["MEJORES PRECIOS Y CALIDAD","ACTUALIZADO EL : ",46103]
+    Sample rows: 
+      Row 1: ["PRODUCTO ","DESCRIPCION x PRODUCTO","DETALLE x CAJA","COLOR","STOCK","PU 500 A 1000","PU 50 A 499","1 A 49","PROMOCIONES"]
+      Row 2: ["","USB DE CUERO OMEGA 4GB","","MARRON",55,"","","S/ 18.88 INCLUIDO IGV",""]
+      Row 3: ["","Material: Metal y Cuero","Caja Pavonada imantada","","","","","",""]
+      Row 4: ["","Capacidad: 4 GB ","Medida: ","","","","","",""]

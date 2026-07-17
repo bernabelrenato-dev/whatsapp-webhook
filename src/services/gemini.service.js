@@ -251,6 +251,80 @@ class GeminiService {
     this.conversationHistory.delete(phoneNumber);
     logger.debug({ msg: 'Historial de conversación limpiado', phoneNumber });
   }
+
+  /**
+   * Identifica un producto del catálogo JGIS a partir del buffer de una imagen.
+   * @param {Buffer} imageBuffer Buffer binario de la imagen.
+   * @param {string} mimeType Tipo MIME de la imagen (ej: 'image/jpeg').
+   * @returns {Object} { matched: boolean, code: string, reason: string }
+   */
+  async identifyProductFromImage(imageBuffer, mimeType) {
+    if (!this.genAI) {
+      logger.warn('Gemini AI no inicializado al intentar identificar producto por imagen.');
+      return { matched: false, code: '' };
+    }
+
+    try {
+      logger.info({ msg: 'Iniciando identificación visual en dos etapas...', mimeType });
+      
+      const imagePart = {
+        inlineData: {
+          data: imageBuffer.toString('base64'),
+          mimeType
+        }
+      };
+
+      // Etapa 1: Preguntar a Gemini Vision qué producto de merchandising es
+      const descModel = this.genAI.getGenerativeModel({ model: 'gemini-3.1-flash-lite' });
+      const descPrompt = `
+        Analiza la imagen adjunta y responde únicamente con una frase corta de 2 a 3 palabras que describa qué tipo de artículo publicitario de merchandising es (ej: "taza de cerámica", "tomatodo de metal", "lapicero plástico", "bolsa ecológica", "libreta de corcho"). Sé extremadamente conciso. No respondas nada más.
+      `;
+      
+      const descResult = await descModel.generateContent([descPrompt, imagePart]);
+      const searchTerms = descResult.response.text().trim().replace(/['"«»]/g, '');
+      logger.info({ msg: 'Términos de descripción generados por Gemini Vision', searchTerms });
+
+      // Etapa 2: Obtener candidatos coincidentes de la base de datos Postgres
+      const candidates = await catalogService.getCandidatesForImage(searchTerms);
+      logger.info({ msg: 'Candidatos obtenidos desde base de datos', count: candidates.length });
+
+      if (candidates.length === 0) {
+        logger.warn('⚠️ No se encontraron candidatos en la base de datos Postgres para la imagen.');
+        return { matched: false, code: '', isAlternative: false, reason: 'No se encontraron artículos similares en catálogo.' };
+      }
+
+      // Etapa 3: Comparar la foto contra los candidatos seleccionados
+      const prompt = `
+        Analiza detalladamente la foto del producto de merchandising adjunta.
+        Compara sus características visuales (forma, material, color, tapas, etc.) contra esta lista de candidatos oficiales de catálogo en formato JSON:
+        ${JSON.stringify(candidates)}
+        
+        Tu tarea es identificar la coincidencia más cercana o el producto más similar dentro de esta lista de candidatos.
+        Incluso si no es el modelo exacto, si la forma y tipo coinciden, selecciónalo como una coincidencia por similitud.
+        
+        Responde estrictamente en formato JSON válido con la siguiente estructura (sin formato de markdown ni caracteres extraños):
+        {
+          "matched": true,
+          "code": "CÓDIGO_DEL_PRODUCTO_MÁS_SIMILAR_ENCONTRADO",
+          "isAlternative": true,
+          "reason": "Explicación breve de por qué coincide o por qué es la mejor alternativa similar encontrada"
+        }
+        
+        Si el objeto de la foto no tiene ninguna relación con los productos del catálogo, responde con "matched": false, "code": "", "isAlternative": false, "reason": "No se parece a ningún artículo en catálogo".
+      `;
+
+      const result = await descModel.generateContent([prompt, imagePart]);
+      const text = result.response.text().trim();
+      const cleanJson = text.replace(/```json/g, '').replace(/```/g, '').trim();
+      
+      const parsed = JSON.parse(cleanJson);
+      logger.info({ msg: 'Identificación visual en dos etapas completada con éxito', matched: parsed.matched, code: parsed.code });
+      return parsed;
+    } catch (error) {
+      logger.error({ msg: 'Error en la identificación de producto por imagen', error: error.message });
+      return { matched: false, code: '' };
+    }
+  }
 }
 
 module.exports = new GeminiService();

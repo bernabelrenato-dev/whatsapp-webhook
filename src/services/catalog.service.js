@@ -1,103 +1,124 @@
-const catalog = require('../config/catalog.json');
+const { Client } = require('pg');
 const logger = require('../utils/logger');
 
 class CatalogService {
   /**
-   * Realiza una búsqueda de palabras clave en el catálogo consolidado de productos.
-   * @param {string} query Término de búsqueda de producto.
-   * @returns {Array} Listado de hasta 5 productos que coincidan.
-   */
-  /**
    * Calcula los precios de venta al público aplicando el margen de JGIS
    * en base a los precios de costo del Excel.
+   * @param {string|number} costUnit Costo unitario base.
    */
-  calculateSellingPrices(item) {
-    const cost_500 = item.price_500;
-    const cost_50 = item.price_50 || cost_500;
-    const cost_1 = item.price_1 || cost_50 || cost_500;
+  calculateSellingPrices(costUnit) {
+    const cost = parseFloat(costUnit) || 0;
 
     return {
-      precio_1_5_unidades: cost_1 ? `S/ ${(cost_1 * 1.85).toFixed(2)}` : 'No disponible',
-      precio_6_12_unidades: cost_1 ? `S/ ${(cost_1 * 1.40).toFixed(2)}` : 'No disponible',
-      precio_13_50_unidades: cost_50 ? `S/ ${(cost_50 * 1.35).toFixed(2)}` : 'No disponible',
-      precio_51_499_unidades: cost_50 ? `S/ ${(cost_50 * 1.25).toFixed(2)}` : 'No disponible',
-      precio_500_1000_unidades: cost_500 ? `S/ ${(cost_500 * 1.20).toFixed(2)}` : 'No disponible'
+      precio_1_5_unidades: cost ? `S/ ${(cost * 1.85).toFixed(2)}` : 'No disponible',
+      precio_6_12_unidades: cost ? `S/ ${(cost * 1.40).toFixed(2)}` : 'No disponible',
+      precio_13_50_unidades: cost ? `S/ ${(cost * 1.35).toFixed(2)}` : 'No disponible',
+      precio_51_499_unidades: cost ? `S/ ${(cost * 1.25).toFixed(2)}` : 'No disponible',
+      precio_500_1000_unidades: cost ? `S/ ${(cost * 1.20).toFixed(2)}` : 'No disponible'
     };
   }
 
   /**
-   * Realiza una búsqueda de palabras clave en el catálogo consolidado de productos.
+   * Realiza una búsqueda de palabras clave en la tabla "CatalogProducts" de PostgreSQL.
    * @param {string} query Término de búsqueda de producto.
-   * @returns {Array} Listado de hasta 5 productos que coincidan con sus precios de venta calculados.
+   * @returns {Promise<Array>} Listado de hasta 6 productos que coincidan.
    */
-  searchCatalog(query) {
+  async searchCatalog(query) {
     if (!query || typeof query !== 'string') return [];
     
-    logger.debug({ msg: 'Buscando en catálogo de precios', query });
+    logger.debug({ msg: 'Buscando en catálogo PostgreSQL', query });
     
     // Normalizar la consulta (quitar tildes, minúsculas, espacios)
     const cleanQuery = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-    
     if (cleanQuery.length < 2) return [];
 
-    let results = [];
-
-    // 1. Intentar buscar por coincidencia exacta de código de producto (ej. "MUG-39")
-    const codeMatches = catalog.filter(item => {
-      const code = (item.code || '').toLowerCase().trim();
-      return code === cleanQuery || code.includes(cleanQuery);
-    });
-
-    if (codeMatches.length > 0) {
-      logger.info({ msg: 'Coincidencia de código encontrada', count: codeMatches.length, query });
-      results = codeMatches.slice(0, 5);
-    } else {
-      // 2. Coincidencia por palabras clave en nombre, descripción y categoría
-      const words = cleanQuery.split(/\s+/).filter(w => w.length >= 2);
-      if (words.length > 0) {
-        const scoreMatches = catalog.map(item => {
-          const name = (item.name || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const desc = (item.description || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const category = (item.category || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-          let score = 0;
-          words.forEach(word => {
-            if (name.includes(word)) score += 5; // Mayor peso al nombre
-            if (category.includes(word)) score += 3; // Peso medio a la categoría
-            if (desc.includes(word)) score += 1; // Menor peso a la descripción
-          });
-
-          return { item, score };
-        });
-
-        results = scoreMatches
-          .filter(m => m.score > 0)
-          .sort((a, b) => b.score - a.score)
-          .map(m => m.item)
-          .slice(0, 6);
-      }
+    const dbUrl = process.env.DATABASE_URL;
+    if (!dbUrl) {
+      logger.error('❌ DATABASE_URL no está configurada para el CatalogService.');
+      return [];
     }
 
-    // Mapear resultados agregando los precios calculados
-    const processedResults = results.map(item => {
-      const prices = this.calculateSellingPrices(item);
-      return {
-        codigo: item.code,
-        nombre: item.name,
-        descripcion: item.description,
-        color: item.color,
-        stock: item.stock,
-        categoria: item.category,
-        precios_venta_sin_igv: prices,
-        link_imagen: item.image ? `https://whatsapp-webhook-bilg.onrender.com/images/${item.image}` : 'No disponible'
-      };
-    });
+    const client = new Client({ connectionString: dbUrl });
+    try {
+      await client.connect();
 
+      // Buscamos productos que coincidan con el código, nombre o categoría
+      const sqlQuery = `
+        SELECT * FROM "CatalogProducts"
+        WHERE codigo ILIKE $1 OR nombre ILIKE $1 OR categoria ILIKE $1
+        ORDER BY (codigo ILIKE $2) DESC, nombre ASC
+        LIMIT 6;
+      `;
+      const pattern = `%${cleanQuery}%`;
+      const exactPattern = cleanQuery;
+      
+      const res = await client.query(sqlQuery, [pattern, exactPattern]);
 
-    logger.info({ msg: 'Resultados de búsqueda de catálogo procesados', count: processedResults.length, query });
-    return processedResults;
+      const processedResults = res.rows.map(item => {
+        const prices = this.calculateSellingPrices(item.precio_venta);
+        return {
+          codigo: item.codigo,
+          nombre: item.nombre,
+          descripcion: `Color: ${item.color || 'Varios'}, Proveedor: ${item.proveedor || 'N/A'}, Categoría: ${item.categoria || 'General'}`,
+          color: item.color,
+          stock: item.stock !== null ? item.stock : 'Consultar disponibilidad',
+          categoria: item.categoria,
+          precios_venta_sin_igv: prices,
+          link_imagen: item.imagen_url ? `${process.env.PUBLIC_URL || 'https://whatsapp-webhook-bilg.onrender.com'}/${item.imagen_url}` : 'No disponible'
+        };
+      });
+
+      logger.info({ msg: 'Resultados de búsqueda de catálogo Postgres procesados', count: processedResults.length, query });
+      return processedResults;
+    } catch (error) {
+      logger.error({ msg: '❌ Error en searchCatalog (PostgreSQL)', error: error.message });
+      return [];
+    } finally {
+      await client.end();
+    }
+  }
+
+  /**
+   * Obtiene candidatos de productos similares desde PostgreSQL para el comparador visual.
+   * @param {string} terms Frase descriptiva generada por Gemini Vision (ej. "taza ceramica").
+   * @returns {Promise<Array>} Listado de hasta 25 productos candidatos.
+   */
+  async getCandidatesForImage(terms) {
+    if (!terms || typeof terms !== 'string') return [];
+    
+    const dbUrl = process.env.DATABASE_URL;
+    if (!dbUrl) return [];
+
+    const client = new Client({ connectionString: dbUrl });
+    try {
+      await client.connect();
+      
+      // Separar los términos en palabras clave de búsqueda
+      const words = terms.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(/\s+/).filter(w => w.length >= 3);
+      let queryStr = `SELECT codigo as code, nombre as name, categoria as category, color FROM "CatalogProducts"`;
+      const conditions = [];
+      const params = [];
+
+      words.forEach((word, idx) => {
+        conditions.push(`(nombre ILIKE $${idx + 1} OR categoria ILIKE $${idx + 1})`);
+        params.push(`%${word}%`);
+      });
+
+      if (conditions.length > 0) {
+        queryStr += ` WHERE ` + conditions.join(' AND ');
+      }
+      queryStr += ` LIMIT 25;`;
+
+      const res = await client.query(queryStr, params);
+      return res.rows;
+    } catch (error) {
+      logger.error({ msg: '❌ Error en getCandidatesForImage (PostgreSQL)', error: error.message });
+      return [];
+    } finally {
+      await client.end();
+    }
   }
 }
-
 
 module.exports = new CatalogService();
