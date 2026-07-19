@@ -2,7 +2,7 @@
 // Webhook WhatsApp - JGIS Publicidad
 // Sistema Orquestado por Antigravity + REGE Agents (OpenClaw, OpenCode, OpenHands)
 // Auto-Deploy Activo vía GitHub Webhook (HMAC-SHA256)
-// Última actualización: 2026-07-19
+// Última actualización: 2026-07-19 (v1.0.1 Auto-Deploy Verification)
 // ==============================================================================
 const express = require('express');
 const path = require('path');
