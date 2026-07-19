@@ -43,6 +43,11 @@ app.use(express.json({
   }
 }));
 
+// Health check endpoint para Docker container y auto-deployer
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // Servir un endpoint raíz básico por comodidad
 app.get('/', (req, res) => {
   res.json({
