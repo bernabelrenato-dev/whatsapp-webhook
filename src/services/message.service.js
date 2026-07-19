@@ -21,6 +21,8 @@ class MessageService {
     this.userSessions = new Map();
     // Almacena las últimas opciones interactivas presentadas de Typebot para re-presentación
     this.lastUserInputs = new Map();
+    // Cache para mapear números de teléfono a IDs de conversación de Chatwoot
+    this.chatwootConversations = new Map();
   }
 
   /**
@@ -81,7 +83,7 @@ class MessageService {
   /**
    * Envía una imagen de respuesta llamando a la API Graph de Meta.
    */
-  async sendImageMessage(to, imageUrl) {
+  async sendImageMessage(to, imageUrl, skipChatwootSync = false) {
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar respuesta de imagen: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -116,6 +118,10 @@ class MessageService {
         recipient: to,
         messageId: sentMessageId
       });
+
+      if (!skipChatwootSync) {
+        await this.syncOutgoingMessageToChatwoot(to, `[Imagen enviada]: ${imageUrl}`);
+      }
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
       logger.error({
@@ -146,6 +152,23 @@ class MessageService {
       messageType,
     });
 
+    // Extraer texto o tipo para sincronizar
+    let bodyText = '';
+    if (messageType === 'text') {
+      bodyText = message.text.body.trim();
+    } else if (messageType === 'interactive') {
+      const interactive = message.interactive;
+      if (interactive.type === 'button_reply') {
+        bodyText = interactive.button_reply.id;
+      } else if (interactive.type === 'list_reply') {
+        bodyText = interactive.list_reply.id;
+      }
+    }
+
+    // Sincronizar mensaje entrante con Chatwoot antes de pausar o procesar
+    const syncText = bodyText || (messageType === 'image' ? '[Imagen recibida]' : `[Mensaje tipo: ${messageType}]`);
+    await this.syncIncomingMessageToChatwoot(from, profileName, syncText);
+
     // Si el bot está pausado para esta conversación (traspaso a humano)
     if (geminiService.isConversationPaused(from)) {
       logger.info(`⏸️ Conversación con ${profileName} (${from}) está pausada. Bot no responderá.`);
@@ -174,7 +197,7 @@ class MessageService {
 
         if (matchResult.matched && matchResult.code) {
           logger.info(`🎯 Producto identificado por imagen: ${matchResult.code}`);
-          const searchResults = catalogService.searchCatalog(matchResult.code);
+          const searchResults = await catalogService.searchCatalog(matchResult.code);
           const product = searchResults[0];
 
           if (product) {
@@ -207,20 +230,32 @@ class MessageService {
           }
         }
         
-        await this.sendTextMessage(from, "No logré encontrar ese producto exacto en nuestro catálogo. Te estoy comunicando con un asesor comercial para que te ayude de forma personalizada. 👩‍💼");
-        geminiService.pauseConversation(from);
+        // No pausar el bot — invitar al usuario a describir el producto con texto
+        await this.sendTextMessage(from, "No logré identificar ese producto exactamente desde la imagen 🔍. ¿Podrías describirme qué artículo es? Por ejemplo: *\"taza de cerámica 11oz\"* o *\"bolsa ecológica con cierre\"*. Así puedo buscarlo en nuestro catálogo y darte precios al instante. 😊");
         return;
 
       } catch (error) {
         logger.error({ msg: 'Error procesando imagen entrante', error: error.message });
-        await this.sendTextMessage(from, "Lo siento, tuve un problema al procesar tu imagen. Te estoy comunicando con un asesor comercial. 👩‍💼");
-        geminiService.pauseConversation(from);
+        // No pausar el bot en caso de error técnico — mantener la conversación activa
+        await this.sendTextMessage(from, "Tuve un problema técnico al procesar tu imagen 😅. ¿Puedes describirme el producto que buscas? Puedo ayudarte con precios y disponibilidad. 😊");
         return;
       }
     }
 
     if (body) {
       const cleanBody = body.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+      // 1. Detectar solicitud explícita de atención humana (Handover a Chatwoot)
+      const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
+      const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
+
+      if (isAgentIntent) {
+        logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
+        geminiService.pauseConversation(from);
+        await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
+        return;
+      }
+
       const isResetKeyword = ['reiniciar', 'inicio', 'hola', 'buenas tardes', 'buenos dias', 'menú', 'menu'].includes(cleanBody);
 
       // Clasificación de intenciones basada en palabras clave de catálogo
@@ -257,9 +292,10 @@ class MessageService {
         let sessionId = this.userSessions.get(from);
         let response;
 
+        const typebotUrl = process.env.TYPEBOT_API_URL || 'http://typebot-viewer:3000';
         if (!sessionId || isResetKeyword) {
           logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from}) con variables predefinidas`);
-          response = await axios.post('http://localhost:8082/api/v1/typebots/jgis-publicidad-bot-f33vo50/startChat', {
+          response = await axios.post(`${typebotUrl}/api/v1/typebots/jgis-publicidad-bot-f33vo50/startChat`, {
             prefilledVariables: {
               phone: from
             }
@@ -277,7 +313,7 @@ class MessageService {
         }
 
         logger.info(`💬 Continuando sesión de Typebot ${sessionId} para ${from}`);
-        response = await axios.post(`http://localhost:8082/api/v1/sessions/${sessionId}/continueChat`, {
+        response = await axios.post(`${typebotUrl}/api/v1/sessions/${sessionId}/continueChat`, {
           message: { type: 'text', text: body }
         });
 
@@ -414,7 +450,7 @@ class MessageService {
    * @param {string} to Número de teléfono del destinatario.
    * @param {string} text Texto del mensaje a enviar.
    */
-  async sendTextMessage(to, text) {
+  async sendTextMessage(to, text, skipChatwootSync = false) {
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar respuesta automática: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -451,6 +487,10 @@ class MessageService {
         recipient: to,
         messageId: sentMessageId
       });
+
+      if (!skipChatwootSync) {
+        await this.syncOutgoingMessageToChatwoot(to, text);
+      }
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
       logger.error({
@@ -467,7 +507,7 @@ class MessageService {
    * @param {string} text Texto del cuerpo del mensaje.
    * @param {Array} items Lista de opciones para convertir en botones o filas.
    */
-  async sendInteractive(to, text, items) {
+  async sendInteractive(to, text, items, skipChatwootSync = false) {
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar interactivo: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -542,6 +582,11 @@ class MessageService {
         const sentMessageId = response.data.messages[0].id;
         this.botSentMessageIds.add(sentMessageId);
         logger.info({ msg: 'Mensaje interactivo enviado correctamente', recipient: to, messageId: sentMessageId });
+
+        if (!skipChatwootSync) {
+          const optionsText = cleanItems.map(i => `- ${i.title}`).join('\n');
+          await this.syncOutgoingMessageToChatwoot(to, `${text}\n\nOpciones:\n${optionsText}`);
+        }
       }
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
@@ -719,6 +764,146 @@ class MessageService {
       logger.error({ msg: 'Error al descargar archivo de Meta Graph API', mediaId, error: errorResponse });
       throw error;
     }
+  }
+
+  /**
+   * Sincroniza un mensaje entrante de WhatsApp en Chatwoot.
+   */
+  async syncIncomingMessageToChatwoot(phone, name, text) {
+    if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
+      logger.warn('No se puede sincronizar a Chatwoot: token o ID de cuenta no configurado.');
+      return;
+    }
+    try {
+      const conversationId = await this.getOrCreateConversationId(phone, name);
+      const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
+      
+      const response = await axios({
+        method: 'POST',
+        url,
+        headers: {
+          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+          'Content-Type': 'application/json'
+        },
+        data: {
+          content: text || '[Mensaje sin texto]',
+          message_type: 'incoming',
+          private: false
+        }
+      });
+      logger.info({ msg: 'Mensaje entrante de WhatsApp sincronizado con Chatwoot', conversationId, messageId: response.data.id });
+    } catch (error) {
+      const errRes = error.response ? error.response.data : error.message;
+      logger.error({ msg: 'Error al sincronizar mensaje entrante con Chatwoot', phone, error: errRes });
+    }
+  }
+
+  /**
+   * Sincroniza un mensaje saliente enviado por el bot hacia Chatwoot.
+   */
+  async syncOutgoingMessageToChatwoot(phone, text, imageFileName) {
+    if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
+      return;
+    }
+    try {
+      const conversationId = await this.getOrCreateConversationId(phone);
+      await this.sendChatwootMessage(conversationId, text, imageFileName);
+    } catch (error) {
+      logger.error({ msg: 'Error al sincronizar mensaje saliente con Chatwoot', phone, error: error.message });
+    }
+  }
+
+  /**
+   * Obtiene o crea una conversación en Chatwoot para un número telefónico.
+   */
+  async getOrCreateConversationId(phone, name) {
+    if (this.chatwootConversations.has(phone)) {
+      return this.chatwootConversations.get(phone);
+    }
+
+    const accountId = config.CHATWOOT_ACCOUNT_ID;
+    const userToken = config.CHATWOOT_ACCESS_TOKEN;
+    const inboxId = parseInt(process.env.CHATWOOT_INBOX_ID || '1');
+    const headers = {
+      'api_access_token': userToken,
+      'Content-Type': 'application/json'
+    };
+
+    // Formatear teléfono con + si no lo tiene
+    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+
+    let contactId;
+    // 1. Buscar contacto
+    try {
+      const searchRes = await axios.get(
+        `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/search?q=${formattedPhone}`,
+        { headers }
+      );
+      const contacts = searchRes.data.payload || [];
+      if (contacts.length > 0) {
+        contactId = contacts[0].id;
+      }
+    } catch (err) {
+      logger.error({ msg: 'Error buscando contacto en Chatwoot', phone: formattedPhone, error: err.message });
+    }
+
+    // 2. Crear contacto si no existe
+    if (!contactId) {
+      try {
+        const createContactRes = await axios.post(
+          `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts`,
+          {
+            inbox_id: inboxId,
+            name: name || 'Cliente WhatsApp',
+            phone_number: formattedPhone
+          },
+          { headers }
+        );
+        contactId = createContactRes.data.payload.contact.id;
+        logger.info({ msg: 'Contacto creado en Chatwoot', contactId, phone: formattedPhone });
+      } catch (err) {
+        logger.error({ msg: 'Error creando contacto en Chatwoot', error: err.response ? err.response.data : err.message });
+        throw err;
+      }
+    }
+
+    // 3. Buscar conversación activa
+    let conversationId;
+    try {
+      const conversationsRes = await axios.get(
+        `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/${contactId}/conversations`,
+        { headers }
+      );
+      const conversations = conversationsRes.data.payload || [];
+      const activeConv = conversations.find(c => c.status === 'open' || c.status === 'snoozed');
+      if (activeConv) {
+        conversationId = activeConv.id;
+      }
+    } catch (err) {
+      logger.error({ msg: 'Error buscando conversación activa en Chatwoot', contactId, error: err.message });
+    }
+
+    // 4. Crear conversación si no existe
+    if (!conversationId) {
+      try {
+        const createConvRes = await axios.post(
+          `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/conversations`,
+          {
+            inbox_id: inboxId,
+            contact_id: contactId
+          },
+          { headers }
+        );
+        conversationId = createConvRes.data.id;
+        logger.info({ msg: 'Conversación creada en Chatwoot', conversationId, contactId });
+      } catch (err) {
+        logger.error({ msg: 'Error creando conversación en Chatwoot', error: err.response ? err.response.data : err.message });
+        throw err;
+      }
+    }
+
+    this.chatwootConversations.set(phone, conversationId);
+    return conversationId;
   }
 }
 

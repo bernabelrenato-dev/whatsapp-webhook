@@ -12,6 +12,7 @@ router.post('/', verifyWhatsAppSignature, webhookController.receiveMessage);
 
 // Ruta de recepción de mensajes de Chatwoot (POST)
 router.post('/chatwoot-webhook', chatwootController.receiveChatwootMessage);
+router.post('/chatwoot', chatwootController.receiveChatwootMessage);
 
 module.exports = router;
 

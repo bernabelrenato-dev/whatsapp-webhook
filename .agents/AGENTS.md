@@ -1,6 +1,32 @@
 # Reglas Generales de Agentes IA (ECC & CogSec) — JGIS Publicidad
 
-Este documento define las directrices cognitivas de seguridad (CogSec), buenas prácticas de desarrollo y limitaciones del entorno para todos los agentes autónomos (OpenCode, OpenHands, Dify) que operan en este repositorio.
+Este documento define las directrices cognitivas de seguridad (CogSec), buenas prácticas de desarrollo y limitaciones del entorno para todos los agentes autónomos que operan en este repositorio.
+
+## Orquestación
+
+**Antigravity** es el orquestador principal. Los agentes ejecutores son:
+- **OpenCode** — ejecución de código headless en el VPS
+- **OpenHands** — agente programador autónomo
+- **OpenClaw** — gateway de entrada vía Telegram
+
+Los agentes locales definidos en `.agents/agents/` son subagentes especializados invocables por el orquestador:
+| Agente | Rol |
+|--------|-----|
+| ValentinaRios | Asistente de catálogo y precios WhatsApp |
+| MetaAdsCopywriter | Redactor creativo de Meta Ads (PAS/BAB) |
+| RAGSoporte | Soporte de políticas y envíos |
+| CatalogSpecialist | Ingeniería de datos de inventario |
+| MetaAdsIntegrator | Integraciones Meta Ads API / CAPI |
+| QATester | Testing de chatbot y flujos E2E |
+| SeniorDevReviewer | Auditoría de arquitectura y seguridad |
+
+## Auto-Deploy
+
+Pipeline Git → VPS configurado en `scripts/deploy/`:
+1. `git push main` → GitHub envía webhook a `https://bot.jgispublicidad.pe/deploy-webhook`
+2. `webhook-listener.js` valida firma HMAC-SHA256
+3. `deploy.sh` ejecuta `git pull` + `docker compose up -d --build webhook`
+4. Health check automático con rollback si falla
 
 ---
 
@@ -24,5 +50,5 @@ Este documento define las directrices cognitivas de seguridad (CogSec), buenas p
 ---
 
 ## 3. Economía de Tokens
-*   **Uso de Repomix:** Para compartir contexto del proyecto entre Dify, OpenClaw o agentes, siempre se debe generar un archivo consolidado comprimido mediante **Repomix** para optimizar los tokens de entrada y evitar transferencias innecesarias de archivos redundantes.
+*   **Uso de Repomix:** Para compartir contexto del proyecto entre agentes, siempre se debe generar un archivo consolidado comprimido mediante **Repomix** para optimizar los tokens de entrada y evitar transferencias innecesarias de archivos redundantes.
 *   **Respuestas Concisas:** Los agentes de backend deben comunicarse mediante JSONs estructurados y texto resumido, evitando explicaciones verbose e innecesarias que consuman ventana de contexto.

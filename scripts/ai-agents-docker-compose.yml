@@ -1,0 +1,106 @@
+# ==============================================================================
+# Agentes IA de Desarrollo — JGIS Publicidad
+# Proyecto: ai-agents
+# Red Docker: jgis_agents_net
+# Herramientas: OpenClaw, OpenHands-MCP, OpenCode-MCP, Hostinger-MCP
+# ==============================================================================
+
+services:
+  # 1. Gateway de Entrada (OpenClaw)
+  openclaw:
+    image: ghcr.io/openclaw/openclaw:2026.2.26
+    container_name: jgis-openclaw
+    restart: always
+    command: node openclaw.mjs gateway --allow-unconfigured --bind lan --port 8085
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./config/openclaw:/home/node/.openclaw
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - DIFY_API_URL=http://api:5001/v1
+      - DIFY_API_KEY=${DIFY_API_KEY:-}
+      - PORT=8085
+    networks:
+      - jgis_agents_net
+      - docker_default
+
+  # 2. OpenCode (Servidor headless para ejecución de código y CLI de terminal)
+  opencode:
+    image: ghcr.io/pilinux/opencode:1.2.5
+    container_name: jgis-opencode
+    restart: always
+    command: opencode serve --hostname 0.0.0.0 --port 4096
+    environment:
+      - OPENCODE_SERVER_PASSWORD=${OPENCODE_AUTH_TOKEN}
+    volumes:
+      - /home/jgis/whatsapp-bot:/app
+    networks:
+      - jgis_agents_net
+      - docker_default
+
+  # 3. Wrapper MCP para OpenCode (Traduce llamadas MCP a la API HTTP de OpenCode)
+  opencode-mcp:
+    image: node:20-alpine
+    container_name: jgis-opencode-mcp
+    restart: always
+    working_dir: /workspace
+    volumes:
+      - /home/jgis/whatsapp-bot:/app
+      - /home/jgis/ai-agents:/workspace
+    command: >
+      sh -c "npm install express && 
+             node mcp-sse-bridge.js --command npx --args '-y opencode-mcp@latest'"
+    environment:
+      - OPENCODE_BASE_URL=http://opencode:4096
+      - OPENCODE_SERVER_PASSWORD=${OPENCODE_AUTH_TOKEN}
+    depends_on:
+      - opencode
+    networks:
+      - jgis_agents_net
+      - docker_default
+
+  # 4. Wrapper MCP para Hostinger (Gestión de DNS y hosting de jgispublicidad.pe)
+  hostinger-mcp:
+    image: node:20-alpine
+    container_name: jgis-hostinger-mcp
+    restart: always
+    ports:
+      - "3001:3000"
+    working_dir: /workspace
+    volumes:
+      - /home/jgis/ai-agents:/workspace
+    command: >
+      sh -c "npm install express && 
+             node mcp-sse-bridge.js --command npx --args '-y hostinger-api-mcp@latest'"
+    environment:
+      - HOSTINGER_API_TOKEN=${HOSTINGER_API_TOKEN:-}
+    networks:
+      - jgis_agents_net
+      - docker_default
+
+  # 5. Wrapper MCP para OpenHands (Expone sesiones headless de OpenHands como herramientas)
+  openhands-mcp:
+    build:
+      context: ./openhands-mcp
+      dockerfile: Dockerfile
+    container_name: jgis-openhands-mcp
+    restart: always
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_BASE_URL=${LLM_BASE_URL:-}
+      - LLM_MODEL=${LLM_MODEL:-gemini/gemini-2.0-flash}
+      - PORT=6363
+    networks:
+      - jgis_agents_net
+      - docker_default
+
+networks:
+  jgis_agents_net:
+    name: jgis_agents_net
+    driver: bridge
+  docker_default:
+    external: true
+    name: docker_default

@@ -8,6 +8,14 @@
         {
           "title": "Instrucciones del Agente de Meta Ads",
           "content": "Eres un Desarrollador de Integraciones y Media Buyer de IA. Tu rol en JGIS Publicidad es diseñar y construir integraciones robustas con la API de Meta Ads (Facebook Ads Manager) y la API de Conversiones (CAPI). Debes programar scripts de análisis de rentabilidad de campañas, rastreo automatizado de leads y optimización de creativos/copys de anuncios, conectando los webhooks de Meta con el backend del bot en Node.js."
+        },
+        {
+          "title": "Conversions API (CAPI) y Meta Pixel",
+          "content": "Implementa tracking de conversiones redundante usando CAPI + Pixel para máxima cobertura:\n\n**Meta Pixel (Client-Side):**\n- Instalar fbq('init', PIXEL_ID) en todas las landing pages.\n- Eventos estándar: PageView, ViewContent, Lead, Contact.\n- Evento personalizado: WhatsAppClick (cuando el usuario hace clic en el botón de WhatsApp).\n\n**Conversions API (Server-Side):**\n- Endpoint: https://graph.facebook.com/v18.0/{PIXEL_ID}/events\n- Enviar eventos desde el backend Node.js con: event_name, event_time, event_source_url, user_data (hashed: em, ph, fn, ln, ct, st, zp, country), custom_data (currency: 'PEN', value, content_name).\n- Incluir event_id único para deduplicación con Pixel.\n- Access Token almacenado en variable de entorno META_CAPI_TOKEN (nunca hardcoded).\n\n**Deduplicación de Eventos:**\n- Usar el mismo event_id tanto en fbq('track', ..., {eventID}) como en el payload de CAPI.\n- Meta deduplica automáticamente eventos con el mismo event_id + event_name en una ventana de 48h.\n\n**Test Events:**\n- En desarrollo, usar test_event_code en el payload de CAPI para verificar en Events Manager sin afectar métricas de producción."
+        },
+        {
+          "title": "Seguridad y Buenas Prácticas",
+          "content": "- Todos los tokens (META_CAPI_TOKEN, META_APP_SECRET, PIXEL_ID) deben estar en variables de entorno, nunca en código fuente.\n- Validar la firma HMAC-SHA256 de los webhooks entrantes de Meta antes de procesar.\n- Rate limiting: respetar los límites de la API de Meta (200 requests/hour para CAPI por Pixel).\n- Logs estructurados en JSON para todas las llamadas a la API de Meta.\n- Reintentos con backoff exponencial para errores 5xx."
         }
       ],
       "toolNames": [
@@ -16,7 +24,11 @@
         "view_file",
         "list_dir",
         "write_to_file",
-        "replace_file_content"
+        "replace_file_content",
+        "run_command",
+        "multi_replace_file_content",
+        "search_web",
+        "read_url_content"
       ],
       "systemPromptConfig": {
         "includeSections": [

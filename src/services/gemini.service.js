@@ -192,7 +192,7 @@ class GeminiService {
         for (const call of functionCalls) {
           if (call.name === 'searchCatalog') {
             const query = call.args.query;
-            const searchResults = catalogService.searchCatalog(query);
+            const searchResults = await catalogService.searchCatalog(query);
             
             functionResponses.push({
               functionResponse: {
@@ -277,7 +277,10 @@ class GeminiService {
       // Etapa 1: Preguntar a Gemini Vision qué producto de merchandising es
       const descModel = this.genAI.getGenerativeModel({ model: 'gemini-3.1-flash-lite' });
       const descPrompt = `
-        Analiza la imagen adjunta y responde únicamente con una frase corta de 2 a 3 palabras que describa qué tipo de artículo publicitario de merchandising es (ej: "taza de cerámica", "tomatodo de metal", "lapicero plástico", "bolsa ecológica", "libreta de corcho"). Sé extremadamente conciso. No respondas nada más.
+        Analiza la imagen adjunta del producto de merchandising.
+        Genera una lista de 4 a 6 palabras clave o sinónimos en español e inglés que describan el artículo para buscarlo en una base de datos de catálogo (por ejemplo, si es un vaso o taza térmica, incluye palabras como: "mug", "thermo", "termo", "vaso", "tomatodo", "taza").
+        Debes incluir términos genéricos, colores visibles y términos comunes de merchandising (ej: "lapicero", "bolígrafo", "esfero", "pluma", "metalico", "plastico").
+        Responde ÚNICAMENTE con las palabras clave separadas por espacios. No agregues puntuación, explicaciones, ni formato de markdown.
       `;
       
       const descResult = await descModel.generateContent([descPrompt, imagePart]);

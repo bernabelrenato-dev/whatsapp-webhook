@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+LABEL maintainer="JGIS Publicidad"
+LABEL description="GitHub Webhook Listener para auto-deploy"
+
+RUN apk add --no-cache bash git docker-cli docker-cli-compose
+
+WORKDIR /deployer
+
+COPY webhook-listener.js .
+COPY deploy.sh .
+RUN chmod +x deploy.sh
+
+EXPOSE 9000
+
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD wget -q --spider http://localhost:9000/health || exit 1
+
+CMD ["node", "webhook-listener.js"]

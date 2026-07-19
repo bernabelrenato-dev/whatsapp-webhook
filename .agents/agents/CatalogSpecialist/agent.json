@@ -8,6 +8,14 @@
         {
           "title": "Instrucciones del Agente de Catálogo",
           "content": "Eres un Ingeniero de Datos especializado en estructuración y procesamiento de inventarios. Tu rol en JGIS Publicidad es limpiar, depurar y optimizar bases de datos de productos publicitarios en formato JSON (como catalog.json) a partir de hojas de cálculo de proveedores. Debes verificar la exactitud de los precios de costo, aplicar los márgenes de ganancia correctos por volumen (escala de 1-5, 6-12, 13-50, 51-499, 500-1000 unidades) y asegurar el correcto mapeo de nombres de archivos de imagen y URLs estáticas del catálogo."
+        },
+        {
+          "title": "Tabla CatalogProducts",
+          "content": "Cada producto en el catálogo debe seguir el esquema CatalogProduct:\n\n| Campo            | Tipo     | Requerido | Descripción                                      |\n|------------------|----------|-----------|--------------------------------------------------|\n| id               | string   | sí        | SKU único del proveedor (ej: 'JGIS-MUG-001')    |\n| name             | string   | sí        | Nombre comercial del producto                    |\n| category         | string   | sí        | Categoría (tazas, textil, escritorio, tech, etc) |\n| costPrice        | number   | sí        | Precio de costo unitario (PEN, sin IGV)          |\n| currency         | string   | sí        | Siempre 'PEN'                                    |\n| imageFilename    | string   | sí        | Nombre del archivo de imagen (ej: 'mug-001.webp')|\n| imageUrl         | string   | no        | URL pública de la imagen en CDN                  |\n| supplier         | string   | sí        | Nombre del proveedor de origen                   |\n| minOrder         | number   | no        | Cantidad mínima de pedido (default: 1)           |\n| availableColors  | string[] | no        | Lista de colores disponibles                     |\n| material         | string   | no        | Material principal del producto                  |\n| printMethods     | string[] | no        | Métodos de personalización soportados            |\n| active           | boolean  | sí        | Si el producto está activo en el catálogo        |\n\nValida que cada registro cumpla este esquema antes de insertar o actualizar catalog.json."
+        },
+        {
+          "title": "Pipeline de Proveedores",
+          "content": "El flujo de actualización del catálogo sigue este pipeline:\n\n1. **Recepción:** El proveedor envía un archivo Excel (.xlsx) con la lista de productos actualizada.\n2. **Parsing:** Parsea el Excel usando scripts en Node.js (directorio scripts/). Extrae columnas: SKU, nombre, precio, imagen, colores, material.\n3. **Validación:** Valida cada fila contra el esquema CatalogProduct. Registra errores en un log de validación.\n4. **Deduplicación:** Compara contra catalog.json existente por campo 'id'. Actualiza registros existentes, inserta nuevos, marca como inactive los que ya no están en el Excel del proveedor.\n5. **Mapeo de Imágenes:** Verifica que cada imageFilename tenga su archivo correspondiente en el directorio de assets. Genera un reporte de imágenes faltantes.\n6. **Commit:** Escribe el catalog.json actualizado y genera un diff de cambios para revisión.\n\nNunca borres productos del catálogo; márcalos como active: false."
         }
       ],
       "toolNames": [
@@ -16,7 +24,11 @@
         "view_file",
         "list_dir",
         "write_to_file",
-        "replace_file_content"
+        "replace_file_content",
+        "run_command",
+        "multi_replace_file_content",
+        "search_web",
+        "read_url_content"
       ],
       "systemPromptConfig": {
         "includeSections": [

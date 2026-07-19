@@ -1,3 +1,5 @@
+// 🤝 Cooperación: Este archivo es mantenido en conjunto por el equipo de desarrollo JGIS Publicidad.
+// Cualquier modificación debe seguir el flujo definido en PROMPT_MAESTRO.md (Paso 4 - Prueba E2E).
 const express = require('express');
 const path = require('path');
 const rateLimit = require('express-rate-limit');

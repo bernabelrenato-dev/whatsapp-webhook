@@ -1,20 +1,24 @@
-version: '3'
+# ==============================================================================
+# Bot de WhatsApp — JGIS Publicidad
+# Proyecto: whatsapp-bot
+# Red Docker: jgis_bot_net
+# ==============================================================================
 
 services:
   db:
-    image: postgres:15-alpine
+    image: pgvector/pgvector:pg15
     container_name: jgis-postgres
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
-      # Montar el script de inicialización para crear la base de datos de Chatwoot
       - ./scripts/database/create-multiple-databases.sql:/docker-entrypoint-initdb.d/create-multiple-databases.sql
     environment:
       - POSTGRES_DB=typebot
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
+    # Puerto NO expuesto al host por seguridad — solo accesible dentro de jgis_bot_net
+    networks:
+      - jgis_bot_net
 
   redis:
     image: redis:7-alpine
@@ -22,14 +26,18 @@ services:
     restart: always
     volumes:
       - redis_data:/data
+    networks:
+      - jgis_bot_net
 
   mailhog:
     image: mailhog/mailhog:latest
     container_name: jgis-mailhog
     restart: always
     ports:
-      - '8025:8025' # Interfaz Web
-      - '1025:1025' # SMTP
+      - '8025:8025'
+      - '1025:1025'
+    networks:
+      - jgis_bot_net
 
   typebot-builder:
     image: baptistearno/typebot-builder:latest
@@ -42,8 +50,8 @@ services:
       - '8081:3000'
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
-      - NEXTAUTH_URL=http://localhost:8081
-      - NEXT_PUBLIC_VIEWER_URL=http://localhost:8082
+      - NEXTAUTH_URL=https://bot.jgispublicidad.pe:8081
+      - NEXT_PUBLIC_VIEWER_URL=https://bot.jgispublicidad.pe:8082
       - ENCRYPTION_SECRET=supersecretkey123456789012345678
       - DISABLE_SIGNUP=false
       - SMTP_HOST=mailhog
@@ -52,6 +60,8 @@ services:
       - SMTP_PASSWORD=test
       - NEXT_PUBLIC_SMTP_FROM=no-reply@jgispublicidad.pe
       - SSRF_ALLOWED_HOSTS=host.docker.internal
+    networks:
+      - jgis_bot_net
 
   typebot-viewer:
     image: baptistearno/typebot-viewer:latest
@@ -63,10 +73,12 @@ services:
       - '8082:3000'
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
-      - NEXTAUTH_URL=http://localhost:8081
-      - NEXT_PUBLIC_VIEWER_URL=http://localhost:8082
+      - NEXTAUTH_URL=https://bot.jgispublicidad.pe:8081
+      - NEXT_PUBLIC_VIEWER_URL=https://bot.jgispublicidad.pe:8082
       - ENCRYPTION_SECRET=supersecretkey123456789012345678
       - SSRF_ALLOWED_HOSTS=host.docker.internal
+    networks:
+      - jgis_bot_net
 
   chatwoot-web:
     image: chatwoot/chatwoot:latest
@@ -93,7 +105,7 @@ services:
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=postgres
       - REDIS_URL=redis://redis:6379/0
-      - FRONTEND_URL=http://localhost:3010
+      - FRONTEND_URL=https://chatwoot.jgispublicidad.pe
       - SMTP_ADDRESS=mailhog
       - SMTP_PORT=1025
       - SMTP_AUTHENTICATION=plain
@@ -103,6 +115,8 @@ services:
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
+    networks:
+      - jgis_bot_net
 
   chatwoot-worker:
     image: chatwoot/chatwoot:latest
@@ -127,6 +141,7 @@ services:
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=postgres
       - REDIS_URL=redis://redis:6379/0
+      - FRONTEND_URL=https://chatwoot.jgispublicidad.pe
       - SMTP_ADDRESS=mailhog
       - SMTP_PORT=1025
       - SMTP_AUTHENTICATION=plain
@@ -136,6 +151,8 @@ services:
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
+    networks:
+      - jgis_bot_net
 
   webhook:
     build: .
@@ -151,8 +168,42 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
       - PORT=3000
       - NODE_ENV=production
+    networks:
+      - jgis_bot_net
+
+  deployer:
+    build:
+      context: ./scripts/deploy
+      dockerfile: Dockerfile.deployer
+    container_name: jgis-deployer
+    restart: always
+    environment:
+      - DEPLOY_SECRET=${DEPLOY_SECRET}
+      - DEPLOY_BRANCH=master
+      - DEPLOY_PORT=9000
+      - DEPLOY_SCRIPT=/project/scripts/deploy/deploy.sh
+      - DEPLOY_LOG=/project/deploy.log
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/project
+      - ./.git:/project/.git
+    ports:
+      - '9000:9000'
+    networks:
+      - jgis_bot_net
 
 volumes:
   db_data:
+    external: true
+    name: whatsapp-webhook_db_data
   redis_data:
+    external: true
+    name: whatsapp-webhook_redis_data
   chatwoot_storage:
+    external: true
+    name: whatsapp-webhook_chatwoot_storage
+
+networks:
+  jgis_bot_net:
+    name: jgis_bot_net
+    driver: bridge

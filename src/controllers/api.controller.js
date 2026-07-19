@@ -94,14 +94,11 @@ class ApiController {
             });
             
             if (matchingFile) {
-              // Obtener host dinámico de la petición o usar la URL pública configurada
+              // Usar siempre la URL pública configurada en producción
               let baseUrl = process.env.PUBLIC_URL;
               if (!baseUrl) {
-                let reqHost = req.headers.host || 'localhost:3000';
-                if (reqHost.includes('host.docker.internal')) {
-                  reqHost = reqHost.replace('host.docker.internal', 'localhost');
-                }
-                const protocol = req.headers['x-forwarded-proto'] || 'http';
+                const protocol = req.headers['x-forwarded-proto'] || 'https';
+                const reqHost = req.headers.host || 'bot.jgispublicidad.pe';
                 baseUrl = `${protocol}://${reqHost}`;
               }
               
