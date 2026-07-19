@@ -1,5 +1,9 @@
-// 🤝 Cooperación: Este archivo es mantenido en conjunto por el equipo de desarrollo JGIS Publicidad.
-// Cualquier modificación debe seguir el flujo definido en PROMPT_MAESTRO.md (Paso 4 - Prueba E2E).
+// ==============================================================================
+// Webhook WhatsApp - JGIS Publicidad
+// Sistema Orquestado por Antigravity + REGE Agents (OpenClaw, OpenCode, OpenHands)
+// Auto-Deploy Activo vía GitHub Webhook (HMAC-SHA256)
+// Última actualización: 2026-07-19
+// ==============================================================================
 const express = require('express');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
