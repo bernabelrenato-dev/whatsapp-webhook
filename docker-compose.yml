@@ -4,6 +4,8 @@
 # Red Docker: jgis_bot_net
 # ==============================================================================
 
+name: whatsapp-bot
+
 services:
   db:
     image: pgvector/pgvector:pg15

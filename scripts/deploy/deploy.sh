@@ -54,10 +54,10 @@ fi
 
 # --- Rebuild del contenedor webhook ---
 log "Rebuilding servicio '$SERVICE'..."
-docker compose -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1 || {
+docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1 || {
   log "FAIL: docker compose build falló. Intentando rollback..."
   git checkout "$PREVIOUS_SHA" 2>/dev/null
-  docker compose -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1
+  docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1
   log "ROLLBACK: Revertido a $PREVIOUS_SHA"
   exit 1
 }
@@ -83,7 +83,7 @@ done
 if [[ $SECONDS_WAITED -ge $HEALTH_TIMEOUT ]]; then
   log "FAIL: Health check timeout. Rollback..."
   git checkout "$PREVIOUS_SHA" 2>/dev/null
-  docker compose -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1
+  docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" 2>&1
   log "ROLLBACK: Revertido a $PREVIOUS_SHA"
   exit 1
 fi
