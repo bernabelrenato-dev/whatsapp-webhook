@@ -80,7 +80,7 @@ function runDeploy(commitInfo) {
 
 const server = http.createServer((req, res) => {
   // Health check
-  if (req.method === 'GET' && req.url === '/health') {
+  if (req.method === 'GET' && (req.url === '/health' || req.url.endsWith('/health'))) {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ status: 'ok', deployInProgress }));
     return;
