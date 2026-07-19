@@ -7,6 +7,9 @@
 
 set -euo pipefail
 
+# Permite operaciones de git dentro del contenedor Docker independientemente del owner del directorio
+git config --global --add safe.directory "*" 2>/dev/null || true
+
 if [[ -d "/project" ]]; then
   PROJECT_DIR="/project"
 else
