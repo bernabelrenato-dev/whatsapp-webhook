@@ -7,7 +7,11 @@
 
 set -euo pipefail
 
-PROJECT_DIR="/home/jgis/whatsapp-bot"
+if [[ -d "/project" ]]; then
+  PROJECT_DIR="/project"
+else
+  PROJECT_DIR="/home/jgis/whatsapp-bot"
+fi
 COMPOSE_FILE="docker-compose.yml"
 SERVICE="webhook"
 CONTAINER="jgis-webhook"
