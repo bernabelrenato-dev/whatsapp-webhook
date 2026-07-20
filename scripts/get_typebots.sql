@@ -1,1 +1,1 @@
-SELECT id, name, "publicId", "isPublished" FROM "Typebot";
+SELECT id, name, "publicId" FROM "Typebot";
