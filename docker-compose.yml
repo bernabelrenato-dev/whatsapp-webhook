@@ -113,7 +113,7 @@ services:
       - SMTP_AUTHENTICATION=plain
       - SMTP_ENABLE_STARTTLS_AUTO=false
       - SMTP_OPENSSL_VERIFY_MODE=none
-      - SMTP_USER_NAME=test
+      - SMTP_USERNAME=test
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
@@ -149,7 +149,7 @@ services:
       - SMTP_AUTHENTICATION=plain
       - SMTP_ENABLE_STARTTLS_AUTO=false
       - SMTP_OPENSSL_VERIFY_MODE=none
-      - SMTP_USER_NAME=test
+      - SMTP_USERNAME=test
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
