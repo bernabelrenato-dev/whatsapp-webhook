@@ -818,9 +818,18 @@ class MessageService {
   /**
    * Obtiene o crea una conversación en Chatwoot para un número telefónico.
    */
+  /**
+   * Obtiene o crea una conversación en Chatwoot para un número telefónico.
+   * Garantiza la reutilización de contactos y reabre conversaciones resueltas en lugar de duplicarlas.
+   */
   async getOrCreateConversationId(phone, name) {
-    if (this.chatwootConversations.has(phone)) {
-      return this.chatwootConversations.get(phone);
+    if (!phone) throw new Error('Número de teléfono no provisto para Chatwoot.');
+    
+    // Normalizar teléfono a dígitos puros para la clave de caché y búsquedas (evita discrepancias con/sin +)
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    if (this.chatwootConversations.has(cleanPhone)) {
+      return this.chatwootConversations.get(cleanPhone);
     }
 
     const accountId = config.CHATWOOT_ACCOUNT_ID;
@@ -831,17 +840,26 @@ class MessageService {
       'Content-Type': 'application/json'
     };
 
-    // Formatear teléfono con + si no lo tiene
-    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+    const formattedPhone = `+${cleanPhone}`;
 
     let contactId;
-    // 1. Buscar contacto
+    // 1. Buscar contacto existente (codificando URI para evitar que '+' se convierta en espacio)
     try {
       const searchRes = await axios.get(
-        `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/search?q=${formattedPhone}`,
+        `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/search?q=${encodeURIComponent(formattedPhone)}`,
         { headers }
       );
-      const contacts = searchRes.data.payload || [];
+      let contacts = searchRes.data.payload || [];
+
+      // Si no encuentra con +, buscar por número sin +
+      if (contacts.length === 0) {
+        const searchResNoPlus = await axios.get(
+          `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/search?q=${cleanPhone}`,
+          { headers }
+        );
+        contacts = searchResNoPlus.data.payload || [];
+      }
+
       if (contacts.length > 0) {
         contactId = contacts[0].id;
       }
@@ -864,12 +882,28 @@ class MessageService {
         contactId = createContactRes.data.payload.contact.id;
         logger.info({ msg: 'Contacto creado en Chatwoot', contactId, phone: formattedPhone });
       } catch (err) {
-        logger.error({ msg: 'Error creando contacto en Chatwoot', error: err.response ? err.response.data : err.message });
-        throw err;
+        // Si ya existe por colisión de índice, intentar recuperar de nuevo
+        const errResponse = err.response ? err.response.data : err.message;
+        logger.warn({ msg: 'Aviso al crear contacto en Chatwoot, reintentando búsqueda', error: errResponse });
+        try {
+          const searchResRetry = await axios.get(
+            `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/contacts/search?q=${cleanPhone}`,
+            { headers }
+          );
+          const contactsRetry = searchResRetry.data.payload || [];
+          if (contactsRetry.length > 0) {
+            contactId = contactsRetry[0].id;
+          } else {
+            throw err;
+          }
+        } catch (retryErr) {
+          logger.error({ msg: 'Error fatal creando contacto en Chatwoot', error: retryErr.message });
+          throw retryErr;
+        }
       }
     }
 
-    // 3. Buscar conversación activa
+    // 3. Buscar conversacion activa o previa
     let conversationId;
     try {
       const conversationsRes = await axios.get(
@@ -877,15 +911,31 @@ class MessageService {
         { headers }
       );
       const conversations = conversationsRes.data.payload || [];
+      
+      // Buscar primero conversación abierta o pausada
       const activeConv = conversations.find(c => c.status === 'open' || c.status === 'snoozed');
       if (activeConv) {
         conversationId = activeConv.id;
+      } else if (conversations.length > 0) {
+        // Reutilizar y reabrir la última conversación resuelta para evitar duplicar chats
+        const lastConv = conversations[0];
+        try {
+          await axios.post(
+            `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/conversations/${lastConv.id}/toggle_status`,
+            { status: 'open' },
+            { headers }
+          );
+          logger.info({ msg: 'Conversación previa reabierta en Chatwoot', conversationId: lastConv.id });
+        } catch (reopenErr) {
+          logger.warn({ msg: 'No se pudo cambiar el estado de la conversación, usando ID existente', error: reopenErr.message });
+        }
+        conversationId = lastConv.id;
       }
     } catch (err) {
-      logger.error({ msg: 'Error buscando conversación activa en Chatwoot', contactId, error: err.message });
+      logger.error({ msg: 'Error buscando conversaciones en Chatwoot', contactId, error: err.message });
     }
 
-    // 4. Crear conversación si no existe
+    // 4. Crear nueva conversación solo si la persona nunca ha tenido una
     if (!conversationId) {
       try {
         const createConvRes = await axios.post(
@@ -897,14 +947,14 @@ class MessageService {
           { headers }
         );
         conversationId = createConvRes.data.id;
-        logger.info({ msg: 'Conversación creada en Chatwoot', conversationId, contactId });
+        logger.info({ msg: 'Nueva conversación creada en Chatwoot', conversationId, contactId });
       } catch (err) {
         logger.error({ msg: 'Error creando conversación en Chatwoot', error: err.response ? err.response.data : err.message });
         throw err;
       }
     }
 
-    this.chatwootConversations.set(phone, conversationId);
+    this.chatwootConversations.set(cleanPhone, conversationId);
     return conversationId;
   }
 }
