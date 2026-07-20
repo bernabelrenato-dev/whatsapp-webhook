@@ -1,1 +1,1 @@
-SELECT id, "typebotId", url FROM "PublicTypebot";
+SELECT * FROM "PublicTypebot";
