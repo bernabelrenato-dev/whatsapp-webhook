@@ -35,7 +35,6 @@ class DbSyncService {
 
       // 1. Iniciar transacción SQL para garantizar atomicidad
       await pgClient.query('BEGIN');
-      await pgClient.query('TRUNCATE TABLE "CatalogProducts" CASCADE;');
 
       // 2. Leer y parsear el archivo CSV
       const csvData = fs.readFileSync(csvPath, 'utf-8');
