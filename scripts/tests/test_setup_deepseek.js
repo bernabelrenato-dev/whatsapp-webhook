@@ -18,21 +18,10 @@ function verifySetupDeepseek() {
         process.exit(1);
     }
     
-    // Check that all three MCP configurations are present
-    const expectedKeys = [
-        "data['mcp']['servers']['openhands']",
-        "data['mcp']['servers']['opencode']",
-        "data['mcp']['servers']['hostinger']",
-        "http://jgis-openhands-mcp:6363/sse",
-        "http://jgis-opencode-mcp:3000/sse",
-        "http://jgis-hostinger-mcp:3000/sse"
-    ];
-    
-    for (const key of expectedKeys) {
-        if (!content.includes(key)) {
-            console.error(`❌ Error: Missing expected string: "${key}"`);
-            process.exit(1);
-        }
+    // Verify that MCP settings are NOT injected into openclaw.json configuration (to avoid schema crashes)
+    if (content.includes("data['mcp']") || content.includes("mcpServers")) {
+        console.error("❌ Error: The script still contains references to mcp/mcpServers configuration!");
+        process.exit(1);
     }
     
     console.log("✅ Static checks PASSED! setup_openclaw_deepseek.py is correct.");

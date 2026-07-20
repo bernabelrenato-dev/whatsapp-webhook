@@ -66,26 +66,7 @@ if os.path.exists(path):
         "model": "deepseek/deepseek-chat"
     }
 
-    # Inject MCP tools configuration into OpenClaw
-    if 'mcp' not in data:
-        data['mcp'] = {}
-    if 'servers' not in data['mcp']:
-        data['mcp']['servers'] = {}
 
-    data['mcp']['servers']['openhands'] = {
-        "url": "http://jgis-openhands-mcp:6363/sse",
-        "transport": "sse"
-    }
-    
-    data['mcp']['servers']['opencode'] = {
-        "url": "http://jgis-opencode-mcp:3000/sse",
-        "transport": "sse"
-    }
-
-    data['mcp']['servers']['hostinger'] = {
-        "url": "http://jgis-hostinger-mcp:3000/sse",
-        "transport": "sse"
-    }
 
     if 'agents' in data and 'defaults' in data['agents']:
         data['agents']['defaults'].pop('systemPrompt', None)
