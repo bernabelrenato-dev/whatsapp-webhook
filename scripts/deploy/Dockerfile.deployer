@@ -3,7 +3,7 @@ FROM node:20-alpine
 LABEL maintainer="JGIS Publicidad"
 LABEL description="GitHub Webhook Listener para auto-deploy"
 
-RUN apk add --no-cache bash git docker-cli docker-cli-compose
+RUN apk add --no-cache bash git docker-cli docker-cli-compose python3
 
 WORKDIR /deployer
 
