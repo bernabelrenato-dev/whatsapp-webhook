@@ -3,7 +3,6 @@ npm-debug.log
 .git
 .gitignore
 .agents
-scripts
 Dockerfile
 docker-compose.yml
 .env
