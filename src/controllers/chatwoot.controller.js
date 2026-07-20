@@ -102,30 +102,68 @@ exports.receiveChatwootMessage = async (req, res, next) => {
       const { phone: from, name: profileName } = await getContactPhone(payload);
 
       if (messageType === 'incoming') {
-        logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen): "${payload.content}"`);
+        const channelType = payload.inbox?.channel_type;
+        const isWhatsApp = channelType === 'Channel::Whatsapp';
+
+        if (isWhatsApp) {
+          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen): "${payload.content}"`);
+        } else {
+          logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
+          
+          if (!conversationId) {
+            logger.warn('Mensaje de Chatwoot no tiene conversation.id, omitiendo.');
+            return res.status(200).json({ success: true });
+          }
+
+          const hasAttachments = payload.attachments && payload.attachments.length > 0;
+          const mockMsg = {
+            from: `chatwoot_conv_${conversationId}`,
+            id: `cw_msg_${payload.id}`,
+            type: hasAttachments ? 'image' : 'text',
+          };
+
+          if (mockMsg.type === 'text') {
+            mockMsg.text = { body: payload.content || '' };
+          } else {
+            const att = payload.attachments[0];
+            mockMsg.image = { id: att.data_url };
+          }
+
+          const mockVal = {
+            contacts: [
+              { profile: { name: profileName } }
+            ]
+          };
+
+          // Procesar en background (asíncrono)
+          setImmediate(async () => {
+            try {
+              await messageService.handleIncomingMessage(mockMsg, mockVal);
+            } catch (err) {
+              logger.error({ msg: 'Error al procesar mensaje multicanal en background', error: err.message });
+            }
+          });
+        }
       } else if (messageType === 'outgoing') {
         // Si es un mensaje saliente, verificar si fue enviado por nuestro bot
         if (messageService.botSentMessageIds.has(messageId)) {
           // Fue el bot, removemos el ID y no pausamos
           messageService.botSentMessageIds.delete(messageId);
         } else {
-          if (!from) {
-            logger.error({ msg: '❌ No se pudo extraer ni consultar el número de teléfono del contacto', conversationId });
-            return res.status(200).json({ success: true });
-          }
+          const pauseKey = from || `chatwoot_conv_${conversationId}`;
+          logger.info(`👤 Mensaje manual de agente detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
+          geminiService.pauseConversation(pauseKey);
 
-          // Fue un humano desde la interfaz de Chatwoot, pausamos el bot por 2 horas
-          logger.info(`👤 Mensaje manual de agente detectado en Chatwoot para ${profileName} (${from}). Pausando bot.`);
-          geminiService.pauseConversation(from);
-
-          // Reenviar al celular del usuario en WhatsApp (sin sincronizar de vuelta a Chatwoot)
-          if (payload.attachments && payload.attachments.length > 0) {
-            const att = payload.attachments[0];
-            if (att.data_url) {
-              await messageService.sendImageMessage(from, att.data_url, true);
+          // Solo reenviar a WhatsApp si el contacto de WhatsApp (from) está disponible
+          if (from) {
+            if (payload.attachments && payload.attachments.length > 0) {
+              const att = payload.attachments[0];
+              if (att.data_url) {
+                await messageService.sendImageMessage(from, att.data_url, true);
+              }
+            } else if (payload.content) {
+              await messageService.sendTextMessage(from, payload.content, true);
             }
-          } else if (payload.content) {
-            await messageService.sendTextMessage(from, payload.content, true);
           }
         }
       }

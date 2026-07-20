@@ -25,6 +25,8 @@ class MessageService {
     this.lastUserInputs = new TTLCache(12 * 3600 * 1000, 2000);
     // Cache para mapear números de teléfono a IDs de conversación de Chatwoot con TTL de 24h
     this.chatwootConversations = new TTLCache(24 * 3600 * 1000, 2000);
+    // Cola de espera/pausa (debounce) para agrupar mensajes por cliente
+    this.debounceQueues = new Map();
   }
 
   /**
@@ -86,6 +88,18 @@ class MessageService {
    * Envía una imagen de respuesta llamando a la API Graph de Meta.
    */
   async sendImageMessage(to, imageUrl, skipChatwootSync = false) {
+    if (typeof to === 'string' && to.startsWith('chatwoot_conv_')) {
+      const conversationId = to.replace('chatwoot_conv_', '');
+      let imageFileName;
+      try {
+        imageFileName = path.basename(new URL(imageUrl).pathname);
+      } catch (e) {
+        imageFileName = 'product_image.jpg';
+      }
+      await this.sendChatwootMessage(conversationId, `[Imagen]: ${imageUrl}`, imageFileName);
+      return;
+    }
+
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar respuesta de imagen: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -154,100 +168,131 @@ class MessageService {
       messageType,
     });
 
-    // Extraer texto o tipo para sincronizar
-    let bodyText = '';
-    if (messageType === 'text') {
-      bodyText = message.text.body.trim();
-    } else if (messageType === 'interactive') {
-      const interactive = message.interactive;
-      if (interactive.type === 'button_reply') {
-        bodyText = interactive.button_reply.id;
-      } else if (interactive.type === 'list_reply') {
-        bodyText = interactive.list_reply.id;
+    // 1. Get or create queue for user
+    if (!this.debounceQueues) {
+      this.debounceQueues = new Map();
+    }
+
+    let userQueue = this.debounceQueues.get(from);
+    if (!userQueue) {
+      userQueue = {
+        timer: null,
+        messages: [],
+        profileName: profileName,
+        value: value
+      };
+      this.debounceQueues.set(from, userQueue);
+    }
+
+    // 2. Add message to queue
+    userQueue.messages.push(message);
+
+    // 3. Reset/Set debounce timer (8 seconds)
+    if (userQueue.timer) {
+      clearTimeout(userQueue.timer);
+    }
+
+    userQueue.timer = setTimeout(async () => {
+      const messagesToProcess = userQueue.messages;
+      this.debounceQueues.delete(from); // Clear queue from map
+      
+      try {
+        await this.processCombinedMessages(from, userQueue.profileName, messagesToProcess, userQueue.value);
+      } catch (err) {
+        logger.error({ msg: 'Error processing combined messages', from, error: err.message, stack: err.stack });
+      }
+    }, 8000); // 8 seconds debounce
+  }
+
+  /**
+   * Procesa la lista de mensajes agrupados después de la pausa (debouncing)
+   */
+  async processCombinedMessages(from, profileName, messages, value) {
+    // 1. Separar mensajes de texto e imágenes
+    const texts = [];
+    const images = [];
+    
+    for (const msg of messages) {
+      if (msg.type === 'text') {
+        texts.push(msg.text.body.trim());
+      } else if (msg.type === 'interactive') {
+        const interactive = msg.interactive;
+        if (interactive.type === 'button_reply') {
+          texts.push(interactive.button_reply.id);
+        } else if (interactive.type === 'list_reply') {
+          texts.push(interactive.list_reply.id);
+        }
+      } else if (msg.type === 'image') {
+        images.push(msg.image);
       }
     }
 
-    // Sincronizar mensaje entrante con Chatwoot antes de pausar o procesar
-    const syncText = bodyText || (messageType === 'image' ? '[Imagen recibida]' : `[Mensaje tipo: ${messageType}]`);
-    await this.syncIncomingMessageToChatwoot(from, profileName, syncText);
+    const combinedText = texts.join('\n').trim();
+    const hasImage = images.length > 0;
 
-    // Si el bot está pausado para esta conversación (traspaso a humano)
+    // 2. Sincronizar mensaje entrante con Chatwoot antes de responder
+    if (hasImage) {
+      const img = images[images.length - 1]; // procesar última imagen
+      try {
+        const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
+        
+        let ext = '.jpg';
+        if (mimeType === 'image/png') ext = '.png';
+        else if (mimeType === 'image/gif') ext = '.gif';
+        const fileName = 'whatsapp_image_' + Date.now() + ext;
+
+        const syncText = combinedText || '[Imagen recibida]';
+        await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType);
+      } catch (err) {
+        logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot', error: err.message });
+        await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '[Imagen recibida]');
+      }
+    } else if (combinedText) {
+      await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
+    }
+
+    // 3. Si el bot está pausado para esta conversación, no responder
     if (geminiService.isConversationPaused(from)) {
       logger.info(`⏸️ Conversación con ${profileName} (${from}) está pausada. Bot no responderá.`);
       return;
     }
 
-    let body = '';
-    if (messageType === 'text') {
-      body = message.text.body.trim();
-      logger.info(`💬 Mensaje de texto de [${profileName}] (${from}): "${body}"`);
-    } else if (messageType === 'interactive') {
-      const interactive = message.interactive;
-      if (interactive.type === 'button_reply') {
-        body = interactive.button_reply.id;
-      } else if (interactive.type === 'list_reply') {
-        body = interactive.list_reply.id;
-      }
-      logger.info(`🔘 Respuesta interactiva de [${profileName}] (${from}): "${body}"`);
-    } else if (messageType === 'image') {
-      logger.info(`📸 Recibida imagen de [${profileName}] (${from}) con ID: ${message.image.id}`);
-      try {
-        await this.sendTextMessage(from, "Un momento, por favor. Estoy analizando tu imagen para identificar el producto... 🔍");
+    // 4. Procesar identificación visual si hay imagen
+    let productContext = '';
+    let product = null;
+    let imageMatchResult = null;
 
-        const { buffer, mimeType } = await this.downloadMetaMedia(message.image.id);
+    if (hasImage) {
+      const img = images[images.length - 1];
+      try {
+        if (!from.startsWith('chatwoot_conv_')) {
+          await this.sendTextMessage(from, "Un momento, por favor. Estoy analizando tu imagen para identificar el producto... 🔍");
+        }
+
+        const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
         const matchResult = await geminiService.identifyProductFromImage(buffer, mimeType);
+        imageMatchResult = matchResult;
 
         if (matchResult.matched && matchResult.code) {
           logger.info(`🎯 Producto identificado por imagen: ${matchResult.code}`);
           const searchResults = await catalogService.searchCatalog(matchResult.code);
-          const product = searchResults[0];
+          product = searchResults[0];
 
           if (product) {
             const prices = product.precios_venta_sin_igv;
-            const prefix = matchResult.isAlternative
-              ? `No encontré ese modelo exacto en catálogo, pero encontré la opción más similar disponible:`
-              : `¡Excelente! He identificado el producto de tu foto:`;
-
-            const quoteMessage = `${prefix}\n\n` +
-              `📦 *${product.nombre}*\n` +
-              `🔢 Código: *${product.codigo}*\n` +
-              `🎨 Color: ${product.color || 'Varios'}\n` +
-              `📂 Categoría: ${product.categoria}\n\n` +
-              `💰 *Precios unitarios estimados (sin IGV):*\n` +
-              `• 1-5 unidades: *${prices.precio_1_5_unidades}*\n` +
-              `• 6-12 unidades: *${prices.precio_6_12_unidades}*\n` +
-              `• 13-50 unidades: *${prices.precio_13_50_unidades}*\n` +
-              `• 51-499 unidades: *${prices.precio_51_499_unidades}*\n` +
-              `• 500+ unidades: *${prices.precio_500_1000_unidades}*\n\n` +
-              `¿Qué te gustaría hacer ahora?`;
-
-            await this.sendTextMessage(from, quoteMessage);
-
-            const options = [
-              { id: 'block-choice-loopmenu-item-cotizar', content: '📦 Cotizar otro producto' },
-              { id: 'block-choice-loopmenu-item-asesor', content: '👩‍💼 Hablar con asesor' }
-            ];
-            await this.sendInteractive(from, 'Selecciona una opción:', options);
-            return;
+            productContext = '[Contexto de Imagen: El cliente envió una imagen identificada como el producto *' + product.nombre + '* (Código: *' + product.codigo + '*). Color: ' + (product.color || 'Varios') + ', Categoria: ' + product.categoria + '.\n💰 Precios unitarios estimados (sin IGV):\n• 1-5 unidades: ' + prices.precio_1_5_unidades + '\n• 6-12 unidades: ' + prices.precio_6_12_unidades + '\n• 13-50 unidades: ' + prices.precio_13_50_unidades + '\n• 51-499 unidades: ' + prices.precio_51_499_unidades + '\n• 500+ unidades: ' + prices.precio_500_1000_unidades + '\n]';
           }
         }
-        
-        // No pausar el bot — invitar al usuario a describir el producto con texto
-        await this.sendTextMessage(from, "No logré identificar ese producto exactamente desde la imagen 🔍. ¿Podrías describirme qué artículo es? Por ejemplo: *\"taza de cerámica 11oz\"* o *\"bolsa ecológica con cierre\"*. Así puedo buscarlo en nuestro catálogo y darte precios al instante. 😊");
-        return;
-
       } catch (error) {
         logger.error({ msg: 'Error procesando imagen entrante', error: error.message });
-        // No pausar el bot en caso de error técnico — mantener la conversación activa
-        await this.sendTextMessage(from, "Tuve un problema técnico al procesar tu imagen 😅. ¿Puedes describirme el producto que buscas? Puedo ayudarte con precios y disponibilidad. 😊");
-        return;
       }
     }
 
-    if (body) {
-      const cleanBody = body.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const body = combinedText;
+    if (body || productContext) {
+      const cleanBody = (body || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
-      // 1. Detectar solicitud explícita de atención humana (Handover a Chatwoot)
+      // Detectar intención de atención humana
       const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
       const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
 
@@ -260,53 +305,99 @@ class MessageService {
 
       const isResetKeyword = ['reiniciar', 'inicio', 'hola', 'buenas tardes', 'buenos dias', 'menú', 'menu'].includes(cleanBody);
 
-      // Clasificación de intenciones basada en palabras clave de catálogo
+      // Clasificación de catálogo
       const catalogKeywords = [
         'precio', 'costo', 'cotizar', 'cotizacion', 'cotización', 'catalogo', 'catálogo',
         'taza', 'mug', 'termo', 'tomatodo', 'botella', 'llavero', 'destapador', 'lapicero',
         'bolsa', 'cambrell', 'notex', 'corcho', 'ecologico', 'libreta', 'agenda', 'lapiceros',
         'cuánto', 'cuanto', 'cuesta', 'valor', 'stock', 'cantidad', 'colores', 'color', 'muestra'
       ];
-      
-      const isCatalogIntent = !isResetKeyword && catalogKeywords.some(keyword => cleanBody.includes(keyword));
+      const isCatalogIntent = !isResetKeyword && (catalogKeywords.some(keyword => cleanBody.includes(keyword)) || !!productContext);
 
-      // Si es una consulta de catálogo, desviamos directamente al motor Gemini para responderla
       if (isCatalogIntent) {
-        logger.info(`🎯 Intención de catálogo detectada en mensaje libre de [${profileName}] (${from}): "${body}"`);
+        logger.info(`🎯 Intención de catálogo detectada de [${profileName}] (${from}): "${body}"`);
         try {
-          const aiResponse = await geminiService.generateResponse(from, profileName, body);
+          const promptMsg = productContext ? (productContext + '\n' + (body || 'detalles del producto')) : body;
+          const aiResponse = await geminiService.generateResponse(from, profileName, promptMsg);
           if (aiResponse) {
-            await this.sendTextMessage(from, aiResponse);
+            const imageMatch = aiResponse.match(/https?:\/\/[^\s]+?\.(?:png|jpe?g|gif|webp)/gi);
+            if (imageMatch) {
+              const imageUrl = imageMatch[0];
+              const cleanText = aiResponse.replace(imageUrl, '').trim();
+              await this.sendImageMessage(from, imageUrl);
+              if (cleanText) {
+                await this.sendTextMessage(from, cleanText);
+              }
+            } else {
+              await this.sendTextMessage(from, aiResponse);
+            }
           }
-          
-          // Re-presentar opciones del último bloque de Typebot para evitar la desconexión del flujo
-          const lastInput = this.lastUserInputs.get(from);
-          if (lastInput && lastInput.type === 'choice input' && lastInput.items && lastInput.items.length > 0) {
-            await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", lastInput.items);
+
+          if (!from.startsWith('chatwoot_conv_')) {
+            const lastInput = this.lastUserInputs.get(from);
+            if (lastInput && lastInput.type === 'choice input' && lastInput.items && lastInput.items.length > 0) {
+              await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", lastInput.items);
+            }
           }
-          return; // Finalizar procesamiento de mensaje aquí
+          return;
         } catch (err) {
           logger.error({ msg: 'Error procesando intención de catálogo directa', error: err.message });
         }
       }
 
+      if (hasImage && !product && !body) {
+        await this.sendTextMessage(from, "No logré identificar ese producto exactamente desde la imagen 🔍. ¿Podrías describirme qué artículo es? Por ejemplo: *\"taza de cerámica 11oz\"* o *\"bolsa ecológica con cierre\"*. Así puedo buscarlo en nuestro catálogo y darte precios al instante. 😊");
+        return;
+      }
+
+      if (hasImage && product && !body) {
+        const prices = product.precios_venta_sin_igv;
+        const prefix = imageMatchResult.isAlternative
+          ? 'No encontré ese modelo exacto en catálogo, pero encontré la opción más similar disponible:'
+          : '¡Excelente! He identificado el producto de tu foto:';
+
+        const quoteMessage = prefix + '\n\n' +
+          '📦 *' + product.nombre + '*\n' +
+          '🔢 Código: *' + product.codigo + '*\n' +
+          '🎨 Color: ' + (product.color || 'Varios') + '\n' +
+          '📂 Categoría: ' + product.categoria + '\n\n' +
+          '💰 *Precios unitarios estimados (sin IGV):*\n' +
+          '• 1-5 unidades: *' + prices.precio_1_5_unidades + '*\n' +
+          '• 6-12 unidades: *' + prices.precio_6_12_unidades + '*\n' +
+          '• 13-50 unidades: *' + prices.precio_13_50_unidades + '*\n' +
+          '• 51-499 unidades: *' + prices.precio_51_499_unidades + '*\n' +
+          '• 500+ unidades: *' + prices.precio_500_1000_unidades + '*\n\n' +
+          '¿Qué te gustaría hacer ahora?';
+
+        await this.sendTextMessage(from, quoteMessage);
+
+        if (!from.startsWith('chatwoot_conv_')) {
+          const options = [
+            { id: 'block-choice-loopmenu-item-cotizar', content: '📦 Cotizar otro producto' },
+            { id: 'block-choice-loopmenu-item-asesor', content: '👩‍💼 Hablar con asesor' }
+          ];
+          await this.sendInteractive(from, 'Selecciona una opción:', options);
+        }
+        return;
+      }
+
+      // Flujo de Typebot
       try {
         let sessionId = this.userSessions.get(from);
         let response;
-
         const typebotUrl = process.env.TYPEBOT_API_URL || 'http://typebot-viewer:3000';
+        
         if (!sessionId || isResetKeyword) {
-          logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from}) con variables predefinidas`);
-          response = await axios.post(`${typebotUrl}/api/v1/typebots/jgis-publicidad-bot-f33vo50/startChat`, {
+          logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from})`);
+          response = await axios.post(typebotUrl + '/api/v1/typebots/jgis-publicidad-bot-f33vo50/startChat', {
             prefilledVariables: {
-              phone: from
+              phone: from.startsWith('chatwoot_conv_') ? '' : from
             }
           });
           sessionId = response.data.sessionId;
           this.userSessions.set(from, sessionId);
           
           if (isResetKeyword) {
-            // Mandamos los mensajes iniciales del startChat
             if (response && response.data) {
               await this.processTypebotMessages(from, response.data.messages || [], response.data.input);
             }
@@ -315,7 +406,7 @@ class MessageService {
         }
 
         logger.info(`💬 Continuando sesión de Typebot ${sessionId} para ${from}`);
-        response = await axios.post(`${typebotUrl}/api/v1/sessions/${sessionId}/continueChat`, {
+        response = await axios.post(typebotUrl + '/api/v1/sessions/' + sessionId + '/continueChat', {
           message: { type: 'text', text: body }
         });
 
@@ -323,7 +414,6 @@ class MessageService {
           const messages = response.data.messages || [];
           const input = response.data.input;
 
-          // Detectar error de validación de Typebot (ej. 'Invalid message. Please, try again.')
           let hasValidationError = false;
           for (const msg of messages) {
             if (msg.type === 'text') {
@@ -340,44 +430,26 @@ class MessageService {
 
           if (hasValidationError) {
             logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a Gemini.`);
-            // Obtener respuesta contextual de Gemini para responder a la pregunta libre del cliente
             const aiResponse = await geminiService.generateResponse(from, profileName, body);
             if (aiResponse) {
               await this.sendTextMessage(from, aiResponse);
             } else {
               await this.sendTextMessage(from, "Lo siento, no comprendí esa opción.");
             }
-            // Re-renderizar las opciones para que el cliente continúe con el flujo estructurado
-            if (input && input.type === 'choice input' && input.items && input.items.length > 0) {
+            if (!from.startsWith('chatwoot_conv_') && input && input.type === 'choice input' && input.items && input.items.length > 0) {
               await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", input.items);
             }
           } else {
-            // Flujo normal sin errores de validación
             await this.processTypebotMessages(from, messages, input);
           }
         }
-
       } catch (err) {
         logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de Gemini', error: err.message });
-        
-        // Generar respuesta de respaldo con Gemini AI
         const aiResponse = await geminiService.generateResponse(from, profileName, body);
         if (aiResponse) {
           await this.sendTextMessage(from, aiResponse);
         }
       }
-    } else if (messageType === 'image' || messageType === 'audio' || messageType === 'video' || messageType === 'document') {
-      logger.info(`📎 Mensaje de tipo "${messageType}" recibido de [${profileName}].`);
-      if (!geminiService.isConversationPaused(from)) {
-        await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu archivo. Por el momento solo puedo procesar mensajes de texto. Si necesitas ayuda, escríbeme tu consulta y con gusto te asisto. 😊`);
-      }
-    } else if (messageType === 'sticker') {
-      logger.info(`🎉 Sticker recibido de [${profileName}].`);
-      if (!geminiService.isConversationPaused(from)) {
-        await this.sendTextMessage(from, `😄 ¡Bonito sticker, ${profileName}! ¿En qué puedo ayudarte hoy?`);
-      }
-    } else {
-      logger.info(`📎 Mensaje de tipo "${messageType}" recibido (no procesado).`);
     }
   }
 
@@ -453,6 +525,12 @@ class MessageService {
    * @param {string} text Texto del mensaje a enviar.
    */
   async sendTextMessage(to, text, skipChatwootSync = false) {
+    if (typeof to === 'string' && to.startsWith('chatwoot_conv_')) {
+      const conversationId = to.replace('chatwoot_conv_', '');
+      await this.sendChatwootMessage(conversationId, text);
+      return;
+    }
+
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar respuesta automática: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -463,9 +541,9 @@ class MessageService {
       
       const response = await axios({
         method: 'POST',
-        url: `https://graph.facebook.com/v25.0/${config.PHONE_NUMBER_ID}/messages`,
+        url: 'https://graph.facebook.com/v25.0/' + config.PHONE_NUMBER_ID + '/messages',
         headers: {
-          'Authorization': `Bearer ${config.ACCESS_TOKEN}`,
+          'Authorization': 'Bearer ' + config.ACCESS_TOKEN,
           'Content-Type': 'application/json'
         },
         data: {
@@ -481,7 +559,6 @@ class MessageService {
       });
 
       const sentMessageId = response.data.messages[0].id;
-      // Guardar el ID para saber que este mensaje fue enviado por el bot
       this.botSentMessageIds.add(sentMessageId);
 
       logger.info({
@@ -510,6 +587,17 @@ class MessageService {
    * @param {Array} items Lista de opciones para convertir en botones o filas.
    */
   async sendInteractive(to, text, items, skipChatwootSync = false) {
+    if (typeof to === 'string' && to.startsWith('chatwoot_conv_')) {
+      const conversationId = to.replace('chatwoot_conv_', '');
+      const optionsText = items.map((item, idx) => {
+        const content = typeof item === 'string' ? item : item.content;
+        return `[${idx + 1}] ${content}`;
+      }).join('\n');
+      const combinedText = `${text}\n\nOpciones:\n${optionsText}`;
+      await this.sendChatwootMessage(conversationId, combinedText);
+      return;
+    }
+
     if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) {
       logger.warn('No se puede enviar interactivo: ACCESS_TOKEN o PHONE_NUMBER_ID no configurados.');
       return;
@@ -724,6 +812,25 @@ class MessageService {
    * @returns {Object} { buffer: Buffer, mimeType: string }
    */
   async downloadMetaMedia(mediaId) {
+    if (typeof mediaId === 'string' && (mediaId.startsWith('http://') || mediaId.startsWith('https://'))) {
+      try {
+        logger.debug({ msg: 'Descargando multimedia directamente por URL (Chatwoot)', url: mediaId });
+        const response = await axios({
+          method: 'GET',
+          url: mediaId,
+          responseType: 'arraybuffer'
+        });
+        const mimeType = response.headers['content-type'] || 'image/jpeg';
+        return {
+          buffer: Buffer.from(response.data),
+          mimeType
+        };
+      } catch (error) {
+        logger.error({ msg: 'Error al descargar archivo desde URL directa', url: mediaId, error: error.message });
+        throw error;
+      }
+    }
+
     if (!config.ACCESS_TOKEN) {
       throw new Error('ACCESS_TOKEN no configurado para descarga de multimedia.');
     }
@@ -733,9 +840,9 @@ class MessageService {
       // 1. Obtener la URL de descarga binaria
       const metadataResponse = await axios({
         method: 'GET',
-        url: `https://graph.facebook.com/v25.0/${mediaId}`,
+        url: 'https://graph.facebook.com/v25.0/' + mediaId,
         headers: {
-          'Authorization': `Bearer ${config.ACCESS_TOKEN}`
+          'Authorization': 'Bearer ' + config.ACCESS_TOKEN
         }
       });
 
@@ -752,7 +859,7 @@ class MessageService {
         method: 'GET',
         url: downloadUrl,
         headers: {
-          'Authorization': `Bearer ${config.ACCESS_TOKEN}`
+          'Authorization': 'Bearer ' + config.ACCESS_TOKEN
         },
         responseType: 'arraybuffer'
       });
@@ -771,28 +878,49 @@ class MessageService {
   /**
    * Sincroniza un mensaje entrante de WhatsApp en Chatwoot.
    */
-  async syncIncomingMessageToChatwoot(phone, name, text) {
+  async syncIncomingMessageToChatwoot(phone, name, text, fileBuffer, fileName, mimeType) {
     if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
       logger.warn('No se puede sincronizar a Chatwoot: token o ID de cuenta no configurado.');
       return;
     }
+    if (typeof phone === 'string' && phone.startsWith('chatwoot_conv_')) {
+      return;
+    }
+
     try {
       const conversationId = await this.getOrCreateConversationId(phone, name);
       const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
       
-      const response = await axios({
-        method: 'POST',
-        url,
-        headers: {
-          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
-          'Content-Type': 'application/json'
-        },
-        data: {
-          content: text || '[Mensaje sin texto]',
-          message_type: 'incoming',
-          private: false
-        }
-      });
+      let response;
+      if (fileBuffer) {
+        const formData = new FormData();
+        formData.append('content', text || '');
+        formData.append('message_type', 'incoming');
+        formData.append('private', 'false');
+        
+        const blob = new Blob([fileBuffer], { type: mimeType || 'image/jpeg' });
+        formData.append('attachments[]', blob, fileName || 'whatsapp_image.jpg');
+
+        response = await axios.post(url, formData, {
+          headers: {
+            'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+          }
+        });
+      } else {
+        response = await axios({
+          method: 'POST',
+          url,
+          headers: {
+            'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+            'Content-Type': 'application/json'
+          },
+          data: {
+            content: text || '[Mensaje sin texto]',
+            message_type: 'incoming',
+            private: false
+          }
+        });
+      }
       logger.info({ msg: 'Mensaje entrante de WhatsApp sincronizado con Chatwoot', conversationId, messageId: response.data.id });
     } catch (error) {
       const errRes = error.response ? error.response.data : error.message;

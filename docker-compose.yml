@@ -52,7 +52,7 @@ services:
       - '8081:3000'
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
-      - NEXTAUTH_URL=https://bot.jgispublicidad.pe/typebot
+      - NEXTAUTH_URL=https://bot.jgispublicidad.pe
       - NEXT_PUBLIC_VIEWER_URL=https://bot.jgispublicidad.pe:8082
       - ENCRYPTION_SECRET=supersecretkey123456789012345678
       - DISABLE_SIGNUP=false
@@ -76,7 +76,7 @@ services:
       - '8082:3000'
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
-      - NEXTAUTH_URL=https://bot.jgispublicidad.pe/typebot
+      - NEXTAUTH_URL=https://bot.jgispublicidad.pe
       - NEXT_PUBLIC_VIEWER_URL=https://bot.jgispublicidad.pe:8082
       - ENCRYPTION_SECRET=supersecretkey123456789012345678
       - SSRF_ALLOWED_HOSTS=host.docker.internal
