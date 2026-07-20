@@ -87,7 +87,7 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 ## 5. Secuencia de Despliegue & Tracker de Estado REGE
  
 - [x] **Paso 1 — Telegram → OpenClaw:** Completado (20/07/2026). Cargar `TELEGRAM_BOT_TOKEN` definitivo y validado en logs.
-- [x] **Paso 2 — OpenClaw → Agentes REGE:** Completado (20/07/2026). Conexión nativa entre Telegram y los ejecutores OpenCode / OpenHands. *Fix (20/07/2026): Se corrigió setup_openclaw_deepseek.py para no borrar mcpServers, permitiendo que OpenClaw mantenga comunicación E2E con OpenHands y OpenCode.*
+- [x] **Paso 2 — OpenClaw → Agentes REGE:** Completado (20/07/2026). Conexión nativa entre Telegram y los ejecutores OpenCode / OpenHands. *Causa raíz resuelta (20/07/2026): Se determinó que OpenClaw no admite mcp/mcpServers en su openclaw.json y que la validación estricta de Zod causaba crashes. Se removió la inyección inválida de mcp en openclaw.json y se configuraron correctamente los proveedores dify y deepseek. El bot y los agentes se comunican a través de Dify.AI (que conecta directamente con opencode-mcp y openhands-mcp).*
 - [x] **Paso 3 — OpenClaw → OpenCode / OpenHands (invocación nativa):** Completado (20/07/2026). Pruebas de ejecución autónoma directa en `/app` con DeepSeek V3/R1 sin proxies MCP intermedios.
  
 > **Nota de Infraestructura Base:** Los Pasos 4 al 8 corresponden al aprovisionamiento de la plataforma servidora (Nginx SSL, DNS Hostinger, Chatwoot y pipeline Git Auto-Deployer) sobre la cual se apoya el ecosistema agéntico REGE.
