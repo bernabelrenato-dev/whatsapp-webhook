@@ -15,9 +15,9 @@ async function runTest() {
 
   // 1. Restaurar el CSV de prueba para asegurar un estado conocido
   const originalCsvContent = 
-`codigo,nombre,precio_venta,color,categoria,proveedor,imagen_url,aprobado,sincronizado
-MUG-32,Mug Termico Acero con Asa,15.50,Negro,MUGS Y TAZAS,Importadora JGIS,images/MUG-32.png,Approved,false
-SET-1,Set Libreta y Lapicero Corcho,22.00,Natural,SETS ECOLOGICOS,Proveedor Express,images/SET-1.jpg,Draft,false`;
+`codigo,nombre,precio_venta,color,categoria,proveedor,imagen_url,stock,aprobado,sincronizado
+MUG-32,Mug Termico Acero con Asa,15.50,Negro,MUGS Y TAZAS,Importadora JGIS,images/MUG-32.png,100,Approved,false
+SET-1,Set Libreta y Lapicero Corcho,22.00,Natural,SETS ECOLOGICOS,Proveedor Express,images/SET-1.jpg,50,Draft,false`;
   
   fs.writeFileSync(csvPath, originalCsvContent.trim() + '\n', 'utf-8');
   console.log('📂 Archivo de prueba catalogo_borrador.csv restaurado.');
@@ -67,8 +67,8 @@ SET-1,Set Libreta y Lapicero Corcho,22.00,Natural,SETS ECOLOGICOS,Proveedor Expr
     console.log('\nContenido actual del CSV:');
     console.log(updatedCsv);
 
-    if (updatedCsv.includes('MUG-32,Mug Termico Acero con Asa,15.50,Negro,MUGS Y TAZAS,Importadora JGIS,images/MUG-32.png,Approved,true') &&
-        updatedCsv.includes('SET-1,Set Libreta y Lapicero Corcho,22.00,Natural,SETS ECOLOGICOS,Proveedor Express,images/SET-1.jpg,Draft,false')) {
+    if (updatedCsv.includes('MUG-32,Mug Termico Acero con Asa,15.50,Negro,MUGS Y TAZAS,Importadora JGIS,images/MUG-32.png,100,Approved,true') &&
+        updatedCsv.includes('SET-1,Set Libreta y Lapicero Corcho,22.00,Natural,SETS ECOLOGICOS,Proveedor Express,images/SET-1.jpg,50,Draft,false')) {
       console.log('🎉 PRUEBA DE INTEGRACIÓN EXITOSA. Sincronizó e inyectó los metadatos correctamente. 🏆');
       process.exit(0);
     } else {
