@@ -88,6 +88,13 @@ if [[ $SECONDS_WAITED -ge $HEALTH_TIMEOUT ]]; then
   exit 1
 fi
 
+# --- Sincronizar configuración de REGE (OpenClaw / DeepSeek) ---
+if [[ -f "$PROJECT_DIR/scripts/setup_openclaw_deepseek.py" ]]; then
+  log "Actualizando configuración de OpenClaw/DeepSeek en REGE..."
+  python3 "$PROJECT_DIR/scripts/setup_openclaw_deepseek.py" 2>&1 || true
+  docker restart jgis-openclaw 2>&1 || true
+fi
+
 # --- Limpieza de imágenes huérfanas ---
 log "Limpiando imágenes Docker huérfanas..."
 docker image prune -f 2>&1 | tail -1
