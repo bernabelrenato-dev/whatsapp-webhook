@@ -1,1 +1,1 @@
-\dt
+SELECT id, "typebotId", url FROM "PublicTypebot";
