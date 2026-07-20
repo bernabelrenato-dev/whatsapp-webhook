@@ -190,6 +190,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/project
       - ./.git:/project/.git
+      - /home/jgis:/home/jgis
     ports:
       - '9000:9000'
     networks:

@@ -38,6 +38,33 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 
 ---
 
+## 2.2 Flujo Detallado de Comunicación (Orquestación y Conversación)
+
+```text
+  [ Entrada Telegram ] ──► [ OpenClaw Gateway ]
+                                   │
+                                   ├──► (Si el comando es directo de desarrollo)
+                                   │    │
+                                   │    └──► Invocación MCP a [ OpenHands / OpenCode ] ──► Modifica /app
+                                   │
+                                   └──► (Si es una consulta conversacional / RAG / Ventas)
+                                        │
+                                        └──► Envía prompt a [ Dify App API ] (Conversacional)
+                                                  │
+                                                  └──► Si Dify necesita escribir código:
+                                                       Llamada API HTTP ──► [ OpenClaw ]
+                                                                                │
+                                                                                └──► Ejecución MCP ➔ [ OpenCode ]
+```
+
+1. **OpenClaw como Gateway Central de Telegram:**
+   * Recibe el mensaje. Si contiene comandos de desarrollo directos (ej. *"OpenHands, crea..."*), OpenClaw ejecuta directamente el MCP Server local de OpenHands o OpenCode.
+2. **Dify.AI como Cerebro Conversacional / RAG:**
+   * OpenClaw está conectado a la API de Dify (definido en `openclaw.json` bajo `providers.dify`). Si el mensaje del usuario de Telegram requiere atención al cliente, cotización de catálogo o soporte de Valentina, OpenClaw delega el procesamiento conversacional a Dify.
+   * Si Dify en algún momento del chat requiere ejecutar comandos o editar archivos, llama a la API HTTP de OpenClaw (puerto `8085`) para ejecutar la tarea.
+
+---
+
 ## 3. Componentes del Stack REGE
 
 - **OpenClaw:** Gateway de entrada vía Telegram y API HTTP (`:8085`) para orquestar directamente las ejecuciones.
