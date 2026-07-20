@@ -62,4 +62,9 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 * **Control de Radio de Daño (Blast Radius):** Si un bloque o servicio experimenta un fallo (ejemplo: un error de formato en la API de un LLM en OpenCode), el error debe ser capturado y aislado exclusivamente dentro de ese módulo.
 * **Diagnóstico Directo:** Cada bloque debe contar con su propia suite de testeo independiente para que, en caso de fallo, sea posible identificar el componente exacto sin afectar la disponibilidad del resto del sistema.
 
+---
 
+## 7. Bucle de Trabajo Ininterrumpido, Testeo y Checkpoints Obligatorios
+* **Flujo Continuo:** Tras finalizar un ítem o tarea del backlog, el agente pasa automáticamente al siguiente ítem sin esperar intervención previa.
+* **Bucle de Testeo (3 Intentos):** Toda modificación debe validarse con scripts de pruebas locales (`exit code 0`). Tras 3 intentos fallidos, se detiene y busca intervención humana.
+* **Actualización Inmediata de Documentación:** Tras validar la solución, el agente debe marcar los checkboxes (`[x]`) correspondientes en `PROMPT_MAESTRO.md` y `PROMPT_REGE.md` con fecha y síntesis de aprendizaje.

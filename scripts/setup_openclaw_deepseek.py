@@ -42,12 +42,13 @@ if os.path.exists(path):
         ]
     }
 
-    # Set primary model as direct string (fixing model parameter error)
+    # Set primary model as direct string (fixing model parameter error) & continuous execution prompt
     if 'agents' not in data:
         data['agents'] = {}
     
     data['agents']['defaults'] = {
-        "model": "deepseek/deepseek-chat"
+        "model": "deepseek/deepseek-chat",
+        "systemPrompt": "Eres el Orquestador REGE 24/7. Trabajas en un bucle ininterrumpido: ejecutas cambios en /app, corres la suite de pruebas local y actualizas los checkpoints [x] en PROMPT_MAESTRO.md y PROMPT_REGE.md. NUNCA emitas etiquetas XML raw como <｜｜DSML｜｜>. Usa respuestas directas y llamadas de funciones nativas."
     }
 
     # Inject MCP tools

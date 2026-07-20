@@ -63,3 +63,9 @@ Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea.
 - **Desacoplamiento Estricto:** Todo avance o refactorización se realiza módulo por módulo (ej. Bloque REGE vs. Bloque JGIS). Un fallo en la capa de agentes no debe desestabilizar la capa de producción ni los servicios de ventas.
 - **Detección Rápida de Fallas:** Cada bloque opera con interfaces limpias e independientes, permitiendo identificar inmediatamente la causa raíz en caso de error sin afectar la disponibilidad del resto del sistema.
 
+### 0.8 Bucle de Trabajo Ininterrumpido, Testeo y Checkpoints Obligatorios
+- **Ejecución Continua Ininterrumpida:** Al completar un punto o tarea del backlog, los agentes continúan inmediatamente con la siguiente tarea de forma autónoma y sin detener la ejecución.
+- **Bucle de Testeo (Máximo 3 Intentos):** Luego de corregir o implementar cada tarea, se ejecuta la suite de pruebas correspondiente. La solución solo se da por terminada cuando el comando finaliza con `exit code 0`. Si falla tras 3 intentos, se detiene y solicita recomendación/intervención humana.
+- **Registro Obligatorio de Checkpoints:** Al validar cada tarea con éxito, se actualizan de inmediato los checkboxes (`[x]`) en la documentación (`PROMPT_MAESTRO.md` y `PROMPT_REGE.md`), detallando la fecha, la causa raíz corregida y lo aprendido.
+
+
