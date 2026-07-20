@@ -3,7 +3,7 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
-const dbSyncService = require('../../src/services/dbSync.service');
+const dbSyncService = require(path.join(__dirname, '..', '..', 'src', 'services', 'dbSync.service'));
 const logger = require('../../src/utils/logger');
 
 logger.level = 'debug';
