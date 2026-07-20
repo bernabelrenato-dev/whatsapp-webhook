@@ -41,6 +41,15 @@ Inspirado en el framework **ECC (Executive Cognitive Control) de Mustafa**, gana
 - **Rol de Agentes REGE (OpenCode, OpenHands, Dify):** Los agentes del stack REGE (`jgis-opencode`, `jgis-openhands-mcp`, `jgis-opencode-mcp`) ejecutan tareas autónomas de código y servidor bajo la coordinación del orquestador.
 - **Flujo de Trabajo Conjunto:** Todo agente autónomo que tome una tarea del backlog debe reportar progresos, respetar el radio de acción de CogSec, y marcar los checkboxes correspondientes en `PROMPT_MAESTRO.md` una vez validados mediante testeo local (Exit code 0).
 
+### 0.7 Aislamiento 100% Cloud & GitHub (Cero Instalaciones en Laptop)
+- **Ejecución Total en la Nube:** Está estrictamente prohibido intentar instalar o requerir dependencias en la laptop del usuario. Todo ocurre en el VPS de GCP y GitHub.
+- **Repositorio Remoto como Única Fuente de Verdad:** Todos los cambios, configuraciones y código se sincronizan vía GitHub (`bernabelrenato-dev/whatsapp-webhook`).
+
+### 0.8 Auto-Perfeccionamiento Continuo 24/7 (Self-Improving Agents)
+- **Evolución Autónoma de Código y Agentes:** Los agentes trabajarán día y noche puliendo el proyecto JGIS y puliéndose a sí mismos.
+- **Generación de Subagentes y Skills:** Tienen la capacidad y responsabilidad autónoma de crear nuevos subagentes especializados en `.agents/agents/` y desarrollar nuevas habilidades de software en `.agents/skills/` continuamente.
+
+
 ### 0.7 Estrategia de Versionamiento y Desarrollo Paralelo (Estándar Enterprise)
 - **Producción Inmutable (`v1.0.0` - Tag Actual):** El bot actual desplegado en GCP representa la versión estable de producción para operación comercial inmediata. Ningún cambio experimental se aplica directamente en producción sin pasar por validación previa.
 - **Esquema Semantic Versioning (`vMAJOR.MINOR.PATCH`):**

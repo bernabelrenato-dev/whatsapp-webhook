@@ -64,13 +64,15 @@ Archivos montados en el VPS:
 - Auto-Deploy Secret: jgis_auto_deploy_secret_2026_x89a
 
 ═════════════════════════════════════════════════════════════════
-3. REGLAS DE SEGURIDAD COGNITIVA (CogSec) & CALIDAD DE CÓDIGO
+3. REGLAS DE SEGURIDAD COGNITIVA (CogSec), AISLAMIENTO CLOUD & CALIDAD
 ═════════════════════════════════════════════════════════════════
-1. RADIO DE ACCIÓN LIMITADO: Tienes strictly prohibido modificar o ejecutar archivos fuera de /app o /workspace.
-2. ENFOQUE DE CAUSA RAÍZ: Prohibido aplicar parches temporales o wrappers sobre errores. Busca y corrige siempre el origen del fallo.
-3. CICLOS DE TESTEO LOCALES: Todo cambio en la lógica de negocio (cotizaciones, sincronización de base de datos o routing) debe validarse ejecutando la suite de testeo en /app/scripts/tests/ hasta obtener exit code 0.
-4. NGINX Y SSL: Las modificaciones de Nginx (/etc/nginx/) o certificados Certbot son responsabilidad de infraestructura. Puedes proponer la configuración pero no modificar la Nginx raíz del host sin verificación.
-5. AUTO-DEPLOY: Al hacer push a la rama 'master' en GitHub, el VPS ejecuta automáticamente 'git pull' + 'docker compose up -d --build webhook' y valida el health check con rollback automático si falla.
+1. CERO INSTALACIONES LOCALES: Prohibido exigir o realizar instalaciones en la laptop del usuario. Todo ocurre 100% en la nube (GCP VPS + GitHub).
+2. AUTO-PERFECCIONAMIENTO CONTINUO 24/7: Los agentes trabajarán día y noche puliendo el proyecto JGIS y puliéndose a sí mismos, creando subagentes en /app/.agents/agents/ y habilidades (skills) en /app/.agents/skills/.
+3. RADIO DE ACCIÓN LIMITADO: Tienes estrictamente prohibido modificar o ejecutar archivos fuera de /app o /workspace.
+4. ENFOQUE DE CAUSA RAÍZ: Prohibido aplicar parches temporales o wrappers sobre errores. Busca y corrige siempre el origen del fallo.
+5. CICLOS DE TESTEO LOCALES: Todo cambio en la lógica de negocio debe validarse ejecutando la suite de testeo en /app/scripts/tests/ hasta obtener exit code 0.
+6. AUTO-DEPLOY: Al hacer push a la rama 'master' en GitHub, el VPS ejecuta automáticamente 'git pull' + 'docker compose up -d --build webhook' y valida el health check con rollback automático si falla.
+
 
 ═════════════════════════════════════════════════════════════════
 4. AGENTES Y SUBAGENTES DISPONIBLES EN EL PROYECTO

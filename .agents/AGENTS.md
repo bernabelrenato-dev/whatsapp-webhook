@@ -49,6 +49,16 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ---
 
-## 3. Economía de Tokens
-*   **Uso de Repomix:** Para compartir contexto del proyecto entre agentes, siempre se debe generar un archivo consolidado comprimido mediante **Repomix** para optimizar los tokens de entrada y evitar transferencias innecesarias de archivos redundantes.
-*   **Respuestas Concisas:** Los agentes de backend deben comunicarse mediante JSONs estructurados y texto resumido, evitando explicaciones verbose e innecesarias que consuman ventana de contexto.
+## 4. Aislamiento Total Cloud & GitHub (Cero Instalaciones en Laptop)
+* **100% Ejecución en la Nube:** Está estrictamente prohibido exigir o realizar instalaciones de software, CLI o dependencias en la laptop o máquina local del usuario.
+* **Infraestructura Cloud Inmutable:** Todos los agentes, ejecutores (OpenCode, OpenHands), conectores MCP, bases de datos y entornos de desarrollo operan 100% dentro del servidor VPS GCP (`jgis-chatbot-server`) y el repositorio remoto de GitHub (`bernabelrenato-dev/whatsapp-webhook`).
+
+---
+
+## 5. Auto-Perfeccionamiento Continuo 24/7 (Self-Improving Agents)
+* **Evolución Autónoma de Código y Agentes:** Los agentes (Antigravity, OpenHands, OpenCode) deben trabajar día y noche puliendo y perfeccionando continuamente el proyecto JGIS y puliéndose a sí mismos.
+* **Creación de Subagentes y Skills:** Tienen la responsabilidad autónoma de:
+  1. Detectar brechas en el código o en los procesos y crear nuevos subagentes especializados en `.agents/agents/`.
+  2. Construir e implementar nuevas habilidades (skills) de desarrollo de software en `.agents/skills/`.
+  3. Ejecutar bucles de optimización de rendimiento, refactorización limpia y suite de pruebas E2E sin esperar intervención manual del usuario.
+
