@@ -51,11 +51,11 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 ---
 
 ## 5. Secuencia de Despliegue & Tracker de Estado REGE
-
-- [ ] **Paso 1 — Telegram → OpenClaw:** Cargar `TELEGRAM_BOT_TOKEN` definitivo en `/home/jgis/ai-agents/.env` y validar recepción en logs.
-- [ ] **Paso 2 — OpenClaw → Agentes REGE:** Conectar gateway Telegram con los ejecutores OpenCode / OpenHands de forma nativa.
-- [ ] **Paso 3 — OpenClaw → OpenCode / OpenHands (invocación nativa):** Probar ejecución autónoma directa en `/app` sin proxies MCP intermedios.
-
+ 
+- [x] **Paso 1 — Telegram → OpenClaw:** Completado (20/07/2026). Cargar `TELEGRAM_BOT_TOKEN` definitivo y validado en logs.
+- [x] **Paso 2 — OpenClaw → Agentes REGE:** Completado (20/07/2026). Conexión nativa entre Telegram y los ejecutores OpenCode / OpenHands.
+- [x] **Paso 3 — OpenClaw → OpenCode / OpenHands (invocación nativa):** Completado (20/07/2026). Pruebas de ejecución autónoma directa en `/app` con DeepSeek V3/R1 sin proxies MCP intermedios.
+ 
 > **Nota de Infraestructura Base:** Los Pasos 4 al 8 corresponden al aprovisionamiento de la plataforma servidora (Nginx SSL, DNS Hostinger, Chatwoot y pipeline Git Auto-Deployer) sobre la cual se apoya el ecosistema agéntico REGE.
 
 - [x] **Paso 4 — Prueba E2E de Bajo Riesgo:** Completada (19/07/2026).
