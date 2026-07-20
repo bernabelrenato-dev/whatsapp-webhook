@@ -20,7 +20,23 @@ if os.path.exists(path):
     if 'providers' not in data['models']:
         data['models']['providers'] = {}
 
-    deepseek_key = os.environ.get('DEEPSEEK_API_KEY', '')
+    # Cargar API key desde .env o usar fallback robusto
+    def load_env_key(path_to_env, key_name):
+        if os.path.exists(path_to_env):
+            with open(path_to_env, 'r') as f:
+                for line in f:
+                    if '=' in line and not line.strip().startswith('#'):
+                        k, v = line.split('=', 1)
+                        if k.strip() == key_name:
+                            return v.strip().strip('"').strip("'")
+        return None
+
+    deepseek_key = (
+        load_env_key('/home/jgis/ai-agents/.env', 'DEEPSEEK_API_KEY') or 
+        load_env_key('/home/jgis/whatsapp-bot/.env', 'DEEPSEEK_API_KEY') or 
+        os.environ.get('DEEPSEEK_API_KEY') or 
+        'sk-db343927d3f0466388fd2c4515e3d41c'
+    )
 
     data['models']['providers']['deepseek'] = {
         "baseUrl": "https://api.deepseek.com",
