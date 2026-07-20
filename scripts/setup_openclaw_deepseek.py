@@ -25,7 +25,7 @@ if os.path.exists(path):
     data['models']['providers']['deepseek'] = {
         "baseUrl": "https://api.deepseek.com",
         "apiKey": deepseek_key,
-        "api": "openai-completions",
+        "api": "openai-chat",
         "models": [
             {
                 "id": "deepseek-chat",
