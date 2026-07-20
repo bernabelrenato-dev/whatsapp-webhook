@@ -228,9 +228,13 @@ class GeminiService {
       return response;
     } catch (error) {
       logger.error({
-        msg: 'Error al generar respuesta con Gemini AI',
+        msg: '🚨 Error detallado al generar respuesta con Gemini AI',
         phoneNumber,
-        error: error.message,
+        errorName: error.name,
+        errorStatus: error.status || error.statusCode,
+        errorMessage: error.message,
+        errorStack: error.stack,
+        cause: error.cause,
       });
 
       // Respuesta de fallback en caso de error
