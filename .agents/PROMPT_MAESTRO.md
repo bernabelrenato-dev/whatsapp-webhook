@@ -219,7 +219,7 @@ Esta sección es el tracker de estado que los agentes actualizan a medida que av
 - [x] **Paso 6 — Certbot + bloque Nginx para Chatwoot.** Completado. Se instaló la configuración de Nginx con `underscores_in_headers on;` y Certbot generó el certificado SSL con éxito. Se implementó sincronización bidireccional y puenteo de agente humano E2E en `message.service.js` y `chatwoot.controller.js`. (Fecha: 2026-07-19)
 - [x] **Paso 7 — Migración de Agentes Dify → Agent Console.** Completado. Se migraron los 3 agentes heredados de Dify (ValentinaRios, MetaAdsCopywriter, RAGSoporte) a `.agents/agents/` nativos y se actualizaron los 4 agentes locales (CatalogSpecialist, MetaAdsIntegrator, QATester, SeniorDevReviewer) con tools de ejecución y reglas CogSec. (Fecha: 2026-07-19)
 - [x] **Paso 8 — Pipeline Git → Auto-Deploy en VPS.** Completado. Se crearon los scripts de auto-deploy (`webhook-listener.js`, `deploy.sh`, `Dockerfile.deployer`, `nginx-deploy-webhook.conf`), se configuró el servicio `deployer` en `docker-compose.yml` y se documentó la integración con GitHub Webhook HMAC-SHA256. (Fecha: 2026-07-19)
-- [ ] **Paso 9 — Backlog alto riesgo JGIS.** Atacar el TRUNCATE del sync de catálogo (ver 1.5, ítem 1).
+- [x] **Paso 9 — Backlog alto riesgo JGIS.** Atacar el TRUNCATE del sync de catálogo (ver 1.5, ítem 1). Completado (20/07/2026). UPSERT atómico implementado y verificado en `dbSync.service.js`.
 - [ ] **Paso 10 — Backlog prioridad media.** Intent Router, migración cloud residual, etc. (ver 1.5 y 2.3).
 
 ---
