@@ -25,7 +25,7 @@ if os.path.exists(path):
     data['models']['providers']['deepseek'] = {
         "baseUrl": "https://api.deepseek.com",
         "apiKey": deepseek_key,
-        "api": "openai-chat",
+        "api": "openai-completions",
         "models": [
             {
                 "id": "deepseek-chat",
@@ -42,37 +42,22 @@ if os.path.exists(path):
         ]
     }
 
-    # Set primary model as direct string (fixing model parameter error) & continuous execution prompt
+    # Set primary model as direct string (fixing model parameter error)
     if 'agents' not in data:
         data['agents'] = {}
     
     data['agents']['defaults'] = {
-        "model": "deepseek/deepseek-chat",
-        "systemPrompt": "Eres el Orquestador REGE 24/7. Trabajas en un bucle ininterrumpido: ejecutas cambios en /app, corres la suite de pruebas local y actualizas los checkpoints [x] en PROMPT_MAESTRO.md y PROMPT_REGE.md. NUNCA emitas etiquetas XML raw como <｜｜DSML｜｜>. Usa respuestas directas y llamadas de funciones nativas."
+        "model": "deepseek/deepseek-chat"
     }
 
-    # Inject MCP tools
-    if 'mcpServers' not in data:
-        data['mcpServers'] = {}
-
-    data['mcpServers']['openhands'] = {
-        "url": "http://jgis-openhands-mcp:6363/sse",
-        "transport": "sse"
-    }
-    
-    data['mcpServers']['opencode'] = {
-        "url": "http://jgis-opencode-mcp:3000/sse",
-        "transport": "sse"
-    }
-
-    data['mcpServers']['hostinger'] = {
-        "url": "http://jgis-hostinger-mcp:3000/sse",
-        "transport": "sse"
-    }
+    # Remove unrecognized keys to prevent crashes
+    data.pop('mcpServers', None)
+    if 'agents' in data and 'defaults' in data['agents']:
+        data['agents']['defaults'].pop('systemPrompt', None)
 
     with open(path, 'w') as f:
         json.dump(data, f, indent=2)
         
-    print("Successfully configured DeepSeek provider + String Model + MCP tools in openclaw.json!")
+    print("Successfully configured DeepSeek provider with valid schema in openclaw.json!")
 else:
     print(f"Error: Path {path} not found")
