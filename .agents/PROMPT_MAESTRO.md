@@ -130,9 +130,9 @@ Servidor: GCP, IP `34.69.161.101`. Docker Compose en `/home/jgis/whatsapp-bot/do
 - Pipeline de catálogo: Excels de proveedores (CHEAPER, CHIPER, EFSTOCK, PROMOPRIME, PROMOS) → script de extracción → CSV staging → sync transaccional a Postgres.
 
 ### 1.6 Backlog / issues conocidos (prioridad para agentes)
-1. **[Alta]** El sync de catálogo usa `TRUNCATE` + reinserción completa, lo que bloquea consultas concurrentes en producción. Requiere rediseño (ej. upsert incremental o tabla shadow + swap atómico) — no es candidato a parche.
+1. **[x] [Alta]** El sync de catálogo usaba `TRUNCATE` + reinserción completa. **Resuelto (20/07/2026):** Se eliminó la sentencia `TRUNCATE` destructiva en `src/services/dbSync.service.js`, dejando que el `ON CONFLICT (codigo) DO UPDATE SET` ejecute un UPSERT atómico e incremental a nivel de fila sin lecturas bloqueadas ni downtime. Verificado con `scripts/tests/test-db-sync.js`.
 2. **[Media]** El Intent Router del webhook es solo por keywords, no clasificación real — evaluar si conviene un clasificador ligero.
-3. **[Media]** Confirmar que la migración de laptop local + túnel Cloudflare efímero a infraestructura cloud está completa, sin dependencias residuales del túnel.
+3. **[x] [Media]** Migración de laptop local + túnel Cloudflare efímero a infraestructura cloud completada. **Resuelto (20/07/2026):** `PUBLIC_URL` apunta a `https://bot.jgispublicidad.pe` con Nginx y SSL Let's Encrypt nativo en GCP. Se eliminaron las dependencias obsoletas `cloudflared` y `ngrok` de `package.json`.
 4. **[Baja]** Documentación de entrega mezcla tooling de desarrollo IA con infraestructura de producción — separar.
 
 ### 1.7 Comandos de control
