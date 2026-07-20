@@ -70,4 +70,6 @@ http://bot.jgispublicidad.pe/mailhog/ ──>  jgis-mailhog (Puerto 8025)
 - [x] **Paso 5: Pipeline Git ➔ Auto-Deploy VPS:** Implementado el webhook listener (`jgis-deployer`) para despliegue inmutable directo al hacer `git push origin master`.
 - [x] **Paso 6: Auditoría de Seguridad & Memoria:** Pool de conexiones PostgreSQL (`db.js`), estructuras acotadas con expiración TTL/LRU (`ttlCache.js`), validación criptográfica de firmas HMAC con `crypto.timingSafeEqual` y eliminación de I/O bloqueante.
 - [x] **Paso 7: Pruebas de Estrés y Resiliencia:** 60 peticiones concurrentes ejecutadas con 100% de éxito (`200 OK`), 0 errores 500, latencia promedio de 54.7ms y consumo mínimo de RAM (43.9 MiB).
+- [x] **Paso 8: Desduplicación de Hilos en Chatwoot:** Normalización de números telefónicos (`cleanPhone`), `encodeURIComponent` en la API de búsqueda de contactos y reapertura de conversaciones previas mediante `toggle_status` en lugar de generar múltiples hilos ("Test Users").
+- [x] **Paso 9: Corrección de Login en Typebot:** Ajuste de `NEXTAUTH_URL=https://bot.jgispublicidad.pe/typebot` para evitar fallos de origen Cross-Domain y adición de `ADMIN_EMAIL=ventas.centrolima@jgispublicidad.pe` en `docker-compose.yml`.
 

@@ -158,6 +158,8 @@ sudo docker logs jgis-webhook -f --tail 100
 - [x] **[P0] Typebot con URLs de `localhost`:** `NEXTAUTH_URL` y `NEXT_PUBLIC_VIEWER_URL` tenían `http://localhost:8081` y `8082`. *Solución:* Se actualizaron a las URLs de producción (`https://bot.jgispublicidad.pe:8081` y `:8082`).
 - [x] **[P1] Fallbacks hardcodeados en código fuente:** En `catalog.service.js` y `api.controller.js` existían fallbacks a `onrender.com` y `host.docker.internal`. *Solución:* Se eliminaron todos los fallbacks dev y se forzó el uso de `process.env.PUBLIC_URL`.
 - [x] **[P2] Puerto 5432 de PostgreSQL expuesto al host:** *Solución:* Se removió la publicación del puerto 5432 en `docker-compose.yml` por seguridad (solo accesible internamente dentro de `jgis_bot_net`).
+- [x] **[P0] Múltiples Conversaciones Duplicadas en Chatwoot ("Test Users"):** Al buscar contactos vía API (`contacts/search?q=+51...`), el parámetro `+` sin codificar (`encodeURIComponent`) se convertía en espacio (`q= 51...`), fallando la búsqueda y creando múltiples contactos/conversaciones para el mismo usuario. *Solución:* Se normalizó `cleanPhone` a dígitos puros, se agregó `encodeURIComponent(formattedPhone)` en el endpoint de búsqueda y se implementó la reapertura automática (`toggle_status`) de conversaciones previas resueltas para reutilizar hilos existentes.
+- [x] **[P0] Typebot Builder Login Fallaba con Error 500 (`Check server logs`):** `NEXTAUTH_URL` apuntaba a `:8081` mientras el tráfico entraba vía Nginx HTTPS nativo (`/typebot`), generando rechazo Cross-Domain en NextAuth. *Solución:* Se actualizó `NEXTAUTH_URL=https://bot.jgispublicidad.pe/typebot` y se configuró `ADMIN_EMAIL=ventas.centrolima@jgispublicidad.pe` en `docker-compose.yml`.
 
 
 ---
