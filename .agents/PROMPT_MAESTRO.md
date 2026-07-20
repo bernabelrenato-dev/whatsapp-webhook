@@ -189,7 +189,7 @@ Docker Compose en `/home/jgis/ai-agents/docker-compose.yml`. Mismo servidor GCP 
    sudo docker compose -f /home/jgis/ai-agents/docker-compose.yml restart openclaw
    ```
 2. **[Media]** Definir y documentar flujos de Dify (el usuario aún no domina la herramienta) — priorizar el flujo que conecta OpenClaw → Dify → OpenCode MCP.
-3. **[Media]** Subdominio Chatwoot pendiente — ver Sección 3.2, Pasos 5 (DNS vía conector Hostinger, delegable con checkpoint) y 6 (Certbot + Nginx, siempre manual — ver regla 0.2).
+3. **[x] [Media]** Subdominio Chatwoot (`chatwoot.jgispublicidad.pe`) configurado con DNS Hostinger, Nginx SSL y `underscores_in_headers on;` (ver Sección 3.2, Pasos 5 y 6). Completado (19/07/2026).
 
 ### 2.4 Comandos de control
 ```bash
