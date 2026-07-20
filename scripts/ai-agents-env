@@ -9,10 +9,11 @@ DIFY_API_KEY=tu_dify_api_key_de_workflow_aqui
 # 2. Seguridad de OpenCode Headless
 OPENCODE_AUTH_TOKEN=jgis_secret_opencode_token_change_me_in_prod_123!
 
-# 3. Proveedores y Modelos de LLM para los agentes (OpenHands, etc.)
-LLM_API_KEY=tu_api_key_del_proveedor_aqui
-LLM_BASE_URL=https://api.openai.com/v1
-LLM_MODEL=gpt-4o
+# 3. Proveedores y Modelos de LLM para los agentes (DeepSeek, OpenHands, etc.)
+DEEPSEEK_API_KEY=sk-db343927d3f0466388fd2c4515e3d41c
+LLM_API_KEY=sk-db343927d3f0466388fd2c4515e3d41c
+LLM_BASE_URL=https://api.deepseek.com
+LLM_MODEL=deepseek/deepseek-chat
 
 # 4. Git Integration
 GITHUB_TOKEN=tu_github_personal_access_token_para_los_agentes

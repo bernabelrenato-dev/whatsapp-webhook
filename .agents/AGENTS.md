@@ -55,10 +55,11 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ---
 
-## 5. Auto-Perfeccionamiento Continuo 24/7 (Self-Improving Agents)
-* **Evolución Autónoma de Código y Agentes:** Los agentes (Antigravity, OpenHands, OpenCode) deben trabajar día y noche puliendo y perfeccionando continuamente el proyecto JGIS y puliéndose a sí mismos.
-* **Creación de Subagentes y Skills:** Tienen la responsabilidad autónoma de:
-  1. Detectar brechas en el código o en los procesos y crear nuevos subagentes especializados en `.agents/agents/`.
-  2. Construir e implementar nuevas habilidades (skills) de desarrollo de software en `.agents/skills/`.
-  3. Ejecutar bucles de optimización de rendimiento, refactorización limpia y suite de pruebas E2E sin esperar intervención manual del usuario.
+---
+
+## 6. Desarrollo por Bloques Aislados e Independientes (Aislamiento de Errores)
+* **Principio de Desacoplamiento:** Todo desarrollo, corrección o expansión debe realizarse estrictamente por **bloques o módulos independientes**. Ningún cambio en el stack de agentes (REGE) debe alterar o afectar los servicios de negocio de JGIS (bot de WhatsApp, webhook, Chatwoot, DB).
+* **Control de Radio de Daño (Blast Radius):** Si un bloque o servicio experimenta un fallo (ejemplo: un error de formato en la API de un LLM en OpenCode), el error debe ser capturado y aislado exclusivamente dentro de ese módulo.
+* **Diagnóstico Directo:** Cada bloque debe contar con su propia suite de testeo independiente para que, en caso de fallo, sea posible identificar el componente exacto sin afectar la disponibilidad del resto del sistema.
+
 
