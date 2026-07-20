@@ -27,7 +27,14 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
   - **OpenHands & OpenCode (Ejecutores de Código):** Operan directamente sobre el repositorio eliminando cuellos de botella de infraestructura.
 - **Ubicación:** Servidor GCP (`jgis-chatbot-server`), Docker Compose en `/home/jgis/ai-agents/docker-compose.yml`.
 
+---
 
+## 2.1 Directrices Operativas REGE (Seguridad y Calidad)
+
+- **Desacoplamiento y Modularidad Estricta:** El stack REGE es modular. **OpenClaw** (Gateway), **OpenCode** (CLI de terminal), **OpenHands** (Agente programador) y **Dify.AI** (Conversacional) son bloques independientes. Si hay un fallo, se debe testear y diagnosticar de forma aislada para resolver la causa raíz en ese módulo sin afectar la disponibilidad del resto del sistema.
+- **Bucle de Trabajo Ininterrumpido:** Tras completar un punto del backlog, el agente debe continuar de inmediato con el siguiente de forma autónoma.
+- **Bucle de Testeo (Límite 3 Intentos):** Cualquier cambio de código en REGE debe testearse. Si la prueba falla 3 veces consecutivas, el agente debe detenerse y buscar opinión/intervención humana. No entregar código que no pase las pruebas con `exit code 0`.
+- **Registro Obligatorio de Checkpoints:** Al finalizar con éxito cada tarea, se debe marcar con un checkbox `[x]` en `PROMPT_MAESTRO.md` y `PROMPT_REGE.md`, detallando fecha, causa raíz resuelta y aprendizajes.
 
 ---
 
@@ -53,7 +60,7 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 ## 5. Secuencia de Despliegue & Tracker de Estado REGE
  
 - [x] **Paso 1 — Telegram → OpenClaw:** Completado (20/07/2026). Cargar `TELEGRAM_BOT_TOKEN` definitivo y validado en logs.
-- [x] **Paso 2 — OpenClaw → Agentes REGE:** Completado (20/07/2026). Conexión nativa entre Telegram y los ejecutores OpenCode / OpenHands.
+- [x] **Paso 2 — OpenClaw → Agentes REGE:** Completado (20/07/2026). Conexión nativa entre Telegram y los ejecutores OpenCode / OpenHands. *Fix (20/07/2026): Se corrigió setup_openclaw_deepseek.py para no borrar mcpServers, permitiendo que OpenClaw mantenga comunicación E2E con OpenHands y OpenCode.*
 - [x] **Paso 3 — OpenClaw → OpenCode / OpenHands (invocación nativa):** Completado (20/07/2026). Pruebas de ejecución autónoma directa en `/app` con DeepSeek V3/R1 sin proxies MCP intermedios.
  
 > **Nota de Infraestructura Base:** Los Pasos 4 al 8 corresponden al aprovisionamiento de la plataforma servidora (Nginx SSL, DNS Hostinger, Chatwoot y pipeline Git Auto-Deployer) sobre la cual se apoya el ecosistema agéntico REGE.
