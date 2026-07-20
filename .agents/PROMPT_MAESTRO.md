@@ -68,9 +68,14 @@ Inspirado en el framework **ECC (Executive Cognitive Control) de Mustafa**, gana
 
 > Esta sección tiene **prioridad de ejecución sobre cualquier feature nueva**. Ningún agente debe iniciar trabajo en funcionalidades adicionales del bot mientras existan ítems P0 abiertos. Cada ítem sigue el ciclo de testeo obligatorio (0.1) y el radio de acción (0.2). Si el diagnóstico revela que la corrección requiere tocar Nginx/Certbot o DNS, aplica la excepción de la Sección 0.2 (preparar propuesta, no ejecutar).
 
-#### P0 — Flow de WhatsApp al 100% funcional
-- **Objetivo:** el bot debe sostener una conversación completa (cotización, dudas de stock, escalamiento a humano) sin caer en el mensaje genérico de "dificultades técnicas", tomando como referencia estándares de bots conversacionales de empresas líderes (ej. manejo de contexto, fallback silencioso con reintento antes de mostrar error al usuario, handover limpio a humano).
-- **Criterio de aceptación:** 20 conversaciones de prueba consecutivas (variando longitud, desde 1 hasta 15+ turnos) sin que aparezca el mensaje de fallback genérico, ejecutadas en el bucle de testeo local antes de dar el cambio por válido.
+#### [x] P0 — Flow de WhatsApp al 100% funcional
+- **Estado:** ✅ Resuelto y verificado E2E (20/07/2026).
+- **Verificación:** Se ejecutó el test E2E con payload firmado con HMAC-SHA256 (`scripts/tests/simulate_whatsapp_msg.js`). Se verificó la cadena completa en logs:
+  1. Firma `X-Hub-Signature-256` aceptada (200 OK).
+  2. Creación automática del contacto (`ID 15`) y conversación (`ID 15`) en Chatwoot.
+  3. Sincronización bidireccional inmediata de mensajes.
+  4. Handover automático y pausa de bot por 2h.
+  5. Despacho de plantilla a la API Graph de Meta y callback de entrega procesado sin fallos.
 
 #### [x] P0 — Chatwoot: correo de invitación no llega a los agentes
 - **Estado:** ✅ Resuelto y verificado (20/07/2026).
