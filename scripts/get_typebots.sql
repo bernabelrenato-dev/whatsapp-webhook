@@ -1,1 +1,1 @@
-SELECT * FROM "PublicTypebot";
+SELECT * FROM "Typebot";
