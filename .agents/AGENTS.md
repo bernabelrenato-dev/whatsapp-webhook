@@ -59,6 +59,7 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ## 6. Desarrollo por Bloques Aislados e Independientes (Aislamiento de Errores)
 * **Principio de Desacoplamiento:** Todo desarrollo, corrección o expansión debe realizarse estrictamente por **bloques o módulos independientes**. Ningún cambio en el stack de agentes (REGE) debe alterar o afectar los servicios de negocio de JGIS (bot de WhatsApp, webhook, Chatwoot, DB).
+* **Independencia de Componentes REGE:** **OpenClaw** (Gateway), **OpenCode** (CLI), **OpenHands** (Programador) y **Dify** (Conversacional) son módulos aislados. Un fallo en uno no altera la disponibilidad ni ejecución de los demás.
 * **Control de Radio de Daño (Blast Radius):** Si un bloque o servicio experimenta un fallo (ejemplo: un error de formato en la API de un LLM en OpenCode), el error debe ser capturado y aislado exclusivamente dentro de ese módulo.
 * **Diagnóstico Directo:** Cada bloque debe contar con su propia suite de testeo independiente para que, en caso de fallo, sea posible identificar el componente exacto sin afectar la disponibilidad del resto del sistema.
 

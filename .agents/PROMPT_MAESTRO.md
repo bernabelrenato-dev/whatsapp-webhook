@@ -61,6 +61,7 @@ Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea.
 
 ### 0.7 Desarrollo por Bloques Aislados e Independientes (Aislamiento de Errores)
 - **Desacoplamiento Estricto:** Todo avance o refactorización se realiza módulo por módulo (ej. Bloque REGE vs. Bloque JGIS). Un fallo en la capa de agentes no debe desestabilizar la capa de producción ni los servicios de ventas.
+- **Independencia de Módulos REGE:** Dentro del ecosistema REGE, **OpenClaw es un módulo independiente** (Gateway), **OpenCode es otro módulo** (Terminal CLI), **OpenHands es otro módulo** (Programador Autónomo) y **Dify es otro módulo** (Cerebro Conversacional). Cada uno se diagnostica y testea en aislamiento para ubicar la causa raíz sin afectar los demás.
 - **Detección Rápida de Fallas:** Cada bloque opera con interfaces limpias e independientes, permitiendo identificar inmediatamente la causa raíz en caso de error sin afectar la disponibilidad del resto del sistema.
 
 ### 0.8 Bucle de Trabajo Ininterrumpido, Testeo y Checkpoints Obligatorios

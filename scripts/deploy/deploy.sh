@@ -92,6 +92,8 @@ fi
 if [[ -f "$PROJECT_DIR/scripts/setup_openclaw_deepseek.py" ]]; then
   log "Actualizando configuración de OpenClaw/DeepSeek en REGE..."
   python3 "$PROJECT_DIR/scripts/setup_openclaw_deepseek.py" 2>&1 || true
+  log "Limpiando archivos de bloqueo de sesión estancados (.lock) en OpenClaw..."
+  docker exec jgis-openclaw sh -c "rm -f /home/node/.openclaw/agents/main/sessions/*.lock" 2>&1 || true
   docker restart jgis-openclaw 2>&1 || true
 fi
 
