@@ -29,7 +29,7 @@ class GeminiService {
    */
   pauseConversation(phoneNumber, durationMs = this.DEFAULT_PAUSE_DURATION) {
     const expiration = Date.now() + durationMs;
-    this.pausedConversations.set(phoneNumber, expiration);
+    this.pausedConversations.set(phoneNumber, expiration, durationMs);
     logger.info(`⏸️ Respuestas del bot pausadas para ${phoneNumber} hasta las ${new Date(expiration).toLocaleTimeString()}`);
   }
 
@@ -39,16 +39,7 @@ class GeminiService {
    * @returns {boolean} True si está pausada.
    */
   isConversationPaused(phoneNumber) {
-    if (!this.pausedConversations.has(phoneNumber)) {
-      return false;
-    }
-    const expiration = this.pausedConversations.get(phoneNumber);
-    if (Date.now() > expiration) {
-      this.pausedConversations.delete(phoneNumber); // Expiró, limpiar
-      logger.info(`▶️ Pausa expirada. Bot reactivado para ${phoneNumber}`);
-      return false;
-    }
-    return true;
+    return this.pausedConversations.has(phoneNumber);
   }
 
   /**
@@ -117,10 +108,12 @@ class GeminiService {
    * @returns {Array} Historial de mensajes.
    */
   getHistory(phoneNumber) {
-    if (!this.conversationHistory.has(phoneNumber)) {
-      this.conversationHistory.set(phoneNumber, []);
+    let history = this.conversationHistory.get(phoneNumber);
+    if (!history) {
+      history = [];
+      this.conversationHistory.set(phoneNumber, history);
     }
-    return this.conversationHistory.get(phoneNumber);
+    return history;
   }
 
   /**
@@ -140,6 +133,7 @@ class GeminiService {
     if (history.length > this.MAX_HISTORY) {
       history.splice(0, history.length - this.MAX_HISTORY);
     }
+    this.conversationHistory.set(phoneNumber, history);
   }
 
   /**

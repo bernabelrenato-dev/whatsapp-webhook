@@ -38,7 +38,7 @@ class QueueService {
       }
     });
 
-    return { id: `job_mem_${Date.now()}_${Math.random().toString(36).substr(2, 5)}` };
+    return { id: `job_mem_${Date.now()}_${Math.random().toString(36).substring(2, 7)}` };
   }
 }
 

@@ -78,13 +78,7 @@ class CatalogService {
       return [];
     }
 
-    const client = new Client({
-      connectionString: process.env.DATABASE_URL
-    });
-
     try {
-      await client.connect();
-
       // Normalizar tildes y caracteres especiales en la consulta
       const normQuery = cleanQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       const words = normQuery.split(/\s+/).filter(w => w.length >= 2);
@@ -124,7 +118,7 @@ class CatalogService {
         LIMIT 6;
       `;
 
-      const res = await client.query(sqlQuery, params);
+      const res = await db.query(sqlQuery, params);
 
       let processedResults = res.rows.map(item => {
         const prices = this.calculateSellingPrices(item.precio_venta);
@@ -195,8 +189,6 @@ class CatalogService {
     } catch (error) {
       logger.error({ msg: '❌ Error en searchCatalog (PostgreSQL)', error: error.message });
       return [];
-    } finally {
-      await client.end();
     }
   }
 
@@ -207,14 +199,8 @@ class CatalogService {
    */
   async getCandidatesForImage(terms) {
     if (!terms || typeof terms !== 'string') return [];
-    
-    const dbUrl = process.env.DATABASE_URL;
-    if (!dbUrl) return [];
 
-    const client = new Client({ connectionString: dbUrl });
     try {
-      await client.connect();
-      
       // Separar los términos en palabras clave de búsqueda (quitar tildes, minúsculas, palabras de >= 2 letras)
       const normTerms = terms.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
       const words = normTerms.split(/\s+/).filter(w => w.length >= 2);
@@ -252,13 +238,11 @@ class CatalogService {
         LIMIT 40;
       `;
 
-      const res = await client.query(queryStr, params);
+      const res = await db.query(queryStr, params);
       return res.rows;
     } catch (error) {
       logger.error({ msg: '❌ Error en getCandidatesForImage (PostgreSQL)', error: error.message });
       return [];
-    } finally {
-      await client.end();
     }
   }
 }

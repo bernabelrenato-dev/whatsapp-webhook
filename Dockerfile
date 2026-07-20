@@ -14,8 +14,9 @@ COPY package*.json ./
 # Instalar solo dependencias de producción
 RUN npm ci --only=production
 
-# Copiar el código fuente y catálogo de la aplicación
+# Copiar el código fuente, scripts y catálogo de la aplicación
 COPY src/ ./src/
+COPY scripts/ ./scripts/
 COPY catalogo_borrador.csv ./
 
 # Puerto expuesto por Express
