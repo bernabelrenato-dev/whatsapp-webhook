@@ -22,6 +22,10 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 - [x] **P1 — Escalamiento a atención humana:** Implementado (20/07/2026). Traspaso automático al solicitar "agente", "asesor" o "humano".
 - [x] **P2 — Catálogo de técnicas de branding:** Implementado en `botPersonality.js` (Impresión UV, Láser, Serigrafía, Tampografía, Sublimación, Bordado, DTF).
 - [x] **P0 — UPSERT Atómico de Catálogo:** Resuelto en `dbSync.service.js` con `ON CONFLICT (codigo) DO UPDATE SET`, eliminando el `TRUNCATE` destructivo.
+- [x] **P1 — Pacing de Mensajería (Cola de Debounce):** Implementado (20/07/2026). El bot agrupa los mensajes que llegan con menos de 8 segundos de diferencia para responder con un único mensaje unificado.
+- [x] **P1 — Soporte de Redes Sociales Multicanal (Messenger/Instagram):** Implementado (20/07/2026). Captura los mensajes de inboxes externos en Chatwoot y los responde usando Gemini/Typebot, traduciendo las opciones interactivas de WhatsApp a texto.
+- [x] **P1 — Sincronización de Imágenes en Chatwoot:** Implementado (20/07/2026). Descarga los archivos multimedia de Meta y los sube a Chatwoot en formato `multipart/form-data` para que el agente humano los visualice en la conversación.
+- [x] **P1 — Acceso a Typebot Builder en Raíz:** Implementado (20/07/2026). Configurada la variable `NEXTAUTH_URL` y el proxy de Nginx en la raíz `/` para habilitar el login y desarrollo estable en Typebot.
 
 ---
 
