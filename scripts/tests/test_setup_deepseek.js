@@ -20,9 +20,9 @@ function verifySetupDeepseek() {
     
     // Check that all three MCP configurations are present
     const expectedKeys = [
-        "data['mcpServers']['openhands']",
-        "data['mcpServers']['opencode']",
-        "data['mcpServers']['hostinger']",
+        "data['mcp']['servers']['openhands']",
+        "data['mcp']['servers']['opencode']",
+        "data['mcp']['servers']['hostinger']",
         "http://jgis-openhands-mcp:6363/sse",
         "http://jgis-opencode-mcp:3000/sse",
         "http://jgis-hostinger-mcp:3000/sse"

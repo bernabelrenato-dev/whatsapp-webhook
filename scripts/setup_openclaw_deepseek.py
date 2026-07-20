@@ -67,20 +67,22 @@ if os.path.exists(path):
     }
 
     # Inject MCP tools configuration into OpenClaw
-    if 'mcpServers' not in data:
-        data['mcpServers'] = {}
+    if 'mcp' not in data:
+        data['mcp'] = {}
+    if 'servers' not in data['mcp']:
+        data['mcp']['servers'] = {}
 
-    data['mcpServers']['openhands'] = {
+    data['mcp']['servers']['openhands'] = {
         "url": "http://jgis-openhands-mcp:6363/sse",
         "transport": "sse"
     }
     
-    data['mcpServers']['opencode'] = {
+    data['mcp']['servers']['opencode'] = {
         "url": "http://jgis-opencode-mcp:3000/sse",
         "transport": "sse"
     }
 
-    data['mcpServers']['hostinger'] = {
+    data['mcp']['servers']['hostinger'] = {
         "url": "http://jgis-hostinger-mcp:3000/sse",
         "transport": "sse"
     }
