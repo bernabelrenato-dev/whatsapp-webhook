@@ -58,6 +58,21 @@ if os.path.exists(path):
         ]
     }
 
+    # Configure Dify Provider & Models
+    data['models']['providers']['dify'] = {
+        "baseUrl": "http://localhost:5002/v1",
+        "apiKey": "app-djKLJf4B1hNovBfEfe19Q0rX",
+        "api": "openai-completions",
+        "models": [
+            {
+                "id": "dify-agent",
+                "name": "Dify Agent",
+                "contextWindow": 131072,
+                "maxTokens": 8192
+            }
+        ]
+    }
+
     # Set primary model as direct string (fixing model parameter error)
     if 'agents' not in data:
         data['agents'] = {}

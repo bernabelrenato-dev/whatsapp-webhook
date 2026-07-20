@@ -24,6 +24,12 @@ function verifySetupDeepseek() {
         process.exit(1);
     }
     
+    // Verify that Dify provider configuration is present
+    if (!content.includes("data['models']['providers']['dify']")) {
+        console.error("❌ Error: The script is missing Dify provider configuration!");
+        process.exit(1);
+    }
+    
     console.log("✅ Static checks PASSED! setup_openclaw_deepseek.py is correct.");
     process.exit(0);
 }
