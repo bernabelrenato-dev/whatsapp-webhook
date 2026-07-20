@@ -202,7 +202,9 @@ Para analizar o modificar un archivo, consúltelo en este índice y cárguelo ba
 │   │   ├── message.service.js
 │   │   └── queue.service.js
 │   ├── utils/
-│   │   └── logger.js
+│   │   ├── db.js
+│   │   ├── logger.js
+│   │   └── ttlCache.js
 │   ├── app.js
 │   └── server.js
 ├── .env
@@ -224,6 +226,8 @@ Para analizar o modificar un archivo, consúltelo en este índice y cárguelo ba
 | [src/services/message.service.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/services/message.service.js) | Servicio núcleo de WhatsApp: descarga multimedia de Meta, procesa imágenes y texto, y rutea flujos. |
 | [src/services/gemini.service.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/services/gemini.service.js) | Servicio de integración de Gemini AI: búsqueda visual por similitud de productos y FAQ conversacionales. |
 | [src/services/catalog.service.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/services/catalog.service.js) | Servicio del catálogo de productos: búsqueda de stock, cálculo de escalas de precios y cotizaciones. |
+| [src/utils/db.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/utils/db.js) | Pool de conexiones PostgreSQL reutilizable (`pg.Pool`) con gestión eficiente de sockets. |
+| [src/utils/ttlCache.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/utils/ttlCache.js) | Estructuras de datos acotadas (`TTLCache` y `CappedSet`) con expiración automática para prevenir memory leaks. |
 | [src/utils/logger.js](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/src/utils/logger.js) | Configuración del registrador de logs estructurado del sistema. |
 | [scripts/tests/](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/scripts/tests/) | Carpeta con simulaciones de flujos de chat E2E y scripts de validación de base de datos. |
 | [scripts/database/](file:///C:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/scripts/database/) | Carpeta con parches SQL y JS de migración y alineación de Typebot. |
