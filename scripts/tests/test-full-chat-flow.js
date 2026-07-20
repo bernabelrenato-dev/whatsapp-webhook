@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function testFullFlow() {
   try {
-    const baseUrl = 'http://localhost:8082';
+    const baseUrl = process.env.TYPEBOT_URL || 'http://typebot-viewer:3000';
     
     // 1. Start Chat
     console.log('1. Starting chat...');
