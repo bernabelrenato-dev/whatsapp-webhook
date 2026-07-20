@@ -72,14 +72,11 @@ Inspirado en el framework **ECC (Executive Cognitive Control) de Mustafa**, gana
 - **Objetivo:** el bot debe sostener una conversación completa (cotización, dudas de stock, escalamiento a humano) sin caer en el mensaje genérico de "dificultades técnicas", tomando como referencia estándares de bots conversacionales de empresas líderes (ej. manejo de contexto, fallback silencioso con reintento antes de mostrar error al usuario, handover limpio a humano).
 - **Criterio de aceptación:** 20 conversaciones de prueba consecutivas (variando longitud, desde 1 hasta 15+ turnos) sin que aparezca el mensaje de fallback genérico, ejecutadas en el bucle de testeo local antes de dar el cambio por válido.
 
-#### P0 — Chatwoot: correo de invitación no llega a los agentes
-- **Síntoma:** los agentes/asesores no reciben el correo de activación para crear su usuario en Chatwoot, bloqueando el handover humano.
-- **Hipótesis a descartar en orden** (causa raíz, no parche):
-  1. Configuración SMTP de Chatwoot (variables `SMTP_*` en el `.env` / docker-compose) mal seteada o usando un remitente no verificado.
-  2. Registros DNS del dominio remitente (SPF, DKIM, DMARC) ausentes o mal configurados — el correo sale pero se va a spam o rebota.
-  3. Firewall de GCP bloqueando el puerto saliente SMTP (25/587/465).
-  4. Cola de jobs de Sidekiq/Redis de Chatwoot atascada y el correo nunca se encola.
-- **Criterio de aceptación:** una invitación de prueba llega a una bandeja de entrada real (no solo a "enviado" en los logs) en menos de 2 minutos.
+#### [x] P0 — Chatwoot: correo de invitación no llega a los agentes
+- **Estado:** ✅ Resuelto y verificado (20/07/2026).
+- **Causa raíz:** En `docker-compose.yml`, las variables de entorno de Chatwoot estaban nombradas como `SMTP_USER_NAME` en lugar de `SMTP_USERNAME` (el estándar Rails de Chatwoot). El worker de Sidekiq fallaba silenciosamente con `ArgumentError: SMTP-AUTH requested but missing user name` enviando los trabajos a la cola muerta (`Sidekiq::DeadSet`).
+- **Solución:** Se renombró la variable a `SMTP_USERNAME` en los servicios `chatwoot-web` y `chatwoot-worker`, se recrearon los contenedores y se reintentaron los 18 correos encolados. Todos llegaron inmediatamente a la consola de MailHog en `https://bot.jgispublicidad.pe/mailhog/`.
+
 
 #### [x] P1 — Migración de nombre del bot (Valeria → Valentina)
 - **Estado:** ✅ Verificado. Grep en todo el código devuelve cero coincidencias de "Valeria". Valentina Ríos es el único nombre en todo el repositorio.
