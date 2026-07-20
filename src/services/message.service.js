@@ -7,6 +7,8 @@ const geminiService = require('./gemini.service');
 const catalogService = require('./catalog.service');
 
 
+const { TTLCache, CappedSet } = require('../utils/ttlCache');
+
 // Inicializar Gemini al cargar el módulo
 geminiService.initialize();
 
@@ -15,14 +17,14 @@ geminiService.initialize();
  */
 class MessageService {
   constructor() {
-    // Almacena los IDs de los mensajes enviados por el bot para distinguirlos de los manuales
-    this.botSentMessageIds = new Set();
-    // Almacena las sesiones activas de Typebot por número de teléfono
-    this.userSessions = new Map();
-    // Almacena las últimas opciones interactivas presentadas de Typebot para re-presentación
-    this.lastUserInputs = new Map();
-    // Cache para mapear números de teléfono a IDs de conversación de Chatwoot
-    this.chatwootConversations = new Map();
+    // Almacena los IDs de los mensajes enviados por el bot con capacidad acotada (evita fugas)
+    this.botSentMessageIds = new CappedSet(5000);
+    // Almacena las sesiones activas de Typebot por número de teléfono con TTL de 24h
+    this.userSessions = new TTLCache(24 * 3600 * 1000, 2000);
+    // Almacena las últimas opciones interactivas presentadas de Typebot con TTL de 12h
+    this.lastUserInputs = new TTLCache(12 * 3600 * 1000, 2000);
+    // Cache para mapear números de teléfono a IDs de conversación de Chatwoot con TTL de 24h
+    this.chatwootConversations = new TTLCache(24 * 3600 * 1000, 2000);
   }
 
   /**

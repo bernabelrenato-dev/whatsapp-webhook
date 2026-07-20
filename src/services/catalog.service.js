@@ -1,26 +1,42 @@
-const { Client } = require('pg');
+const db = require('../utils/db');
 const fs = require('fs');
 const path = require('path');
 const logger = require('../utils/logger');
 
-function getRealImageUrl(codigo, fallbackUrl) {
+let imageFilesCache = null;
+let lastImageCacheTime = 0;
+
+function getImagesDirectoryFiles() {
+  const now = Date.now();
+  if (imageFilesCache && (now - lastImageCacheTime < 60000)) {
+    return imageFilesCache;
+  }
   try {
     const imagesDir = path.join(__dirname, '..', 'public', 'images');
     if (fs.existsSync(imagesDir)) {
-      const files = fs.readdirSync(imagesDir);
-      const cleanCode = (codigo || '').trim().toUpperCase();
-      
-      const match = files.find(f => {
-        const baseName = path.basename(f, path.extname(f)).toUpperCase();
-        return baseName === cleanCode;
-      });
-
-      if (match) {
-        return `${process.env.PUBLIC_URL}/images/${match}`;
-      }
+      imageFilesCache = fs.readdirSync(imagesDir);
+      lastImageCacheTime = now;
+      return imageFilesCache;
     }
   } catch (err) {
-    logger.warn({ msg: 'Error resolviendo extensión de imagen estática', error: err.message });
+    logger.warn({ msg: 'Error resolviendo directorio de imágenes estáticas', error: err.message });
+  }
+  imageFilesCache = [];
+  lastImageCacheTime = now;
+  return imageFilesCache;
+}
+
+function getRealImageUrl(codigo, fallbackUrl) {
+  const files = getImagesDirectoryFiles();
+  const cleanCode = (codigo || '').trim().toUpperCase();
+
+  const match = files.find(f => {
+    const baseName = path.basename(f, path.extname(f)).toUpperCase();
+    return baseName === cleanCode;
+  });
+
+  if (match) {
+    return `${process.env.PUBLIC_URL}/images/${match}`;
   }
 
   if (fallbackUrl) {
@@ -69,22 +85,46 @@ class CatalogService {
     try {
       await client.connect();
 
-      // Dividir el término por espacios para buscar cada palabra clave
-      const words = cleanQuery.split(/\s+/).filter(w => w.length >= 2);
-      const firstWord = words[0] || cleanQuery;
+      // Normalizar tildes y caracteres especiales en la consulta
+      const normQuery = cleanQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const words = normQuery.split(/\s+/).filter(w => w.length >= 2);
 
+      // Expresión SQL para normalizar columnas en la DB a minúsculas y sin tildes
+      const normCol = (col) => `translate(LOWER(${col}), 'áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ', 'aeiouaeiouaeiouaeiounn')`;
+
+      const params = [`%${normQuery}%`];
+      let selectScoreParts = [
+        `(CASE WHEN (${normCol('codigo')} ILIKE $1) THEN 50 ELSE 0 END)`,
+        `(CASE WHEN (${normCol('nombre')} ILIKE $1) THEN 30 ELSE 0 END)`
+      ];
+      let whereParts = [
+        `(${normCol('codigo')} ILIKE $1 OR ${normCol('nombre')} ILIKE $1 OR ${normCol('categoria')} ILIKE $1 OR ${normCol('color')} ILIKE $1 OR ${normCol('proveedor')} ILIKE $1)`
+      ];
+
+      words.forEach((word, idx) => {
+        const paramIdx = idx + 2;
+        params.push(`%${word}%`);
+        const p = `$${paramIdx}`;
+        selectScoreParts.push(`(CASE WHEN (${normCol('codigo')} ILIKE ${p}) THEN 8 ELSE 0 END)`);
+        selectScoreParts.push(`(CASE WHEN (${normCol('nombre')} ILIKE ${p}) THEN 10 ELSE 0 END)`);
+        selectScoreParts.push(`(CASE WHEN (${normCol('categoria')} ILIKE ${p}) THEN 5 ELSE 0 END)`);
+        selectScoreParts.push(`(CASE WHEN (${normCol('color')} ILIKE ${p}) THEN 3 ELSE 0 END)`);
+        selectScoreParts.push(`(CASE WHEN (${normCol('proveedor')} ILIKE ${p}) THEN 2 ELSE 0 END)`);
+
+        whereParts.push(`(${normCol('codigo')} ILIKE ${p} OR ${normCol('nombre')} ILIKE ${p} OR ${normCol('categoria')} ILIKE ${p} OR ${normCol('color')} ILIKE ${p} OR ${normCol('proveedor')} ILIKE ${p})`);
+      });
+
+      const scoreCalculation = selectScoreParts.join(' + ');
       const sqlQuery = `
-        SELECT codigo, nombre, precio_venta, color, categoria, proveedor, imagen_url, stock
+        SELECT codigo, nombre, precio_venta, color, categoria, proveedor, imagen_url, stock,
+               (${scoreCalculation}) as score
         FROM "CatalogProducts"
-        WHERE (codigo ILIKE $1 OR nombre ILIKE $1 OR categoria ILIKE $1 OR color ILIKE $1)
-           OR (codigo ILIKE $2 OR nombre ILIKE $2 OR categoria ILIKE $2 OR color ILIKE $2)
-        ORDER BY (codigo ILIKE $1) DESC, nombre ASC
+        WHERE ${whereParts.join(' OR ')}
+        ORDER BY score DESC, nombre ASC
         LIMIT 6;
       `;
-      const patternAll = `%${cleanQuery}%`;
-      const patternFirst = `%${firstWord}%`;
-      
-      const res = await client.query(sqlQuery, [patternAll, patternFirst]);
+
+      const res = await client.query(sqlQuery, params);
 
       let processedResults = res.rows.map(item => {
         const prices = this.calculateSellingPrices(item.precio_venta);
@@ -102,7 +142,7 @@ class CatalogService {
 
       // Si no se encontraron modelos específicos, generar opciones por categoría para Meta Ads
       if (processedResults.length === 0) {
-        const q = cleanQuery.toLowerCase();
+        const q = normQuery;
         if (q.includes('gorra')) {
           processedResults.push({
             codigo: 'GORRA-TRUCKER',
@@ -163,7 +203,7 @@ class CatalogService {
   /**
    * Obtiene candidatos de productos similares desde PostgreSQL para el comparador visual.
    * @param {string} terms Frase descriptiva generada por Gemini Vision (ej. "taza ceramica").
-   * @returns {Promise<Array>} Listado de hasta 25 productos candidatos.
+   * @returns {Promise<Array>} Listado de hasta 40 productos candidatos.
    */
   async getCandidatesForImage(terms) {
     if (!terms || typeof terms !== 'string') return [];
@@ -175,9 +215,12 @@ class CatalogService {
     try {
       await client.connect();
       
-      // Separar los términos en palabras clave de búsqueda (quitar tildes, minúsculas, palabras cortas)
-      const words = terms.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(/\s+/).filter(w => w.length >= 3);
+      // Separar los términos en palabras clave de búsqueda (quitar tildes, minúsculas, palabras de >= 2 letras)
+      const normTerms = terms.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+      const words = normTerms.split(/\s+/).filter(w => w.length >= 2);
       if (words.length === 0) return [];
+
+      const normCol = (col) => `translate(LOWER(${col}), 'áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ', 'aeiouaeiouaeiouaeiounn')`;
 
       let selectParts = [];
       let whereParts = [];
@@ -187,15 +230,16 @@ class CatalogService {
         const paramName = `$${idx + 1}`;
         params.push(`%${word}%`);
         
-        // Sumar puntos si coincide en nombre (peso 5), categoria (peso 3), color (peso 2), o proveedor (peso 1)
+        // Sumar puntos si coincide en codigo (peso 8), nombre (peso 5), categoria (peso 3), color (peso 2), o proveedor (peso 1)
         selectParts.push(`
-          (CASE WHEN (nombre ILIKE ${paramName}) THEN 5 ELSE 0 END) +
-          (CASE WHEN (categoria ILIKE ${paramName}) THEN 3 ELSE 0 END) +
-          (CASE WHEN (color ILIKE ${paramName}) THEN 2 ELSE 0 END) +
-          (CASE WHEN (proveedor ILIKE ${paramName}) THEN 1 ELSE 0 END)
+          (CASE WHEN (${normCol('codigo')} ILIKE ${paramName}) THEN 8 ELSE 0 END) +
+          (CASE WHEN (${normCol('nombre')} ILIKE ${paramName}) THEN 5 ELSE 0 END) +
+          (CASE WHEN (${normCol('categoria')} ILIKE ${paramName}) THEN 3 ELSE 0 END) +
+          (CASE WHEN (${normCol('color')} ILIKE ${paramName}) THEN 2 ELSE 0 END) +
+          (CASE WHEN (${normCol('proveedor')} ILIKE ${paramName}) THEN 1 ELSE 0 END)
         `);
         
-        whereParts.push(`(nombre ILIKE ${paramName} OR categoria ILIKE ${paramName} OR color ILIKE ${paramName} OR proveedor ILIKE ${paramName})`);
+        whereParts.push(`(${normCol('codigo')} ILIKE ${paramName} OR ${normCol('nombre')} ILIKE ${paramName} OR ${normCol('categoria')} ILIKE ${paramName} OR ${normCol('color')} ILIKE ${paramName} OR ${normCol('proveedor')} ILIKE ${paramName})`);
       });
 
       const scoreCalculation = selectParts.join(' + ');

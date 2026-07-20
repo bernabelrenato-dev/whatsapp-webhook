@@ -1,7 +1,7 @@
 // Servicio de sincronización de catálogo desde archivo borrador (CSV/Sheets) a PostgreSQL
 const fs = require('fs');
 const path = require('path');
-const { Client } = require('pg');
+const db = require('../utils/db');
 const logger = require('../utils/logger');
 
 const csvPath = path.join(__dirname, '..', '..', 'catalogo_borrador.csv');
@@ -18,20 +18,17 @@ class DbSyncService {
       return { success: false, error: 'CSV file not found' };
     }
 
-    // 1. Inicializar cliente PostgreSQL
-    const dbUrl = process.env.DATABASE_URL;
-    if (!dbUrl) {
+    const pool = db.getPool();
+    if (!pool) {
       logger.error('❌ DATABASE_URL no está configurada en las variables de entorno.');
       return { success: false, error: 'DATABASE_URL not configured' };
     }
 
-    const pgClient = new Client({ connectionString: dbUrl });
-    let isConnected = false;
+    let pgClient = null;
 
     try {
-      await pgClient.connect();
-      isConnected = true;
-      logger.debug('🔌 Conexión exitosa a PostgreSQL para sincronización.');
+      pgClient = await pool.connect();
+      logger.debug('🔌 Conexión del pool obtenida para sincronización.');
 
       // 1. Iniciar transacción SQL para garantizar atomicidad
       await pgClient.query('BEGIN');
@@ -88,12 +85,19 @@ class DbSyncService {
               sincronizado_at = NOW();
           `;
 
-          const parsedStock = stock.trim() ? parseInt(stock.trim()) : null;
+          const parsedPrice = parseFloat(precio_venta.trim());
+          if (isNaN(parsedPrice)) {
+            logger.warn(`⚠️ Fila ${i + 1} tiene un precio inválido [${precio_venta}], saltando [${codigo}].`);
+            updatedLines.push(line);
+            continue;
+          }
+
+          const parsedStock = stock && stock.trim() ? parseInt(stock.trim(), 10) : null;
 
           await pgClient.query(query, [
             codigo.trim(),
             nombre.trim(),
-            parseFloat(precio_venta.trim()),
+            parsedPrice,
             color.trim(),
             categoria.trim(),
             proveedor.trim(),
@@ -126,7 +130,7 @@ class DbSyncService {
       return { success: true, syncedCount };
 
     } catch (error) {
-      if (isConnected) {
+      if (pgClient) {
         try {
           await pgClient.query('ROLLBACK');
           logger.warn('↩️ Transacción abortada y revertida (ROLLBACK) debido a un error de sincronización.');
@@ -137,9 +141,9 @@ class DbSyncService {
       logger.error({ msg: '❌ Error durante el ciclo de sincronización', error: error.message });
       return { success: false, error: error.message };
     } finally {
-      if (isConnected) {
-        await pgClient.end();
-        logger.debug('🔌 Conexión de PostgreSQL cerrada.');
+      if (pgClient) {
+        pgClient.release();
+        logger.debug('🔌 Conexión devuelta al pool de PostgreSQL.');
       }
     }
   }

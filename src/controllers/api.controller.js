@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const catalogService = require('../services/catalog.service');
 const geminiService = require('../services/gemini.service');
 const logger = require('../utils/logger');
@@ -13,12 +15,12 @@ class ApiController {
       }
 
       // 1. Validar Tipo de Dato y Rango de la Cantidad para evitar cotizaciones erróneas o negativas
-      const qty = parseInt(quantity);
-      if (isNaN(qty) || qty <= 0) {
+      const qty = Number(quantity);
+      if (!Number.isFinite(qty) || !Number.isInteger(qty) || qty <= 0) {
         logger.warn({ msg: 'Cantidad no válida recibida', quantity });
         return res.json({
           success: false,
-          message: `Hola ${name || 'cliente'}, por favor ingresa una cantidad numérica válida y mayor a cero para poder realizar tu estimación.`,
+          message: `Hola ${name || 'cliente'}, por favor ingresa una cantidad numérica entera válida y mayor a cero para poder realizar tu estimación.`,
           imageUrl: '',
           action: 'ask_quantity_again'
         });
@@ -75,26 +77,20 @@ class ApiController {
       const totalEstimated = priceValue * qty;
       const formattedTotal = totalEstimated > 0 ? `S/ ${totalEstimated.toFixed(2)}` : 'Consultar';
 
-      // Construir link de la imagen dinámico para entorno local o producción
-      let imageUrl = '';
-      if (product.codigo) {
-        const fs = require('fs');
-        const path = require('path');
-        
-        // Normalizar código con guiones para buscar el archivo real (ej: "LM-16-LAPICERO-METALICO-4-EN-1")
+      // Usar el link de la imagen resuelto por el catalogService o fallback dinámico
+      let imageUrl = product.link_imagen !== 'No disponible' ? product.link_imagen : '';
+      if (!imageUrl && product.codigo) {
         const cleanCodeForFile = product.codigo.trim().toUpperCase().replace(/\s+/g, '-').replace(/[^A-Z0-9_-]/g, '');
-        
         try {
           const imagesDir = path.join(__dirname, '..', 'public', 'images');
           if (fs.existsSync(imagesDir)) {
-            const files = fs.readdirSync(imagesDir);
+            const files = await fs.promises.readdir(imagesDir);
             const matchingFile = files.find(f => {
               const baseName = path.basename(f, path.extname(f)).toUpperCase();
               return baseName === cleanCodeForFile;
             });
             
             if (matchingFile) {
-              // Usar siempre la URL pública configurada en producción
               let baseUrl = process.env.PUBLIC_URL;
               if (!baseUrl) {
                 const protocol = req.headers['x-forwarded-proto'] || 'https';
@@ -102,16 +98,11 @@ class ApiController {
                 baseUrl = `${protocol}://${reqHost}`;
               }
               
-              // Asegurarse de que no termine con barra diagonal
               if (baseUrl.endsWith('/')) {
                 baseUrl = baseUrl.slice(0, -1);
               }
               
               imageUrl = `${baseUrl}/images/${matchingFile}`;
-              
-              logger.debug({ msg: 'Imagen encontrada dinámicamente', code: product.codigo, cleanCodeForFile, imageUrl });
-            } else {
-              logger.debug({ msg: 'No se encontró archivo de imagen para el código', code: product.codigo, cleanCodeForFile });
             }
           }
         } catch (err) {

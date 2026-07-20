@@ -9,6 +9,11 @@ module.exports = function verifyWhatsAppSignature(req, res, next) {
     return next();
   }
 
+  if (!config.APP_SECRET) {
+    logger.error('Petición rechazada: APP_SECRET no está configurada.');
+    return res.status(500).json({ error: 'Configuración de seguridad incompleta' });
+  }
+
   const signature = req.headers['x-hub-signature-256'];
   if (!signature) {
     logger.error('Petición rechazada: Falta firma X-Hub-Signature-256 en cabeceras.');
@@ -28,7 +33,10 @@ module.exports = function verifyWhatsAppSignature(req, res, next) {
     .update(req.rawBody || '')
     .digest('hex');
 
-  if (signatureHash !== expectedHash) {
+  const signatureBuf = Buffer.from(signatureHash, 'utf8');
+  const expectedBuf = Buffer.from(expectedHash, 'utf8');
+
+  if (signatureBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(signatureBuf, expectedBuf)) {
     logger.error('Petición rechazada: La firma HMAC SHA256 no coincide.');
     return res.status(401).json({ error: 'Firma inválida' });
   }

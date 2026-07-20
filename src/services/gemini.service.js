@@ -6,16 +6,17 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const logger = require('../utils/logger');
 const { SYSTEM_PROMPT } = require('../config/botPersonality');
 const catalogService = require('./catalog.service');
+const { TTLCache } = require('../utils/ttlCache');
 
 
 class GeminiService {
   constructor() {
     this.genAI = null;
     this.model = null;
-    // Almacén de historial de conversación por número de teléfono
-    this.conversationHistory = new Map();
-    // Almacén de números pausados (para traspaso a humanos). Clave: número, Valor: timestamp expiración
-    this.pausedConversations = new Map();
+    // Almacén de historial de conversación acotado con TTL (24 horas)
+    this.conversationHistory = new TTLCache(24 * 60 * 60 * 1000, 2000);
+    // Almacén de números pausados con TTL (2 horas)
+    this.pausedConversations = new TTLCache(2 * 60 * 60 * 1000, 2000);
     this.MAX_HISTORY = 20;
     // Duración de la pausa por defecto (2 horas en milisegundos)
     this.DEFAULT_PAUSE_DURATION = 2 * 60 * 60 * 1000;

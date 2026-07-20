@@ -3,9 +3,10 @@ const config = require('../config/environment');
 const logger = require('../utils/logger');
 const geminiService = require('../services/gemini.service');
 const messageService = require('../services/message.service');
+const { TTLCache } = require('../utils/ttlCache');
 
-// Caché de teléfonos de contactos para no consultar la API repetidamente
-const contactPhoneCache = new Map();
+// Caché de teléfonos de contactos para no consultar la API repetidamente (TTL 1 hora, max 1000 items)
+const contactPhoneCache = new TTLCache(3600000, 1000);
 
 /**
  * Normaliza un número de teléfono al formato que espera Meta (sin + ni espacios).
