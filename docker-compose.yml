@@ -55,6 +55,7 @@ services:
       - NEXTAUTH_URL=https://bot.jgispublicidad.pe
       - NEXT_PUBLIC_VIEWER_URL=https://bot.jgispublicidad.pe:8082
       - ENCRYPTION_SECRET=supersecretkey123456789012345678
+      - NEXTAUTH_SECRET=supersecretkey123456789012345678
       - DISABLE_SIGNUP=false
       - ADMIN_EMAIL=ventas.centrolima@jgispublicidad.pe
       - SMTP_HOST=mailhog
