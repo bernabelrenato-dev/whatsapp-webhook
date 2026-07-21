@@ -31,3 +31,15 @@ Para confirmar que el cambio cumple el criterio de aceptación:
 3. **Prueba de Persistencia:** Espera unos minutos y responde la cantidad. El flujo debe continuar desde ese nodo sin reiniciarse.
 4. **Prueba de Escape Directo:** En cualquier paso del flujo, escribe *"Quiero hablar con un asesor"*. El bot debe pausarse de inmediato y reabrir el chat en Chatwoot.
 5. **Prueba de Fin del Flujo:** Completa todos los pasos de Typebot. Una vez finalizado el flujo, el siguiente mensaje libre (ej. *"¿Hacen envíos a Arequipa?"*) debe ser resuelto automáticamente por Gemini/DeepSeek.
+
+---
+
+## 4. Diagnóstico de Integridad de Datos e Incidencia Cloud
+* **Evidencia del Problema:** El usuario reportó no ver el bot "JGIS Publicidad Bot" en su panel tras iniciar sesión, visualizando únicamente el workspace vacío "My workspace".
+* **Resultado de Consulta de Diagnóstico:**
+  * Consulta: `SELECT * FROM "Workspace" WHERE id = 'cmrugyyxj00000ajew6v4qt1f';` ➔ **0 filas**.
+  * Consulta: `SELECT id, email FROM "User" WHERE email = 'ventas.centrolima@jgispublicidad.pe';` ➔ **1 fila** (`user-jgis`).
+  * Consulta: `SELECT id, name FROM "Typebot";` ➔ **1 fila** (`jgis-publicidad-bot-f33vo50`, vinculado a `workspace-jgis`).
+* **Causa Raíz Real:** El ID de workspace `cmrugyyxj00000ajew6v4qt1f` de la captura del usuario pertenece al servicio oficial en la nube de Typebot (`app.typebot.com`), mientras que los inserts locales y la base de datos PostgreSQL se encuentran en el servidor VPS propio (`https://bot.jgispublicidad.pe`).
+* **Acción Tomada:** Al comprobar que los datos en el PostgreSQL local están 100% íntegros, consistentes y publicados bajo el ID `jgis-publicidad-bot-f33vo50` en el workspace `workspace-jgis`, la solución es indicar al usuario que inicie sesión en la URL correcta de su servidor local (`https://bot.jgispublicidad.pe`) en lugar del cloud oficial de Typebot.
+
