@@ -529,6 +529,14 @@ class MessageService {
             if (!input) {
               logger.info(`🏁 Typebot finalizó su flujo para ${from}. Transicionando conversación a la CAPA IA.`);
               this.userSessions.set(from, { sessionId: currentSessionId, state: 'ai' });
+              
+              if (messages.length === 0) {
+                logger.info(`⚠️ Typebot no devolvió mensajes. Ejecutando respuesta de IA de inmediato para evitar silencio.`);
+                const aiResponse = await aiService.generateResponse(from, profileName, combinedText);
+                if (aiResponse) {
+                  await this.sendTextMessage(from, aiResponse);
+                }
+              }
             }
           }
         } catch (err) {
