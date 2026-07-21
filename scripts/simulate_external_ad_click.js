@@ -12,8 +12,8 @@ async function testExternalAdClick() {
   console.log(`🌐 URL Pública: ${PUBLIC_URL}/webhook`);
 
   const timestamp = Math.floor(Date.now() / 1000);
-  const testPhone = '51988776655';
-  const testName = 'Renato Bernabel (Prueba Ads Exterior)';
+  const testPhone = '519' + String(Date.now()).slice(-8);
+  const testName = `Cliente Anuncio Gorras #${String(Date.now()).slice(-4)}`;
 
   // Payload exacto en formato Meta Graph API Webhook con referral de anuncio
   const webhookPayload = {
