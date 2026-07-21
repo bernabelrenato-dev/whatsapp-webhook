@@ -62,6 +62,11 @@ docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" chatw
   exit 1
 }
 
+# --- Limpieza de FB_APP_ID corrupto en la DB de Chatwoot ---
+log "Limpiando FB_APP_ID corrupto en la base de datos de Chatwoot..."
+docker exec -i jgis-postgres psql -U postgres -d chatwoot_production -c "DELETE FROM installation_configs WHERE name IN ('FB_APP_ID', 'FB_APP_SECRET', 'FB_VERIFY_TOKEN');" 2>/dev/null || true
+docker restart chatwoot-web chatwoot-worker 2>&1 || true
+
 # --- Health Check ---
 log "Esperando health check del contenedor ($HEALTH_TIMEOUT segundos)..."
 SECONDS_WAITED=0
