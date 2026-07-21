@@ -235,6 +235,7 @@ class MessageService {
     const hasImage = images.length > 0;
 
     // 2. Sincronizar mensaje entrante con Chatwoot antes de responder
+    let uploadedImageUrl = null;
     if (hasImage) {
       const img = images[images.length - 1]; // procesar última imagen
       try {
@@ -245,10 +246,21 @@ class MessageService {
         else if (mimeType === 'image/gif') ext = '.gif';
         const fileName = 'whatsapp_image_' + Date.now() + ext;
 
+        // Guardar imagen en directorio estático público para que Typebot pueda consumirla
+        const publicImagesDir = path.join(__dirname, '..', 'public', 'images');
+        if (!fs.existsSync(publicImagesDir)) {
+          fs.mkdirSync(publicImagesDir, { recursive: true });
+        }
+        const filePath = path.join(publicImagesDir, fileName);
+        fs.writeFileSync(filePath, buffer);
+        
+        const baseUrl = process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe';
+        uploadedImageUrl = `${baseUrl}/images/${fileName}`;
+
         const syncText = combinedText || '[Imagen recibida]';
         await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType);
       } catch (err) {
-        logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot', error: err.message });
+        logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot/Disco', error: err.message });
         await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '[Imagen recibida]');
       }
     } else if (combinedText) {
@@ -295,202 +307,243 @@ class MessageService {
       }
     }
 
-    // 4. Procesar identificación visual si hay imagen
-    let productContext = '';
-    let product = null;
-    let imageMatchResult = null;
-
-    if (hasImage) {
-      const img = images[images.length - 1];
-      try {
-        if (!from.startsWith('chatwoot_conv_')) {
-          await this.sendTextMessage(from, "Un momento, por favor. Estoy analizando tu imagen para identificar el producto... 🔍");
-        }
-
-        const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
-        const matchResult = await aiService.identifyProductFromImage(buffer, mimeType);
-        imageMatchResult = matchResult;
-
-        if (matchResult.matched && matchResult.code) {
-          logger.info(`🎯 Producto identificado por imagen: ${matchResult.code}`);
-          const searchResults = await catalogService.searchCatalog(matchResult.code);
-          product = searchResults[0];
-
-          if (product) {
-            const prices = product.precios_venta_sin_igv;
-            productContext = '[Contexto de Imagen: El cliente envió una imagen identificada como el producto *' + product.nombre + '* (Código: *' + product.codigo + '*). Color: ' + (product.color || 'Varios') + ', Categoria: ' + product.categoria + '.\n💰 Precios unitarios estimados (sin IGV):\n• 1-5 unidades: ' + prices.precio_1_5_unidades + '\n• 6-12 unidades: ' + prices.precio_6_12_unidades + '\n• 13-50 unidades: ' + prices.precio_13_50_unidades + '\n• 51-499 unidades: ' + prices.precio_51_499_unidades + '\n• 500+ unidades: ' + prices.precio_500_1000_unidades + '\n]';
-          }
-        }
-      } catch (error) {
-        logger.error({ msg: 'Error procesando imagen entrante', error: error.message });
-      }
+    // Si se envía palabra clave de reinicio, forzar eliminación de sesión para volver a Typebot
+    if (isResetKeyword) {
+      logger.info(`🔄 Reiniciando flujo Typebot para ${profileName} (${from}) debido a palabra clave.`);
+      this.userSessions.delete(from);
     }
 
-    const body = combinedText;
-    if (body || productContext) {
+    // Obtener sesión actual
+    const session = this.userSessions.get(from);
+    const sessionId = session ? (typeof session === 'object' ? session.sessionId : session) : null;
+    const sessionState = session && typeof session === 'object' ? session.state : 'typebot';
 
-      // Detectar intención de atención humana
-      const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
-      const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
+    // 4. RUTEO DE CAPAS COMERCIALES (Typebot o IA)
+    if (sessionId && sessionState === 'ai') {
+      logger.info(`🧠 Cliente [${profileName}] (${from}) está en la CAPA IA (Gemini/DeepSeek).`);
+      
+      // --- CAPA IA (Gemini / DeepSeek) ---
+      // A. Procesar identificación visual si hay imagen
+      let productContext = '';
+      let product = null;
+      let imageMatchResult = null;
 
-      if (isAgentIntent) {
-        logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
-        aiService.pauseConversation(from, aiService.DEFAULT_PAUSE_DURATION, 'user');
-        await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
-        await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
-        return;
-      }
-
-      // Clasificación de catálogo
-      const catalogKeywords = [
-        'precio', 'costo', 'cotizar', 'cotizacion', 'cotización', 'catalogo', 'catálogo',
-        'taza', 'mug', 'termo', 'tomatodo', 'botella', 'llavero', 'destapador', 'lapicero',
-        'bolsa', 'cambrell', 'notex', 'corcho', 'ecologico', 'libreta', 'agenda', 'lapiceros',
-        'cuánto', 'cuanto', 'cuesta', 'valor', 'stock', 'cantidad', 'colores', 'color', 'muestra'
-      ];
-      const isCatalogIntent = !isResetKeyword && (catalogKeywords.some(keyword => cleanBody.includes(keyword)) || !!productContext);
-
-      if (isCatalogIntent) {
-        logger.info(`🎯 Intención de catálogo detectada de [${profileName}] (${from}): "${body}"`);
+      if (hasImage) {
+        const img = images[images.length - 1];
         try {
-          const promptMsg = productContext ? (productContext + '\n' + (body || 'detalles del producto')) : body;
-          const aiResponse = await aiService.generateResponse(from, profileName, promptMsg);
-          if (aiResponse) {
-            const imageMatch = aiResponse.match(/https?:\/\/[^\s]+?\.(?:png|jpe?g|gif|webp)/gi);
-            if (imageMatch) {
-              const imageUrl = imageMatch[0];
-              const cleanText = aiResponse.replace(imageUrl, '').trim();
-              await this.sendImageMessage(from, imageUrl);
-              if (cleanText) {
-                await this.sendTextMessage(from, cleanText);
-              }
-            } else {
-              await this.sendTextMessage(from, aiResponse);
-            }
-          }
-
           if (!from.startsWith('chatwoot_conv_')) {
-            const lastInput = this.lastUserInputs.get(from);
-            if (lastInput && lastInput.type === 'choice input' && lastInput.items && lastInput.items.length > 0) {
-              await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", lastInput.items);
+            await this.sendTextMessage(from, "Un momento, por favor. Estoy analizando tu imagen para identificar el producto... 🔍");
+          }
+
+          const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
+          const matchResult = await aiService.identifyProductFromImage(buffer, mimeType);
+          imageMatchResult = matchResult;
+
+          if (matchResult.matched && matchResult.code) {
+            logger.info(`🎯 Producto identificado por imagen: ${matchResult.code}`);
+            const searchResults = await catalogService.searchCatalog(matchResult.code);
+            product = searchResults[0];
+
+            if (product) {
+              const prices = product.precios_venta_sin_igv;
+              productContext = '[Contexto de Imagen: El cliente envió una imagen identificada como el producto *' + product.nombre + '* (Código: *' + product.codigo + '*). Color: ' + (product.color || 'Varios') + ', Categoria: ' + product.categoria + '.\n💰 Precios unitarios estimados (sin IGV):\n• 1-5 unidades: ' + prices.precio_1_5_unidades + '\n• 6-12 unidades: ' + prices.precio_6_12_unidades + '\n• 13-50 unidades: ' + prices.precio_13_50_unidades + '\n• 51-499 unidades: ' + prices.precio_51_499_unidades + '\n• 500+ unidades: ' + prices.precio_500_1000_unidades + '\n]';
             }
           }
+        } catch (error) {
+          logger.error({ msg: 'Error procesando imagen entrante', error: error.message });
+        }
+      }
+
+      const body = combinedText;
+      if (body || productContext) {
+        // Detectar intención de atención humana
+        const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
+        const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
+
+        if (isAgentIntent) {
+          logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
+          aiService.pauseConversation(from, aiService.DEFAULT_PAUSE_DURATION, 'user');
+          await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
+          await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
           return;
-        } catch (err) {
-          logger.error({ msg: 'Error procesando intención de catálogo directa', error: err.message });
         }
-      }
 
-      if (hasImage && !product && !body) {
-        await this.sendTextMessage(from, "No logré identificar ese producto exactamente desde la imagen 🔍. ¿Podrías describirme qué artículo es? Por ejemplo: *\"taza de cerámica 11oz\"* o *\"bolsa ecológica con cierre\"*. Así puedo buscarlo en nuestro catálogo y darte precios al instante. 😊");
-        return;
-      }
+        // Clasificación de catálogo
+        const catalogKeywords = [
+          'precio', 'costo', 'cotizar', 'cotizacion', 'cotización', 'catalogo', 'catálogo',
+          'taza', 'mug', 'termo', 'tomatodo', 'botella', 'llavero', 'destapador', 'lapicero',
+          'bolsa', 'cambrell', 'notex', 'corcho', 'ecologico', 'libreta', 'agenda', 'lapiceros',
+          'cuánto', 'cuanto', 'cuesta', 'valor', 'stock', 'cantidad', 'colores', 'color', 'muestra'
+        ];
+        const isCatalogIntent = (catalogKeywords.some(keyword => cleanBody.includes(keyword)) || !!productContext);
 
-      if (hasImage && product && !body) {
-        const prices = product.precios_venta_sin_igv;
-        const prefix = imageMatchResult.isAlternative
-          ? 'No encontré ese modelo exacto en catálogo, pero encontré la opción más similar disponible:'
-          : '¡Excelente! He identificado el producto de tu foto:';
-
-        const quoteMessage = prefix + '\n\n' +
-          '📦 *' + product.nombre + '*\n' +
-          '🔢 Código: *' + product.codigo + '*\n' +
-          '🎨 Color: ' + (product.color || 'Varios') + '\n' +
-          '📂 Categoría: ' + product.categoria + '\n\n' +
-          '💰 *Precios unitarios estimados (sin IGV):*\n' +
-          '• 1-5 unidades: *' + prices.precio_1_5_unidades + '*\n' +
-          '• 6-12 unidades: *' + prices.precio_6_12_unidades + '*\n' +
-          '• 13-50 unidades: *' + prices.precio_13_50_unidades + '*\n' +
-          '• 51-499 unidades: *' + prices.precio_51_499_unidades + '*\n' +
-          '• 500+ unidades: *' + prices.precio_500_1000_unidades + '*\n\n' +
-          '¿Qué te gustaría hacer ahora?';
-
-        await this.sendTextMessage(from, quoteMessage);
-
-        if (!from.startsWith('chatwoot_conv_')) {
-          const options = [
-            { id: 'block-choice-loopmenu-item-cotizar', content: '📦 Cotizar otro producto' },
-            { id: 'block-choice-loopmenu-item-asesor', content: '👩‍💼 Hablar con asesor' }
-          ];
-          await this.sendInteractive(from, 'Selecciona una opción:', options);
-        }
-        return;
-      }
-
-      // Flujo de Typebot
-      try {
-        let sessionId = this.userSessions.get(from);
-        let response;
-        const typebotUrl = process.env.TYPEBOT_API_URL || 'http://typebot-viewer:3000';
-        
-        if (!sessionId || isResetKeyword) {
-          logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from})`);
-          response = await axios.post(typebotUrl + '/api/v1/typebots/jgis-publicidad-bot-f33vo50/startChat', {
-            prefilledVariables: {
-              phone: from.startsWith('chatwoot_conv_') ? '' : from
+        if (isCatalogIntent) {
+          logger.info(`🎯 Intención de catálogo detectada de [${profileName}] (${from}): "${body}"`);
+          try {
+            const promptMsg = productContext ? (productContext + '\n' + (body || 'detalles del producto')) : body;
+            const aiResponse = await aiService.generateResponse(from, profileName, promptMsg);
+            if (aiResponse) {
+              const imageMatch = aiResponse.match(/https?:\/\/[^\s]+?\.(?:png|jpe?g|gif|webp)/gi);
+              if (imageMatch) {
+                const imageUrl = imageMatch[0];
+                const cleanText = aiResponse.replace(imageUrl, '').trim();
+                await this.sendImageMessage(from, imageUrl);
+                if (cleanText) {
+                  await this.sendTextMessage(from, cleanText);
+                }
+              } else {
+                await this.sendTextMessage(from, aiResponse);
+              }
             }
-          });
-          sessionId = response.data.sessionId;
-          this.userSessions.set(from, sessionId);
-          
-          if (isResetKeyword) {
-            if (response && response.data) {
-              await this.processTypebotMessages(from, response.data.messages || [], response.data.input);
+
+            if (!from.startsWith('chatwoot_conv_')) {
+              const lastInput = this.lastUserInputs.get(from);
+              if (lastInput && lastInput.type === 'choice input' && lastInput.items && lastInput.items.length > 0) {
+                await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", lastInput.items);
+              }
             }
             return;
+          } catch (err) {
+            logger.error({ msg: 'Error procesando intención de catálogo directa', error: err.message });
           }
         }
 
-        logger.info(`💬 Continuando sesión de Typebot ${sessionId} para ${from}`);
-        response = await axios.post(typebotUrl + '/api/v1/sessions/' + sessionId + '/continueChat', {
-          message: { type: 'text', text: body }
-        });
-
-        if (response && response.data) {
-          const messages = response.data.messages || [];
-          const input = response.data.input;
-
-          let hasValidationError = false;
-          for (const msg of messages) {
-            if (msg.type === 'text') {
-              const text = this.extractText(msg.content);
-              if (text.toLowerCase().includes('invalid message') || 
-                  text.toLowerCase().includes('try again') || 
-                  text.toLowerCase().includes('inválido') || 
-                  text.toLowerCase().includes('intenta de nuevo')) {
-                hasValidationError = true;
-                break;
-              }
-            }
-          }
-
-          if (hasValidationError) {
-            logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a IA.`);
-            const aiResponse = await aiService.generateResponse(from, profileName, body);
-            if (aiResponse) {
-              await this.sendTextMessage(from, aiResponse);
-            } else {
-              await this.sendTextMessage(from, "Lo siento, no comprendí esa opción.");
-            }
-            if (!from.startsWith('chatwoot_conv_') && input && input.type === 'choice input' && input.items && input.items.length > 0) {
-              await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", input.items);
-            }
-          } else {
-            await this.processTypebotMessages(from, messages, input);
-          }
+        if (hasImage && !product && !body) {
+          await this.sendTextMessage(from, "No logré identificar ese producto exactamente desde la imagen 🔍. ¿Podrías describirme qué artículo es? Por ejemplo: *\"taza de cerámica 11oz\"* o *\"bolsa ecológica con cierre\"*. Así puedo buscarlo en nuestro catálogo y darte precios al instante. 😊");
+          return;
         }
-      } catch (err) {
-        logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de IA', error: err.message });
+
+        if (hasImage && product && !body) {
+          const prices = product.precios_venta_sin_igv;
+          const prefix = imageMatchResult.isAlternative
+            ? 'No encontré ese modelo exacto en catálogo, pero encontré la opción más similar disponible:'
+            : '¡Excelente! He identificado el producto de tu foto:';
+
+          const quoteMessage = prefix + '\n\n' +
+            '📦 *' + product.nombre + '*\n' +
+            '🔢 Código: *' + product.codigo + '*\n' +
+            '🎨 Color: ' + (product.color || 'Varios') + '\n' +
+            '📂 Categoría: ' + product.categoria + '\n\n' +
+            '💰 *Precios unitarios estimados (sin IGV):*\n' +
+            '• 1-5 unidades: *' + prices.precio_1_5_unidades + '*\n' +
+            '• 6-12 unidades: *' + prices.precio_6_12_unidades + '*\n' +
+            '• 13-50 unidades: *' + prices.precio_13_50_unidades + '*\n' +
+            '• 51-499 unidades: *' + prices.precio_51_499_unidades + '*\n' +
+            '• 500+ unidades: *' + prices.precio_500_1000_unidades + '*\n\n' +
+            '¿Qué te gustaría hacer ahora?';
+
+          await this.sendTextMessage(from, quoteMessage);
+
+          if (!from.startsWith('chatwoot_conv_')) {
+            const options = [
+              { id: 'block-choice-loopmenu-item-cotizar', content: '📦 Cotizar otro producto' },
+              { id: 'block-choice-loopmenu-item-asesor', content: '👩‍💼 Hablar con asesor' }
+            ];
+            await this.sendInteractive(from, 'Selecciona una opción:', options);
+          }
+          return;
+        }
+
+        // Si no es intención de catálogo explícita, procesar con conversación libre de IA
         const aiResponse = await aiService.generateResponse(from, profileName, body);
         if (aiResponse) {
           await this.sendTextMessage(from, aiResponse);
         }
       }
+    } else {
+      // --- CAPA FILTRO (Typebot) ---
+      logger.info(`🤖 Cliente [${profileName}] (${from}) está en la CAPA FILTRO (Typebot).`);
+      
+      const body = combinedText;
+      if (body || uploadedImageUrl) {
+        // Detectar intención de atención humana explícita antes de seguir en Typebot
+        const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
+        const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
 
-      // Si la conversación fue pausada por la IA (intención de asesor o fallback de error)
-      if (aiService.isConversationPaused(from)) {
-        await this.openChatwootConversation(from);
+        if (isAgentIntent) {
+          logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
+          aiService.pauseConversation(from, aiService.DEFAULT_PAUSE_DURATION, 'user');
+          await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
+          await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
+          return;
+        }
+
+        try {
+          let currentSessionId = sessionId;
+          let response;
+          const typebotUrl = process.env.TYPEBOT_API_URL || 'http://typebot-viewer:3000';
+          const typebotId = process.env.TYPEBOT_ID || 'jgis-publicidad-bot-f33vo50';
+
+          if (!currentSessionId) {
+            logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from})`);
+            response = await axios.post(`${typebotUrl}/api/v1/typebots/${typebotId}/startChat`, {
+              prefilledVariables: {
+                phone: from.startsWith('chatwoot_conv_') ? '' : from
+              }
+            });
+            currentSessionId = response.data.sessionId;
+            this.userSessions.set(from, { sessionId: currentSessionId, state: 'typebot' });
+          } else {
+            logger.info(`💬 Continuando sesión de Typebot ${currentSessionId} para ${from}`);
+            const textToSend = uploadedImageUrl || body;
+            response = await axios.post(`${typebotUrl}/api/v1/sessions/${currentSessionId}/continueChat`, {
+              message: { type: 'text', text: textToSend }
+            });
+          }
+
+          if (response && response.data) {
+            const messages = response.data.messages || [];
+            const input = response.data.input;
+
+            let hasValidationError = false;
+            for (const msg of messages) {
+              if (msg.type === 'text') {
+                const text = this.extractText(msg.content);
+                if (text.toLowerCase().includes('invalid message') || 
+                    text.toLowerCase().includes('try again') || 
+                    text.toLowerCase().includes('inválido') || 
+                    text.toLowerCase().includes('intenta de nuevo')) {
+                  hasValidationError = true;
+                  break;
+                }
+              }
+            }
+
+            if (hasValidationError) {
+              logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a IA.`);
+              const aiResponse = await aiService.generateResponse(from, profileName, body);
+              if (aiResponse) {
+                await this.sendTextMessage(from, aiResponse);
+              } else {
+                await this.sendTextMessage(from, "Lo siento, no comprendí esa opción.");
+              }
+              if (!from.startsWith('chatwoot_conv_') && input && input.type === 'choice input' && input.items && input.items.length > 0) {
+                await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", input.items);
+              }
+            } else {
+              await this.processTypebotMessages(from, messages, input);
+            }
+
+            // Si el flujo de Typebot terminó (no hay más inputs de respuesta esperados),
+            // cambiar el estado de la sesión a 'ai' para que la IA atienda las consultas libres en el siguiente mensaje
+            if (!input) {
+              logger.info(`🏁 Typebot finalizó su flujo para ${from}. Transicionando conversación a la CAPA IA.`);
+              this.userSessions.set(from, { sessionId: currentSessionId, state: 'ai' });
+            }
+          }
+        } catch (err) {
+          logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de IA', error: err.message });
+          const aiResponse = await aiService.generateResponse(from, profileName, body);
+          if (aiResponse) {
+            await this.sendTextMessage(from, aiResponse);
+          }
+        }
       }
+    }
+
+    // Si la conversación fue pausada por la IA (intención de asesor o fallback de error)
+    if (aiService.isConversationPaused(from)) {
+      await this.openChatwootConversation(from);
     }
   }
 
