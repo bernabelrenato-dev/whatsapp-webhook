@@ -330,7 +330,10 @@ class MessageService {
         }
 
         await this.sendTextMessage(from, salesClosureSpeech);
-        logger.info({ msg: 'Respuesta automática a Meta Ads Referral entregada con éxito', from });
+        
+        const contactNoticeText = `👩‍💼 He notificado a nuestros asesores comerciales. Nos contactaremos contigo lo antes posible para ayudarte a procesar tu pedido. 😊`;
+        await this.sendTextMessage(from, contactNoticeText);
+        logger.info({ msg: 'Secuencia completa de Cierre de Venta (Imagen + Plantilla de Pagos + Notificación) entregada con éxito', from });
         return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar Meta Ads referral', error: err.message });
