@@ -27,11 +27,17 @@ class AiService {
    * Pausa las respuestas automáticas del bot para un número de teléfono.
    * @param {string} phoneNumber Número del cliente.
    * @param {number} durationMs Duración de la pausa en milisegundos.
+   * @param {string} reason Motivo de la pausa.
    */
-  pauseConversation(phoneNumber, durationMs = this.DEFAULT_PAUSE_DURATION) {
-    const expiration = Date.now() + durationMs;
-    this.pausedConversations.set(phoneNumber, expiration, durationMs);
-    logger.info(`⏸️ Respuestas del bot pausadas para ${phoneNumber} hasta las ${new Date(expiration).toLocaleTimeString()}`);
+  pauseConversation(phoneNumber, durationMs = this.DEFAULT_PAUSE_DURATION, reason = 'manual') {
+    const now = Date.now();
+    const expiration = now + durationMs;
+    this.pausedConversations.set(phoneNumber, {
+      expiration,
+      createdAt: now,
+      reason
+    }, durationMs);
+    logger.info(`⏸️ Respuestas del bot pausadas para ${phoneNumber} (motivo: ${reason}) hasta las ${new Date(expiration).toLocaleTimeString()}`);
   }
 
   /**
@@ -41,6 +47,10 @@ class AiService {
    */
   isConversationPaused(phoneNumber) {
     return this.pausedConversations.has(phoneNumber);
+  }
+
+  getPauseDetails(phoneNumber) {
+    return this.pausedConversations.get(phoneNumber);
   }
 
   /**
@@ -159,7 +169,7 @@ class AiService {
     const matchesKeyword = explicitTransferKeywords.some(kw => cleanInput.includes(kw));
 
     if (matchesKeyword) {
-      this.pauseConversation(phoneNumber);
+      this.pauseConversation(phoneNumber, this.DEFAULT_PAUSE_DURATION, 'user');
       return `Entendido, ${profileName}. Te estoy comunicando con un asesor en este momento. Por favor espera unos minutos. 🙏`;
     }
 
@@ -197,7 +207,7 @@ class AiService {
       });
 
       // Pausar conversación ante fallo técnico para transferir de inmediato al humano
-      this.pauseConversation(phoneNumber);
+      this.pauseConversation(phoneNumber, this.DEFAULT_PAUSE_DURATION, 'user');
 
       return `¡Hola, ${profileName}! Enseguida te conectaré con un asesor comercial humano para que te ayude personalmente con tu consulta. Por favor, aguarda unos momentos. 😊`;
     }

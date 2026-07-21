@@ -264,10 +264,35 @@ class MessageService {
       }
     }
 
-    // 3. Si el bot está pausado para esta conversación, no responder
+    // 3. Si el bot está pausado para esta conversación, verificar si podemos despausarlo
+    const cleanBody = (combinedText || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const isResetKeyword = ['reiniciar', 'inicio', 'hola', 'buenas tardes', 'buenos dias', 'menu', 'reset'].includes(cleanBody);
+
     if (aiService.isConversationPaused(from)) {
-      logger.info(`⏸️ Conversación con ${profileName} (${from}) está pausada. Bot no responderá.`);
-      return;
+      const pauseDetails = aiService.getPauseDetails(from);
+      let shouldUnpause = false;
+
+      // Condición A: El cliente envió una palabra clave de reinicio explícita (siempre despausa)
+      if (isResetKeyword) {
+        logger.info(`🔄 Palabra clave de reinicio detectada de [${profileName}] (${from}) mientras el bot estaba pausado. Despausando bot.`);
+        shouldUnpause = true;
+      }
+      // Condición B: La pausa fue por solicitud del cliente/fallback ('user') Y pasaron más de 10 minutos sin que el agente tomara el control/respondiera
+      else if (pauseDetails && pauseDetails.reason === 'user') {
+        const UNPAUSE_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutos
+        const timeElapsed = Date.now() - pauseDetails.createdAt;
+        if (timeElapsed > UNPAUSE_TIMEOUT_MS) {
+          logger.info(`⏰ Transcurrieron ${Math.round(timeElapsed / 1000 / 60)} minutos sin respuesta del asesor para [${profileName}] (${from}). El cliente continuó escribiendo. Despausando bot automáticamente.`);
+          shouldUnpause = true;
+        }
+      }
+
+      if (shouldUnpause) {
+        aiService.unpauseConversation(from);
+      } else {
+        logger.info(`⏸️ Conversación con ${profileName} (${from}) está pausada (creada hace: ${pauseDetails ? Math.round((Date.now() - pauseDetails.createdAt) / 1000 / 60) : '?'}m, motivo: ${pauseDetails ? pauseDetails.reason : 'desconocido'}). Bot no responderá.`);
+        return;
+      }
     }
 
     // 4. Procesar identificación visual si hay imagen
@@ -303,7 +328,6 @@ class MessageService {
 
     const body = combinedText;
     if (body || productContext) {
-      const cleanBody = (body || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
       // Detectar intención de atención humana
       const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
@@ -311,13 +335,11 @@ class MessageService {
 
       if (isAgentIntent) {
         logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
-        aiService.pauseConversation(from);
+        aiService.pauseConversation(from, aiService.DEFAULT_PAUSE_DURATION, 'user');
         await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
         await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
         return;
       }
-
-      const isResetKeyword = ['reiniciar', 'inicio', 'hola', 'buenas tardes', 'buenos dias', 'menú', 'menu'].includes(cleanBody);
 
       // Clasificación de catálogo
       const catalogKeywords = [
