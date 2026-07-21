@@ -119,8 +119,8 @@ services:
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
-      - FB_APP_ID=1044567754986113
-      - FB_APP_SECRET=3b409aac9e62bb088dc6ca3209b0ddc3
+      - FB_APP_ID=963093566323818
+      - FB_APP_SECRET=d81ecfc8601b990cb9a67970f167736a
       - FB_VERIFY_TOKEN=jgis_verify_token_messenger_2026
     networks:
       - jgis_bot_net
@@ -158,8 +158,8 @@ services:
       - SMTP_PASSWORD=test
       - SMTP_DOMAIN=jgispublicidad.pe
       - MAILER_SENDER_EMAIL=no-reply@jgispublicidad.pe
-      - FB_APP_ID=1044567754986113
-      - FB_APP_SECRET=3b409aac9e62bb088dc6ca3209b0ddc3
+      - FB_APP_ID=963093566323818
+      - FB_APP_SECRET=d81ecfc8601b990cb9a67970f167736a
       - FB_VERIFY_TOKEN=jgis_verify_token_messenger_2026
     networks:
       - jgis_bot_net
