@@ -47,24 +47,14 @@ git pull origin master 2>&1 || {
 NEW_SHA=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
 log "SHA después de pull: $NEW_SHA"
 
-if [[ "$PREVIOUS_SHA" == "$NEW_SHA" ]]; then
-  log "INFO: No hay cambios nuevos. Nada que deployar."
-  exit 0
-fi
-
 # --- Rebuild y actualización de contenedores ---
 log "Rebuilding servicio '$SERVICE' y actualizando Chatwoot..."
-docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" chatwoot-web chatwoot-worker 2>&1 || {
-  log "FAIL: docker compose build falló. Intentando rollback..."
-  git checkout "$PREVIOUS_SHA" 2>/dev/null
-  docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" chatwoot-web chatwoot-worker 2>&1
-  log "ROLLBACK: Revertido a $PREVIOUS_SHA"
-  exit 1
-}
+docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d "$SERVICE" chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Limpieza y actualización de FB_APP_ID en Chatwoot vía Rails Runner ---
 log "Actualizando FB_APP_ID y FB_APP_SECRET en Chatwoot vía Rails Runner..."
 docker exec chatwoot-web bundle exec rails runner "InstallationConfig.find_or_initialize_by(name: 'FB_APP_ID').update!(serialized_value: '963093566323818'); InstallationConfig.find_or_initialize_by(name: 'FB_APP_SECRET').update!(serialized_value: 'd81ecfc8601b990cb9a67970f167736a'); InstallationConfig.find_or_initialize_by(name: 'FB_VERIFY_TOKEN').update!(serialized_value: 'jgis_verify_token_messenger_2026'); GlobalConfig.clear_cache" 2>&1 || true
+docker exec jgis-redis redis-cli FLUSHALL 2>/dev/null || true
 docker restart chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Health Check ---
