@@ -51,10 +51,11 @@ log "SHA después de pull: $NEW_SHA"
 log "Rebuilding servicio '$SERVICE' y actualizando Chatwoot..."
 docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d "$SERVICE" chatwoot-web chatwoot-worker 2>&1 || true
 
-# --- Limpieza y actualización de FB_APP_ID en Chatwoot vía Rails Runner ---
-log "Actualizando FB_APP_ID y FB_APP_SECRET en Chatwoot vía Rails Runner..."
-docker exec chatwoot-web bundle exec rails runner "InstallationConfig.find_or_initialize_by(name: 'FB_APP_ID').update!(serialized_value: '963093566323818'); InstallationConfig.find_or_initialize_by(name: 'FB_APP_SECRET').update!(serialized_value: 'd81ecfc8601b990cb9a67970f167736a'); InstallationConfig.find_or_initialize_by(name: 'FB_VERIFY_TOKEN').update!(serialized_value: 'jgis_verify_token_messenger_2026'); GlobalConfig.clear_cache" 2>&1 || true
-docker exec jgis-redis redis-cli FLUSHALL 2>/dev/null || true
+# --- Limpieza y actualización de FB_APP_ID en Chatwoot DB y Redis ---
+log "Actualizando FB_APP_ID en Chatwoot DB y borrando caché..."
+docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "DELETE FROM installation_configs WHERE name ILIKE '%fb%';"
+docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "INSERT INTO installation_configs (name, serialized_value, created_at, updated_at) VALUES ('FB_APP_ID', '--- ''963093566323818'''::text, NOW(), NOW()), ('FB_APP_SECRET', '--- ''d81ecfc8601b990cb9a67970f167736a'''::text, NOW(), NOW()), ('FB_VERIFY_TOKEN', '--- ''jgis_verify_token_messenger_2026'''::text, NOW(), NOW());"
+docker exec jgis-redis redis-cli FLUSHALL
 docker restart chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Health Check ---
