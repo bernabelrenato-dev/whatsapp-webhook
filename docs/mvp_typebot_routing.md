@@ -43,3 +43,13 @@ Para confirmar que el cambio cumple el criterio de aceptación:
 * **Causa Raíz Real:** El ID de workspace `cmrugyyxj00000ajew6v4qt1f` de la captura del usuario pertenece al servicio oficial en la nube de Typebot (`app.typebot.com`), mientras que los inserts locales y la base de datos PostgreSQL se encuentran en el servidor VPS propio (`https://bot.jgispublicidad.pe`).
 * **Acción Tomada:** Al comprobar que los datos en el PostgreSQL local están 100% íntegros, consistentes y publicados bajo el ID `jgis-publicidad-bot-f33vo50` en el workspace `workspace-jgis`, la solución es indicar al usuario que inicie sesión en la URL correcta de su servidor local (`https://bot.jgispublicidad.pe`) en lugar del cloud oficial de Typebot.
 
+---
+
+## 5. Diagnóstico y Corrección de Autenticación Self-Hosted
+* **Hallazgo Crítico:** Al intentar acceder a `https://bot.jgispublicidad.pe/es/signin`, el sistema mostraba el error *"Necesitas configurar al menos un proveedor de autenticación"*.
+* **Causa Raíz:** La regla general `location /api` en Nginx secuestraba todas las solicitudes dirigidas a `/api/auth` (el backend de autenticación NextAuth de Typebot) y las redirigía al contenedor del webhook de WhatsApp (`jgis-webhook` en el puerto 3005) en lugar del contenedor `typebot-builder` (puerto 8081).
+* **Solución de Enrutamiento:** Se añadió una regla específica `location /api/auth` en Nginx con mayor precedencia que redirige los flujos de autenticación al puerto `8081` (Typebot Builder). Ahora la petición directa a `https://bot.jgispublicidad.pe/api/auth/providers` devuelve correctamente el proveedor de Nodemailer (`email`) habilitado por el contenedor.
+* **Descarte de Instancia Cloud:** Confirmamos explícitamente que la instancia externa `app.typebot.com` queda descartada de la arquitectura del proyecto. Toda la configuración, base de datos y despliegue del bot comercial es 100% local en el VPS (`https://bot.jgispublicidad.pe`).
+* **Proveedor SMTP:** Actualmente el contenedor tiene configurado el entorno SMTP de pruebas hacia `MailHog` (puerto `1025` sin auth) lo que permite la entrega exitosa de magic links locales legibles desde `https://bot.jgispublicidad.pe/mailhog/`. Queda pendiente configurar un SMTP transaccional de producción una vez que el usuario decida qué proveedor utilizar (ej. Hostinger).
+
+
