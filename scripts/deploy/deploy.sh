@@ -53,9 +53,26 @@ docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d "$SERVICE" chatwoot-web 
 
 # --- Limpieza y actualización de FB_APP_ID en Chatwoot DB y Redis ---
 log "Actualizando FB_APP_ID en Chatwoot DB y borrando caché..."
-docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "DELETE FROM installation_configs WHERE name ILIKE '%fb%';"
-docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "INSERT INTO installation_configs (name, serialized_value, created_at, updated_at) VALUES ('FB_APP_ID', '--- ''963093566323818'''::text, NOW(), NOW()), ('FB_APP_SECRET', '--- ''d81ecfc8601b990cb9a67970f167736a'''::text, NOW(), NOW()), ('FB_VERIFY_TOKEN', '--- ''jgis_verify_token_messenger_2026'''::text, NOW(), NOW());"
-docker exec jgis-redis redis-cli FLUSHALL
+POSTGRES_CONTAINER=$(docker ps -q -f name=postgres | head -n 1)
+CHATWOOT_CONTAINER=$(docker ps -q -f name=chatwoot-web | head -n 1)
+REDIS_CONTAINER=$(docker ps -q -f name=redis | head -n 1)
+
+if [[ -n "$POSTGRES_CONTAINER" ]]; then
+  log "Limpiando installation_configs en Postgres ($POSTGRES_CONTAINER)..."
+  docker exec "$POSTGRES_CONTAINER" psql -U postgres -d chatwoot_production -c "DELETE FROM installation_configs WHERE name ILIKE '%fb%';" 2>&1 || true
+  docker exec "$POSTGRES_CONTAINER" psql -U postgres -d chatwoot_production -c "INSERT INTO installation_configs (name, serialized_value, created_at, updated_at) VALUES ('FB_APP_ID', '--- ''963093566323818'''::text, NOW(), NOW()), ('FB_APP_SECRET', '--- ''d81ecfc8601b990cb9a67970f167736a'''::text, NOW(), NOW()), ('FB_VERIFY_TOKEN', '--- ''jgis_verify_token_messenger_2026'''::text, NOW(), NOW());" 2>&1 || true
+fi
+
+if [[ -n "$CHATWOOT_CONTAINER" ]]; then
+  log "Ejecutando Rails GlobalConfig.clear_cache en Chatwoot ($CHATWOOT_CONTAINER)..."
+  docker exec "$CHATWOOT_CONTAINER" bundle exec rails runner "GlobalConfig.clear_cache" 2>&1 || true
+fi
+
+if [[ -n "$REDIS_CONTAINER" ]]; then
+  log "Limpiando caché en Redis ($REDIS_CONTAINER)..."
+  docker exec "$REDIS_CONTAINER" redis-cli FLUSHALL 2>&1 || true
+fi
+
 docker restart chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Health Check ---
