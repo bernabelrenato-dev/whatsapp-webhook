@@ -103,10 +103,10 @@ exports.receiveChatwootMessage = async (req, res, next) => {
 
       if (messageType === 'incoming') {
         const channelType = payload.inbox?.channel_type;
-        const isWhatsApp = channelType === 'Channel::Whatsapp';
+        const isWhatsAppOrApi = channelType === 'Channel::Whatsapp' || channelType === 'Channel::Api';
 
-        if (isWhatsApp) {
-          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen): "${payload.content}"`);
+        if (isWhatsAppOrApi) {
+          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen o canal API): "${payload.content}"`);
         } else {
           logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
           
@@ -145,6 +145,12 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           });
         }
       } else if (messageType === 'outgoing') {
+        // Ignorar si es una nota privada (las notas de atribución de Meta Ads se crean como privadas)
+        if (payload.private === true) {
+          logger.debug(`💬 Nota privada de Chatwoot ignorada en webhook: "${payload.content}"`);
+          return res.status(200).json({ success: true });
+        }
+
         // Si es un mensaje saliente, verificar si fue enviado por nuestro bot
         if (messageService.botSentMessageIds.has(messageId)) {
           // Fue el bot, removemos el ID y no pausamos
@@ -154,8 +160,11 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           logger.info(`👤 Mensaje manual de agente detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
           geminiService.pauseConversation(pauseKey);
 
-          // Solo reenviar a WhatsApp si el contacto de WhatsApp (from) está disponible
-          if (from) {
+          // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
+          const channelType = payload.inbox?.channel_type;
+          const isApiChannel = channelType === 'Channel::Api';
+
+          if (isApiChannel && from && !from.startsWith('chatwoot_conv_')) {
             if (payload.attachments && payload.attachments.length > 0) {
               const att = payload.attachments[0];
               if (att.data_url) {

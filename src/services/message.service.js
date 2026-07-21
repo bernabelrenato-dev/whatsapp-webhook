@@ -959,10 +959,23 @@ class MessageService {
       
       const referralText = `📢 [META ADS REFERRAL]\nEl cliente inició la conversación desde un anuncio de Meta.\n\n• Headline: ${referral.headline || 'Sin título'}\n• Body: ${referral.body || 'Sin descripción'}\n• Ad ID: ${referral.source_id || 'N/A'}\n• Source URL: ${referral.source_url || 'N/A'}`;
 
+      let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
+
+      // Intentar extraer la imagen directa si viene de un post de Instagram
+      if (!mediaUrl && referral.source_url) {
+        const urlStr = referral.source_url;
+        if (urlStr.includes('instagram.com/p/')) {
+          const match = urlStr.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
+          if (match) {
+            mediaUrl = match[0] + '/media/?size=l';
+          }
+        }
+      }
+
       let response;
-      if (referral.media_url) {
+      if (mediaUrl) {
         try {
-          const { buffer, mimeType } = await this.downloadMetaMedia(referral.media_url);
+          const { buffer, mimeType } = await this.downloadMetaMedia(mediaUrl);
           
           let ext = '.jpg';
           if (mimeType === 'image/png') ext = '.png';
@@ -982,7 +995,11 @@ class MessageService {
               'api_access_token': config.CHATWOOT_ACCESS_TOKEN
             }
           });
-          logger.info({ msg: 'Atribución Meta Ads con imagen sincronizada en nota privada de Chatwoot', conversationId });
+          
+          const sentMessageId = response.data.id;
+          this.botSentMessageIds.add(sentMessageId);
+
+          logger.info({ msg: 'Atribución Meta Ads con imagen sincronizada en nota privada de Chatwoot', conversationId, messageId: sentMessageId });
           return;
         } catch (downloadErr) {
           logger.error({ msg: 'No se pudo descargar la imagen del ad referral, enviando solo texto', error: downloadErr.message });
@@ -1003,7 +1020,11 @@ class MessageService {
           private: true
         }
       });
-      logger.info({ msg: 'Atribución Meta Ads de texto sincronizada en nota privada de Chatwoot', conversationId });
+
+      const sentMessageId = response.data.id;
+      this.botSentMessageIds.add(sentMessageId);
+
+      logger.info({ msg: 'Atribución Meta Ads de texto sincronizada en nota privada de Chatwoot', conversationId, messageId: sentMessageId });
     } catch (error) {
       const errRes = error.response ? error.response.data : error.message;
       logger.error({ msg: 'Error al sincronizar ad referral con Chatwoot', phone, error: errRes });
