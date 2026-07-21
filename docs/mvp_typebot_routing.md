@@ -52,4 +52,16 @@ Para confirmar que el cambio cumple el criterio de aceptación:
 * **Descarte de Instancia Cloud:** Confirmamos explícitamente que la instancia externa `app.typebot.com` queda descartada de la arquitectura del proyecto. Toda la configuración, base de datos y despliegue del bot comercial es 100% local en el VPS (`https://bot.jgispublicidad.pe`).
 * **Proveedor SMTP:** Actualmente el contenedor tiene configurado el entorno SMTP de pruebas hacia `MailHog` (puerto `1025` sin auth) lo que permite la entrega exitosa de magic links locales legibles desde `https://bot.jgispublicidad.pe/mailhog/`. Queda pendiente configurar un SMTP transaccional de producción una vez que el usuario decida qué proveedor utilizar (ej. Hostinger).
 
+---
+
+## 6. Diagnóstico y Corrección de Spinner Infinito (/es/typebots)
+* **Hallazgo Crítico:** Tras loguearse correctamente, la interfaz redirigía a `/es/typebots` pero se quedaba en un spinner de carga infinito.
+* **Causa Raíz:** Las peticiones de la API interna de Typebot (como consultas tRPC `/api/trpc/...` y llamadas de recursos `/api/workspaces/...`) eran secuestradas por la directiva Nginx `/api` que las enviaba al puerto `3005` (nuestro webhook de WhatsApp) en lugar del puerto `8081` (Typebot Builder). El webhook respondía con un error `404` o no respondía en absoluto, imposibilitando la carga del listado de bots en la interfaz de React.
+* **Solución de Enrutamiento:** Se reestructuraron las directivas Nginx de la siguiente manera:
+  1. Creamos bloques de localización específicos con mayor precedencia para el webhook: `location /api/search` y `location /api/handover` (dirigidos a `localhost:3005`).
+  2. Modificamos la directiva general `location /api` para que sirva de puente general hacia `localhost:8081` (Typebot Builder).
+  3. Esto permite que todas las llamadas de la API interna de Typebot (`/api/trpc`, `/api/v1/typebots`, etc.) fluyan sin colisiones hacia el Builder, mientras que los webhooks de búsqueda y handover del chatbot WhatsApp siguen ejecutándose con normalidad en el webhook.
+* **Resultado:** El listado de bots en `/es/typebots` carga de forma inmediata y el webhook de WhatsApp sigue respondiendo en port 3005.
+
+
 
