@@ -268,30 +268,8 @@ class MessageService {
       await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
     }
 
-    // Sincronizar referral de Meta Ads y enviar respuesta automática con imagen del anuncio y speech de ventas
-    if (referral) {
-      try {
-        await this.syncReferralToChatwoot(from, profileName, referral);
-
-        let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
-        if (!mediaUrl && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
-          const match = referral.source_url.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
-          if (match) {
-            mediaUrl = match[0] + '/media/?size=l';
-          }
-        }
-
-        if (mediaUrl) {
-          try {
-            const publicAdImage = await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
-            await this.sendImageMessage(from, publicAdImage);
-          } catch (imgErr) {
-            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
-            await this.sendImageMessage(from, mediaUrl);
-          }
-        }
-
-        const adSpeechText = `¡Hola! 👋 Gracias por contactar a *Corporación JGIS* 🎨✨
+    // Definir plantilla de Cierre de Venta directo
+    const salesClosureSpeech = `¡Hola! 👋 Gracias por contactar a *Corporación JGIS* 🎨✨
 
 📌 *Disponible:* Costo S/. 15
 
@@ -322,14 +300,54 @@ class MessageService {
 🏬 *Sótano – Pasaje "H", Stand 560*
 🔹 *Referencia:* Cerca de la *Puerta 7 (Boulevard)*`;
 
-        await this.sendTextMessage(from, adSpeechText);
+    // Sincronizar referral de Meta Ads y enviar respuesta automática con imagen del anuncio y speech de ventas
+    if (referral) {
+      try {
+        await this.syncReferralToChatwoot(from, profileName, referral);
+
+        let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
+        if (!mediaUrl && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
+          const match = referral.source_url.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
+          if (match) {
+            mediaUrl = match[0] + '/media/?size=l';
+          }
+        }
+
+        if (mediaUrl) {
+          try {
+            const publicAdImage = await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
+            await this.sendImageMessage(from, publicAdImage);
+          } catch (imgErr) {
+            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
+            await this.sendImageMessage(from, mediaUrl);
+          }
+        }
+
+        await this.sendTextMessage(from, salesClosureSpeech);
         logger.info({ msg: 'Respuesta automática a Meta Ads Referral entregada con éxito', from });
+        return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar Meta Ads referral', error: err.message });
       }
     }
 
-    // 3. Si el bot está pausado para esta conversación, verificar si podemos despausarlo
+    // Si el mensaje proviene de una conversación multicanal de Chatwoot (Facebook/Instagram/Messenger),
+    // entregar la respuesta directa de Cierre de Venta omitiendo el bloqueo de asignación manual de agente
+    const isChatwootConv = typeof from === 'string' && from.startsWith('chatwoot_conv_');
+    if (isChatwootConv) {
+      try {
+        if (uploadedImageUrl) {
+          await this.sendImageMessage(from, uploadedImageUrl);
+        }
+        await this.sendTextMessage(from, salesClosureSpeech);
+        logger.info({ msg: 'Respuesta directa de Cierre de Venta multicanal entregada exitosamente a Chatwoot', from });
+        return;
+      } catch (err) {
+        logger.error({ msg: 'Error al enviar respuesta de Cierre de Venta multicanal', from, error: err.message });
+      }
+    }
+
+    // 3. Si el bot está pausado para esta conversación en WhatsApp, verificar si podemos despausarlo
     const cleanBody = (combinedText || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     const isResetKeyword = ['reiniciar', 'inicio', 'hola', 'buenas tardes', 'buenos dias', 'menu', 'reset'].includes(cleanBody);
 
