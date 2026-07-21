@@ -1,7 +1,7 @@
 const axios = require('axios');
 const config = require('../config/environment');
 const logger = require('../utils/logger');
-const geminiService = require('../services/gemini.service');
+const aiService = require('../services/ai.service');
 const messageService = require('../services/message.service');
 const { TTLCache } = require('../utils/ttlCache');
 
@@ -158,7 +158,7 @@ exports.receiveChatwootMessage = async (req, res, next) => {
         } else {
           const pauseKey = from || `chatwoot_conv_${conversationId}`;
           logger.info(`👤 Mensaje manual de agente detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
-          geminiService.pauseConversation(pauseKey);
+          aiService.pauseConversation(pauseKey);
 
           // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
           const channelType = payload.inbox?.channel_type;

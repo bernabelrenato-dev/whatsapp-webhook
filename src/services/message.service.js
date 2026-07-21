@@ -3,14 +3,14 @@ const path = require('path');
 const axios = require('axios');
 const config = require('../config/environment');
 const logger = require('../utils/logger');
-const geminiService = require('./gemini.service');
+const aiService = require('./ai.service');
 const catalogService = require('./catalog.service');
 
 
 const { TTLCache, CappedSet } = require('../utils/ttlCache');
 
-// Inicializar Gemini al cargar el módulo
-geminiService.initialize();
+// Inicializar IA al cargar el módulo
+aiService.initialize();
 
 /**
  * Servicio encargado de procesar la lógica de negocio para los eventos de WhatsApp.
@@ -265,7 +265,7 @@ class MessageService {
     }
 
     // 3. Si el bot está pausado para esta conversación, no responder
-    if (geminiService.isConversationPaused(from)) {
+    if (aiService.isConversationPaused(from)) {
       logger.info(`⏸️ Conversación con ${profileName} (${from}) está pausada. Bot no responderá.`);
       return;
     }
@@ -283,7 +283,7 @@ class MessageService {
         }
 
         const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
-        const matchResult = await geminiService.identifyProductFromImage(buffer, mimeType);
+        const matchResult = await aiService.identifyProductFromImage(buffer, mimeType);
         imageMatchResult = matchResult;
 
         if (matchResult.matched && matchResult.code) {
@@ -311,7 +311,7 @@ class MessageService {
 
       if (isAgentIntent) {
         logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
-        geminiService.pauseConversation(from);
+        aiService.pauseConversation(from);
         await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
         await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
         return;
@@ -332,7 +332,7 @@ class MessageService {
         logger.info(`🎯 Intención de catálogo detectada de [${profileName}] (${from}): "${body}"`);
         try {
           const promptMsg = productContext ? (productContext + '\n' + (body || 'detalles del producto')) : body;
-          const aiResponse = await geminiService.generateResponse(from, profileName, promptMsg);
+          const aiResponse = await aiService.generateResponse(from, profileName, promptMsg);
           if (aiResponse) {
             const imageMatch = aiResponse.match(/https?:\/\/[^\s]+?\.(?:png|jpe?g|gif|webp)/gi);
             if (imageMatch) {
@@ -443,8 +443,8 @@ class MessageService {
           }
 
           if (hasValidationError) {
-            logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a Gemini.`);
-            const aiResponse = await geminiService.generateResponse(from, profileName, body);
+            logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a IA.`);
+            const aiResponse = await aiService.generateResponse(from, profileName, body);
             if (aiResponse) {
               await this.sendTextMessage(from, aiResponse);
             } else {
@@ -458,15 +458,15 @@ class MessageService {
           }
         }
       } catch (err) {
-        logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de Gemini', error: err.message });
-        const aiResponse = await geminiService.generateResponse(from, profileName, body);
+        logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de IA', error: err.message });
+        const aiResponse = await aiService.generateResponse(from, profileName, body);
         if (aiResponse) {
           await this.sendTextMessage(from, aiResponse);
         }
       }
 
       // Si la conversación fue pausada por la IA (intención de asesor o fallback de error)
-      if (geminiService.isConversationPaused(from)) {
+      if (aiService.isConversationPaused(from)) {
         await this.openChatwootConversation(from);
       }
     }
@@ -811,7 +811,7 @@ class MessageService {
       } else {
         // Fue un humano desde la bandeja de entrada, pausamos el bot por 2 horas
         logger.info(`👤 Mensaje manual de agente detectado hacia ${recipient}. Pausando bot.`);
-        geminiService.pauseConversation(recipient);
+        aiService.pauseConversation(recipient);
       }
     }
 

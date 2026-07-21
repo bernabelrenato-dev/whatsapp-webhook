@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const catalogService = require('../services/catalog.service');
-const geminiService = require('../services/gemini.service');
+const aiService = require('../services/ai.service');
 const logger = require('../utils/logger');
 
 class ApiController {
@@ -146,7 +146,7 @@ class ApiController {
       }
 
       // Pausar de inmediato el bot para este número telefónico
-      geminiService.pauseConversation(phone);
+      aiService.pauseConversation(phone);
 
       logger.info({ msg: 'Conversación pausada exitosamente. Valentina en espera.', phone, cliente: name });
 
