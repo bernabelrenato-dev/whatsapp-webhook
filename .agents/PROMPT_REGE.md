@@ -96,7 +96,7 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 - [x] **Paso 5 — DNS Chatwoot vía Hostinger:** Completada (19/07/2026).
 - [x] **Paso 6 — Nginx SSL Certbot Chatwoot:** Completada (19/07/2026).
 - [x] **Paso 7 — Migración de Agentes Dify a Native Console:** Completada (19/07/2026).
-- [x] **Paso 8 — Pipeline Git ➔ Auto-Deploy VPS:** Implementado (19/07/2026) con HMAC-SHA256 y webhook `jgis-deployer` en puerto 9000.
+- [x] **Paso 8 — Pipeline Git ➔ Auto-Deploy VPS:** Implementado (19/07/2026) con HMAC-SHA256 y webhook `jgis-deployer` en puerto 9000. *Fix (21/07/2026): Se cambió la URL del HEALTHCHECK de localhost a 127.0.0.1 en Dockerfile.deployer para evitar que Alpine intente IPv6 y marque el contenedor como unhealthy.*
 
 ---
 
