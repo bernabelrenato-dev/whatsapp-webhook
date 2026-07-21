@@ -464,6 +464,11 @@ class MessageService {
           await this.sendTextMessage(from, aiResponse);
         }
       }
+
+      // Si la conversación fue pausada por la IA (intención de asesor o fallback de error)
+      if (geminiService.isConversationPaused(from)) {
+        await this.openChatwootConversation(from);
+      }
     }
   }
 

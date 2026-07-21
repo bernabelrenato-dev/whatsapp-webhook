@@ -237,8 +237,10 @@ class GeminiService {
         cause: error.cause,
       });
 
-      // Respuesta de fallback en caso de error
-      return `¡Hola, ${profileName}! Disculpa, estoy teniendo dificultades técnicas en este momento. Por favor, intenta de nuevo en unos minutos o escribe "agente" para hablar con una persona real. 🙏`;
+      // Pausar conversación ante fallo técnico para transferir de inmediato al humano
+      this.pauseConversation(phoneNumber);
+
+      return `¡Hola, ${profileName}! Enseguida te conectaré con un asesor comercial humano para que te ayude personalmente con tu consulta. Por favor, aguarda unos momentos. 😊`;
     }
   }
 
