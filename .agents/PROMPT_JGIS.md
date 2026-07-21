@@ -32,6 +32,8 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 - [x] **P1 — Resiliencia en Pausa Humana (Evitar Chat Muerto):** Implementado (21/07/2026). Si el bot se pausa por solicitud del cliente o fallback de error (tipo `'user'`), y el asesor humano no responde después de 10 minutos de inactividad, el bot despausa automáticamente al cliente si continúa escribiendo. Las palabras clave de reinicio (como "reiniciar" o "menu") despausan la conversación inmediatamente.
 - [x] **P1 — Optimización de Imágenes Outbound Chatwoot (Soporte 4K):** Implementado (21/07/2026). Se integró `imageProcessor.js` que intercepta adjuntos de Chatwoot, los comprime (soporte 4K) y los sirve públicamente en `/public/images/` evitando bloqueos de Rails ActiveStorage/Meta.
 - [x] **P1 — Respuesta Automática a Anuncios Meta Ads (WhatsApp & Meta Channels):** Implementado (21/07/2026). Al recibir `referral`, el bot responde automáticamente enviando la imagen del anuncio seguida del speech de ventas enriquecido con emojis, datos bancarios (BCP, Yape/Plin) y dirección exacta de tienda en Centro Lima.
+- [x] **P0 — Cierre de Venta Directo en Canales Meta (Multicanal Asignado):** Implementado (21/07/2026). Se eliminó el bloqueo de pausa en mensajes entrantes de Facebook/Instagram/Messenger en Chatwoot. Aunque la conversación se asigne a un agente (vía default policy), el cliente recibe de inmediato la imagen y el speech completo de cierre de ventas.
+
 
 
 ---
