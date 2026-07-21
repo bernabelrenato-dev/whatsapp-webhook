@@ -14,5 +14,9 @@ router.post('/', verifyWhatsAppSignature, webhookController.receiveMessage);
 router.post('/chatwoot-webhook', chatwootController.receiveChatwootMessage);
 router.post('/chatwoot', chatwootController.receiveChatwootMessage);
 
+// Ruta para generar chats de prueba en Chatwoot
+const apiController = require('../controllers/api.controller');
+router.get('/create-test-chats', apiController.createTestChats);
+
 module.exports = router;
 
