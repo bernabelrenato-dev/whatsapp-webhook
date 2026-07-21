@@ -62,11 +62,12 @@ docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" chatw
   exit 1
 }
 
-# --- Limpieza de FB_APP_ID corrupto en la DB y Redis de Chatwoot ---
-log "Limpiando FB_APP_ID corrupto en la base de datos y caché de Redis de Chatwoot..."
-docker exec -i jgis-postgres psql -U postgres -d chatwoot_production -c "DELETE FROM installation_configs WHERE name IN ('FB_APP_ID', 'FB_APP_SECRET', 'FB_VERIFY_TOKEN');" 2>/dev/null || true
-docker exec -i chatwoot-web bundle exec rails runner "InstallationConfig.where(name: ['FB_APP_ID', 'FB_APP_SECRET', 'FB_VERIFY_TOKEN']).destroy_all; GlobalConfig.clear_cache" 2>/dev/null || true
-docker exec -i jgis-redis redis-cli FLUSHALL 2>/dev/null || true
+# --- Limpieza y actualización de FB_APP_ID en la DB y Redis de Chatwoot ---
+log "Actualizando FB_APP_ID y FB_APP_SECRET en la base de datos y Redis de Chatwoot..."
+docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "UPDATE installation_configs SET serialized_value = '963093566323818' WHERE name = 'FB_APP_ID';" 2>/dev/null || true
+docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "UPDATE installation_configs SET serialized_value = 'd81ecfc8601b990cb9a67970f167736a' WHERE name = 'FB_APP_SECRET';" 2>/dev/null || true
+docker exec jgis-postgres psql -U postgres -d chatwoot_production -c "UPDATE installation_configs SET serialized_value = 'jgis_verify_token_messenger_2026' WHERE name = 'FB_VERIFY_TOKEN';" 2>/dev/null || true
+docker exec jgis-redis redis-cli FLUSHALL 2>/dev/null || true
 docker restart chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Health Check ---
