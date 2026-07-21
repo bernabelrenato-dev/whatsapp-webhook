@@ -272,91 +272,87 @@ class MessageService {
       }
     }
 
-    // Definir plantilla de Cierre de Venta directo
-    const salesClosureSpeech = `¡Hola! 👋 Gracias por contactar a *Corporación JGIS* 🎨✨
+    // Plantilla exacta de pago y entrega para la campaña de gorras
+    const capCampaignTemplate = `📦 ¡Gracias por tu interés en nuestras gorras! 🧢
 
-🧢 *Disponible:* Costo S/. 15 por unidad (por 2 gorras el total a cancelar es S/. 30.00) 🔥
+💰 Costo: S/. 15 por unidad
 
-🚚 *¿Método de entrega?*
-• Envíos a todo el Perú 🇵🇪
-• Recojo en tienda 🏬
+🚚 Método de entrega:
+　✅ Envíos a todo el Perú
+　🏬 Recojo en tienda
 
-⏱️ *Tiempo de entrega (tiempo de producción):* 48 horas
+⏱️ Tiempo de entrega (producción): 48 horas
 
----
+💳 Datos de Pago
+🏦 Banco: BCP
+💳 Cuenta Corriente (Soles): 1912434894087
+🔢 CCI: 00219100243489408755
+📱 Yape / Plin: 969732451
+👤 Titular: Corporación JGIS
 
-💳 *Datos de Pago*
+📍 Dirección
+🏢 Galería Centro Comercial Centro Lima
+🔻 Sótano – Pasaje "H", Stand 560
+🚪 Referencia: cerca de la Puerta 7 (Boulevard)
 
-*Titular:* *Corporación JGIS*
+¿Cuántas unidades te gustaría llevar? 😊`;
 
-🏦 *Banco BCP*
-• *Cuenta Corriente en Soles:* *1912434894087*
-• *CCI (Código de Cuenta Interbancaria):* *00219100243489408755*
+    // 1. Evaluar si el referral o mensaje corresponde a la campaña o producto de gorras
+    const referralText = [
+      referral?.headline,
+      referral?.body,
+      referral?.source_url,
+      referral?.ad_id,
+      referral?.source_id,
+      combinedText
+    ].filter(Boolean).join(' ').toLowerCase();
 
-📱 *Yape / Plin:* *969732451*
-• *Titular:* *Corporación JGIS*
+    const isCapCampaign = referral ? true : ['gorra', 'gorras', 'trucker', 'cap', '963093566323818', '3115'].some(kw => referralText.includes(kw));
 
----
-
-📍 *Dirección*
-
-🏢 *Galería Centro Comercial Centro Lima*
-🏬 *Sótano – Pasaje "H", Stand 560*
-🔹 *Referencia:* Cerca de la *Puerta 7 (Boulevard)*`;
-
-    // Sincronizar referral de Meta Ads o responder con galeria de fotos de gorras + speech de ventas para mensajes directos
-    const userSession = this.userSessions.get(from);
-    const isDirectSalesQuery = referral || !userSession;
-    if (isDirectSalesQuery) {
+    if (isCapCampaign) {
       try {
+        // Preservar metadata interna del referral en Chatwoot (sin modificar comportamiento previo)
         if (referral && !isChatwootConv) {
           await this.syncReferralToChatwoot(from, profileName, referral);
         }
 
-        // Paso 1: Si viene de un anuncio de Meta, enviar primero la foto del anuncio
+        // a) Enviar la foto del anuncio original como referencia si viene en el referral
         let mediaUrl = referral ? (referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url) : null;
-        if (!mediaUrl && referral && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
-          const match = referral.source_url.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
-          if (match) {
-            mediaUrl = match[0] + '/media/?size=l';
-          }
-        }
-
         if (mediaUrl) {
           try {
             const publicAdImage = mediaUrl.startsWith('http') ? mediaUrl : await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
             await this.sendImageMessage(from, publicAdImage);
           } catch (imgErr) {
-            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio, enviando URL directa', error: imgErr.message });
+            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
             await this.sendImageMessage(from, mediaUrl);
           }
         }
 
-        // Paso 2: Enviar imágenes del catálogo de gorras (Galería de modelos disponibles)
-        const capGalleryImages = [
+        // b) Enviar la galería COMPLETA de imágenes de gorras del catálogo (todas las variantes disponibles)
+        const fullCapGallery = [
           'https://bot.jgispublicidad.pe/images/2125B.jpg',
+          'https://bot.jgispublicidad.pe/images/2125BT.jpg',
+          'https://bot.jgispublicidad.pe/images/2125N.jpg',
           'https://bot.jgispublicidad.pe/images/2125R.jpg',
-          'https://bot.jgispublicidad.pe/images/2126N.jpg'
+          'https://bot.jgispublicidad.pe/images/2126N.jpg',
+          'https://bot.jgispublicidad.pe/images/2126R.jpg',
+          'https://bot.jgispublicidad.pe/images/2128F.jpg'
         ];
 
-        for (const capImg of capGalleryImages) {
+        for (const capImg of fullCapGallery) {
           try {
             await this.sendImageMessage(from, capImg);
           } catch (errImg) {
-            logger.warn({ msg: 'Error al enviar imagen de galería de gorras', capImg, error: errImg.message });
+            logger.warn({ msg: 'Error al enviar variante de gorra', capImg, error: errImg.message });
           }
         }
 
-        // Paso 3: Enviar plantilla de pagos y datos comerciales
-        await this.sendTextMessage(from, salesClosureSpeech);
-        
-        // Paso 4: Notificación de atención comercial
-        const contactNoticeText = `👩‍💼 He notificado a nuestros asesores comerciales. Nos contactaremos contigo lo antes posible para ayudarte a procesar tu pedido de gorras. 😊`;
-        await this.sendTextMessage(from, contactNoticeText);
-        logger.info({ msg: 'Secuencia completa de Cierre de Venta (Fotos de Gorras + Plantilla S/. 30 + Notificación) entregada con éxito', from });
+        // c) Enviar la plantilla exacta de pago / entrega solicitada
+        await this.sendTextMessage(from, capCampaignTemplate);
+        logger.info({ msg: 'Secuencia de Campaña de Gorras (Metadata Ad + Galería Completa + Plantilla Oficial) despachada con éxito', from });
         return;
       } catch (err) {
-        logger.error({ msg: 'Error al procesar secuencia de Cierre de Venta', error: err.message });
+        logger.error({ msg: 'Error al procesar flujo de Campaña de Gorras', error: err.message });
       }
     }
 
