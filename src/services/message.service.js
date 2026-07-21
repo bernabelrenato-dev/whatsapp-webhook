@@ -235,37 +235,41 @@ class MessageService {
     const combinedText = texts.join('\n').trim();
     const hasImage = images.length > 0;
 
-    // 2. Sincronizar mensaje entrante con Chatwoot antes de responder
+    const isChatwootConv = typeof from === 'string' && from.startsWith('chatwoot_conv_');
+
+    // 2. Sincronizar mensaje entrante con Chatwoot SOLO si proviene de WhatsApp nativo (no duplicar en conversaciones de Chatwoot)
     let uploadedImageUrl = null;
-    if (hasImage) {
-      const img = images[images.length - 1]; // procesar última imagen
-      try {
-        const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
-        
-        let ext = '.jpg';
-        if (mimeType === 'image/png') ext = '.png';
-        else if (mimeType === 'image/gif') ext = '.gif';
-        const fileName = 'whatsapp_image_' + Date.now() + ext;
+    if (!isChatwootConv) {
+      if (hasImage) {
+        const img = images[images.length - 1]; // procesar última imagen
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(img.id);
+          
+          let ext = '.jpg';
+          if (mimeType === 'image/png') ext = '.png';
+          else if (mimeType === 'image/gif') ext = '.gif';
+          const fileName = 'whatsapp_image_' + Date.now() + ext;
 
-        // Guardar imagen en directorio estático público para que Typebot pueda consumirla
-        const publicImagesDir = path.join(__dirname, '..', 'public', 'images');
-        if (!fs.existsSync(publicImagesDir)) {
-          fs.mkdirSync(publicImagesDir, { recursive: true });
+          // Guardar imagen en directorio estático público para que Typebot pueda consumirla
+          const publicImagesDir = path.join(__dirname, '..', 'public', 'images');
+          if (!fs.existsSync(publicImagesDir)) {
+            fs.mkdirSync(publicImagesDir, { recursive: true });
+          }
+          const filePath = path.join(publicImagesDir, fileName);
+          fs.writeFileSync(filePath, buffer);
+          
+          const baseUrl = process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe';
+          uploadedImageUrl = `${baseUrl}/images/${fileName}`;
+
+          const syncText = combinedText || '[Imagen recibida]';
+          await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType);
+        } catch (err) {
+          logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot/Disco', error: err.message });
+          await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '[Imagen recibida]');
         }
-        const filePath = path.join(publicImagesDir, fileName);
-        fs.writeFileSync(filePath, buffer);
-        
-        const baseUrl = process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe';
-        uploadedImageUrl = `${baseUrl}/images/${fileName}`;
-
-        const syncText = combinedText || '[Imagen recibida]';
-        await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType);
-      } catch (err) {
-        logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot/Disco', error: err.message });
-        await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '[Imagen recibida]');
+      } else if (combinedText) {
+        await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
       }
-    } else if (combinedText) {
-      await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
     }
 
     // Definir plantilla de Cierre de Venta directo
@@ -303,7 +307,9 @@ class MessageService {
     // Sincronizar referral de Meta Ads y enviar respuesta automática con imagen del anuncio y speech de ventas
     if (referral) {
       try {
-        await this.syncReferralToChatwoot(from, profileName, referral);
+        if (!isChatwootConv) {
+          await this.syncReferralToChatwoot(from, profileName, referral);
+        }
 
         let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
         if (!mediaUrl && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
@@ -328,22 +334,6 @@ class MessageService {
         return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar Meta Ads referral', error: err.message });
-      }
-    }
-
-    // Si el mensaje proviene de una conversación multicanal de Chatwoot (Facebook/Instagram/Messenger),
-    // entregar la respuesta directa de Cierre de Venta omitiendo el bloqueo de asignación manual de agente
-    const isChatwootConv = typeof from === 'string' && from.startsWith('chatwoot_conv_');
-    if (isChatwootConv) {
-      try {
-        if (uploadedImageUrl) {
-          await this.sendImageMessage(from, uploadedImageUrl);
-        }
-        await this.sendTextMessage(from, salesClosureSpeech);
-        logger.info({ msg: 'Respuesta directa de Cierre de Venta multicanal entregada exitosamente a Chatwoot', from });
-        return;
-      } catch (err) {
-        logger.error({ msg: 'Error al enviar respuesta de Cierre de Venta multicanal', from, error: err.message });
       }
     }
 

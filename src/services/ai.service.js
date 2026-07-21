@@ -74,7 +74,7 @@ class AiService {
       try {
         this.genAI = new GoogleGenerativeAI(geminiKey);
         this.geminiModel = this.genAI.getGenerativeModel({
-          model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
+          model: process.env.GEMINI_MODEL || 'gemini-1.5-flash-latest',
           systemInstruction: SYSTEM_PROMPT,
           generationConfig: {
             temperature: 0.7,
@@ -418,7 +418,7 @@ class AiService {
       };
 
       // Etapa 1: Preguntar a Gemini Vision qué producto de merchandising es
-      const descModel = this.genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+      const descModel = this.genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || 'gemini-1.5-flash' });
       const descPrompt = `
         Analiza la imagen adjunta del producto de merchandising.
         Genera una lista de 4 a 6 palabras clave o sinónimos en español e inglés que describan el artículo para buscarlo en una base de datos de catálogo (por ejemplo, si es un vaso o taza térmica, incluye palabras como: "mug", "thermo", "termo", "vaso", "tomatodo", "taza").
