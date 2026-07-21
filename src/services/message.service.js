@@ -304,27 +304,34 @@ class MessageService {
 🏬 *Sótano – Pasaje "H", Stand 560*
 🔹 *Referencia:* Cerca de la *Puerta 7 (Boulevard)*`;
 
-    // Sincronizar referral de Meta Ads y enviar respuesta automática con imagen del anuncio y speech de ventas
-    if (referral) {
+    // Sincronizar referral de Meta Ads o responder con imagen por defecto + speech de ventas para mensajes directos
+    const userSession = this.userSessions.get(from);
+    const isDirectSalesQuery = referral || !userSession;
+    if (isDirectSalesQuery) {
       try {
-        if (!isChatwootConv) {
+        if (referral && !isChatwootConv) {
           await this.syncReferralToChatwoot(from, profileName, referral);
         }
 
-        let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
-        if (!mediaUrl && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
+        let mediaUrl = referral ? (referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url) : null;
+        if (!mediaUrl && referral && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
           const match = referral.source_url.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
           if (match) {
             mediaUrl = match[0] + '/media/?size=l';
           }
         }
 
+        // Si no hay imagen de anuncio, usar la imagen de producto por defecto
+        if (!mediaUrl) {
+          mediaUrl = 'https://bot.jgispublicidad.pe/images/3115.jpg';
+        }
+
         if (mediaUrl) {
           try {
-            const publicAdImage = await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
+            const publicAdImage = mediaUrl.startsWith('http') ? mediaUrl : await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
             await this.sendImageMessage(from, publicAdImage);
           } catch (imgErr) {
-            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
+            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio, enviando URL directa', error: imgErr.message });
             await this.sendImageMessage(from, mediaUrl);
           }
         }
@@ -336,7 +343,7 @@ class MessageService {
         logger.info({ msg: 'Secuencia completa de Cierre de Venta (Imagen + Plantilla de Pagos + Notificación) entregada con éxito', from });
         return;
       } catch (err) {
-        logger.error({ msg: 'Error al procesar Meta Ads referral', error: err.message });
+        logger.error({ msg: 'Error al procesar secuencia de Cierre de Venta', error: err.message });
       }
     }
 
