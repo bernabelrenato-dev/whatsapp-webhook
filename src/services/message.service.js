@@ -208,11 +208,15 @@ class MessageService {
    * Procesa la lista de mensajes agrupados después de la pausa (debouncing)
    */
   async processCombinedMessages(from, profileName, messages, value) {
-    // 1. Separar mensajes de texto e imágenes
+    // 1. Separar mensajes de texto e imágenes, y detectar meta referrals
     const texts = [];
     const images = [];
+    let referral = null;
     
     for (const msg of messages) {
+      if (msg.referral) {
+        referral = msg.referral;
+      }
       if (msg.type === 'text') {
         texts.push(msg.text.body.trim());
       } else if (msg.type === 'interactive') {
@@ -249,6 +253,15 @@ class MessageService {
       }
     } else if (combinedText) {
       await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
+    }
+
+    // Sincronizar referral de Meta Ads si se detectó
+    if (referral) {
+      try {
+        await this.syncReferralToChatwoot(from, profileName, referral);
+      } catch (err) {
+        logger.error({ msg: 'Error al sincronizar Meta Ads referral a Chatwoot', error: err.message });
+      }
     }
 
     // 3. Si el bot está pausado para esta conversación, no responder
@@ -299,6 +312,7 @@ class MessageService {
       if (isAgentIntent) {
         logger.info(`👤 Solicitud de atención humana detectada de [${profileName}] (${from}). Pausando bot y transfiriendo a Chatwoot.`);
         geminiService.pauseConversation(from);
+        await this.openChatwootConversation(from); // Cambiar status a open en Chatwoot
         await this.sendTextMessage(from, `¡Claro que sí, ${profileName}! 👩‍💼 He notificado a nuestros asesores comerciales. Un miembro de nuestro equipo tomará tu conversación por aquí en breve. Por favor aguarda unos momentos. 😊`);
         return;
       }
@@ -925,6 +939,102 @@ class MessageService {
     } catch (error) {
       const errRes = error.response ? error.response.data : error.message;
       logger.error({ msg: 'Error al sincronizar mensaje entrante con Chatwoot', phone, error: errRes });
+    }
+  }
+
+  /**
+   * Sincroniza la atribución de Meta Ads (referral) como nota privada en Chatwoot.
+   */
+  async syncReferralToChatwoot(phone, name, referral) {
+    if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
+      return;
+    }
+    if (typeof phone === 'string' && phone.startsWith('chatwoot_conv_')) {
+      return;
+    }
+
+    try {
+      const conversationId = await this.getOrCreateConversationId(phone, name);
+      const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
+      
+      const referralText = `📢 [META ADS REFERRAL]\nEl cliente inició la conversación desde un anuncio de Meta.\n\n• Headline: ${referral.headline || 'Sin título'}\n• Body: ${referral.body || 'Sin descripción'}\n• Ad ID: ${referral.source_id || 'N/A'}\n• Source URL: ${referral.source_url || 'N/A'}`;
+
+      let response;
+      if (referral.media_url) {
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(referral.media_url);
+          
+          let ext = '.jpg';
+          if (mimeType === 'image/png') ext = '.png';
+          else if (mimeType === 'image/gif') ext = '.gif';
+          const fileName = 'meta_ad_image_' + Date.now() + ext;
+
+          const formData = new FormData();
+          formData.append('content', referralText);
+          formData.append('message_type', 'outgoing');
+          formData.append('private', 'true');
+          
+          const blob = new Blob([buffer], { type: mimeType || 'image/jpeg' });
+          formData.append('attachments[]', blob, fileName);
+
+          response = await axios.post(url, formData, {
+            headers: {
+              'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+            }
+          });
+          logger.info({ msg: 'Atribución Meta Ads con imagen sincronizada en nota privada de Chatwoot', conversationId });
+          return;
+        } catch (downloadErr) {
+          logger.error({ msg: 'No se pudo descargar la imagen del ad referral, enviando solo texto', error: downloadErr.message });
+        }
+      }
+
+      // Enviar solo texto
+      response = await axios({
+        method: 'POST',
+        url,
+        headers: {
+          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+          'Content-Type': 'application/json'
+        },
+        data: {
+          content: referralText,
+          message_type: 'outgoing',
+          private: true
+        }
+      });
+      logger.info({ msg: 'Atribución Meta Ads de texto sincronizada en nota privada de Chatwoot', conversationId });
+    } catch (error) {
+      const errRes = error.response ? error.response.data : error.message;
+      logger.error({ msg: 'Error al sincronizar ad referral con Chatwoot', phone, error: errRes });
+    }
+  }
+
+  /**
+   * Abre la conversación en Chatwoot (cambia status a open) para alertar al agente con sonido.
+   */
+  async openChatwootConversation(phone) {
+    if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
+      return;
+    }
+    if (typeof phone === 'string' && phone.startsWith('chatwoot_conv_')) {
+      return;
+    }
+
+    try {
+      const conversationId = await this.getOrCreateConversationId(phone, 'Cliente');
+      const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/toggle_status`;
+      
+      await axios.post(url, { status: 'open' }, {
+        headers: {
+          'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+          'Content-Type': 'application/json'
+        }
+      });
+      logger.info({ msg: 'Conversación de Chatwoot reabierta para atención humana', conversationId });
+    } catch (error) {
+      const errRes = error.response ? error.response.data : error.message;
+      logger.error({ msg: 'Error al reabrir conversación de Chatwoot', phone, error: errRes });
     }
   }
 

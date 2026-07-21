@@ -27,6 +27,13 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 - [x] **P1 — Sincronización de Imágenes en Chatwoot:** Implementado (20/07/2026). Descarga los archivos multimedia de Meta y los sube a Chatwoot en formato `multipart/form-data` para que el agente humano los visualice en la conversación.
 - [x] **P1 — Acceso a Typebot Builder en Raíz:** Implementado (20/07/2026). Configurada la variable `NEXTAUTH_URL` y el proxy de Nginx en la raíz `/` para habilitar el login y desarrollo estable en Typebot.
 
+
+---
+
+## 2.2 Directrices Operativas JGIS
+- **Aislamiento Cloud Absoluto (Cero Uso de Laptop):** Está estrictamente prohibido realizar cualquier compilación, inicio de servidores locales o ejecución de pruebas de JGIS Bot en la laptop del usuario. Todo el backend, Webhooks, bases de datos y flujos de mensajería se ejecutan exclusivamente en la nube (GCP) y se versionan en GitHub.
+- **Sincronización de Hitos:** Cada mejora o corrección sobre el bot JGIS debe registrarse con su checkbox correspondiente en este documento.
+
 ---
 
 ## 3. Arquitectura del Bot JGIS

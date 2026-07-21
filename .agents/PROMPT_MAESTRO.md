@@ -48,13 +48,13 @@ Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea.
 - Para compartir el código consolidado en sub-conversaciones, compilar previamente mediante `repomix`.
 
 ### 0.4 Orquestación Agéntica (Antigravity + OpenClaw + OpenHands / OpenCode - Opción B)
-- **Antigravity:** Agente Orquestador Principal (pair programming, planificación técnica, auditoría y despliegues E2E).
+- **Antigravity:** Agente Orquestador Principal (pair programming, planificación técnica, auditoría y despliegues E2E). Trabaja de la mano de **OpenHands** en todo momento para desarrollar y refactorizar código de manera continua.
 - **OpenClaw Gateway:** Orquestador remoto directo de desarrollo. Recibe órdenes (vía Telegram o peticiones HTTP simples desde Dify) e invoca nativamente (CLI/procesos) a **OpenHands** y **OpenCode** para escribir y validar código en `/app`.
 - **Dify.AI:** Cerebro conversacional (no intermediario MCP de código). Se limita a enviar peticiones HTTP simples a OpenClaw cuando detecta tareas de desarrollo.
 
 
-### 0.5 Aislamiento 100% Cloud & GitHub
-- Prohibida la instalación de dependencias en la máquina local/laptop del usuario. Todo se ejecuta dentro del VPS GCP (`34.69.161.101`) y se versiona en el repositorio GitHub (`bernabelrenato-dev/whatsapp-webhook`).
+### 0.5 Aislamiento 100% Cloud & GitHub (Cero Uso de Laptop)
+- Está estrictamente prohibido ejecutar, correr, levantar servidores locales, abrir puertos o realizar pruebas de despliegue en la laptop del usuario. Todo el desarrollo, servidores locales dev, despliegues y pruebas operan exclusivamente dentro del VPS GCP (`34.69.161.101`) y el repositorio remoto de GitHub (`bernabelrenato-dev/whatsapp-webhook`).
 
 ### 0.6 Auto-Perfeccionamiento 24/7 (Self-Improving Agents)
 - Los agentes (Antigravity, OpenHands, OpenCode) perfeccionan de manera continua el proyecto JGIS y crean subagentes en `.agents/agents/` y skills en `.agents/skills/` de forma autónoma.

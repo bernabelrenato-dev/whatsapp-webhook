@@ -31,6 +31,8 @@ Entrada Telegram ──► OpenClaw Gateway (:8085) ──(Proceso Nativo / CLI 
 
 ## 2.1 Directrices Operativas REGE (Seguridad y Calidad)
 
+- **Aislamiento Cloud Absoluto (Cero Uso de Laptop):** Está estrictamente prohibido realizar cualquier compilación, apertura de puertos, inicio de servidores locales o ejecución de despliegues de REGE en la laptop del usuario. Todo el desarrollo, servidores locales dev, agentes y pruebas operan exclusivamente en el VPS GCP y el repositorio remoto de GitHub.
+- **Colaboración Continua Antigravity + OpenHands:** Antigravity y OpenHands trabajan en conjunto de forma continua para desarrollar y auditar el código fuente del sistema en todo momento.
 - **Desacoplamiento y Modularidad Estricta:** El stack REGE es modular. **OpenClaw** (Gateway), **OpenCode** (CLI de terminal), **OpenHands** (Agente programador) y **Dify.AI** (Conversacional) son bloques independientes. Si hay un fallo, se debe testear y diagnosticar de forma aislada para resolver la causa raíz en ese módulo sin afectar la disponibilidad del resto del sistema.
 - **Bucle de Trabajo Ininterrumpido:** Tras completar un punto del backlog, el agente debe continuar de inmediato con el siguiente de forma autónoma.
 - **Bucle de Testeo (Límite 3 Intentos):** Cualquier cambio de código en REGE debe testearse. Si la prueba falla 3 veces consecutivas, el agente debe detenerse y buscar opinión/intervención humana. No entregar código que no pase las pruebas con `exit code 0`.
