@@ -63,5 +63,21 @@ Para confirmar que el cambio cumple el criterio de aceptación:
   3. Esto permite que todas las llamadas de la API interna de Typebot (`/api/trpc`, `/api/v1/typebots`, etc.) fluyan sin colisiones hacia el Builder, mientras que los webhooks de búsqueda y handover del chatbot WhatsApp siguen ejecutándose con normalidad en el webhook.
 * **Resultado:** El listado de bots en `/es/typebots` carga de forma inmediata y el webhook de WhatsApp sigue respondiendo en port 3005.
 
+---
+
+## 7. Verificación de Pruebas Automatizadas E2E
+* **Script de Prueba:** Creamos un script de automatización en `scripts/tools/test-typebot-login.js` para simular todo el proceso de inicio de sesión de NextAuth en el contenedor.
+* **El Proceso:**
+  1. Obtiene el token CSRF mediante `GET /api/auth/csrf`.
+  2. Dispara el inicio de sesión enviando un POST a `/api/auth/signin/nodemailer` con cookies persistidas.
+  3. Recupera el email en MailHog leyendo `/api/v2/messages`, limpia los soft linebreaks y extrae el token temporal de 6 dígitos.
+  4. Realiza el callback en `/api/auth/callback/nodemailer` con redirecciones deshabilitadas en Axios para capturar el header `set-cookie` con el `__Secure-authjs.session-token`.
+  5. Consulta `/api/auth/session` pasando las cookies de sesión y valida los datos del usuario.
+* **Resultado:**
+  * **Status:** **ÉXITO total**.
+  * **Datos del usuario autenticado devueltos:** `ventas.centrolima@jgispublicidad.pe` (id: `user-jgis`).
+  * **Criterio de Aceptación:** Cumplido con exit code `0`. El enrutamiento y la autenticación self-hosted funcionan de extremo a extremo sin colisiones de Nginx.
+
+
 
 
