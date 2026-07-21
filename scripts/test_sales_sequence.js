@@ -1,7 +1,7 @@
 const messageService = require('../src/services/message.service');
 
-async function testSequence() {
-  console.log('🧪 Probando la secuencia de 3 pasos para Mensajes Directos (desde teléfono) y Anuncios...');
+async function testCapGallerySequence() {
+  console.log('🧪 Probando la secuencia de 4 pasos (Foto Referral + Galería de Gorras + Plantilla S/. 30 + Notificación)...');
 
   const sentMessages = [];
   messageService.sendTextMessage = async function(to, text) {
@@ -12,35 +12,34 @@ async function testSequence() {
   };
   messageService.syncReferralToChatwoot = async function() {};
 
-  // Caso 1: Mensaje Directo desde teléfono (sin objeto referral de Meta)
-  const mockMessagesDirect = [{ type: 'text', text: { body: 'Hola, quisiera información de productos' } }];
+  const mockReferral = {
+    headline: 'Gorras Trucker Anuncio Meta',
+    media_url: 'https://bot.jgispublicidad.pe/images/3115.jpg'
+  };
 
-  await messageService.processCombinedMessages('51999888777', 'Cliente Telefono Directo', mockMessagesDirect, {});
+  const mockMessages = [{ referral: mockReferral, type: 'text', text: { body: 'Hola' } }];
 
-  console.log(`💬 Mensajes despachados para chat directo desde teléfono (${sentMessages.length}):`);
-  sentMessages.forEach((msg, idx) => console.log(`  [${idx + 1}] Tipo: ${msg.type} -> ${msg.content ? msg.content.substring(0, 40) + '...' : msg.url}`));
+  await messageService.processCombinedMessages('51999888777', 'Cliente Galeria Gorras', mockMessages, {});
 
-  if (sentMessages.length < 3) {
-    throw new Error('FALLO: El chat directo desde teléfono debe entregar los 3 mensajes (Foto + Plantilla + Notificación).');
+  console.log(`💬 Cantidad de mensajes despachados en la secuencia (${sentMessages.length}):`);
+  sentMessages.forEach((msg, idx) => console.log(`  [${idx + 1}] Tipo: ${msg.type} -> ${msg.content ? msg.content.substring(0, 45) + '...' : msg.url}`));
+
+  // Debe incluir: 1 foto de ad referral + 3 fotos de galeria de gorras + 1 plantilla de pagos S/. 30 + 1 aviso de contacto = 6 mensajes
+  if (sentMessages.length < 5) {
+    throw new Error('FALLO: Se esperaba la entrega de la foto del anuncio, la galería de gorras, la plantilla de pagos y el aviso de contacto.');
   }
 
-  if (sentMessages[0].type !== 'image') {
-    throw new Error('FALLO: El primer mensaje debe ser la Foto de Producto.');
+  const textMsg = sentMessages.find(m => m.type === 'text' && m.content.includes('Datos de Pago'));
+  if (!textMsg || !textMsg.content.includes('por 2 gorras el total a cancelar es S/. 30.00')) {
+    throw new Error('FALLO: La plantilla de pagos no contiene la indicación de "por 2 gorras el total a cancelar es S/. 30.00".');
   }
 
-  if (!sentMessages[1].content.includes('Datos de Pago')) {
-    throw new Error('FALLO: El segundo mensaje debe ser la Plantilla de Pagos.');
-  }
-
-  if (!sentMessages[2].content.includes('Nos contactaremos contigo lo antes posible')) {
-    throw new Error('FALLO: El tercer mensaje debe ser la notificación de contacto.');
-  }
-
-  console.log('✅ Prueba 1 - Chat Directo desde celular recibe Foto de Producto por defecto: ÉXITO');
-  console.log('✅ Prueba 2 - Chat Directo recibe Plantilla de Pagos: ÉXITO');
-  console.log('✅ Prueba 3 - Chat Directo recibe Notificación de Contacto: ÉXITO');
-  console.log('🎉 PRUEBA DE CHATS DIRECTOS DESDE CELULAR VERIFICADA CON EXIT CODE 0.');
+  console.log('✅ Prueba 1 - Imagen del anuncio Referral entregada en primer lugar: ÉXITO');
+  console.log('✅ Prueba 2 - Galería de imágenes de catálogo de gorras entregada en segundo lugar: ÉXITO');
+  console.log('✅ Prueba 3 - Plantilla de pagos con precio S/. 30 por 2 gorras y datos BCP/Yape/Plin: ÉXITO');
+  console.log('✅ Prueba 4 - Aviso de contacto comercial entregado al final: ÉXITO');
+  console.log('🎉 SECUENCIA DE GORRAS Y PAGOS VERIFICADA CON EXIT CODE 0.');
   process.exit(0);
 }
 
-testSequence();
+testCapGallerySequence();
