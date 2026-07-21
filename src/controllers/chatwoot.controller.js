@@ -3,6 +3,7 @@ const config = require('../config/environment');
 const logger = require('../utils/logger');
 const aiService = require('../services/ai.service');
 const messageService = require('../services/message.service');
+const metaGraphService = require('../services/metaGraph.service');
 const { processAndStoreImage } = require('../utils/imageProcessor');
 const { TTLCache } = require('../utils/ttlCache');
 
@@ -101,6 +102,15 @@ exports.receiveChatwootMessage = async (req, res, next) => {
       const messageId = payload.id;
 
       const { phone: from, name: profileName } = await getContactPhone(payload);
+
+      // Resolver y actualizar nombre real del contacto si figura como John Doe o Cliente en Chatwoot
+      const contactId = payload.conversation?.contact_inbox?.contact_id || payload.conversation?.contact_id || payload.conversation?.meta?.sender?.id;
+      const psid = payload.conversation?.meta?.sender?.additional_attributes?.psid || payload.conversation?.meta?.sender?.id;
+      if (contactId && psid) {
+        metaGraphService.resolveAndUpdateChatwootContact(contactId, psid).catch(err => {
+          logger.debug({ msg: 'Aviso resolviendo contacto en background', error: err.message });
+        });
+      }
 
       if (messageType === 'incoming') {
         const channelType = payload.inbox?.channel_type;
