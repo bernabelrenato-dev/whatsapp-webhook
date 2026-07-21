@@ -28,6 +28,8 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 - [x] **P1 — Acceso a Typebot Builder en Raíz:** Implementado (20/07/2026). Configurada la variable `NEXTAUTH_URL` y el proxy de Nginx en la raíz `/` para habilitar el login y desarrollo estable en Typebot.
 - [x] **P1 — Atribución Meta Ads (Referrals) en Chatwoot:** Implementado (21/07/2026). El bot extrae metadatos del anuncio (Headline, Body, ID e Imagen) y los adjunta como nota privada en Chatwoot.
 - [x] **P1 — Alerta Sonora de Handoff en Chatwoot:** Implementado (21/07/2026). Al detectar intenciones de atención humana, el bot cambia el estado de la conversación en Chatwoot a "open", disparando el sonido nativo de notificación en los navegadores de los agentes.
+- [x] **P0 — Typebot: Error de proveedor de autenticación:** Resuelto (21/07/2026). Se configuró `NEXTAUTH_SECRET` en el contenedor `typebot-builder` en `docker-compose.yml`, habilitando el inicio de sesión passwordless de NextAuth.
+- [x] **P1 — Resiliencia en Pausa Humana (Evitar Chat Muerto):** Implementado (21/07/2026). Si el bot se pausa por solicitud del cliente o fallback de error (tipo `'user'`), y el asesor humano no responde después de 10 minutos de inactividad, el bot despausa automáticamente al cliente si continúa escribiendo. Las palabras clave de reinicio (como "reiniciar" o "menu") despausan la conversación inmediatamente.
 
 
 ---
