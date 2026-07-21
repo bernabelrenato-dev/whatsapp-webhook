@@ -74,7 +74,7 @@ class AiService {
       try {
         this.genAI = new GoogleGenerativeAI(geminiKey);
         this.geminiModel = this.genAI.getGenerativeModel({
-          model: process.env.GEMINI_MODEL || 'gemini-1.5-flash-latest',
+          model: process.env.GEMINI_MODEL || 'gemini-1.5-flash',
           systemInstruction: SYSTEM_PROMPT,
           generationConfig: {
             temperature: 0.7,
@@ -83,25 +83,23 @@ class AiService {
             maxOutputTokens: 500, // Limitar para WhatsApp (mensajes cortos)
           },
           tools: [{
-            functionDeclarations: [
-              {
-                name: 'searchCatalog',
-                description: 'Busca productos en el catálogo consolidado de JGIS Publicidad. Retorna el código de producto, nombre, descripción, stock, color, procedencia (origen) y escala de precios (precio unitario para 500+ unidades, 50+ unidades y 1-49 unidades). Debe usarse obligatoriamente siempre que el cliente solicite precios, cotizaciones, stock, colores, o pregunte si contamos con algún artículo de merchandising.',
-                parameters: {
-                  type: 'OBJECT',
-                  properties: {
-                    query: {
-                      type: 'STRING',
-                      description: 'Término de búsqueda del producto (ej: "taza", "tomatodo metal", "bolsa notex")',
-                    },
+            functionDeclarations: [{
+              name: 'searchCatalog',
+              description: 'Busca productos en el catálogo consolidado de JGIS Publicidad. Debe usarse siempre que el cliente solicite precios, cotizaciones o artículos.',
+              parameters: {
+                type: 'OBJECT',
+                properties: {
+                  query: {
+                    type: 'STRING',
+                    description: 'Término de búsqueda del producto (ej: "taza", "tomatodo metal", "bolsa notex")',
                   },
-                  required: ['query'],
                 },
+                required: ['query'],
               },
-            ],
-          }],
+            }]
+          }]
         });
-        logger.info('🧠 Servicio de Gemini AI inicializado correctamente.');
+        logger.info({ msg: '🧠 Servicio de Gemini AI inicializado correctamente.', model: process.env.GEMINI_MODEL || 'gemini-1.5-flash' });
       } catch (error) {
         logger.error({ msg: 'Error al inicializar Gemini AI', error: error.message });
       }
@@ -199,17 +197,43 @@ class AiService {
       }
     } catch (error) {
       logger.error({
-        msg: '🚨 Error total al generar respuesta en todos los proveedores de IA',
+        msg: '⚠️ Excepción en proveedores de IA, ejecutando fallback a respuesta comercial estática',
         phoneNumber,
         errorName: error.name,
         errorMessage: error.message,
-        errorStack: error.stack,
       });
 
-      // Pausar conversación ante fallo técnico para transferir de inmediato al humano
-      this.pauseConversation(phoneNumber, this.DEFAULT_PAUSE_DURATION, 'user');
+      // NO PAUSAR la conversación ante errores de API de IA. Entregar speech comercial directo de cierre.
+      return `¡Hola, ${profileName}! 👋 Gracias por contactar a *Corporación JGIS* 🎨✨
 
-      return `¡Hola, ${profileName}! Enseguida te conectaré con un asesor comercial humano para que te ayude personalmente con tu consulta. Por favor, aguarda unos momentos. 😊`;
+📌 *Disponible:* Costo S/. 15
+
+🚚 *¿Método de entrega?*
+• Envíos a todo el Perú 🇵🇪
+• Recojo en tienda 🏬
+
+⏱️ *Tiempo de entrega (producción):* 48 horas
+
+---
+
+💳 *Datos de Pago*
+
+*Titular:* *Corporación JGIS*
+
+🏦 *Banco BCP*
+• *Cuenta Corriente en Soles:* *1912434894087*
+• *CCI (Código de Cuenta Interbancaria):* *00219100243489408755*
+
+📱 *Yape / Plin:* *969732451*
+• *Titular:* *Corporación JGIS*
+
+---
+
+📍 *Dirección de Tienda*
+
+🏢 *Galería Centro Comercial Centro Lima*
+🏬 *Sótano – Pasaje "H", Stand 560*
+🔹 *Referencia:* Cerca de la *Puerta 7 (Boulevard)*`;
     }
   }
 
