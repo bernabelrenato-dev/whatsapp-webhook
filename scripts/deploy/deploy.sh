@@ -49,7 +49,7 @@ log "SHA después de pull: $NEW_SHA"
 
 # --- Rebuild y actualización de contenedores ---
 log "Rebuilding servicio '$SERVICE' y actualizando Chatwoot..."
-docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d "$SERVICE" chatwoot-web chatwoot-worker 2>&1 || true
+docker compose -p whatsapp-bot -f "$COMPOSE_FILE" up -d --build "$SERVICE" chatwoot-web chatwoot-worker 2>&1 || true
 
 # --- Limpieza y actualización de FB_APP_ID en Chatwoot DB y Redis ---
 log "Actualizando FB_APP_ID en Chatwoot DB y borrando caché..."
