@@ -4,3 +4,6 @@ tunnel.txt
 tunnel.log
 .system_generated/
 *.log
+src/public/images/*
+!src/public/images/.gitkeep
+

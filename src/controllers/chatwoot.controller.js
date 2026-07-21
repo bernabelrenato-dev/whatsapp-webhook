@@ -3,6 +3,7 @@ const config = require('../config/environment');
 const logger = require('../utils/logger');
 const aiService = require('../services/ai.service');
 const messageService = require('../services/message.service');
+const { processAndStoreImage } = require('../utils/imageProcessor');
 const { TTLCache } = require('../utils/ttlCache');
 
 // Caché de teléfonos de contactos para no consultar la API repetidamente (TTL 1 hora, max 1000 items)
@@ -168,7 +169,13 @@ exports.receiveChatwootMessage = async (req, res, next) => {
             if (payload.attachments && payload.attachments.length > 0) {
               const att = payload.attachments[0];
               if (att.data_url) {
-                await messageService.sendImageMessage(from, att.data_url, true);
+                try {
+                  const publicImageUrl = await processAndStoreImage(att.data_url);
+                  await messageService.sendImageMessage(from, publicImageUrl, true);
+                } catch (imgErr) {
+                  logger.error({ msg: 'Error procesando imagen saliente de Chatwoot, intentando URL directa', error: imgErr.message });
+                  await messageService.sendImageMessage(from, att.data_url, true);
+                }
               }
             } else if (payload.content) {
               await messageService.sendTextMessage(from, payload.content, true);

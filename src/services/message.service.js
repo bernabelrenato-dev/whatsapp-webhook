@@ -5,6 +5,7 @@ const config = require('../config/environment');
 const logger = require('../utils/logger');
 const aiService = require('./ai.service');
 const catalogService = require('./catalog.service');
+const { processAndStoreImage } = require('../utils/imageProcessor');
 
 
 const { TTLCache, CappedSet } = require('../utils/ttlCache');
@@ -267,12 +268,64 @@ class MessageService {
       await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
     }
 
-    // Sincronizar referral de Meta Ads si se detectó
+    // Sincronizar referral de Meta Ads y enviar respuesta automática con imagen del anuncio y speech de ventas
     if (referral) {
       try {
         await this.syncReferralToChatwoot(from, profileName, referral);
+
+        let mediaUrl = referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url;
+        if (!mediaUrl && referral.source_url && referral.source_url.includes('instagram.com/p/')) {
+          const match = referral.source_url.match(/https?:\/\/(?:www\.)?instagram\.com\/p\/[a-zA-Z0-9_-]+/i);
+          if (match) {
+            mediaUrl = match[0] + '/media/?size=l';
+          }
+        }
+
+        if (mediaUrl) {
+          try {
+            const publicAdImage = await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
+            await this.sendImageMessage(from, publicAdImage);
+          } catch (imgErr) {
+            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
+            await this.sendImageMessage(from, mediaUrl);
+          }
+        }
+
+        const adSpeechText = `¡Hola! 👋 Gracias por contactar a *Corporación JGIS* 🎨✨
+
+📌 *Disponible:* Costo S/. 15
+
+🚚 *¿Método de entrega?*
+• Envíos a todo el Perú 🇵🇪
+• Recojo en tienda 🏬
+
+⏱️ *Tiempo de entrega (producción):* 48 horas
+
+---
+
+💳 *Datos de Pago*
+
+*Titular:* *Corporación JGIS*
+
+🏦 *Banco BCP*
+• *Cuenta Corriente en Soles:* *1912434894087*
+• *CCI (Código de Cuenta Interbancaria):* *00219100243489408755*
+
+📱 *Yape / Plin:* *969732451*
+• *Titular:* *Corporación JGIS*
+
+---
+
+📍 *Dirección de Tienda*
+
+🏢 *Galería Centro Comercial Centro Lima*
+🏬 *Sótano – Pasaje "H", Stand 560*
+🔹 *Referencia:* Cerca de la *Puerta 7 (Boulevard)*`;
+
+        await this.sendTextMessage(from, adSpeechText);
+        logger.info({ msg: 'Respuesta automática a Meta Ads Referral entregada con éxito', from });
       } catch (err) {
-        logger.error({ msg: 'Error al sincronizar Meta Ads referral a Chatwoot', error: err.message });
+        logger.error({ msg: 'Error al procesar Meta Ads referral', error: err.message });
       }
     }
 

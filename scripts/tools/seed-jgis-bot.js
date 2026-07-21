@@ -43,7 +43,7 @@ async function run() {
           id: 'block-msg-greeting',
           type: 'text',
           content: {
-            richText: [{ type: 'paragraph', children: [{ text: '¡Hola! Bienvenido a JGIS Publicidad. 😊 Valentina Rios a tu servicio. ¿Cuál es tu nombre?' }] }]
+            richText: [{ type: 'p', children: [{ text: '¡Hola! Bienvenido a JGIS Publicidad. 😊 Valentina Rios a tu servicio. ¿Cuál es tu nombre?' }] }]
           }
         },
         {
@@ -64,7 +64,7 @@ async function run() {
           id: 'block-msg-prod',
           type: 'text',
           content: {
-            richText: [{ type: 'paragraph', children: [{ text: 'Un placer, ' }, { text: '{{Nombre}}', bold: true }, { text: '. ¿Qué tipo de merchandising estás buscando hoy? (Por ejemplo: tazas, mochilas, bolsas ecológicas...)' }] }]
+            richText: [{ type: 'p', children: [{ text: 'Un placer, ' }, { text: '{{Nombre}}', bold: true }, { text: '. ¿Qué tipo de merchandising estás buscando hoy? (Por ejemplo: tazas, mochilas, bolsas ecológicas...)' }] }]
           }
         },
         {
@@ -85,7 +85,7 @@ async function run() {
           id: 'block-msg-qty',
           type: 'text',
           content: {
-            richText: [{ type: 'paragraph', children: [{ text: 'Excelente. ¿Qué cantidad aproximada deseas cotizar? (Por ejemplo: 50, 100, 500 unidades)' }] }]
+            richText: [{ type: 'p', children: [{ text: 'Excelente. ¿Qué cantidad aproximada deseas cotizar? (Por ejemplo: 50, 100, 500 unidades)' }] }]
           }
         },
         {
@@ -135,7 +135,7 @@ async function run() {
           id: 'block-msg-result',
           type: 'text',
           content: {
-            richText: [{ type: 'paragraph', children: [{ text: '{{message}}' }] }]
+            richText: [{ type: 'p', children: [{ text: '{{message}}' }] }]
           }
         }
       ]

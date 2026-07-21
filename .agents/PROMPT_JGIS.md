@@ -30,6 +30,8 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 - [x] **P1 — Alerta Sonora de Handoff en Chatwoot:** Implementado (21/07/2026). Al detectar intenciones de atención humana, el bot cambia el estado de la conversación en Chatwoot a "open", disparando el sonido nativo de notificación en los navegadores de los agentes.
 - [x] **P0 — Typebot: Error de proveedor de autenticación:** Resuelto (21/07/2026). Se configuró `NEXTAUTH_SECRET` en el contenedor `typebot-builder` en `docker-compose.yml`, habilitando el inicio de sesión passwordless de NextAuth.
 - [x] **P1 — Resiliencia en Pausa Humana (Evitar Chat Muerto):** Implementado (21/07/2026). Si el bot se pausa por solicitud del cliente o fallback de error (tipo `'user'`), y el asesor humano no responde después de 10 minutos de inactividad, el bot despausa automáticamente al cliente si continúa escribiendo. Las palabras clave de reinicio (como "reiniciar" o "menu") despausan la conversación inmediatamente.
+- [x] **P1 — Optimización de Imágenes Outbound Chatwoot (Soporte 4K):** Implementado (21/07/2026). Se integró `imageProcessor.js` que intercepta adjuntos de Chatwoot, los comprime (soporte 4K) y los sirve públicamente en `/public/images/` evitando bloqueos de Rails ActiveStorage/Meta.
+- [x] **P1 — Respuesta Automática a Anuncios Meta Ads (WhatsApp & Meta Channels):** Implementado (21/07/2026). Al recibir `referral`, el bot responde automáticamente enviando la imagen del anuncio seguida del speech de ventas enriquecido con emojis, datos bancarios (BCP, Yape/Plin) y dirección exacta de tienda en Centro Lima.
 
 
 ---
