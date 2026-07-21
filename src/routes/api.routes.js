@@ -8,4 +8,7 @@ router.post('/search', apiController.searchProduct);
 // Nueva ruta para el traspaso programático a humano y desactivación temporal del bot
 router.post('/handover', apiController.triggerHandover);
 
+// Ruta para generar chats de prueba en Chatwoot
+router.get('/create-test-chats', apiController.createTestChats);
+
 module.exports = router;

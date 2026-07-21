@@ -154,9 +154,95 @@ class ApiController {
         success: true,
         message: 'Traspaso completado. Respuestas automáticas pausadas.'
       });
+  // Método para generar conversaciones de prueba en bandejas de WhatsApp y Messenger
+  async createTestChats(req, res) {
+    try {
+      const axios = require('axios');
+      const config = require('../config/environment');
+      const chatwootUrl = config.CHATWOOT_API_URL || 'http://chatwoot-web:3000';
+      const headers = {
+        'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+        'Content-Type': 'application/json'
+      };
+
+      const inboxesRes = await axios.get(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/inboxes`, { headers });
+      const rawInboxes = inboxesRes.data;
+      const inboxes = Array.isArray(rawInboxes) ? rawInboxes : (rawInboxes.payload || []);
+
+      let whatsappInbox = inboxes.find(ib => ib.channel_type === 'Channel::Whatsapp' || ib.channel_type === 'Channel::Api' || ib.name.toLowerCase().includes('whatsapp'));
+      let messengerInbox = inboxes.find(ib => ib.channel_type === 'Channel::FacebookPage' || ib.channel_type === 'Channel::Facebook' || ib.name.toLowerCase().includes('corporación') || ib.name.toLowerCase().includes('meta'));
+
+      if (!whatsappInbox && inboxes.length > 0) whatsappInbox = inboxes[0];
+      if (!messengerInbox && inboxes.length > 1) messengerInbox = inboxes[1] || inboxes[0];
+
+      // Contact 1: WhatsApp
+      let waContactId;
+      try {
+        const waRes = await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts`, {
+          name: 'Prueba WhatsApp (Cliente Test)',
+          phone_number: '+51999888777'
+        }, { headers });
+        waContactId = waRes.data.payload ? waRes.data.payload.contact.id : waRes.data.id;
+      } catch (e) {
+        const searchRes = await axios.get(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts/search?q=51999888777`, { headers });
+        const rawFound = searchRes.data.payload || searchRes.data;
+        const found = Array.isArray(rawFound) ? rawFound[0] : rawFound;
+        if (found) waContactId = found.id;
+      }
+
+      // Contact 2: Messenger
+      let msgContactId;
+      try {
+        const msgRes = await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts`, {
+          name: 'Prueba Messenger (Cliente Test)',
+          email: 'prueba.messenger@jgispublicidad.pe'
+        }, { headers });
+        msgContactId = msgRes.data.payload ? msgRes.data.payload.contact.id : msgRes.data.id;
+      } catch (e) {
+        const searchRes = await axios.get(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts/search?q=prueba.messenger`, { headers });
+        const rawFound = searchRes.data.payload || searchRes.data;
+        const found = Array.isArray(rawFound) ? rawFound[0] : rawFound;
+        if (found) msgContactId = found.id;
+      }
+
+      const created = [];
+
+      if (whatsappInbox && waContactId) {
+        const waConvRes = await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
+          source_id: `wa_test_${Date.now()}`,
+          inbox_id: whatsappInbox.id,
+          contact_id: waContactId
+        }, { headers });
+        const waConvId = waConvRes.data.id;
+
+        await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${waConvId}/messages`, {
+          content: '¡Hola! Quisiera cotizar 100 gorras trucker personalizadas con el logo de mi empresa.',
+          message_type: 'incoming'
+        }, { headers });
+
+        created.push({ channel: 'WhatsApp', inbox: whatsappInbox.name, conversationId: waConvId });
+      }
+
+      if (messengerInbox && msgContactId) {
+        const msgConvRes = await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
+          source_id: `msg_test_${Date.now()}`,
+          inbox_id: messengerInbox.id,
+          contact_id: msgContactId
+        }, { headers });
+        const msgConvId = msgConvRes.data.id;
+
+        await axios.post(`${chatwootUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${msgConvId}/messages`, {
+          content: '¿Hacen envíos a todo el Perú y cuánto tardan las tazas publicitarias?',
+          message_type: 'incoming'
+        }, { headers });
+
+        created.push({ channel: 'Messenger', inbox: messengerInbox.name, conversationId: msgConvId });
+      }
+
+      return res.json({ success: true, message: 'Chats de prueba generados exitosamente en Chatwoot', created });
     } catch (error) {
-      logger.error({ msg: 'Error en controlador api.triggerHandover', error: error.message });
-      return res.status(500).json({ error: 'Error interno del servidor' });
+      logger.error({ msg: 'Error en controlador api.createTestChats', error: error.message });
+      return res.status(500).json({ error: error.message });
     }
   }
 }
