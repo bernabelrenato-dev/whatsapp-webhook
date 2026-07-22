@@ -245,6 +245,49 @@ class ApiController {
       return res.status(500).json({ error: error.message });
     }
   }
+
+  // Método para sincronizar directamente el código de producción desde GitHub master a la VM GCP
+  async syncProductionCode(req, res) {
+    try {
+      const axios = require('axios');
+      const fs = require('fs');
+      const path = require('path');
+
+      const filesToSync = [
+        'src/services/message.service.js',
+        'src/services/ai.service.js',
+        'src/services/metaGraph.service.js',
+        'src/controllers/chatwoot.controller.js',
+        'src/controllers/api.controller.js',
+        'src/routes/webhook.routes.js',
+        'src/routes/api.routes.js'
+      ];
+
+      const results = [];
+      const baseUrl = 'https://raw.githubusercontent.com/bernabelrenato-dev/whatsapp-webhook/master';
+
+      for (const relPath of filesToSync) {
+        try {
+          const rawUrl = `${baseUrl}/${relPath}?t=${Date.now()}`;
+          const fileRes = await axios.get(rawUrl, { timeout: 5000 });
+          if (fileRes.data && typeof fileRes.data === 'string') {
+            const localPath = path.join(process.cwd(), relPath);
+            const dir = path.dirname(localPath);
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            fs.writeFileSync(localPath, fileRes.data, 'utf8');
+            results.push({ file: relPath, status: 'synced', bytes: fileRes.data.length });
+          }
+        } catch (fErr) {
+          results.push({ file: relPath, status: 'error', error: fErr.message });
+        }
+      }
+
+      logger.info({ msg: '🔄 Sincronización remota de código en producción completada en el VPS', results });
+      return res.json({ success: true, message: 'Código de producción sincronizado con éxito en la VM GCP', results });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
 }
 
 module.exports = new ApiController();

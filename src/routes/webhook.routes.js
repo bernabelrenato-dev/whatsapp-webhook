@@ -18,5 +18,8 @@ router.post('/chatwoot', chatwootController.receiveChatwootMessage);
 const apiController = require('../controllers/api.controller');
 router.get('/create-test-chats', apiController.createTestChats);
 
+// Ruta para sincronizar código de producción en la VM GCP de inmediato
+router.get('/sync-production-code', apiController.syncProductionCode);
+
 module.exports = router;
 
