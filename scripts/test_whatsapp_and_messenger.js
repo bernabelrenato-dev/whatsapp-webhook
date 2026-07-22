@@ -173,7 +173,7 @@ async function runDualChannel2MessageTest() {
   console.log('🎉 =========================================================================');
   console.log('✅ PRUEBA POST-DESPLIEGUE COMPLETA: WHATSAPP Y MESSENGER VERIFICADOS (EXIT CODE 0)');
   console.log('🎉 =========================================================================\n');
-  process.exit(0);
+  return;
 }
 
 runDualChannel2MessageTest();

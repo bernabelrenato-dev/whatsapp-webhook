@@ -431,10 +431,10 @@ async function publishTruckerCapFlow() {
     console.log(`🔑 Typebot ID       : ${typebotId}`);
     console.log(`🔗 Enlace Editor UI  : https://bot.jgispublicidad.pe/typebots/${typebotId}/edit`);
     console.log('=========================================================================\n');
-    process.exit(0);
+    return;
   } catch (err) {
     console.error('❌ Error al publicar el flujo de Gorras Trucker en Typebot:', err);
-    process.exit(1);
+    return;
   }
 }
 
