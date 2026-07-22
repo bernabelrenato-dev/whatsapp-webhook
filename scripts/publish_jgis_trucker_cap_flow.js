@@ -226,9 +226,9 @@ async function publishTruckerCapFlow() {
           id: 'b_input_confirmacion',
           type: 'choice input',
           items: [
-            { id: 'opt_confirma_envio', content: '🚚 Sí, confirmar con Envío a Domicilio', outgoingEdgeId: 'edge_confirma_envio_pago' },
-            { id: 'opt_confirma_recojo', content: '🏬 Sí, confirmar con Recojo en Tienda', outgoingEdgeId: 'edge_confirma_recojo_pago' },
-            { id: 'opt_hablar_asesor', content: '👩‍💼 Hablar con Asesor Humano', outgoingEdgeId: 'edge_hablar_asesor_handover' }
+            { id: 'opt_confirma_envio', content: '🚚 Envío a Domicilio', outgoingEdgeId: 'edge_confirma_envio_pago' },
+            { id: 'opt_confirma_recojo', content: '🏬 Recojo en Tienda', outgoingEdgeId: 'edge_confirma_recojo_pago' },
+            { id: 'opt_hablar_asesor', content: '👩‍💼 Hablar con Asesor', outgoingEdgeId: 'edge_hablar_asesor_handover' }
           ],
           options: { isMultipleChoice: false }
         }

@@ -87,10 +87,10 @@ async function runRealisticTurnByTurnDemo() {
   await new Promise(r => setTimeout(r, 10000));
 
   // ---------------------------------------------------------------------------
-  // TURNO 4: Cliente confirma el pedido ("🚚 Sí, confirmar con Envío a Domicilio")
+  // TURNO 4: Cliente confirma el pedido ("🚚 Envío a Domicilio")
   // ---------------------------------------------------------------------------
-  console.log('💬 [TURNO 4] Cliente responde "🚚 Sí, confirmar con Envío a Domicilio"...');
-  await sendWaMessageTurn('🚚 Sí, confirmar con Envío a Domicilio');
+  console.log('💬 [TURNO 4] Cliente responde "🚚 Envío a Domicilio"...');
+  await sendWaMessageTurn('🚚 Envío a Domicilio');
   console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue los Datos de Pago BCP / Yape (Paso 5)...');
   await new Promise(r => setTimeout(r, 10000));
 
