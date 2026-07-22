@@ -1087,6 +1087,14 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       return;
     }
 
+    // Deduplicación estricta por teléfono + contenido para evitar duplicados en la UI de Chatwoot
+    const syncKey = `chatwoot_in_${phone}_${(text || fileName || 'msg').substring(0, 40)}`;
+    if (this.processedMessageIds.has(syncKey)) {
+      logger.info({ msg: '🛑 Sincronización entrante duplicada a Chatwoot omitida por syncKey', phone, syncKey });
+      return;
+    }
+    this.processedMessageIds.add(syncKey);
+
     try {
       const conversationId = await this.getOrCreateConversationId(phone, name);
       const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
@@ -1252,6 +1260,15 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
     if (!config.CHATWOOT_ACCESS_TOKEN || !config.CHATWOOT_ACCOUNT_ID) {
       return;
     }
+
+    // Deduplicación estricta por teléfono + contenido para evitar duplicados en la UI de Chatwoot
+    const syncKey = `chatwoot_out_${phone}_${(text || imageFileName || 'msg').substring(0, 40)}`;
+    if (this.processedMessageIds.has(syncKey)) {
+      logger.info({ msg: '🛑 Sincronización saliente duplicada a Chatwoot omitida por syncKey', phone, syncKey });
+      return;
+    }
+    this.processedMessageIds.add(syncKey);
+
     try {
       const conversationId = await this.getOrCreateConversationId(phone);
       await this.sendChatwootMessage(conversationId, text, imageFileName);
