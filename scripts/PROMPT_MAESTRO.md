@@ -68,6 +68,10 @@ Ante la problemática donde las pruebas de servidor retornaban `200 OK` pero el 
 - **¿Qué sucedía?** Los scripts de testeo llamados con `docker exec -i jgis-webhook node ...` ejecutaban `process.exit(0)` al terminar, lo que mataba el proceso principal PID 1 del contenedor Node.js, provocando que Docker lo reiniciara de inmediato y cortara las solicitudes HTTP entrantes del cliente en ese instante.
 - **Solución:** Reemplazar `process.exit(0)` por retornos limpios (`return`) en todos los scripts de prueba que corren dentro del contenedor.
 
+#### 4. Patrón Estándar para Simulación Realista Turno por Turno (`scripts/simulate_realistic_turn_by_turn.js`)
+- **¿Cómo generar demostraciones visuales realistas?** Para mostrar al usuario o equipo comercial cómo interactúa un cliente de Meta Ads con el bot en Chatwoot, se debe usar la plantilla `scripts/simulate_realistic_turn_by_turn.js`.
+- **Regla de Intervalo:** Enviar cada turno del cliente con una **pausa asíncrona de 10 segundos** (`await new Promise(r => setTimeout(r, 10000))`). Esto permite que Typebot responda y Chatwoot renderice de forma independiente cada par de burbujas (Cliente ↔ Bot) sin agrupar mensajes en ráfaga.
+
 ---
 
 ## 1. PROYECTO JGIS — Ecosistema de Ventas y Atención al Cliente

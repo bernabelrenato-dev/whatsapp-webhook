@@ -84,4 +84,7 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
   No incluir palabras sueltas como `'persona'`, `'asesor'` o `'agente'` que forman parte de respuestas del menú como `"🙋‍♂️ Uso Personal"`. Usar únicamente frases completas e intenciones explícitas (`'hablar con asesor'`, `'atención humana'`) para evitar interceptar el bot con falsos traspasos a agentes.
 * **Regla 3: Cero `process.exit()` en Scripts de Testeo Internos:**  
   Los scripts de prueba ejecutados dentro de `jgis-webhook` vía `docker exec` no deben llamar a `process.exit(0)`, ya que matan el proceso principal (PID 1) de Express, reiniciando el contenedor e interrumpiendo las peticiones del usuario en vivo.
+* **Regla 4: Simulación Realista Conversacional Turno por Turno (`simulate_realistic_turn_by_turn.js`):**  
+  Para validar visualmente flujos completos en Chatwoot, los mensajes del cliente simulado deben enviarse con **pausas de 10 segundos entre turnos** (no en ráfaga continua). Esto garantiza que el webhook y Typebot procesen, guarden y muestren cada par de burbujas (Cliente ↔ Bot) de forma limpia y realista en la pantalla del usuario.
+
 
