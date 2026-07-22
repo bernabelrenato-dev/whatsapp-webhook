@@ -332,7 +332,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
         // Control Anti-Duplicados estricto por cliente (Evita duplicados ante 2 Apps registradas en Meta Developers)
         let userSession = this.userSessions.get(from);
         if (!userSession) {
-          userSession = { created: Date.now(), capCampaignSent: false };
+          userSession = { created: Date.now(), capCampaignSent: false, state: 'ai' };
           this.userSessions.set(from, userSession);
         }
 
@@ -341,6 +341,8 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
           return;
         }
         userSession.capCampaignSent = true;
+        userSession.state = 'ai'; // Garantiza que los siguientes mensajes del cliente pasen a la Capa IA y no a Typebot
+        this.userSessions.set(from, userSession);
 
         // Preservar metadata interna del referral en Chatwoot (sin modificar comportamiento previo)
         if (referral && !isChatwootConv) {
