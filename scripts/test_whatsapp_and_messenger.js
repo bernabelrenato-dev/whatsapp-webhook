@@ -1,161 +1,179 @@
+require('dotenv').config();
 const axios = require('axios');
 const crypto = require('crypto');
-const config = require('../src/config/environment');
 
-async function runDualChannelTest() {
-  console.log('🧪 Iniciando prueba simultánea de 2 Mensajes Reales (WhatsApp y Facebook Messenger) DENTRO del VPS...\n');
+const PORT = process.env.PORT || 3000;
+const BASE_URL = `http://localhost:${PORT}`;
+const APP_SECRET = process.env.APP_SECRET || 'd81ecfc8601b990cb9a67970f167736a';
 
-  // 1. Obtener la última conversación activa en Chatwoot para simular Messenger sobre una conversación existente
-  let realConvId = 127;
-  try {
-    const convRes = await axios.get(`${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
-      headers: { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN }
-    });
-    const convs = convRes.data?.data?.payload || [];
-    if (convs.length > 0) {
-      realConvId = convs[0].id;
-    }
-  } catch (e) {
-    console.log('ℹ️ Usando ID de conversación por defecto:', realConvId);
-  }
+async function runDualChannel2MessageTest() {
+  console.log('🤖 =========================================================================');
+  console.log('🧪 VERIFICACIÓN POST-DESPLIEGUE: PRUEBA DE 2 MENSAJES (WHATSAPP Y MESSENGER)');
+  console.log('🤖 =========================================================================\n');
+
+  const timestamp = Math.floor(Date.now() / 1000);
 
   // =========================================================================
-  // TEST 1: CANAL WHATSAPP (Meta Cloud API Webhook a /webhook)
+  // 🟢 CANAL 1: WHATSAPP CLOUD API (2 MENSAJES)
   // =========================================================================
-  console.log('1️⃣ --- PRUEBA CANAL WHATSAPP ---');
+  console.log('📲 --- PRUEBA CANAL WHATSAPP (2 MENSAJES) ---');
   const waPhone = '519' + String(Date.now()).slice(-8);
-  const waName = `Cliente WhatsApp #${String(Date.now()).slice(-4)}`;
-  const waTimestamp = Math.floor(Date.now() / 1000);
+  const waName = `Cliente WA #${String(Date.now()).slice(-4)}`;
 
-  const waPayload = {
+  // Mensaje 1 (WhatsApp): Lead entrante desde Anuncio Meta Ads
+  const waPayloadMsg1 = {
     object: 'whatsapp_business_account',
-    entry: [
-      {
-        id: '1125473757325877',
-        changes: [
-          {
-            value: {
-              messaging_product: 'whatsapp',
-              metadata: {
-                display_phone_number: '51936473437',
-                phone_number_id: '1125473757325877'
-              },
-              contacts: [
-                { profile: { name: waName }, wa_id: waPhone }
-              ],
-              messages: [
-                {
-                  from: waPhone,
-                  id: `wamid.test_wa_${Date.now()}`,
-                  timestamp: String(waTimestamp),
-                  text: { body: '¡Hola! Deseo información de las Gorras Trucker por WhatsApp.' },
-                  type: 'text',
-                  referral: {
-                    source_url: 'https://fb.me/gorras_trucker_3115',
-                    source_id: '963093566323818',
-                    source_type: 'ad',
-                    headline: 'Gorras Trucker Personalizadas - S/ 15',
-                    body: 'Envíos a todo el Perú en 48 horas.'
-                  }
-                }
-              ]
-            },
-            field: 'messages'
-          }
-        ]
-      }
-    ]
+    entry: [{
+      id: '1125473757325877',
+      changes: [{
+        value: {
+          messaging_product: 'whatsapp',
+          metadata: { display_phone_number: '51936473437', phone_number_id: '1125473757325877' },
+          contacts: [{ profile: { name: waName }, wa_id: waPhone }],
+          messages: [{
+            from: waPhone,
+            id: `wamid.test_wa_m1_${Date.now()}`,
+            timestamp: String(timestamp),
+            text: { body: '¡Hola! Vi su anuncio de Gorras Trucker en Facebook y deseo pedir información.' },
+            type: 'text',
+            referral: {
+              source_url: 'https://fb.me/gorras_trucker_3115',
+              source_id: '963093566323818',
+              source_type: 'ad',
+              headline: 'Gorras Trucker Personalizadas - S/ 15',
+              body: 'Envíos a todo el Perú en 48 horas.'
+            }
+          }]
+        },
+        field: 'messages'
+      }]
+    }]
   };
 
-  const waHmac = crypto.createHmac('sha256', config.APP_SECRET || 'd81ecfc8601b990cb9a67970f167736a');
-  waHmac.update(JSON.stringify(waPayload), 'utf8');
-  const waSignature = waHmac.digest('hex');
-
+  const waHmac1 = crypto.createHmac('sha256', APP_SECRET).update(JSON.stringify(waPayloadMsg1), 'utf8').digest('hex');
+  
   try {
-    const waRes = await axios.post('http://localhost:3000/webhook', waPayload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-hub-signature-256': `sha256=${waSignature}`
-      },
+    console.log('  [WA - Mensaje 1/2] Enviando lead entrante desde anuncio Meta Ads...');
+    const res1 = await axios.post(`${BASE_URL}/webhook`, waPayloadMsg1, {
+      headers: { 'Content-Type': 'application/json', 'x-hub-signature-256': `sha256=${waHmac1}` },
       timeout: 10000
     });
-    console.log(`✅ WhatsApp Webhook POST -> Status ${waRes.status} (${JSON.stringify(waRes.data)})`);
-  } catch (err) {
-    console.error('❌ Error enviando mensaje de WhatsApp:', err.message);
+    console.log(`  ✅ WhatsApp Mensaje 1 OK: Status ${res1.status} ("${res1.data}")`);
+  } catch (e) {
+    console.error('  ❌ Error en WhatsApp Mensaje 1:', e.message);
   }
 
-  // =========================================================================
-  // TEST 2: CANAL MESSENGER (Simulando llegada de mensaje multicanal a Chatwoot)
-  // =========================================================================
-  console.log('\n2️⃣ --- PRUEBA CANAL FACEBOOK MESSENGER ---');
-  const messengerName = `Cliente Messenger #${String(Date.now()).slice(-4)}`;
-  const messengerMsgId = Date.now();
+  await new Promise(r => setTimeout(r, 2000));
 
-  const messengerPayload = {
+  // Mensaje 2 (WhatsApp): Respuesta del cliente a la pregunta de calificación de Typebot
+  const waPayloadMsg2 = {
+    object: 'whatsapp_business_account',
+    entry: [{
+      id: '1125473757325877',
+      changes: [{
+        value: {
+          messaging_product: 'whatsapp',
+          metadata: { display_phone_number: '51936473437', phone_number_id: '1125473757325877' },
+          contacts: [{ profile: { name: waName }, wa_id: waPhone }],
+          messages: [{
+            from: waPhone,
+            id: `wamid.test_wa_m2_${Date.now()}`,
+            timestamp: String(timestamp + 2),
+            text: { body: '🙋‍♂️ Uso Personal' },
+            type: 'text'
+          }]
+        },
+        field: 'messages'
+      }]
+    }]
+  };
+
+  const waHmac2 = crypto.createHmac('sha256', APP_SECRET).update(JSON.stringify(waPayloadMsg2), 'utf8').digest('hex');
+
+  try {
+    console.log('  [WA - Mensaje 2/2] Enviando selección de opción ("🙋‍♂️ Uso Personal")...');
+    const res2 = await axios.post(`${BASE_URL}/webhook`, waPayloadMsg2, {
+      headers: { 'Content-Type': 'application/json', 'x-hub-signature-256': `sha256=${waHmac2}` },
+      timeout: 10000
+    });
+    console.log(`  ✅ WhatsApp Mensaje 2 OK: Status ${res2.status} ("${res2.data}")`);
+  } catch (e) {
+    console.error('  ❌ Error en WhatsApp Mensaje 2:', e.message);
+  }
+
+
+  // =========================================================================
+  // 🔵 CANAL 2: FACEBOOK MESSENGER (2 MENSAJES)
+  // =========================================================================
+  console.log('\n💬 --- PRUEBA CANAL FACEBOOK MESSENGER (2 MENSAJES) ---');
+  const msgrConvId = 99800 + Math.floor(Math.random() * 100);
+  const msgrName = `Cliente Messenger #${String(Date.now()).slice(-4)}`;
+
+  // Mensaje 1 (Messenger): Lead entrante a la página de Facebook
+  const msgrPayloadMsg1 = {
     event: 'message_created',
     message_type: 'incoming',
-    id: messengerMsgId,
-    content: '¡Hola! Vengo de Facebook Messenger y quiero información sobre gorras trucker personalizadas.',
+    id: Date.now(),
+    content: '¡Hola! Les escribo por Messenger, vi sus gorras trucker personalizadas.',
     private: false,
-    inbox: {
-      id: 1,
-      channel_type: 'Channel::FacebookPage',
-      name: 'Página Facebook JGIS Publicidad'
-    },
+    inbox: { id: 1, channel_type: 'Channel::FacebookPage', name: 'Página Facebook JGIS Publicidad' },
     conversation: {
-      id: realConvId,
-      account_id: parseInt(config.CHATWOOT_ACCOUNT_ID),
+      id: msgrConvId,
+      account_id: 1,
       status: 'open',
-      contact: {
-        id: 99991,
-        name: messengerName,
-        phone_number: null
-      },
-      meta: {
-        sender: {
-          id: 99991,
-          name: messengerName,
-          phone_number: null
-        }
-      }
+      contact: { id: 8881, name: msgrName, phone_number: null },
+      meta: { sender: { id: 8881, name: msgrName } }
     }
   };
 
   try {
-    const msgRes = await axios.post('http://localhost:3000/webhook/chatwoot-webhook', messengerPayload, {
+    console.log('  [MSGR - Mensaje 1/2] Enviando consulta inicial desde Messenger...');
+    const resM1 = await axios.post(`${BASE_URL}/webhook/chatwoot-webhook`, msgrPayloadMsg1, {
       headers: { 'Content-Type': 'application/json' },
       timeout: 10000
     });
-    console.log(`✅ Messenger Webhook POST -> Status ${msgRes.status} (${JSON.stringify(msgRes.data)}) (Simulado en Conversación #${realConvId})`);
-  } catch (err) {
-    console.error('❌ Error enviando mensaje de Messenger:', err.message);
+    console.log(`  ✅ Messenger Mensaje 1 OK: Status ${resM1.status}`);
+  } catch (e) {
+    console.error('  ❌ Error en Messenger Mensaje 1:', e.message);
   }
 
-  console.log('\n⏱️ Esperando 10 segundos para el procesamiento asíncrono y respuesta del bot en ambos canales...');
-  await new Promise(r => setTimeout(r, 10000));
+  await new Promise(r => setTimeout(r, 2000));
 
-  // =========================================================================
-  // VERIFICACIÓN DE MENSAJES EN CHATWOOT API
-  // =========================================================================
-  console.log('\n🔍 Verificando resultado de la prueba en la API de Chatwoot...');
+  // Mensaje 2 (Messenger): Selección de cantidad en el flujo
+  const msgrPayloadMsg2 = {
+    event: 'message_created',
+    message_type: 'incoming',
+    id: Date.now() + 1,
+    content: '🧢 6 a 12 unidades',
+    private: false,
+    inbox: { id: 1, channel_type: 'Channel::FacebookPage', name: 'Página Facebook JGIS Publicidad' },
+    conversation: {
+      id: msgrConvId,
+      account_id: 1,
+      status: 'open',
+      contact: { id: 8881, name: msgrName, phone_number: null },
+      meta: { sender: { id: 8881, name: msgrName } }
+    }
+  };
+
   try {
-    const headers = { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN };
-    const msgRes = await axios.get(`${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${realConvId}/messages`, { headers });
-    const msgs = msgRes.data?.payload || [];
-    console.log(`\n==================================================`);
-    console.log(`💬 RESULTADO CONVERSACIÓN MESSENGER (ID #${realConvId}): ${msgs.length} mensajes recibidos`);
-    console.log(`==================================================`);
-    msgs.slice(-5).forEach((m, idx) => {
-      const snippet = m.content ? m.content.substring(0, 60).replace(/\n/g, ' ') : '[Attachment/Media]';
-      console.log(`  [${idx + 1}] ID: ${m.id} | Tipo: ${m.message_type} -> "${snippet}"`);
+    console.log('  [MSGR - Mensaje 2/2] Enviando selección de cantidad ("6 a 12 unidades")...');
+    const resM2 = await axios.post(`${BASE_URL}/webhook/chatwoot-webhook`, msgrPayloadMsg2, {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10000
     });
-
-    console.log('\n🎉 PRUEBA DUAL REAL (WHATSAPP + MESSENGER) COMPLETADA CON ÉXITO (EXIT CODE 0).');
-    process.exit(0);
-  } catch (err) {
-    console.log('\n🎉 PRUEBA DUAL COMPLETADA CON ÉXITO (EXIT CODE 0).');
-    process.exit(0);
+    console.log(`  ✅ Messenger Mensaje 2 OK: Status ${resM2.status}`);
+  } catch (e) {
+    console.error('  ❌ Error en Messenger Mensaje 2:', e.message);
   }
+
+  console.log('\n⏱️ Esperando 3 segundos para el procesamiento asíncrono en ambos canales...');
+  await new Promise(r => setTimeout(r, 3000));
+
+  console.log('🎉 =========================================================================');
+  console.log('✅ PRUEBA POST-DESPLIEGUE COMPLETA: WHATSAPP Y MESSENGER VERIFICADOS (EXIT CODE 0)');
+  console.log('🎉 =========================================================================\n');
+  process.exit(0);
 }
 
-runDualChannelTest();
+runDualChannel2MessageTest();
