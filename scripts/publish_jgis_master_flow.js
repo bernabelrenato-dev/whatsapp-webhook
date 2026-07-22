@@ -412,7 +412,7 @@ async function publishMasterFlow() {
           type: 'text',
           content: {
             richText: [
-              { children: [{ text: '👩‍💼 ¡Perfecto! He transferido tu conversación a nuestro equipo comercial en Chatwoot.\nRenato Bernabel o un asesor humano te responderá por aquí en breve. ¡Gracias por confiar en JGIS Publicidad! 😊' }] }
+              { children: [{ text: '👩‍💼 ¡Perfecto! He transferido tu conversación con Renato Bernabel y nuestro equipo comercial de JGIS Publicidad. Te responderemos por aquí en breve. ¡Gracias por tu preferencia! 😊' }] }
             ]
           }
         }
