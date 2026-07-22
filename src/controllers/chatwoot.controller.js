@@ -114,10 +114,11 @@ exports.receiveChatwootMessage = async (req, res, next) => {
 
       if (messageType === 'incoming') {
         const channelType = payload.inbox?.channel_type;
-        const isWhatsAppOrApi = channelType === 'Channel::Whatsapp' || channelType === 'Channel::Api';
+        const hasPhoneNumber = !!from; // from se obtiene de getContactPhone(payload)
+        const isWhatsAppOrApi = channelType === 'Channel::Whatsapp' || channelType === 'Channel::Api' || hasPhoneNumber;
 
         if (isWhatsAppOrApi) {
-          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen o canal API): "${payload.content}"`);
+          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen WhatsApp/API): "${payload.content}"`);
         } else {
           logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
           
