@@ -20,6 +20,8 @@ class MessageService {
   constructor() {
     // Almacena los IDs de los mensajes enviados por el bot con capacidad acotada (evita fugas)
     this.botSentMessageIds = new CappedSet(5000);
+    // Caché de contenido de mensajes salientes pendientes (TTL 60s) para evitar race conditions con webhooks de Chatwoot
+    this.pendingBotSentContent = new TTLCache(60000, 2000);
     // Cache de IDs de mensajes procesados para deduplicación global entre múltiples Apps de Meta
     this.processedMessageIds = new CappedSet(5000);
     // Almacena las sesiones activas de Typebot por número de teléfono con TTL de 24h
@@ -903,6 +905,10 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
     }
 
     try {
+      // Pre-registrar en caché de contenido pendiente ANTES de enviar HTTP para evitar race condition con el webhook de Chatwoot
+      if (text) this.pendingBotSentContent.set(text.trim(), true);
+      if (imageFileName) this.pendingBotSentContent.set(imageFileName.trim(), true);
+
       const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;
       let response;
 

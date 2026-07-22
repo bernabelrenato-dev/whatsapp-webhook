@@ -163,13 +163,21 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           return res.status(200).json({ success: true });
         }
 
-        // Si es un mensaje saliente, verificar de forma estricta (Number o String) si fue enviado por nuestro bot
+        // Si es un mensaje saliente, verificar de forma estricta por ID (Number o String) o por contenido pendiente
+        const rawContent = (payload.content || '').trim();
+        const firstAttachmentUrl = payload.attachments && payload.attachments.length > 0 ? payload.attachments[0].data_url : null;
+        const attachmentFileName = firstAttachmentUrl ? firstAttachmentUrl.split('/').pop() : null;
+
+        const isContentPending = (rawContent && messageService.pendingBotSentContent.has(rawContent)) ||
+                                 (attachmentFileName && messageService.pendingBotSentContent.has(attachmentFileName));
+
         const isBotSent = messageService.botSentMessageIds.has(messageId) || 
                           messageService.botSentMessageIds.has(String(messageId)) || 
-                          messageService.botSentMessageIds.has(Number(messageId));
+                          messageService.botSentMessageIds.has(Number(messageId)) ||
+                          isContentPending;
 
         if (isBotSent) {
-          logger.debug(`💬 Mensaje saliente de Chatwoot ignorado (generado por el bot): ID [${messageId}]`);
+          logger.debug(`💬 Mensaje saliente de Chatwoot ignorado (generado por el bot): ID [${messageId}] / ContentPending: ${isContentPending}`);
           return res.status(200).json({ success: true });
         }
 
