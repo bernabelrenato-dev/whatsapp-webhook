@@ -154,6 +154,12 @@ class ApiController {
         success: true,
         message: 'Traspaso completado. Respuestas automáticas pausadas.'
       });
+    } catch (error) {
+      logger.error({ msg: 'Error en triggerHandover', error: error.message });
+      return res.status(500).json({ error: error.message });
+    }
+  }
+
   // Método para generar conversaciones de prueba en bandejas de WhatsApp y Messenger
   async createTestChats(req, res) {
     try {
