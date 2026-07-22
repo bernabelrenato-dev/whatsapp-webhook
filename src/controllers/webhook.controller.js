@@ -51,6 +51,21 @@ exports.receiveMessage = async (req, res, next) => {
 
     // Validamos que el objeto sea el esperado de WhatsApp Business
     if (payload.object === 'whatsapp_business_account') {
+      const entryId = payload.entry?.[0]?.id;
+      const signature = req.headers['x-hub-signature-256'] || 'Sin firma';
+      const firstMessage = payload.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+      const messageId = firstMessage?.id || 'N/A';
+      const fromPhone = firstMessage?.from || 'N/A';
+
+      logger.info({
+        msg: '🔍 [RASTREO META WEBHOOK] Evento POST Recibido de Meta',
+        entryId,
+        signature: signature.substring(0, 30) + '...',
+        messageId,
+        fromPhone,
+        timestamp: new Date().toISOString()
+      });
+
       // Encolamos de forma asíncrona para liberar inmediatamente el ciclo HTTP
       const job = await queueService.addJob('process-whatsapp-payload', payload);
       
