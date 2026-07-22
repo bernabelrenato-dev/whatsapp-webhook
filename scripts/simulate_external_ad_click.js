@@ -50,8 +50,8 @@ async function testExternalAdClick() {
                     source_type: 'ad',
                     headline: 'Gorras Trucker Personalizadas - S/ 15',
                     body: 'Envíos a todo el Perú en 48 horas. Recojo en Centro Lima.',
-                    media_url: 'https://bot.jgispublicidad.pe/images/2125B.jpg',
-                    image_url: 'https://bot.jgispublicidad.pe/images/2125B.jpg'
+                    media_url: 'https://bot.jgispublicidad.pe/images/gorra_01.jpg',
+                    image_url: 'https://bot.jgispublicidad.pe/images/gorra_01.jpg'
                   }
                 }
               ]

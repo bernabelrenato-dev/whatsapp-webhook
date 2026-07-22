@@ -311,13 +311,30 @@ class MessageService {
 
     if (isCapCampaign) {
       try {
+        // Control Anti-Duplicados: Verificar si ya se envió la secuencia a esta sesión en los últimos 10 minutos
+        let userSession = this.userSessions.get(from);
+        if (!userSession) {
+          userSession = { created: Date.now(), capCampaignSent: false };
+          this.userSessions.set(from, userSession);
+        }
+
+        if (userSession.capCampaignSent) {
+          logger.info({ msg: 'Secuencia de Campaña de Gorras ya entregada previamente a este cliente. Omitiendo duplicados.', from });
+          return;
+        }
+        userSession.capCampaignSent = true;
+
         // Preservar metadata interna del referral en Chatwoot (sin modificar comportamiento previo)
         if (referral && !isChatwootConv) {
           await this.syncReferralToChatwoot(from, profileName, referral);
         }
 
-        // a) Enviar la foto del anuncio original como referencia si viene en el referral
+        // a) Enviar la foto del anuncio original o foto de portada de gorra real como referencia
         let mediaUrl = referral ? (referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url) : null;
+        if (!mediaUrl || mediaUrl.includes('3115.jpg')) {
+          mediaUrl = 'https://bot.jgispublicidad.pe/images/gorra_01.jpg';
+        }
+
         if (mediaUrl) {
           try {
             const publicAdImage = mediaUrl.startsWith('http') ? mediaUrl : await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
@@ -328,28 +345,28 @@ class MessageService {
           }
         }
 
-        // b) Enviar la galería COMPLETA de imágenes de gorras del catálogo (todas las variantes disponibles)
+        // b) Enviar la galería COMPLETA de las 7 imágenes REALES de gorras del catálogo JGIS (evitando duplicar la portada)
         const fullCapGallery = [
-          'https://bot.jgispublicidad.pe/images/2125B.jpg',
-          'https://bot.jgispublicidad.pe/images/2125BT.jpg',
-          'https://bot.jgispublicidad.pe/images/2125N.jpg',
-          'https://bot.jgispublicidad.pe/images/2125R.jpg',
-          'https://bot.jgispublicidad.pe/images/2126N.jpg',
-          'https://bot.jgispublicidad.pe/images/2126R.jpg',
-          'https://bot.jgispublicidad.pe/images/2128F.jpg'
-        ];
+          'https://bot.jgispublicidad.pe/images/gorra_01.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_02.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_03.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_04.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_05.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_06.jpg',
+          'https://bot.jgispublicidad.pe/images/gorra_07.jpg'
+        ].filter(img => img !== mediaUrl);
 
         for (const capImg of fullCapGallery) {
           try {
             await this.sendImageMessage(from, capImg);
           } catch (errImg) {
-            logger.warn({ msg: 'Error al enviar variante de gorra', capImg, error: errImg.message });
+            logger.warn({ msg: 'Error al enviar variante real de gorra', capImg, error: errImg.message });
           }
         }
 
         // c) Enviar la plantilla exacta de pago / entrega solicitada
         await this.sendTextMessage(from, capCampaignTemplate);
-        logger.info({ msg: 'Secuencia de Campaña de Gorras (Metadata Ad + Galería Completa + Plantilla Oficial) despachada con éxito', from });
+        logger.info({ msg: 'Secuencia de Campaña de Gorras (Foto Real + Galería 7 Gorras + Plantilla Única) despachada con éxito', from });
         return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar flujo de Campaña de Gorras', error: err.message });

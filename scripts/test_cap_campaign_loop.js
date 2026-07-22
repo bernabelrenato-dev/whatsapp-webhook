@@ -20,7 +20,7 @@ async function runCapLoopTest() {
   const mockCapReferral = {
     ad_id: '963093566323818',
     headline: 'Gorras Trucker Personalizadas - S/ 15',
-    media_url: 'https://bot.jgispublicidad.pe/images/3115.jpg',
+    media_url: 'https://bot.jgispublicidad.pe/images/gorra_01.jpg',
     source_url: 'https://fb.me/gorras_trucker_3115'
   };
 
@@ -38,7 +38,7 @@ async function runCapLoopTest() {
   console.log('✅ Verificación 1 - Metadata interna de Referral preservada en Chatwoot: ÉXITO');
 
   // Verificación 2: Foto del anuncio original entregada primero como referencia
-  if (sentMessages[0].type !== 'image' || sentMessages[0].url !== 'https://bot.jgispublicidad.pe/images/3115.jpg') {
+  if (sentMessages[0].type !== 'image' || sentMessages[0].url !== 'https://bot.jgispublicidad.pe/images/gorra_01.jpg') {
     throw new Error('FALLO: El primer mensaje debe ser la foto del anuncio original como referencia.');
   }
   console.log('✅ Verificación 2 - Foto de referencia del anuncio original entregada primero: ÉXITO');
@@ -46,7 +46,7 @@ async function runCapLoopTest() {
   // Verificación 3: Galería COMPLETA de imágenes del catálogo de gorras
   const imageMessages = sentMessages.filter(m => m.type === 'image');
   console.log(`🖼️ Total de imágenes enviadas (Ad Original + Galería Completa): ${imageMessages.length}`);
-  if (imageMessages.length < 8) { // 1 foto original + 7 fotos de galería
+  if (imageMessages.length < 7) { // 1 foto original/portada + 6 fotos de galería = 7 variantes reales
     throw new Error('FALLO: No se envió la galería COMPLETA de variantes de gorras (mínimo 7 variantes).');
   }
   console.log('✅ Verificación 3 - Galería COMPLETA de variantes de gorras despachada: ÉXITO');

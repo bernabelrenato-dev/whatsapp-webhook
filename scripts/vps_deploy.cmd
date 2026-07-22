@@ -1,2 +1,2 @@
 @echo off
-gcloud compute ssh jgis-chatbot-server --zone=us-central1-a --command "docker logs --tail 30 jgis-webhook"
+gcloud compute ssh jgis-chatbot-server --zone=us-central1-a --command "sudo chown -R $USER:$USER /home/jgis/whatsapp-bot; cd /home/jgis/whatsapp-bot; git fetch origin master; git reset --hard origin/master; git clean -fd; docker compose up -d --build webhook"
