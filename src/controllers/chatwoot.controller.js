@@ -162,14 +162,20 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           return res.status(200).json({ success: true });
         }
 
-        // Si es un mensaje saliente, verificar si fue enviado por nuestro bot
-        if (messageService.botSentMessageIds.has(messageId)) {
-          // Fue el bot, removemos el ID y no pausamos
-          messageService.botSentMessageIds.delete(messageId);
-        } else {
-          const pauseKey = from || `chatwoot_conv_${conversationId}`;
-          logger.info(`👤 Mensaje manual de agente detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
-          aiService.pauseConversation(pauseKey);
+        // Si es un mensaje saliente, verificar de forma estricta (Number o String) si fue enviado por nuestro bot
+        const isBotSent = messageService.botSentMessageIds.has(messageId) || 
+                          messageService.botSentMessageIds.has(String(messageId)) || 
+                          messageService.botSentMessageIds.has(Number(messageId));
+
+        if (isBotSent) {
+          logger.debug(`💬 Mensaje saliente de Chatwoot ignorado (generado por el bot): ID [${messageId}]`);
+          return res.status(200).json({ success: true });
+        }
+
+        // Fue un agente humano real desde la interfaz de Chatwoot, pausar bot
+        const pauseKey = from || `chatwoot_conv_${conversationId}`;
+        logger.info(`👤 Mensaje manual de agente humano detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
+        aiService.pauseConversation(pauseKey);
 
           // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
           const channelType = payload.inbox?.channel_type;

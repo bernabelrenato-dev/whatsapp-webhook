@@ -948,8 +948,12 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       }
 
       const sentMessageId = response.data.id;
-      // Guardar el ID para saber que este mensaje fue enviado por el bot
+      // Guardar el ID (en String y Number) para saber que este mensaje fue enviado por el bot
       this.botSentMessageIds.add(sentMessageId);
+      this.botSentMessageIds.add(String(sentMessageId));
+      if (!isNaN(sentMessageId)) {
+        this.botSentMessageIds.add(Number(sentMessageId));
+      }
 
       logger.info({
         msg: 'Mensaje de respuesta del bot enviado a Chatwoot correctamente',
