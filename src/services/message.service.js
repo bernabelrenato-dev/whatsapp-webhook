@@ -283,30 +283,14 @@ class MessageService {
       }
     }
 
-    // Plantilla exacta de pago y entrega para la campaña de gorras
-    const capCampaignTemplate = `📦 ¡Gracias por tu interés en nuestras gorras! 🧢
+    // Mensajes oficiales del flujo comercial Renato Bernabel
+    const renatoGreetingSpeech = `👋 ¡Hola! Muchas gracias por comunicarte con *Corporación JGIS Publicidad*.
 
-💰 Costo: S/. 15 por unidad
+Mi nombre es *Renato Bernabel*, *Asesor Comercial*, y con gusto te ayudaré a encontrar la mejor opción para tu proyecto.
 
-🚚 Método de entrega:
-　✅ Envíos a todo el Perú
-　🏬 Recojo en tienda
+Trabajamos con productos personalizados y merchandising, como polos, gorras, tazas, artículos promocionales y mucho más, tanto para empresas como para pedidos personales.`;
 
-⏱️ Tiempo de entrega (producción): 48 horas
-
-💳 Datos de Pago
-🏦 Banco: BCP
-💳 Cuenta Corriente (Soles): 1912434894087
-🔢 CCI: 00219100243489408755
-📱 Yape / Plin: 969732451
-👤 Titular: Corporación JGIS
-
-📍 Dirección
-🏢 Galería Centro Comercial Centro Lima
-🔻 Sótano – Pasaje "H", Stand 560
-🚪 Referencia: cerca de la Puerta 7 (Boulevard)
-
-¿Cuántas unidades te gustaría llevar? 😊`;
+    const renatoContactNoticeSpeech = `👨‍💼 En breves momentos nos comunicaremos contigo para brindarte todos los detalles y cotización. Por favor, déjanos tu número de teléfono o celular de contacto. 😊`;
 
     // 1. Evaluar si el referral o mensaje corresponde a la campaña o producto de gorras
     const referralText = [
@@ -322,7 +306,7 @@ class MessageService {
 
     if (isCapCampaign) {
       try {
-        // Control Anti-Duplicados: Verificar si ya se envió la secuencia a esta sesión en los últimos 10 minutos
+        // Control Anti-Duplicados estricto por cliente (Evita duplicados ante 2 Apps registradas en Meta Developers)
         let userSession = this.userSessions.get(from);
         if (!userSession) {
           userSession = { created: Date.now(), capCampaignSent: false };
@@ -330,7 +314,7 @@ class MessageService {
         }
 
         if (userSession.capCampaignSent) {
-          logger.info({ msg: 'Secuencia de Campaña de Gorras ya entregada previamente a este cliente. Omitiendo duplicados.', from });
+          logger.info({ msg: 'Secuencia de Campaña de Gorras ya entregada previamente a este cliente. Omitiendo duplicado de 2da App Meta.', from });
           return;
         }
         userSession.capCampaignSent = true;
@@ -340,23 +324,10 @@ class MessageService {
           await this.syncReferralToChatwoot(from, profileName, referral);
         }
 
-        // a) Enviar la foto del anuncio original o foto de portada de gorra real como referencia
-        let mediaUrl = referral ? (referral.media_url || referral.image_url || referral.video_url || referral.thumbnail_url) : null;
-        if (!mediaUrl || mediaUrl.includes('3115.jpg')) {
-          mediaUrl = 'https://bot.jgispublicidad.pe/images/gorra_01.jpg';
-        }
+        // Paso 1: Enviar Mensaje de Saludo Comercial Renato Bernabel
+        await this.sendTextMessage(from, renatoGreetingSpeech);
 
-        if (mediaUrl) {
-          try {
-            const publicAdImage = mediaUrl.startsWith('http') ? mediaUrl : await processAndStoreImage(mediaUrl, `ad_referral_${Date.now()}.jpg`);
-            await this.sendImageMessage(from, publicAdImage);
-          } catch (imgErr) {
-            logger.warn({ msg: 'No se pudo optimizar la imagen del anuncio referral, enviando URL directa', error: imgErr.message });
-            await this.sendImageMessage(from, mediaUrl);
-          }
-        }
-
-        // b) Enviar la galería COMPLETA de las 7 imágenes REALES de gorras del catálogo JGIS (evitando duplicar la portada)
+        // Paso 2: Enviar la galería COMPLETA de las 7 imágenes REALES de gorras del catálogo JGIS
         const fullCapGallery = [
           'https://bot.jgispublicidad.pe/images/gorra_01.jpg',
           'https://bot.jgispublicidad.pe/images/gorra_02.jpg',
@@ -365,7 +336,7 @@ class MessageService {
           'https://bot.jgispublicidad.pe/images/gorra_05.jpg',
           'https://bot.jgispublicidad.pe/images/gorra_06.jpg',
           'https://bot.jgispublicidad.pe/images/gorra_07.jpg'
-        ].filter(img => img !== mediaUrl);
+        ];
 
         for (const capImg of fullCapGallery) {
           try {
@@ -375,9 +346,9 @@ class MessageService {
           }
         }
 
-        // c) Enviar la plantilla exacta de pago / entrega solicitada
-        await this.sendTextMessage(from, capCampaignTemplate);
-        logger.info({ msg: 'Secuencia de Campaña de Gorras (Foto Real + Galería 7 Gorras + Plantilla Única) despachada con éxito', from });
+        // Paso 3: Enviar Mensaje Final de Atención Comercial solicitando número
+        await this.sendTextMessage(from, renatoContactNoticeSpeech);
+        logger.info({ msg: 'Secuencia Oficial de Cierre Renato Bernabel (Saludo + Galería 7 Gorras + Aviso Número) despachada con éxito', from });
         return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar flujo de Campaña de Gorras', error: err.message });

@@ -1,7 +1,7 @@
 const messageService = require('../src/services/message.service');
 
 async function runCapLoopTest() {
-  console.log('🧪 Iniciando Bucle de Pruebas E2E (LOOP TEST) para el Flujo de Anuncio de Gorras...');
+  console.log('🧪 Iniciando Bucle de Pruebas E2E (LOOP TEST) para el Flujo Comercial Renato Bernabel...');
 
   let referralSynced = false;
   const sentMessages = [];
@@ -16,7 +16,7 @@ async function runCapLoopTest() {
     referralSynced = true;
   };
 
-  // --- ESCENARIO 1: Referral de Anuncio Meta de Gorras ---
+  // --- ESCENARIO: Referral de Anuncio Meta con Flujo Renato Bernabel ---
   const mockCapReferral = {
     ad_id: '963093566323818',
     headline: 'Gorras Trucker Personalizadas - S/ 15',
@@ -26,10 +26,10 @@ async function runCapLoopTest() {
 
   const mockMessagesCap = [{ referral: mockCapReferral, type: 'text', text: { body: 'Hola, quiero información' } }];
 
-  await messageService.processCombinedMessages('51999888777', 'Cliente Anuncio Gorras', mockMessagesCap, {});
+  await messageService.processCombinedMessages('51999888777', 'Cliente Renato Bernabel Test', mockMessagesCap, {});
 
-  console.log(`\n💬 Mensajes despachados en la secuencia de Anuncio de Gorras (${sentMessages.length}):`);
-  sentMessages.forEach((msg, idx) => console.log(`  [${idx + 1}] Tipo: ${msg.type} -> ${msg.content ? msg.content.substring(0, 45).replace(/\n/g, ' ') + '...' : msg.url}`));
+  console.log(`\n💬 Mensajes despachados en la secuencia Renato Bernabel (${sentMessages.length}):`);
+  sentMessages.forEach((msg, idx) => console.log(`  [${idx + 1}] Tipo: ${msg.type} -> ${msg.content ? msg.content.substring(0, 50).replace(/\n/g, ' ') + '...' : msg.url}`));
 
   // Verificación 1: Sincronización de Metadata interna de Chatwoot
   if (!referralSynced) {
@@ -37,54 +37,29 @@ async function runCapLoopTest() {
   }
   console.log('✅ Verificación 1 - Metadata interna de Referral preservada en Chatwoot: ÉXITO');
 
-  // Verificación 2: Foto del anuncio original entregada primero como referencia
-  if (sentMessages[0].type !== 'image' || sentMessages[0].url !== 'https://bot.jgispublicidad.pe/images/gorra_01.jpg') {
-    throw new Error('FALLO: El primer mensaje debe ser la foto del anuncio original como referencia.');
+  // Verificación 2: Saludo Comercial de Renato Bernabel como primer mensaje
+  const firstTextMsg = sentMessages.find(m => m.type === 'text');
+  if (!firstTextMsg || !firstTextMsg.content.includes('Renato Bernabel')) {
+    throw new Error('FALLO: El primer mensaje de texto debe ser el saludo comercial de Renato Bernabel.');
   }
-  console.log('✅ Verificación 2 - Foto de referencia del anuncio original entregada primero: ÉXITO');
+  console.log('✅ Verificación 2 - Saludo Comercial de Renato Bernabel entregado primero: ÉXITO');
 
-  // Verificación 3: Galería COMPLETA de imágenes del catálogo de gorras
+  // Verificación 3: Galería COMPLETA de las 7 imágenes reales de gorras
   const imageMessages = sentMessages.filter(m => m.type === 'image');
-  console.log(`🖼️ Total de imágenes enviadas (Ad Original + Galería Completa): ${imageMessages.length}`);
-  if (imageMessages.length < 7) { // 1 foto original/portada + 6 fotos de galería = 7 variantes reales
-    throw new Error('FALLO: No se envió la galería COMPLETA de variantes de gorras (mínimo 7 variantes).');
+  console.log(`🖼️ Total de imágenes enviadas (Galería Completa de Gorras Reales): ${imageMessages.length}`);
+  if (imageMessages.length !== 7) {
+    throw new Error(`FALLO: Se esperaban exactamente 7 imágenes reales de gorras, se enviaron ${imageMessages.length}.`);
   }
-  console.log('✅ Verificación 3 - Galería COMPLETA de variantes de gorras despachada: ÉXITO');
+  console.log('✅ Verificación 3 - Galería COMPLETA de 7 gorras reales despachada: ÉXITO');
 
-  // Verificación 4: Plantilla exacta de pago/entrega solicitada
-  const templateMsg = sentMessages.find(m => m.type === 'text' && m.content.includes('¡Gracias por tu interés en nuestras gorras!'));
-  if (!templateMsg) {
-    throw new Error('FALLO: No se entregó la plantilla oficial de pago/entrega de gorras.');
+  // Verificación 4: Mensaje final de solicitud de número y aviso de contacto
+  const lastTextMsg = sentMessages.filter(m => m.type === 'text').pop();
+  if (!lastTextMsg || !lastTextMsg.content.includes('déjanos tu número de teléfono')) {
+    throw new Error('FALLO: El mensaje final debe solicitar el número de contacto del cliente.');
   }
+  console.log('✅ Verificación 4 - Notificación final de contacto y solicitud de número entregada: ÉXITO');
 
-  const requiredPhrases = [
-    '📦 ¡Gracias por tu interés en nuestras gorras! 🧢',
-    '💰 Costo: S/. 15 por unidad',
-    '🚚 Método de entrega:',
-    '✅ Envíos a todo el Perú',
-    '🏬 Recojo en tienda',
-    '⏱️ Tiempo de entrega (producción): 48 horas',
-    '💳 Datos de Pago',
-    '🏦 Banco: BCP',
-    '💳 Cuenta Corriente (Soles): 1912434894087',
-    '🔢 CCI: 00219100243489408755',
-    '📱 Yape / Plin: 969732451',
-    '👤 Titular: Corporación JGIS',
-    '📍 Dirección',
-    '🏢 Galería Centro Comercial Centro Lima',
-    '🔻 Sótano – Pasaje "H", Stand 560',
-    '🚪 Referencia: cerca de la Puerta 7 (Boulevard)',
-    '¿Cuántas unidades te gustaría llevar? 😊'
-  ];
-
-  for (const phrase of requiredPhrases) {
-    if (!templateMsg.content.includes(phrase)) {
-      throw new Error(`FALLO: La plantilla no contiene la cadena exacta esperada: "${phrase}"`);
-    }
-  }
-
-  console.log('✅ Verificación 4 - Plantilla oficial exacta con emojis y datos BCP/CCI/Yape/Plin: ÉXITO');
-  console.log('\n🎉 BUCLE DE PRUEBAS COMPLETADO CON EXIT CODE 0.');
+  console.log('\n🎉 BUCLE DE PRUEBAS RENATO BERNABEL COMPLETADO CON EXIT CODE 0.');
   process.exit(0);
 }
 
