@@ -7,23 +7,16 @@ async function runDualChannelTest() {
 
   // Encontrar la URL funcional de Chatwoot en la red del VPS
   let chatwootBaseUrl = config.CHATWOOT_API_URL;
-  try {
-    await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
-      headers: { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN },
-      timeout: 3000
-    });
-  } catch (e) {
-    const fallbacks = ['http://172.17.0.1:3010', 'http://host.docker.internal:3010', 'http://chatwoot-web:3000'];
-    for (const fb of fallbacks) {
-      try {
-        await axios.get(`${fb}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
-          headers: { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN },
-          timeout: 3000
-        });
-        chatwootBaseUrl = fb;
-        break;
-      } catch (err2) {}
-    }
+  const fallbacks = ['http://172.18.0.1:3010', 'http://172.17.0.1:3010', 'http://host.docker.internal:3010', 'http://chatwoot-web:3000'];
+  for (const fb of [chatwootBaseUrl, ...fallbacks]) {
+    try {
+      await axios.get(`${fb}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
+        headers: { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN },
+        timeout: 2000
+      });
+      chatwootBaseUrl = fb;
+      break;
+    } catch (err2) {}
   }
 
   console.log(`📡 URL de Chatwoot seleccionada para pruebas: ${chatwootBaseUrl}`);
