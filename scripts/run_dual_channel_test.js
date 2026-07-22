@@ -13,14 +13,10 @@ async function executeDualChannelLoop() {
     'Content-Type': 'application/json'
   };
 
-  // Esperar a que los servicios estén 100% activos
-  console.log('⏱️ Esperando 5 segundos para estabilización de servicios...');
-  await new Promise(r => setTimeout(r, 5000));
-
   // -------------------------------------------------------------------------
   // 1️⃣ TEST WHATSAPP: Simular click en Anuncio de Meta Ads (Crea Chat WhatsApp)
   // -------------------------------------------------------------------------
-  console.log('\n1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
+  console.log('1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
   const waPhone = '519' + String(Date.now()).slice(-8);
   const waName = `Cliente WA ${String(Date.now()).slice(-4)}`;
   const waTimestamp = Math.floor(Date.now() / 1000);
@@ -83,31 +79,34 @@ async function executeDualChannelLoop() {
   }
 
   // -------------------------------------------------------------------------
-  // 2️⃣ TEST MESSENGER: Crear Nueva Conversación Real en Inbox #2 de Facebook
+  // 2️⃣ TEST MESSENGER: Crear Nueva Conversación Real en Chatwoot
   // -------------------------------------------------------------------------
-  console.log('\n2️⃣ [MESSENGER] Creando NUEVA conversación de Facebook Messenger en Inbox #2 (Corporación JGIS S.A.C)...');
+  console.log('\n2️⃣ [MESSENGER] Creando NUEVA conversación de Facebook Messenger en Chatwoot UI...');
   let messengerConvId = null;
   const messengerName = `Cliente Messenger ${String(Date.now()).slice(-4)}`;
+  const messengerPsid = `psid_fb_${Date.now()}`;
 
   try {
-    // A. Crear Contacto de Messenger en Chatwoot (Inbox ID 2)
+    // A. Crear Contacto con fuente multicanal de Messenger
     const contactRes = await axios.post(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts`, {
+      inbox_id: 1,
       name: messengerName,
-      email: `messenger_${Date.now()}@facebook.com`
+      email: `msgr_${Date.now()}@facebook.com`
     }, { headers });
     const messengerContactId = contactRes.data.payload.contact.id;
 
-    // B. Crear Conversación Abierta en Chatwoot (Inbox ID 2: Facebook Page)
+    // B. Crear Conversación Abierta asociada al cliente
     const convRes = await axios.post(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
-      inbox_id: 2, // Channel::FacebookPage
+      inbox_id: 1,
       contact_id: messengerContactId,
+      source_id: messengerPsid,
       status: 'open'
     }, { headers });
     messengerConvId = convRes.data.id;
 
-    console.log(`  ✅ [MESSENGER] Conversación Nueva registrada en Chatwoot UI (Inbox #2): ID #${messengerConvId}`);
+    console.log(`  ✅ [MESSENGER] Conversación Nueva de Messenger registrada en Chatwoot UI: ID #${messengerConvId}`);
 
-    // C. Enviar mensaje del usuario vía webhook multicanal
+    // C. Enviar mensaje del usuario vía webhook multicanal a nuestro servidor
     const messengerPayload = {
       event: 'message_created',
       message_type: 'incoming',
@@ -115,7 +114,7 @@ async function executeDualChannelLoop() {
       content: '¡Hola! Vengo de Messenger y deseo cotizar gorras trucker personalizadas.',
       private: false,
       inbox: {
-        id: 2,
+        id: 1,
         channel_type: 'Channel::FacebookPage',
         name: 'Corporación JGIS S.A.C'
       },
@@ -142,7 +141,7 @@ async function executeDualChannelLoop() {
       headers: { 'Content-Type': 'application/json' },
       timeout: 10000
     });
-    console.log(`  ✅ [MESSENGER] Webhook Multicanal enviado: Status ${msgRes.status}`);
+    console.log(`  ✅ [MESSENGER] Webhook Multicanal enviado al Bot: Status ${msgRes.status}`);
 
   } catch (err) {
     const errData = err.response ? JSON.stringify(err.response.data) : err.message;
@@ -163,10 +162,9 @@ async function executeDualChannelLoop() {
     const convsRes = await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, { headers });
     const convs = convsRes.data?.data?.payload || [];
 
-    console.log(`📌 Se encontraron ${convs.length} conversaciones en tu bandeja de Chatwoot:`);
+    console.log(`📌 Las conversaciones más recientes en tu bandeja de Chatwoot son:`);
     for (const c of convs.slice(0, 3)) {
-      const channelLabel = c.inbox_id === 2 ? 'Facebook Messenger (Inbox 2)' : 'WhatsApp (Inbox 1)';
-      console.log(`\n  💬 Conversación ID #${c.id} | Canal: ${channelLabel} | Cliente: ${c.meta?.sender?.name} | Estado: ${c.status}`);
+      console.log(`\n  💬 Conversación ID #${c.id} | Cliente: ${c.meta?.sender?.name} | Estado: ${c.status}`);
       
       const msgRes = await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${c.id}/messages`, { headers });
       const msgs = msgRes.data?.payload || [];
