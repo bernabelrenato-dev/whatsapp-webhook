@@ -20,6 +20,8 @@ class MessageService {
   constructor() {
     // Almacena los IDs de los mensajes enviados por el bot con capacidad acotada (evita fugas)
     this.botSentMessageIds = new CappedSet(5000);
+    // Cache de IDs de mensajes procesados para deduplicación global entre múltiples Apps de Meta
+    this.processedMessageIds = new CappedSet(5000);
     // Almacena las sesiones activas de Typebot por número de teléfono con TTL de 24h
     this.userSessions = new TTLCache(24 * 3600 * 1000, 2000);
     // Almacena las últimas opciones interactivas presentadas de Typebot con TTL de 12h
@@ -168,6 +170,15 @@ class MessageService {
       messageId,
       messageType,
     });
+
+    // Deduplicación Global por Message ID (Evita procesar webhooks duplicados de 2 apps de Meta o reintentos)
+    if (messageId) {
+      if (this.processedMessageIds.has(messageId)) {
+        logger.info({ msg: 'Mensaje duplicado omitido por ID de mensaje de Meta', messageId, from });
+        return;
+      }
+      this.processedMessageIds.add(messageId);
+    }
 
     // 1. Get or create queue for user
     if (!this.debounceQueues) {
