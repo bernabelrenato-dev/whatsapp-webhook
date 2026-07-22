@@ -74,3 +74,14 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
   - Tras **cada despliegue (deploy)** en el VPS, es **estrictamente obligatorio** ejecutar la prueba dual `scripts/test_whatsapp_and_messenger.js`.
   - La prueba debe simular y validar **exactamente 2 mensajes entrantes en WhatsApp** y **exactamente 2 mensajes entrantes en Messenger** obteniendo `EXIT CODE 0`.
 * **Actualización Inmediata de Documentación:** Tras validar la solución, el agente actualiza la documentación oficial con fecha y síntesis de aprendizaje.
+
+---
+
+## 8. Lecciones Aprendidas y Reglas Técnicas de Typebot v6 (Prevención de Discordancia)
+* **Regla 1: `outgoingEdgeId` Obligatorio en Eventos de Inicio y Botones de Opción:**  
+  En Typebot v6 Zod Schema, el motor `typebot-viewer` requiere **estrictamente** la propiedad `outgoingEdgeId` en el evento de inicio (`events[0]`) y en cada `item` de los menús interactivos (`choice input`). Si no se incluye, `startChat` crea la sesión pero retorna `messages: []` vacíos, causando que la pantalla del usuario no reciba respuesta mientras el servidor parece responder `200 OK`.
+* **Regla 2: Prohibición de Subcadenas Ambiguas en `agentKeywords`:**  
+  No incluir palabras sueltas como `'persona'`, `'asesor'` o `'agente'` que forman parte de respuestas del menú como `"🙋‍♂️ Uso Personal"`. Usar únicamente frases completas e intenciones explícitas (`'hablar con asesor'`, `'atención humana'`) para evitar interceptar el bot con falsos traspasos a agentes.
+* **Regla 3: Cero `process.exit()` en Scripts de Testeo Internos:**  
+  Los scripts de prueba ejecutados dentro de `jgis-webhook` vía `docker exec` no deben llamar a `process.exit(0)`, ya que matan el proceso principal (PID 1) de Express, reiniciando el contenedor e interrumpiendo las peticiones del usuario en vivo.
+

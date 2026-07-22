@@ -52,6 +52,24 @@ Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea.
 
 ---
 
+### 0.9 Post-Mortem & Lecciones Aprendidas: Discordancia entre Nube y Pantalla del Usuario (Typebot v6)
+
+Ante la problemática donde las pruebas de servidor retornaban `200 OK` pero el usuario no veía la respuesta del bot en su pantalla de Chatwoot o WhatsApp, se diagnosticaron y resolvieron **3 causas raíz fundamentales**:
+
+#### 1. Falta de `outgoingEdgeId` en el Zod Schema Contract de Typebot v6
+- **¿Qué sucedía?** En la versión v6 del motor `typebot-viewer`, el evento de inicio (`events[0]`) y los ítems de los menús interactivos (`choice input`) requieren **estrictamente** la propiedad `outgoingEdgeId` vinculando la arista a recorrer. Sin esta propiedad, `startChat` creaba la sesión HTTP `200`, pero retornaba `messages: []` (arreglo vacío), impidiendo que el webhook tuviera un mensaje que enviar a la pantalla del cliente.
+- **Solución:** Incluir siempre `outgoingEdgeId` en `events[0]` y en cada `item` de los menús interactivos en los scripts de publicación (`scripts/publish_jgis_trucker_cap_flow.js`).
+
+#### 2. Falso Positivo por Coincidencia Parcial de Palabras Clave (`agentKeywords`)
+- **¿Qué sucedía?** El array `agentKeywords` en `src/services/message.service.js` contenía la palabra suelta `'persona'`. Cuando un cliente elegía la opción de Typebot `"🙋‍♂️ Uso Personal"`, la función `cleanBody.includes('persona')` daba `true`, interpretando falsamente que el cliente pedía un asesor humano y pausando el bot con un mensaje estático.
+- **Solución:** Eliminar palabras sueltas ambiguas (`'persona'`, `'asesor'`, `'vendedor'`) y utilizar únicamente frases completas explícitas (`'hablar con asesor'`, `'atención humana'`).
+
+#### 3. Reinicios Inadvertidos del Contenedor Webhook (`process.exit`)
+- **¿Qué sucedía?** Los scripts de testeo llamados con `docker exec -i jgis-webhook node ...` ejecutaban `process.exit(0)` al terminar, lo que mataba el proceso principal PID 1 del contenedor Node.js, provocando que Docker lo reiniciara de inmediato y cortara las solicitudes HTTP entrantes del cliente en ese instante.
+- **Solución:** Reemplazar `process.exit(0)` por retornos limpios (`return`) en todos los scripts de prueba que corren dentro del contenedor.
+
+---
+
 ## 1. PROYECTO JGIS — Ecosistema de Ventas y Atención al Cliente
 
 **Qué es:** bot conversacional de WhatsApp con IA para JGIS Publicidad (empresa peruana de merchandising/productos promocionales). Nombre del bot: Valentina Ríos.
