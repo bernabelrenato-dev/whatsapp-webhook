@@ -87,4 +87,13 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 * **Regla 4: Simulación Realista Conversacional Turno por Turno (`simulate_realistic_turn_by_turn.js`):**  
   Para validar visualmente flujos completos en Chatwoot, los mensajes del cliente simulado deben enviarse con **pausas de 10 segundos entre turnos** (no en ráfaga continua). Esto garantiza que el webhook y Typebot procesen, guarden y muestren cada par de burbujas (Cliente ↔ Bot) de forma limpia y realista en la pantalla del usuario.
 
+---
+
+## 9. Control de Versiones y Tagging de Producción
+* **Versionado Semántico Estricto (`vX.Y.Z`):**  
+  Cada hito estable o evolución del bot se sella con un tag oficial de Git (ej. `v1.0.0`, `v1.1.0`, `v1.2.0`).
+* **Regla de Tagging Automático:** Tras pasar la verificación dual multicanal y la demostración visual en Chatwoot, el agente creará y publicará el tag correspondiente en GitHub (`git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z`).
+* **Puntos de Restauración (Rollback Checkpoints):** Todo cambio futuro mayor se construirá sobre ramas o commits incrementales etiquetados, permitiendo volver a una versión estable previa en menos de 60 segundos si fuere necesario.
+
+
 
