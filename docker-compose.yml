@@ -176,10 +176,6 @@ services:
       - .env
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/typebot
-    volumes:
-      - ./src:/app/src
-      - ./scripts:/app/scripts
-      - ./public:/app/public
     networks:
       - jgis_bot_net
 
