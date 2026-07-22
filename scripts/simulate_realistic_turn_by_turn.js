@@ -102,8 +102,16 @@ async function runRealisticTurnByTurnDemo() {
   console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue Datos de Pago BCP / Yape...');
   await new Promise(r => setTimeout(r, 10000));
 
+  // ---------------------------------------------------------------------------
+  // TURNO 6: Cliente notifica "✅ Ya aboné / Enviar voucher"
+  // ---------------------------------------------------------------------------
+  console.log('💬 [TURNO 6] Cliente responde "✅ Ya aboné / Enviar voucher"...');
+  await sendWaMessageTurn('✅ Ya aboné / Enviar voucher');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue la Confirmación de Trabajo Ingresado a Producción...');
+  await new Promise(r => setTimeout(r, 10000));
+
   console.log('🎉 =========================================================================');
-  console.log(`✅ CONVERSACIÓN REALISTA DEL FLUJO MAESTRO COMPLETA PARA: ${waName}`);
+  console.log(`✅ CONVERSACIÓN REALISTA DEL FLUJO MAESTRO Y PRODUCCIÓN COMPLETA PARA: ${waName}`);
   console.log('👉 Abre Chatwoot (https://chatwoot.jgispublicidad.pe) para ver la secuencia fluida.');
   console.log('🎉 =========================================================================\n');
   return;

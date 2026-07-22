@@ -379,7 +379,7 @@ async function publishMasterFlow() {
     },
 
     // -----------------------------------------------------------------------
-    // 6️⃣ DATOS DE PAGO
+    // 6️⃣ DATOS DE PAGO Y RECEPCIÓN DE COMPROBANTE
     // -----------------------------------------------------------------------
     {
       id: 'group_datos_pago',
@@ -389,10 +389,39 @@ async function publishMasterFlow() {
         {
           id: 'b_datos_pago_msg',
           type: 'text',
-          outgoingEdgeId: 'edge_pago_to_handover',
           content: {
             richText: [
-              { children: [{ text: '💳 *Cuentas Oficiales de Corporación JGIS*\n\n🏦 *Banco BCP*\n👤 Titular: Corporación JGIS\n💰 Cuenta Corriente (Soles): *1912434894087*\n🔢 CCI: *00219100243489408755*\n\n📱 *Yape / Plin:* *969732451*\n\n💡 *Reserva:* Puedes separar la producción de tu pedido con el *50% de adelanto*.\n\nPor favor envía la foto de tu comprobante de pago por aquí para iniciar el diseño o producción 🎨.' }] }
+              { children: [{ text: '💳 *Cuentas Oficiales de Corporación JGIS*\n\n🏦 *Banco BCP*\n👤 Titular: Corporación JGIS\n💰 Cuenta Corriente (Soles): *1912434894087*\n🔢 CCI: *00219100243489408755*\n\n📱 *Yape / Plin:* *969732451*\n\n💡 *Reserva:* Puedes separar la producción de tu pedido con el *50% de adelanto*.\n📍 *Dirección de Tienda:* Galería Centro Comercial Centro Lima, Sótano Pasaje "H", Stand 560.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_pago_confirmacion',
+          type: 'choice input',
+          items: [
+            { id: 'opt_pago_realizado', content: '✅ Ya aboné / Enviar voucher', outgoingEdgeId: 'edge_pago_to_produccion' },
+            { id: 'opt_pago_asesor', content: '👩‍💼 Hablar con Asesor', outgoingEdgeId: 'edge_pago_to_handover' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // -----------------------------------------------------------------------
+    // 7️⃣ CONFIRMACIÓN DE PAGO & PASO A PRODUCCIÓN
+    // -----------------------------------------------------------------------
+    {
+      id: 'group_confirmacion_produccion',
+      title: '🏭 Confirmación de Pago & Producción',
+      graphCoordinates: { x: 2300, y: 0 },
+      blocks: [
+        {
+          id: 'b_confirmacion_produccion_msg',
+          type: 'text',
+          outgoingEdgeId: 'edge_produccion_to_handover',
+          content: {
+            richText: [
+              { children: [{ text: '🎉 ¡Comprobante registrado e ingresado exitosamente! 🙌✨\n\n📌 *Estado de tu Pedido:* *EN PRODUCCIÓN 🏭*\n⏱️ *Tiempo estimado de fabricación:* 48 horas\n🚚 *Modalidad:* Según la opción que seleccionaste (Envío / Recojo)\n\n👩‍💼 Renato Bernabel o nuestro equipo de producción se pondrá en contacto contigo por este mismo chat para enviarte la muestra o vista previa digital antes del acabado final.\n\n¡Gracias por tu confianza y preferencia en Corporación JGIS Publicidad! 🧢📦' }] }
             ]
           }
         }
@@ -400,12 +429,12 @@ async function publishMasterFlow() {
     },
 
     // -----------------------------------------------------------------------
-    // 7️⃣ HANDOVER A CHATWOOT (ASESOR HUMANO)
+    // 8️⃣ HANDOVER A CHATWOOT (ASESOR HUMANO)
     // -----------------------------------------------------------------------
     {
       id: 'group_handover_humano',
       title: '👩‍💼 Transferencia a Asesor Humano',
-      graphCoordinates: { x: 2300, y: 0 },
+      graphCoordinates: { x: 2700, y: 0 },
       blocks: [
         {
           id: 'b_handover_msg',
@@ -468,8 +497,10 @@ async function publishMasterFlow() {
     { id: 'edge_pedidos_to_handover', from: { blockId: 'b_input_pedidos_opcion', itemId: 'opt_ped_estado' }, to: { groupId: 'group_handover_humano' } },
     { id: 'edge_pedidos_to_menu', from: { blockId: 'b_input_pedidos_opcion', itemId: 'opt_ped_menu' }, to: { groupId: 'group_apertura' } },
 
-    // Pago Connections
-    { id: 'edge_pago_to_handover', from: { blockId: 'b_datos_pago_msg' }, to: { groupId: 'group_handover_humano' } }
+    // Pago & Producción Connections
+    { id: 'edge_pago_to_produccion', from: { blockId: 'b_input_pago_confirmacion', itemId: 'opt_pago_realizado' }, to: { groupId: 'group_confirmacion_produccion' } },
+    { id: 'edge_pago_to_handover', from: { blockId: 'b_input_pago_confirmacion', itemId: 'opt_pago_asesor' }, to: { groupId: 'group_handover_humano' } },
+    { id: 'edge_produccion_to_handover', from: { blockId: 'b_confirmacion_produccion_msg' }, to: { groupId: 'group_handover_humano' } }
   ];
 
   const variables = [
