@@ -131,7 +131,7 @@ async function publishJgisCommercialFlow() {
       {
         id: 'edge_start_to_bienvenida',
         from: { eventId: 'event_start' },
-        to: { groupId: 'group_bienvenida' }
+        to: { groupId: 'group_bienvenida', blockId: 'b_saludo' }
       },
       {
         id: 'edge_opt_2_to_ubicacion',
