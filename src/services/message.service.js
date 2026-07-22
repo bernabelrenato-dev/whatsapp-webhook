@@ -425,10 +425,11 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       this.userSessions.delete(from);
     }
 
-    // Obtener sesión actual
+    // Obtener sesión actual (100% Ruteo por Typebot - IA Gemini/DeepSeek desactivadas temporalmente)
     const session = this.userSessions.get(from);
     const sessionId = session ? (typeof session === 'object' ? session.sessionId : session) : null;
-    const sessionState = session && typeof session === 'object' ? session.state : 'typebot';
+    const sessionState = 'typebot'; // Forzado 100% Typebot
+
 
     // 4. RUTEO DE CAPAS COMERCIALES (Typebot o IA)
     if (sessionId && sessionState === 'ai') {
