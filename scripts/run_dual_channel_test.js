@@ -13,10 +13,14 @@ async function executeDualChannelLoop() {
     'Content-Type': 'application/json'
   };
 
+  // Esperar a que los servicios estén 100% activos
+  console.log('⏱️ Esperando 5 segundos para estabilización de servicios...');
+  await new Promise(r => setTimeout(r, 5000));
+
   // -------------------------------------------------------------------------
   // 1️⃣ TEST WHATSAPP: Simular click en Anuncio de Meta Ads (Crea Chat WhatsApp)
   // -------------------------------------------------------------------------
-  console.log('1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
+  console.log('\n1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
   const waPhone = '519' + String(Date.now()).slice(-8);
   const waName = `Cliente WA ${String(Date.now()).slice(-4)}`;
   const waTimestamp = Math.floor(Date.now() / 1000);
@@ -159,15 +163,15 @@ async function executeDualChannelLoop() {
     const convsRes = await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, { headers });
     const convs = convsRes.data?.data?.payload || [];
 
-    console.log(`📌 Se crearon exitosamente 2 Conversaciones Nuevas en tu bandeja de Chatwoot:`);
-    for (const c of convs.slice(0, 2)) {
+    console.log(`📌 Se encontraron ${convs.length} conversaciones en tu bandeja de Chatwoot:`);
+    for (const c of convs.slice(0, 3)) {
       const channelLabel = c.inbox_id === 2 ? 'Facebook Messenger (Inbox 2)' : 'WhatsApp (Inbox 1)';
       console.log(`\n  💬 Conversación ID #${c.id} | Canal: ${channelLabel} | Cliente: ${c.meta?.sender?.name} | Estado: ${c.status}`);
       
       const msgRes = await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${c.id}/messages`, { headers });
       const msgs = msgRes.data?.payload || [];
       console.log(`  📩 Total de Mensajes Entregados: ${msgs.length}`);
-      msgs.forEach((m, idx) => {
+      msgs.slice(-5).forEach((m, idx) => {
         const snippet = m.content ? m.content.substring(0, 60).replace(/\n/g, ' ') : '[Foto/Adjunto]';
         console.log(`    [${idx + 1}] Tipo: ${m.message_type === 1 ? 'Bot' : 'Cliente'} -> "${snippet}"`);
       });
