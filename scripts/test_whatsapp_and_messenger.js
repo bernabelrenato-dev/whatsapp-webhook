@@ -5,7 +5,8 @@ async function testWhatsappAndMessenger() {
   console.log('⚡ PRUEBA DUAL DE ENRUTAMIENTO: WHATSAPP (2 MSGS) + MESSENGER (2 MSGS)');
   console.log('🧪 =========================================================================\n');
 
-  const webhookUrl = process.env.WEBHOOK_URL || 'http://127.0.0.1:3005/webhook';
+  const port = process.env.PORT || 3000;
+  const webhookUrl = process.env.WEBHOOK_URL || `http://127.0.0.1:${port}/webhook`;
 
   // 1. Payloads de WhatsApp (2 Mensajes)
   const waPayload1 = {
