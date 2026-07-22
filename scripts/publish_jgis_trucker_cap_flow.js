@@ -308,7 +308,7 @@ async function publishTruckerCapFlow() {
       {
         id: 'edge_start_apertura',
         from: { eventId: 'event_start' },
-        to: { groupId: 'group_apertura', blockId: 'b_saludo_apertura' }
+        to: { groupId: 'group_apertura' }
       },
 
       // Apertura opciones -> Galería + Pregunta de cantidad
