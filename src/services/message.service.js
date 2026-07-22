@@ -595,15 +595,10 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
             }
 
             if (hasValidationError) {
-              logger.info(`⚠️ Error de validación detectado en Typebot para ${profileName} (${from}). Redirigiendo a IA.`);
-              const aiResponse = await aiService.generateResponse(from, profileName, body);
-              if (aiResponse) {
-                await this.sendTextMessage(from, aiResponse);
-              } else {
-                await this.sendTextMessage(from, "Lo siento, no comprendí esa opción.");
-              }
+              logger.info(`⚠️ Mensaje no comprendido en Typebot para ${profileName} (${from}). Enviando mensaje de ayuda.`);
+              await this.sendTextMessage(from, "Disculpa, no comprendí esa opción. Por favor selecciona una de las opciones del menú.");
               if (!from.startsWith('chatwoot_conv_') && input && input.type === 'choice input' && input.items && input.items.length > 0) {
-                await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar con tu cotización:", input.items);
+                await this.sendInteractive(from, "Por favor, selecciona una de las opciones para continuar:", input.items);
               }
             } else {
               await this.processTypebotMessages(from, messages, input);
@@ -612,24 +607,13 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
             // Si el flujo de Typebot terminó (no hay más inputs de respuesta esperados),
             // cambiar el estado de la sesión a 'ai' para que la IA atienda las consultas libres en el siguiente mensaje
             if (!input) {
-              logger.info(`🏁 Typebot finalizó su flujo para ${from}. Transicionando conversación a la CAPA IA.`);
-              this.userSessions.set(from, { sessionId: currentSessionId, state: 'ai' });
-              
-              if (messages.length === 0) {
-                logger.info(`⚠️ Typebot no devolvió mensajes. Ejecutando respuesta de IA de inmediato para evitar silencio.`);
-                const aiResponse = await aiService.generateResponse(from, profileName, combinedText);
-                if (aiResponse) {
-                  await this.sendTextMessage(from, aiResponse);
-                }
-              }
+              logger.info(`🏁 Typebot completó la secuencia comercial para ${from}. Sesión mantenida en Typebot.`);
+              this.userSessions.set(from, { sessionId: currentSessionId, state: 'typebot' });
             }
           }
         } catch (err) {
-          logger.error({ msg: 'Error en Typebot Gateway Proxy, cayendo en fallback de IA', error: err.message });
-          const aiResponse = await aiService.generateResponse(from, profileName, body);
-          if (aiResponse) {
-            await this.sendTextMessage(from, aiResponse);
-          }
+          logger.error({ msg: 'Error al comunicarse con Typebot Engine:', error: err.message });
+          await this.sendTextMessage(from, "👋 ¡Hola! Un asesor comercial de *Corporación JGIS* te atenderá en breve. Escribe *'inicio'* para reiniciar el menú.");
         }
       }
     }

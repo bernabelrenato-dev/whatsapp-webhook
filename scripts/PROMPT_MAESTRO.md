@@ -42,7 +42,13 @@ Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea.
 | `JGIS_BASE_DIR` | `/home/jgis/whatsapp-bot` | ruta en el host; confirmar si se mantiene igual en Oracle |
 | `REGE_BASE_DIR` | `/home/jgis/ai-agents` | ruta en el host; confirmar si se mantiene igual en Oracle |
 
-Las Secciones 1 y 2 y los comandos de control (1.6, 2.4) muestran los valores actuales de GCP para ejecución directa hoy. Cualquier agente que trabaje sobre infraestructura debe leer esta tabla primero y no asumir que `SERVER_IP` o las rutas seguirán siendo las mismas después de la migración.
+### 0.7 Modo Loop / Bucle Ininterrumpido & Concordancia Cloud VPS
+- **Bucle de Trabajo Continuo:** Todos los agentes operan de manera autónoma en bucle/loop continuo sin detenerse a solicitar aprobación entre iteraciones intermedias. El bucle se mantiene hasta obtener `EXIT CODE 0`.
+- **Concordancia Directa VPS Nube:** Todo código, script o prueba debe ejecutarse y validarse directamente en el VPS GCP de producción (`jgis-chatbot-server`). No se permite dar por válido un cambio visual o funcional si no concuerda al 100% con la respuesta del entorno cloud.
+
+### 0.8 Desactivación de Respuestas por IA (100% Delegación a Typebot Engine)
+- **Prohibido el uso de IA (Gemini / DeepSeek) para responder a clientes:** Todas las respuestas comerciales y de ventas son gestionadas de manera exclusiva por el motor **Typebot Engine (`typebot-viewer`)**.
+- Los fallos o desvíos del bot son manejados mediante flujos estandarizados de Typebot y handover a humano sin invocar generadores de texto por LLM.
 
 ---
 

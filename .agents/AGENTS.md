@@ -40,32 +40,35 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ---
 
-## 2. Calidad de Código y Evitación de Parches
+## 2. Calidad de Código, Evitación de Parches y Modo Bucle/Loop Obligatorio
 *   **Enfoque de Causa Raíz:** Ante cualquier error, bug o fallo en las pruebas, el agente debe investigar la causa original del problema en lugar de aplicar parches superficiales o "wrappers" de código sobre el error.
-*   **Ciclos de Testeo Locales (Bucle de Corrección):**
-    *   Cualquier refactorización o cambio de código en los módulos (como el cotizador, sincronización de base de datos o enrutador) debe ser validado ejecutando los scripts de prueba correspondientes en un bucle local.
-    *   No se darán cambios por válidos hasta que la suite de testeo local termine con exit code `0`.
+*   **Modo Bucle/Loop Ininterrumpido (ECC):**
+    *   Todo desarrollo, refactorización o solución de errores se ejecuta en **Modo Loop / Bucle continuo**. El agente no se detiene a preguntar al usuario entre pasos; debe iterar de manera autónoma hasta lograr `EXIT CODE 0`.
+    *   Cualquier refactorización o cambio de código debe ser validado ejecutando los scripts de prueba correspondientes en un bucle local.
 *   **Preservación de Estructura:** No mover, renombrar o crear directorios principales de forma ad-hoc sin alinear con la arquitectura del proyecto (`src`, `scripts`, `.agents`).
 
 ---
 
-## 4. Aislamiento Total Cloud & GitHub (Cero Instalaciones en Laptop)
-* **100% Ejecución en la Nube:** Está estrictamente prohibido exigir o realizar instalaciones de software, CLI o dependencias en la laptop o máquina local del usuario.
-* **Infraestructura Cloud Inmutable:** Todos los agentes, ejecutores (OpenCode, OpenHands), conectores MCP, bases de datos y entornos de desarrollo operan 100% dentro del servidor VPS GCP (`jgis-chatbot-server`) y el repositorio remoto de GitHub (`bernabelrenato-dev/whatsapp-webhook`).
+## 3. Desactivación de IA y Delegación 100% a Typebot
+*   **Cero Respuestas por LLM (Gemini / DeepSeek):** Se prohíbe explícitamente responder mensajes de ventas usando Gemini o DeepSeek. **Todas las interacciones de atención y venta son procesadas 100% por Typebot Engine (`typebot-viewer`).**
+*   **Flujo Comercial de Gorras Trucker:** Toda entrada por anuncios de Meta Ads debe dirigirse al flujo estandarizado de Typebot en 6 pasos.
 
 ---
+
+## 4. Aislamiento Total Cloud, GitHub & Concordancia de Entornos
+*   **100% Ejecución en la Nube:** Está strictly prohibido exigir o realizar instalaciones de software, CLI o dependencias en la laptop o máquina local del usuario.
+*   **Concordancia Nube (VPS GCP):** Todo cambio y prueba visual debe sincronizarse y desplegarse en el VPS de producción (`jgis-chatbot-server`). Lo que se construye se prueba directamente en la infraestructura cloud para garantizar que la pantalla del usuario y la respuesta del servidor coincidan al 100%.
 
 ---
 
 ## 6. Desarrollo por Bloques Aislados e Independientes (Aislamiento de Errores)
 * **Principio de Desacoplamiento:** Todo desarrollo, corrección o expansión debe realizarse estrictamente por **bloques o módulos independientes**. Ningún cambio en el stack de agentes (REGE) debe alterar o afectar los servicios de negocio de JGIS (bot de WhatsApp, webhook, Chatwoot, DB).
 * **Independencia de Componentes REGE:** **OpenClaw** (Gateway), **OpenCode** (CLI), **OpenHands** (Programador) y **Dify** (Conversacional) son módulos aislados. Un fallo en uno no altera la disponibilidad ni ejecución de los demás.
-* **Control de Radio de Daño (Blast Radius):** Si un bloque o servicio experimenta un fallo (ejemplo: un error de formato en la API de un LLM en OpenCode), el error debe ser capturado y aislado exclusivamente dentro de ese módulo.
-* **Diagnóstico Directo:** Cada bloque debe contar con su propia suite de testeo independiente para que, en caso de fallo, sea posible identificar el componente exacto sin afectar la disponibilidad del resto del sistema.
+* **Control de Radio de Daño (Blast Radius):** Si un bloque o servicio experimenta un fallo, el error debe ser capturado y aislado exclusivamente dentro de ese módulo.
 
 ---
 
 ## 7. Bucle de Trabajo Ininterrumpido, Testeo y Checkpoints Obligatorios
-* **Flujo Continuo:** Tras finalizar un ítem o tarea del backlog, el agente pasa automáticamente al siguiente ítem sin esperar intervención previa.
-* **Bucle de Testeo (3 Intentos):** Toda modificación debe validarse con scripts de pruebas locales (`exit code 0`). Tras 3 intentos fallidos, se detiene y busca intervención humana.
-* **Actualización Inmediata de Documentación:** Tras validar la solución, el agente debe marcar los checkboxes (`[x]`) correspondientes en `PROMPT_MAESTRO.md` y `PROMPT_REGE.md` con fecha y síntesis de aprendizaje.
+* **Flujo Continuo:** Tras finalizar un ítem o tarea del backlog, el agente pasa automáticamente al siguiente ítem en bucle ininterrumpido sin esperar intervención previa.
+* **Bucle de Testeo:** Toda modificación debe validarse con scripts de pruebas locales (`exit code 0`).
+* **Actualización Inmediata de Documentación:** Tras validar la solución, el agente actualiza la documentación oficial con fecha y síntesis de aprendizaje.
