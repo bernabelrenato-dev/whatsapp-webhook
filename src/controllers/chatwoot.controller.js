@@ -157,7 +157,14 @@ exports.receiveChatwootMessage = async (req, res, next) => {
         }
       } else if (messageType === 'outgoing') {
         // Ignorar si es una nota privada (las notas de atribución de Meta Ads se crean como privadas)
-        const isPrivateNote = payload.private === true || payload.private === 'true' || payload.private === 1 || payload.private === '1';
+        const isPrivateNote = payload.private === true || 
+                              payload.private === 'true' || 
+                              payload.private === 1 || 
+                              payload.private === '1' ||
+                              payload.content_attributes?.is_private === true ||
+                              payload.content_attributes?.is_private === 'true' ||
+                              (payload.content && payload.content.includes('[META ADS REFERRAL]'));
+
         if (isPrivateNote) {
           logger.debug(`💬 Nota privada de Chatwoot ignorada en webhook: "${payload.content}"`);
           return res.status(200).json({ success: true });
