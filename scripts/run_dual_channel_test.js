@@ -13,10 +13,13 @@ async function executeDualChannelLoop() {
     'Content-Type': 'application/json'
   };
 
+  console.log('⏱️ Esperando 3 segundos para estabilización...');
+  await new Promise(r => setTimeout(r, 3000));
+
   // -------------------------------------------------------------------------
   // 1️⃣ TEST WHATSAPP: Simular click en Anuncio de Meta Ads (Crea Chat WhatsApp)
   // -------------------------------------------------------------------------
-  console.log('1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
+  console.log('\n1️⃣ [WHATSAPP] Creando NUEVO chat entrante de WhatsApp desde Meta Ads...');
   const waPhone = '519' + String(Date.now()).slice(-8);
   const waName = `Cliente WA ${String(Date.now()).slice(-4)}`;
   const waTimestamp = Math.floor(Date.now() / 1000);
@@ -79,27 +82,25 @@ async function executeDualChannelLoop() {
   }
 
   // -------------------------------------------------------------------------
-  // 2️⃣ TEST MESSENGER: Crear Nueva Conversación Real en Chatwoot
+  // 2️⃣ TEST MESSENGER: Crear Nueva Conversación Real en Chatwoot (Inbox ID 1)
   // -------------------------------------------------------------------------
   console.log('\n2️⃣ [MESSENGER] Creando NUEVA conversación de Facebook Messenger en Chatwoot UI...');
   let messengerConvId = null;
   const messengerName = `Cliente Messenger ${String(Date.now()).slice(-4)}`;
-  const messengerPsid = `psid_fb_${Date.now()}`;
 
   try {
-    // A. Crear Contacto con fuente multicanal de Messenger
+    // A. Crear Contacto de Messenger en Chatwoot
     const contactRes = await axios.post(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/contacts`, {
       inbox_id: 1,
       name: messengerName,
-      email: `msgr_${Date.now()}@facebook.com`
+      email: `messenger_${Date.now()}@facebook.com`
     }, { headers });
     const messengerContactId = contactRes.data.payload.contact.id;
 
-    // B. Crear Conversación Abierta asociada al cliente
+    // B. Crear Conversación Abierta en Chatwoot (Inbox ID 1)
     const convRes = await axios.post(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, {
       inbox_id: 1,
       contact_id: messengerContactId,
-      source_id: messengerPsid,
       status: 'open'
     }, { headers });
     messengerConvId = convRes.data.id;
@@ -162,7 +163,7 @@ async function executeDualChannelLoop() {
     const convsRes = await axios.get(`${chatwootBaseUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations`, { headers });
     const convs = convsRes.data?.data?.payload || [];
 
-    console.log(`📌 Las conversaciones más recientes en tu bandeja de Chatwoot son:`);
+    console.log(`📌 Se registraron exitosamente las siguientes conversaciones en tu bandeja de Chatwoot:`);
     for (const c of convs.slice(0, 3)) {
       console.log(`\n  💬 Conversación ID #${c.id} | Cliente: ${c.meta?.sender?.name} | Estado: ${c.status}`);
       
