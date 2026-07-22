@@ -16,15 +16,7 @@ class TypebotGeneratorService {
    * @returns {Promise<{ typebotId: string, publicId: string, name: string, editUrl: string }>}
    */
   async generateAndPublishFlow(promptText) {
-    const geminiKey = process.env.GEMINI_API_KEY;
-    if (!geminiKey) {
-      throw new Error('GEMINI_API_KEY no configurada para la generación de flujos de Typebot');
-    }
-
-    logger.info({ msg: '🧠 Generando esquema JSON de Typebot con Gemini 1.5 Flash...', promptText });
-
-    const genAI = new GoogleGenerativeAI(geminiKey);
-    const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || 'gemini-1.5-flash' });
+    logger.info({ msg: '🧠 Generando esquema JSON de Typebot...', promptText });
 
     const systemInstruction = `
       Eres un Arquitecto de Software Experto en Typebot.
@@ -71,9 +63,59 @@ class TypebotGeneratorService {
       3. Todos los IDs de bloques y variables deben ser cadenas compuestas únicas (ej: "b_welcome_1", "v_cantidad").
     `;
 
-    const aiRes = await model.generateContent([systemInstruction, promptText]);
-    const rawText = aiRes.response.text().trim();
-    const cleanJsonText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+    let cleanJsonText = null;
+
+    // Intentar A: Gemini AI
+    const geminiKey = process.env.GEMINI_API_KEY;
+    if (geminiKey) {
+      try {
+        const genAI = new GoogleGenerativeAI(geminiKey);
+        const modelNames = ['gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-1.5-pro-latest'];
+        for (const mName of modelNames) {
+          try {
+            const model = genAI.getGenerativeModel({ model: mName });
+            const aiRes = await model.generateContent([systemInstruction, promptText]);
+            const rawText = aiRes.response.text().trim();
+            cleanJsonText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+            if (cleanJsonText) {
+              logger.info({ msg: '✅ Esquema JSON de Typebot generado exitosamente con Gemini', model: mName });
+              break;
+            }
+          } catch (e) {
+            logger.warn({ msg: 'Intento fallido con modelo Gemini', model: mName, error: e.message });
+          }
+        }
+      } catch (err) {
+        logger.warn({ msg: 'Error de inicializacion en Gemini AI', error: err.message });
+      }
+    }
+
+    // Intentar B: DeepSeek AI Fallback
+    if (!cleanJsonText && process.env.DEEPSEEK_API_KEY) {
+      try {
+        const axios = require('axios');
+        const dsRes = await axios.post('https://api.deepseek.com/chat/completions', {
+          model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+          messages: [
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: promptText }
+          ],
+          temperature: 0.3
+        }, {
+          headers: { 'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}` },
+          timeout: 15000
+        });
+        const rawText = dsRes.data.choices[0].message.content.trim();
+        cleanJsonText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+        logger.info({ msg: '✅ Esquema JSON de Typebot generado exitosamente con DeepSeek AI' });
+      } catch (dsErr) {
+        logger.error({ msg: 'Error al generar con DeepSeek AI', error: dsErr.message });
+      }
+    }
+
+    if (!cleanJsonText) {
+      throw new Error('No se pudo generar el esquema JSON de Typebot con Gemini ni DeepSeek');
+    }
 
     let flowData;
     try {
