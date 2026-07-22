@@ -177,25 +177,24 @@ exports.receiveChatwootMessage = async (req, res, next) => {
         logger.info(`👤 Mensaje manual de agente humano detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
         aiService.pauseConversation(pauseKey);
 
-          // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
-          const channelType = payload.inbox?.channel_type;
-          const isApiChannel = channelType === 'Channel::Api';
+        // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
+        const channelType = payload.inbox?.channel_type;
+        const isApiChannel = channelType === 'Channel::Api';
 
-          if (isApiChannel && from && !from.startsWith('chatwoot_conv_')) {
-            if (payload.attachments && payload.attachments.length > 0) {
-              const att = payload.attachments[0];
-              if (att.data_url) {
-                try {
-                  const publicImageUrl = await processAndStoreImage(att.data_url);
-                  await messageService.sendImageMessage(from, publicImageUrl, true);
-                } catch (imgErr) {
-                  logger.error({ msg: 'Error procesando imagen saliente de Chatwoot, intentando URL directa', error: imgErr.message });
-                  await messageService.sendImageMessage(from, att.data_url, true);
-                }
+        if (isApiChannel && from && !from.startsWith('chatwoot_conv_')) {
+          if (payload.attachments && payload.attachments.length > 0) {
+            const att = payload.attachments[0];
+            if (att.data_url) {
+              try {
+                const publicImageUrl = await processAndStoreImage(att.data_url);
+                await messageService.sendImageMessage(from, publicImageUrl, true);
+              } catch (imgErr) {
+                logger.error({ msg: 'Error procesando imagen saliente de Chatwoot, intentando URL directa', error: imgErr.message });
+                await messageService.sendImageMessage(from, att.data_url, true);
               }
-            } else if (payload.content) {
-              await messageService.sendTextMessage(from, payload.content, true);
             }
+          } else if (payload.content) {
+            await messageService.sendTextMessage(from, payload.content, true);
           }
         }
       }
@@ -206,4 +205,3 @@ exports.receiveChatwootMessage = async (req, res, next) => {
     next(error);
   }
 };
-
