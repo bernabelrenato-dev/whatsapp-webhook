@@ -3,11 +3,19 @@ const axios = require('axios');
 
 async function publishTruckerCapFlow() {
   console.log('🤖 =========================================================================');
-  console.log('⚡ PUBLICANDO FLUJO OFICIAL DE VENTAS - GORRAS TRUCKER JGIS (ESQUEMA NATIVO V6)');
+  console.log('⚡ PUBLICANDO FLUJO OFICIAL DE VENTAS - GORRAS TRUCKER JGIS (ZOD SCHEMA STRICT)');
   console.log('🤖 =========================================================================\n');
 
   const typebotId = 'jgis-publicidad-bot-f33vo50';
   const name = 'Flujo de Ventas — Gorras Trucker JGIS (6 Pasos)';
+
+  const events = [
+    {
+      id: 'event_start',
+      type: 'start',
+      graphCoordinates: { x: 0, y: 0 }
+    }
+  ];
 
   const groups = [
     // -----------------------------------------------------------------------
@@ -16,7 +24,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_apertura',
       title: '1️⃣ Apertura — Calificación Rápida',
-      graphPosition: { x: 0, y: 0 },
+      graphCoordinates: { x: 300, y: 0 },
       blocks: [
         {
           id: 'b_saludo_apertura',
@@ -47,7 +55,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_catalogo_cantidad',
       title: '2️⃣ Galería + Pregunta de Cantidad',
-      graphPosition: { x: 400, y: 0 },
+      graphCoordinates: { x: 700, y: 0 },
       blocks: [
         {
           id: 'b_galeria_intro',
@@ -108,7 +116,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_precio_1_5',
       title: '3️⃣ Precio (1 a 5 Unidades)',
-      graphPosition: { x: 800, y: -200 },
+      graphCoordinates: { x: 1100, y: -200 },
       blocks: [
         {
           id: 'b_precio_1_5',
@@ -125,7 +133,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_precio_6_12',
       title: '3️⃣ Precio (6 a 12 Unidades)',
-      graphPosition: { x: 800, y: -50 },
+      graphCoordinates: { x: 1100, y: -50 },
       blocks: [
         {
           id: 'b_precio_6_12',
@@ -142,7 +150,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_precio_13_50',
       title: '3️⃣ Precio (13 a 50 Unidades)',
-      graphPosition: { x: 800, y: 100 },
+      graphCoordinates: { x: 1100, y: 100 },
       blocks: [
         {
           id: 'b_precio_13_50',
@@ -159,7 +167,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_precio_51_499',
       title: '3️⃣ Precio (51 a 499 Unidades)',
-      graphPosition: { x: 800, y: 250 },
+      graphCoordinates: { x: 1100, y: 250 },
       blocks: [
         {
           id: 'b_precio_51_499',
@@ -176,7 +184,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_precio_500_1000',
       title: '3️⃣ Precio (500 a 1000 Unidades)',
-      graphPosition: { x: 800, y: 400 },
+      graphCoordinates: { x: 1100, y: 400 },
       blocks: [
         {
           id: 'b_precio_500_1000',
@@ -197,7 +205,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_cierre_decision',
       title: '4️⃣ Cierre — Pregunta de Decisión',
-      graphPosition: { x: 1200, y: 0 },
+      graphCoordinates: { x: 1500, y: 0 },
       blocks: [
         {
           id: 'b_pregunta_cierre',
@@ -227,7 +235,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_datos_pago',
       title: '5️⃣ Datos de Pago y Confirmación',
-      graphPosition: { x: 1600, y: 0 },
+      graphCoordinates: { x: 1900, y: 0 },
       blocks: [
         {
           id: 'b_datos_bancarios',
@@ -247,7 +255,7 @@ async function publishTruckerCapFlow() {
     {
       id: 'group_handover_humano',
       title: '6️⃣ Handover a Asesor Humano',
-      graphPosition: { x: 1600, y: 300 },
+      graphCoordinates: { x: 1900, y: 300 },
       blocks: [
         {
           id: 'b_asesor_humano_msg',
@@ -263,6 +271,11 @@ async function publishTruckerCapFlow() {
   ];
 
   const edges = [
+    {
+      id: 'edge_start_apertura',
+      from: { eventId: 'event_start' },
+      to: { groupId: 'group_apertura' }
+    },
     {
       id: 'edge_uso_personal_catalogo',
       from: { blockId: 'b_input_uso', itemId: 'opt_uso_personal' },
@@ -355,13 +368,13 @@ async function publishTruckerCapFlow() {
     const workspaceId = workspaceRes.rows.length > 0 ? workspaceRes.rows[0].id : 'cmruld1x600001xqgg61fjkd8';
     await pool.query(
       `INSERT INTO "Typebot" (id, name, "workspaceId", groups, events, edges, variables, theme, settings, "createdAt", "updatedAt", version)
-       VALUES ($1, $2, $3, $4, NULL, $5, $6, $7, $8, NOW(), NOW(), '6');`,
-      [typebotId, name, workspaceId, JSON.stringify(groups), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW(), '6');`,
+      [typebotId, name, workspaceId, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
     );
   } else {
     await pool.query(
-      `UPDATE "Typebot" SET name = $1, groups = $2, events = NULL, edges = $3, variables = $4, theme = $5, settings = $6, "updatedAt" = NOW(), version = '6' WHERE id = $7;`,
-      [name, JSON.stringify(groups), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
+      `UPDATE "Typebot" SET name = $1, groups = $2, events = $3, edges = $4, variables = $5, theme = $6, settings = $7, "updatedAt" = NOW(), version = '6' WHERE id = $8;`,
+      [name, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
     );
   }
 
@@ -370,18 +383,18 @@ async function publishTruckerCapFlow() {
   if (existingPublic.rows.length === 0) {
     await pool.query(
       `INSERT INTO "PublicTypebot" (id, "typebotId", groups, events, edges, variables, theme, settings, "createdAt", "updatedAt", version)
-       VALUES ($1, $2, $3, NULL, $4, $5, $6, $7, NOW(), NOW(), '6');`,
-      [typebotId, typebotId, JSON.stringify(groups), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW(), '6');`,
+      [typebotId, typebotId, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
     );
   } else {
     await pool.query(
-      `UPDATE "PublicTypebot" SET groups = $1, events = NULL, edges = $2, variables = $3, theme = $4, settings = $5, "updatedAt" = NOW(), version = '6' WHERE id = $6;`,
-      [JSON.stringify(groups), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
+      `UPDATE "PublicTypebot" SET groups = $1, events = $2, edges = $3, variables = $4, theme = $5, settings = $6, "updatedAt" = NOW(), version = '6' WHERE id = $7;`,
+      [JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
     );
   }
 
   console.log('🎉 =========================================================================');
-  console.log('✅ ¡FLUJO DE VENTAS DE GORRAS TRUCKER (6 PASOS) PUBLICADO CON ÉXITO!');
+  console.log('✅ ¡FLUJO DE VENTAS DE GORRAS TRUCKER (6 PASOS) PUBLICADO CON ZOD SCHEMA STRICT!');
   console.log('🎉 =========================================================================');
   console.log(`📌 Nombre del Flujo : ${name}`);
   console.log(`🔑 Typebot ID       : ${typebotId}`);
