@@ -5,6 +5,9 @@ const config = require('../src/config/environment');
 async function runDualChannelTest() {
   console.log('🧪 Iniciando prueba simultánea de 2 Mensajes Reales (WhatsApp y Facebook Messenger) DENTRO del VPS...\n');
 
+  // Usar URL interna de Docker network para conectar con Chatwoot
+  const chatwootInternalUrl = 'http://chatwoot-web:3000';
+
   // =========================================================================
   // TEST 1: CANAL WHATSAPP (Meta Cloud API Webhook a /webhook)
   // =========================================================================
@@ -79,7 +82,7 @@ async function runDualChannelTest() {
 
   try {
     // 1. Crear contacto real de Messenger en Chatwoot API interno
-    const chatwootBase = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}`;
+    const chatwootBase = `${chatwootInternalUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}`;
     const headers = {
       'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
       'Content-Type': 'application/json'
@@ -156,7 +159,7 @@ async function runDualChannelTest() {
   try {
     const headers = { 'api_access_token': config.CHATWOOT_ACCESS_TOKEN };
     if (messengerConvId) {
-      const msgRes = await axios.get(`${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${messengerConvId}/messages`, { headers });
+      const msgRes = await axios.get(`${chatwootInternalUrl}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${messengerConvId}/messages`, { headers });
       const msgs = msgRes.data?.payload || [];
       console.log(`\n==================================================`);
       console.log(`💬 RESULTADO CONVERSACIÓN MESSENGER (ID #${messengerConvId}): ${msgs.length} mensajes recibidos`);
