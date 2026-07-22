@@ -70,5 +70,7 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ## 7. Bucle de Trabajo Ininterrumpido, Testeo y Checkpoints Obligatorios
 * **Flujo Continuo:** Tras finalizar un ítem o tarea del backlog, el agente pasa automáticamente al siguiente ítem en bucle ininterrumpido sin esperar intervención previa.
-* **Bucle de Testeo:** Toda modificación debe validarse con scripts de pruebas locales (`exit code 0`).
+* **Bucle de Testeo y Verificación Dual (Post-Deploy):**
+  - Tras **cada despliegue (deploy)** en el VPS, es **estrictamente obligatorio** ejecutar la prueba dual `scripts/test_whatsapp_and_messenger.js`.
+  - La prueba debe simular y validar **exactamente 2 mensajes entrantes en WhatsApp** y **exactamente 2 mensajes entrantes en Messenger** obteniendo `EXIT CODE 0`.
 * **Actualización Inmediata de Documentación:** Tras validar la solución, el agente actualiza la documentación oficial con fecha y síntesis de aprendizaje.
