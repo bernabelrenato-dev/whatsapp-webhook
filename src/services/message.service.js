@@ -964,16 +964,12 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
 
     logger.info(`📈 Estado del mensaje [${messageId}] para [${recipient}]: ${state.toUpperCase()}`);
     
-    // Si detectamos un estado 'sent' de un mensaje que NO fue enviado por el bot,
-    // significa que un agente humano respondió desde el Meta Business Suite.
-    if (state === 'sent') {
+    // Si detectamos un estado 'sent' o 'delivered' de un mensaje enviado por el bot,
+    // mantener el ID en botSentMessageIds para evitar que actualizaciones posteriores de estado generen falsos positivos de atención humana.
+    if (state === 'sent' || state === 'delivered' || state === 'read') {
       if (this.botSentMessageIds.has(messageId)) {
-        // Fue el bot, removemos el ID y no pausamos
-        this.botSentMessageIds.delete(messageId);
-      } else {
-        // Fue un humano desde la bandeja de entrada, pausamos el bot por 2 horas
-        logger.info(`👤 Mensaje manual de agente detectado hacia ${recipient}. Pausando bot.`);
-        aiService.pauseConversation(recipient);
+        logger.debug({ msg: 'Confirmación de estado de mensaje del bot recibida', messageId, state, recipient });
+        return;
       }
     }
 
