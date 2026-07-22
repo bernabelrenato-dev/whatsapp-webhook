@@ -141,7 +141,13 @@ class MessageService {
       });
 
       if (!skipChatwootSync) {
-        await this.syncOutgoingMessageToChatwoot(to, `[Imagen enviada]: ${imageUrl}`);
+        let imageFileName;
+        try {
+          imageFileName = path.basename(new URL(imageUrl).pathname);
+        } catch (e) {
+          imageFileName = 'product_image.jpg';
+        }
+        await this.syncOutgoingMessageToChatwoot(to, null, imageFileName);
       }
     } catch (error) {
       const errorResponse = error.response ? error.response.data : error.message;
@@ -1274,7 +1280,8 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
     }
 
     // Deduplicación estricta por teléfono + contenido para evitar duplicados en la UI de Chatwoot
-    const syncKey = `chatwoot_out_${phone}_${(text || imageFileName || 'msg').substring(0, 40)}`;
+    const keyText = imageFileName ? imageFileName : (text || 'msg').trim().slice(-40);
+    const syncKey = `chatwoot_out_${phone}_${keyText}`;
     if (this.processedMessageIds.has(syncKey)) {
       logger.info({ msg: '🛑 Sincronización saliente duplicada a Chatwoot omitida por syncKey', phone, syncKey });
       return;
