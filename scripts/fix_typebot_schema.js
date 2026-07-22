@@ -20,14 +20,14 @@ async function fixTypebotSchema() {
       {
         id: 'event_start',
         type: 'start',
-        graphPosition: { x: 0, y: 0 }
+        graphCoordinates: { x: 0, y: 0 }
       }
     ],
     groups: [
       {
         id: 'group_bienvenida',
         title: '👋 Bienvenida y Galería Meta Ads',
-        graphPosition: { x: 300, y: 0 },
+        graphCoordinates: { x: 300, y: 0 },
         blocks: [
           {
             id: 'b_saludo',
@@ -90,7 +90,7 @@ async function fixTypebotSchema() {
       {
         id: 'group_ubicacion',
         title: '📍 Tienda y Dirección',
-        graphPosition: { x: 700, y: 0 },
+        graphCoordinates: { x: 700, y: 0 },
         blocks: [
           {
             id: 'b_dir_text',
@@ -109,7 +109,7 @@ async function fixTypebotSchema() {
       {
         id: 'group_asesor',
         title: '👩‍💼 Atención Humana',
-        graphPosition: { x: 1100, y: 0 },
+        graphCoordinates: { x: 1100, y: 0 },
         blocks: [
           {
             id: 'b_asesor_text',
