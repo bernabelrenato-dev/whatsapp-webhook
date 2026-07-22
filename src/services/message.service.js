@@ -556,10 +556,14 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
           const typebotId = process.env.TYPEBOT_ID || 'jgis-publicidad-bot-f33vo50';
 
           if (!currentSessionId) {
-            logger.info(`🔄 Iniciando nueva sesión de Typebot para ${profileName} (${from})`);
+            logger.info(`🔄 Iniciando nueva sesión de Typebot (${typebotId}) para ${profileName} (${from}) [Meta Ads Campaign]`);
             response = await axios.post(`${typebotUrl}/api/v1/typebots/${typebotId}/startChat`, {
               prefilledVariables: {
-                phone: from.startsWith('chatwoot_conv_') ? '' : from
+                phone: from.startsWith('chatwoot_conv_') ? '' : from,
+                name: profileName || 'Cliente Meta Ads',
+                ad_headline: referral?.headline || 'Campaña Anuncio de Gorras Meta Ads',
+                ad_body: referral?.body || '',
+                ad_id: referral?.ad_id || ''
               }
             });
             currentSessionId = response.data.sessionId;
