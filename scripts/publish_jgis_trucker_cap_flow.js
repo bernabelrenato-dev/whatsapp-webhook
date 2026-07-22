@@ -3,7 +3,7 @@ const axios = require('axios');
 
 async function publishTruckerCapFlow() {
   console.log('🤖 =========================================================================');
-  console.log('⚡ PUBLICANDO FLUJO OFICIAL DE VENTAS - GORRAS TRUCKER JGIS (ZOD SCHEMA STRICT)');
+  console.log('⚡ PUBLICANDO FLUJO OFICIAL DE VENTAS - GORRAS TRUCKER JGIS (CON OUTGOINGEDGEID)');
   console.log('🤖 =========================================================================\n');
 
   const typebotId = 'jgis-publicidad-bot-f33vo50';
@@ -13,13 +13,14 @@ async function publishTruckerCapFlow() {
     {
       id: 'event_start',
       type: 'start',
-      graphCoordinates: { x: 0, y: 0 }
+      graphCoordinates: { x: 0, y: 0 },
+      outgoingEdgeId: 'edge_start_apertura'
     }
   ];
 
   const groups = [
     // -----------------------------------------------------------------------
-    // 1️⃣ APERTURA - Calificación rápida (Sin catálogo ni precios)
+    // 1️⃣ APERTURA - Calificación rápida
     // -----------------------------------------------------------------------
     {
       id: 'group_apertura',
@@ -41,8 +42,8 @@ async function publishTruckerCapFlow() {
           id: 'b_input_uso',
           type: 'choice input',
           items: [
-            { id: 'opt_uso_personal', content: '🙋‍♂️ Uso Personal' },
-            { id: 'opt_uso_empresa', content: '🏢 Empresa / Evento' }
+            { id: 'opt_uso_personal', content: '🙋‍♂️ Uso Personal', outgoingEdgeId: 'edge_uso_personal_catalogo' },
+            { id: 'opt_uso_empresa', content: '🏢 Empresa / Evento', outgoingEdgeId: 'edge_uso_empresa_catalogo' }
           ],
           options: { isMultipleChoice: false }
         }
@@ -99,11 +100,11 @@ async function publishTruckerCapFlow() {
           id: 'b_input_cantidad',
           type: 'choice input',
           items: [
-            { id: 'opt_cant_1_5', content: '🧢 1 a 5 unidades' },
-            { id: 'opt_cant_6_12', content: '🧢 6 a 12 unidades' },
-            { id: 'opt_cant_13_50', content: '🧢 13 a 50 unidades' },
-            { id: 'opt_cant_51_499', content: '🧢 51 a 499 unidades' },
-            { id: 'opt_cant_500_1000', content: '🧢 500 a 1000 unidades' }
+            { id: 'opt_cant_1_5', content: '🧢 1 a 5 unidades', outgoingEdgeId: 'edge_cant_1_5' },
+            { id: 'opt_cant_6_12', content: '🧢 6 a 12 unidades', outgoingEdgeId: 'edge_cant_6_12' },
+            { id: 'opt_cant_13_50', content: '🧢 13 a 50 unidades', outgoingEdgeId: 'edge_cant_13_50' },
+            { id: 'opt_cant_51_499', content: '🧢 51 a 499 unidades', outgoingEdgeId: 'edge_cant_51_499' },
+            { id: 'opt_cant_500_1000', content: '🧢 500 a 1000 unidades', outgoingEdgeId: 'edge_cant_500_1000' }
           ],
           options: { isMultipleChoice: false }
         }
@@ -121,6 +122,7 @@ async function publishTruckerCapFlow() {
         {
           id: 'b_precio_1_5',
           type: 'text',
+          outgoingEdgeId: 'edge_precio_1_5_cierre',
           content: {
             richText: [
               { children: [{ text: '🧢 Para *1 a 5 unidades* el precio por unidad es de *S/. 15.00 c/u* 💵' }] },
@@ -138,6 +140,7 @@ async function publishTruckerCapFlow() {
         {
           id: 'b_precio_6_12',
           type: 'text',
+          outgoingEdgeId: 'edge_precio_6_12_cierre',
           content: {
             richText: [
               { children: [{ text: '🧢 Para *6 a 12 unidades* el precio por mayor es de *S/. 12.00 c/u* 💵' }] },
@@ -155,6 +158,7 @@ async function publishTruckerCapFlow() {
         {
           id: 'b_precio_13_50',
           type: 'text',
+          outgoingEdgeId: 'edge_precio_13_50_cierre',
           content: {
             richText: [
               { children: [{ text: '🧢 Para *13 a 50 unidades* el precio por mayor es de *S/. 10.00 c/u* 💵' }] },
@@ -172,6 +176,7 @@ async function publishTruckerCapFlow() {
         {
           id: 'b_precio_51_499',
           type: 'text',
+          outgoingEdgeId: 'edge_precio_51_499_cierre',
           content: {
             richText: [
               { children: [{ text: '🧢 Para *51 a 499 unidades* (Escala Corporativa) el precio es de *S/. 8.50 c/u* 💵' }] },
@@ -189,6 +194,7 @@ async function publishTruckerCapFlow() {
         {
           id: 'b_precio_500_1000',
           type: 'text',
+          outgoingEdgeId: 'edge_precio_500_1000_cierre',
           content: {
             richText: [
               { children: [{ text: '🧢 Para *500 a 1000 unidades* (Volumen Industrial) el precio especial es de *S/. 6.90 c/u* 💵' }] },
@@ -220,9 +226,9 @@ async function publishTruckerCapFlow() {
           id: 'b_input_confirmacion',
           type: 'choice input',
           items: [
-            { id: 'opt_confirma_envio', content: '🚚 Sí, confirmar con Envío a Domicilio' },
-            { id: 'opt_confirma_recojo', content: '🏬 Sí, confirmar con Recojo en Tienda' },
-            { id: 'opt_hablar_asesor', content: '👩‍💼 Hablar con Asesor Humano' }
+            { id: 'opt_confirma_envio', content: '🚚 Sí, confirmar con Envío a Domicilio', outgoingEdgeId: 'edge_confirma_envio_pago' },
+            { id: 'opt_confirma_recojo', content: '🏬 Sí, confirmar con Recojo en Tienda', outgoingEdgeId: 'edge_confirma_recojo_pago' },
+            { id: 'opt_hablar_asesor', content: '👩‍💼 Hablar con Asesor Humano', outgoingEdgeId: 'edge_hablar_asesor_handover' }
           ],
           options: { isMultipleChoice: false }
         }
@@ -361,40 +367,19 @@ async function publishTruckerCapFlow() {
   const theme = { general: { background: { type: 'Color', content: '#ffffff' } } };
   const settings = { typingEmulation: { speed: 40, enabled: true } };
 
-  // 1. Insertar / Actualizar en "Typebot"
-  const existingTypebot = await pool.query(`SELECT id FROM "Typebot" WHERE id = $1;`, [typebotId]);
-  if (existingTypebot.rows.length === 0) {
-    const workspaceRes = await pool.query(`SELECT id FROM "Workspace" LIMIT 1;`);
-    const workspaceId = workspaceRes.rows.length > 0 ? workspaceRes.rows[0].id : 'cmruld1x600001xqgg61fjkd8';
-    await pool.query(
-      `INSERT INTO "Typebot" (id, name, "workspaceId", groups, events, edges, variables, theme, settings, "createdAt", "updatedAt", version)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW(), '6');`,
-      [typebotId, name, workspaceId, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
-    );
-  } else {
-    await pool.query(
-      `UPDATE "Typebot" SET name = $1, groups = $2, events = $3, edges = $4, variables = $5, theme = $6, settings = $7, "updatedAt" = NOW(), version = '6' WHERE id = $8;`,
-      [name, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
-    );
-  }
+  // Update DB
+  await pool.query(
+    `UPDATE "Typebot" SET name = $1, groups = $2, events = $3, edges = $4, variables = $5, theme = $6, settings = $7, "updatedAt" = NOW(), version = '6', "publicId" = $8 WHERE id = $8;`,
+    [name, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
+  );
 
-  // 2. Insertar / Actualizar en "PublicTypebot"
-  const existingPublic = await pool.query(`SELECT id FROM "PublicTypebot" WHERE id = $1;`, [typebotId]);
-  if (existingPublic.rows.length === 0) {
-    await pool.query(
-      `INSERT INTO "PublicTypebot" (id, "typebotId", groups, events, edges, variables, theme, settings, "createdAt", "updatedAt", version)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW(), '6');`,
-      [typebotId, typebotId, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings)]
-    );
-  } else {
-    await pool.query(
-      `UPDATE "PublicTypebot" SET groups = $1, events = $2, edges = $3, variables = $4, theme = $5, settings = $6, "updatedAt" = NOW(), version = '6' WHERE id = $7;`,
-      [JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
-    );
-  }
+  await pool.query(
+    `UPDATE "PublicTypebot" SET groups = $1, events = $2, edges = $3, variables = $4, theme = $5, settings = $6, "updatedAt" = NOW(), version = '6' WHERE id = $7;`,
+    [JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
+  );
 
   console.log('🎉 =========================================================================');
-  console.log('✅ ¡FLUJO DE VENTAS DE GORRAS TRUCKER (6 PASOS) PUBLICADO CON ZOD SCHEMA STRICT!');
+  console.log('✅ ¡FLUJO DE VENTAS DE GORRAS TRUCKER (6 PASOS) PUBLICADO CON OUTGOINGEDGEID!');
   console.log('🎉 =========================================================================');
   console.log(`📌 Nombre del Flujo : ${name}`);
   console.log(`🔑 Typebot ID       : ${typebotId}`);
