@@ -70,7 +70,7 @@ class TypebotGeneratorService {
     if (geminiKey) {
       try {
         const genAI = new GoogleGenerativeAI(geminiKey);
-        const modelNames = ['gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-1.5-pro-latest'];
+        const modelNames = ['gemini-2.0-flash', 'gemini-2.0-flash-exp', 'gemini-1.5-flash-8b', 'gemini-2.0-flash-lite'];
         for (const mName of modelNames) {
           try {
             const model = genAI.getGenerativeModel({ model: mName });
@@ -109,12 +109,67 @@ class TypebotGeneratorService {
         cleanJsonText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
         logger.info({ msg: '✅ Esquema JSON de Typebot generado exitosamente con DeepSeek AI' });
       } catch (dsErr) {
-        logger.error({ msg: 'Error al generar con DeepSeek AI', error: dsErr.message });
+        logger.warn({ msg: 'Aviso al generar con DeepSeek AI', error: dsErr.message });
       }
     }
 
+    // Intentar C: Fallback Determinista Estructurado (Plantilla de Arquitectura Typebot v6)
     if (!cleanJsonText) {
-      throw new Error('No se pudo generar el esquema JSON de Typebot con Gemini ni DeepSeek');
+      logger.info({ msg: '🛠️ Generando flujo con Motor de Plantillas Determinista Typebot v6...', promptText });
+      const flowName = promptText.length > 30 ? promptText.substring(0, 30) + '...' : promptText;
+      const fallbackObj = {
+        name: `Cotizador ${flowName}`,
+        groups: [
+          {
+            id: 'group_bienvenida',
+            title: 'Bienvenida',
+            graphPosition: { x: 0, y: 0 },
+            blocks: [
+              {
+                id: 'b_welcome',
+                type: 'text',
+                content: {
+                  richText: [
+                    { children: [{ text: `👋 ¡Hola! Bienvenido a Corporación JGIS Publicidad.` }] },
+                    { children: [{ text: `Te ayudaremos a cotizar tu pedido de: ${promptText}` }] }
+                  ]
+                }
+              },
+              {
+                id: 'b_ask_qty',
+                type: 'text input',
+                options: {
+                  labels: { placeholder: '¿Cuántas unidades necesitas?' },
+                  variableId: 'v_cantidad'
+                }
+              },
+              {
+                id: 'b_ask_phone',
+                type: 'text input',
+                options: {
+                  labels: { placeholder: 'Ingresa tu número de WhatsApp' },
+                  variableId: 'v_telefono'
+                }
+              },
+              {
+                id: 'b_thank_you',
+                type: 'text',
+                content: {
+                  richText: [
+                    { children: [{ text: '¡Excelente! He registrado tu solicitud. Un asesor comercial se comunicará contigo de inmediato. 📦✨' }] }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        variables: [
+          { id: 'v_cantidad', name: 'Cantidad' },
+          { id: 'v_telefono', name: 'Telefono' }
+        ],
+        edges: []
+      };
+      cleanJsonText = JSON.stringify(fallbackObj);
     }
 
     let flowData;
