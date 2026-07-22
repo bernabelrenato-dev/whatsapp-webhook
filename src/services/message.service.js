@@ -290,7 +290,30 @@ Mi nombre es *Renato Bernabel*, *Asesor Comercial*, y con gusto te ayudaré a en
 
 Trabajamos con productos personalizados y merchandising, como polos, gorras, tazas, artículos promocionales y mucho más, tanto para empresas como para pedidos personales.`;
 
-    const renatoContactNoticeSpeech = `👨‍💼 En breves momentos nos comunicaremos contigo para brindarte todos los detalles y cotización. Por favor, déjanos tu número de teléfono o celular de contacto. 😊`;
+    // Plantilla comercial oficial de pago y entrega de gorras JGIS
+    const capCampaignTemplate = `📦 ¡Gracias por tu interés en nuestras gorras! 🧢
+
+💰 Costo: S/. 15 por unidad
+
+🚚 Método de entrega:
+　✅ Envíos a todo el Perú
+　🏬 Recojo en tienda
+
+⏱️ Tiempo de entrega (producción): 48 horas
+
+💳 Datos de Pago
+🏦 Banco: BCP
+💳 Cuenta Corriente (Soles): 1912434894087
+🔢 CCI: 00219100243489408755
+📱 Yape / Plin: 969732451
+👤 Titular: Corporación JGIS
+
+📍 Dirección
+🏢 Galería Centro Comercial Centro Lima
+🔻 Sótano – Pasaje "H", Stand 560
+🚪 Referencia: cerca de la Puerta 7 (Boulevard)
+
+¿Cuántas unidades te gustaría llevar? 😊`;
 
     // 1. Evaluar si el referral o mensaje corresponde a la campaña o producto de gorras
     const referralText = [
@@ -346,9 +369,9 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
           }
         }
 
-        // Paso 3: Enviar Mensaje Final de Atención Comercial solicitando número
-        await this.sendTextMessage(from, renatoContactNoticeSpeech);
-        logger.info({ msg: 'Secuencia Oficial de Cierre Renato Bernabel (Saludo + Galería 7 Gorras + Aviso Número) despachada con éxito', from });
+        // Paso 3: Enviar la plantilla comercial completa de pago/entrega solicitada
+        await this.sendTextMessage(from, capCampaignTemplate);
+        logger.info({ msg: 'Secuencia Oficial de Cierre (Saludo + Galería 7 Gorras + Plantilla Comercial) despachada con éxito', from });
         return;
       } catch (err) {
         logger.error({ msg: 'Error al procesar flujo de Campaña de Gorras', error: err.message });

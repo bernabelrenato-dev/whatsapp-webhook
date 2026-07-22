@@ -1,7 +1,7 @@
 const messageService = require('../src/services/message.service');
 
 async function runCapLoopTest() {
-  console.log('🧪 Iniciando Bucle de Pruebas E2E (LOOP TEST) para el Flujo Comercial Renato Bernabel...');
+  console.log('🧪 Iniciando Bucle de Pruebas E2E (LOOP TEST) para el Flujo Comercial Oficial de Gorras...');
 
   let referralSynced = false;
   const sentMessages = [];
@@ -16,7 +16,7 @@ async function runCapLoopTest() {
     referralSynced = true;
   };
 
-  // --- ESCENARIO: Referral de Anuncio Meta con Flujo Renato Bernabel ---
+  // --- ESCENARIO: Referral de Anuncio Meta con Galería + Plantilla Comercial ---
   const mockCapReferral = {
     ad_id: '963093566323818',
     headline: 'Gorras Trucker Personalizadas - S/ 15',
@@ -26,9 +26,9 @@ async function runCapLoopTest() {
 
   const mockMessagesCap = [{ referral: mockCapReferral, type: 'text', text: { body: 'Hola, quiero información' } }];
 
-  await messageService.processCombinedMessages('51999888777', 'Cliente Renato Bernabel Test', mockMessagesCap, {});
+  await messageService.processCombinedMessages('51999888777', 'Cliente Anuncio Gorras Test', mockMessagesCap, {});
 
-  console.log(`\n💬 Mensajes despachados en la secuencia Renato Bernabel (${sentMessages.length}):`);
+  console.log(`\n💬 Mensajes despachados en la secuencia de Gorras (${sentMessages.length}):`);
   sentMessages.forEach((msg, idx) => console.log(`  [${idx + 1}] Tipo: ${msg.type} -> ${msg.content ? msg.content.substring(0, 50).replace(/\n/g, ' ') + '...' : msg.url}`));
 
   // Verificación 1: Sincronización de Metadata interna de Chatwoot
@@ -52,14 +52,14 @@ async function runCapLoopTest() {
   }
   console.log('✅ Verificación 3 - Galería COMPLETA de 7 gorras reales despachada: ÉXITO');
 
-  // Verificación 4: Mensaje final de solicitud de número y aviso de contacto
+  // Verificación 4: Plantilla Comercial Oficial Completa entregada tras la galería (en lugar de aviso de lead)
   const lastTextMsg = sentMessages.filter(m => m.type === 'text').pop();
-  if (!lastTextMsg || !lastTextMsg.content.includes('déjanos tu número de teléfono')) {
-    throw new Error('FALLO: El mensaje final debe solicitar el número de contacto del cliente.');
+  if (!lastTextMsg || !lastTextMsg.content.includes('Costo: S/. 15') || !lastTextMsg.content.includes('Cuenta Corriente (Soles): 1912434894087')) {
+    throw new Error('FALLO: El mensaje final tras la galería debe ser la Plantilla Comercial Completa de Pago y Entrega.');
   }
-  console.log('✅ Verificación 4 - Notificación final de contacto y solicitud de número entregada: ÉXITO');
+  console.log('✅ Verificación 4 - Plantilla Comercial Completa de Pago/Entrega entregada tras la galería: ÉXITO');
 
-  console.log('\n🎉 BUCLE DE PRUEBAS RENATO BERNABEL COMPLETADO CON EXIT CODE 0.');
+  console.log('\n🎉 BUCLE DE PRUEBAS FLUJO COMERCIAL COMPLETADO CON EXIT CODE 0.');
   process.exit(0);
 }
 
