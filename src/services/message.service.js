@@ -417,8 +417,8 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
 
       const body = combinedText;
       if (body || productContext) {
-        // Detectar intención de atención humana
-        const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
+        // Detectar intención de atención humana explícita
+        const agentKeywords = ['hablar con asesor', 'hablar con un asesor', 'atencion humana', 'atención humana', 'asesor humano', 'hablar con alguien'];
         const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
 
         if (isAgentIntent) {
@@ -538,7 +538,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       const body = combinedText;
       if (body || uploadedImageUrl) {
         // Detectar intención de atención humana explícita antes de seguir en Typebot
-        const agentKeywords = ['agente', 'asesor', 'humano', 'persona', 'hablar con asesor', 'hablar con alguien', 'atencion humana', 'atención humana', 'hablar con un asesor', 'vendedor'];
+        const agentKeywords = ['hablar con asesor', 'hablar con un asesor', 'atencion humana', 'atención humana', 'asesor humano', 'hablar con alguien'];
         const isAgentIntent = agentKeywords.some(keyword => cleanBody.includes(keyword));
 
         if (isAgentIntent) {
