@@ -333,60 +333,8 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       combinedText
     ].filter(Boolean).join(' ').toLowerCase();
 
-    const isCapCampaign = referral ? true : ['gorra', 'gorras', 'trucker', 'cap', '963093566323818', '3115'].some(kw => referralText.includes(kw));
+    // (Ruteo 100% Typebot: Interceptor hardcoded de Campaña de Gorras desactivado para respetar el flujo configurado en Typebot)
 
-    if (isCapCampaign) {
-      try {
-        // Control Anti-Duplicados estricto por cliente (Evita duplicados ante 2 Apps registradas en Meta Developers)
-        let userSession = this.userSessions.get(from);
-        if (!userSession) {
-          userSession = { created: Date.now(), capCampaignSent: false, state: 'ai' };
-          this.userSessions.set(from, userSession);
-        }
-
-        if (userSession.capCampaignSent) {
-          logger.info({ msg: 'Secuencia de Campaña de Gorras ya entregada previamente a este cliente. Omitiendo duplicado de 2da App Meta.', from });
-          return;
-        }
-        userSession.capCampaignSent = true;
-        userSession.state = 'ai'; // Garantiza que los siguientes mensajes del cliente pasen a la Capa IA y no a Typebot
-        this.userSessions.set(from, userSession);
-
-        // Preservar metadata interna del referral en Chatwoot (sin modificar comportamiento previo)
-        if (referral && !isChatwootConv) {
-          await this.syncReferralToChatwoot(from, profileName, referral);
-        }
-
-        // Paso 1: Enviar Mensaje de Saludo Comercial Renato Bernabel
-        await this.sendTextMessage(from, renatoGreetingSpeech);
-
-        // Paso 2: Enviar la galería COMPLETA de las 7 imágenes REALES de gorras del catálogo JGIS
-        const fullCapGallery = [
-          'https://bot.jgispublicidad.pe/images/gorra_01.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_02.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_03.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_04.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_05.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_06.jpg',
-          'https://bot.jgispublicidad.pe/images/gorra_07.jpg'
-        ];
-
-        for (const capImg of fullCapGallery) {
-          try {
-            await this.sendImageMessage(from, capImg);
-          } catch (errImg) {
-            logger.warn({ msg: 'Error al enviar variante real de gorra', capImg, error: errImg.message });
-          }
-        }
-
-        // Paso 3: Enviar la plantilla comercial completa de pago/entrega solicitada
-        await this.sendTextMessage(from, capCampaignTemplate);
-        logger.info({ msg: 'Secuencia Oficial de Cierre (Saludo + Galería 7 Gorras + Plantilla Comercial) despachada con éxito', from });
-        return;
-      } catch (err) {
-        logger.error({ msg: 'Error al procesar flujo de Campaña de Gorras', error: err.message });
-      }
-    }
 
     // 3. Si el bot está pausado para esta conversación en WhatsApp, verificar si podemos despausarlo
     const cleanBody = (combinedText || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
