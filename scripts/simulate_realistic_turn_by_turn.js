@@ -8,11 +8,11 @@ const APP_SECRET = process.env.APP_SECRET || 'd81ecfc8601b990cb9a67970f167736a';
 
 async function runRealisticTurnByTurnDemo() {
   console.log('🤖 =========================================================================');
-  console.log('🎭 SIMULACIÓN REALISTA CONVERSACIONAL PASO A PASO EN CHATWOOT (TURN BY TURN)');
+  console.log('🎭 SIMULACIÓN REALISTA CONVERSACIONAL PASO A PASO EN CHATWOOT (MASTER FLOW)');
   console.log('🤖 =========================================================================\n');
 
   const waPhone = '519' + String(Date.now()).slice(-8);
-  const waName = `Cliente Realista Meta Ads #${String(Date.now()).slice(-4)}`;
+  const waName = `Cliente Maestro Meta Ads #${String(Date.now()).slice(-4)}`;
 
   const sendWaMessageTurn = async (text, referral = null) => {
     const messageObj = {
@@ -67,36 +67,44 @@ async function runRealisticTurnByTurnDemo() {
     headline: 'Gorras Trucker Personalizadas - S/ 15',
     body: 'Envíos a todo el Perú en 48 horas.'
   });
-  console.log('   ⏱️ Esperando 10 segundos para que el Bot responda el Paso 1...');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot responda con el Menú Maestro...');
   await new Promise(r => setTimeout(r, 10000));
 
   // ---------------------------------------------------------------------------
-  // TURNO 2: Cliente responde al Bot eligiendo "🙋‍♂️ Uso Personal"
+  // TURNO 2: Cliente elige "🧢 Gorras Trucker (Meta Ads)" del Menú Maestro
   // ---------------------------------------------------------------------------
-  console.log('💬 [TURNO 2] Cliente responde "🙋‍♂️ Uso Personal"...');
+  console.log('💬 [TURNO 2] Cliente selecciona "🧢 Gorras Trucker (Meta Ads)"...');
+  await sendWaMessageTurn('🧢 Gorras Trucker (Meta Ads)');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue la Calificación de Gorras Trucker...');
+  await new Promise(r => setTimeout(r, 10000));
+
+  // ---------------------------------------------------------------------------
+  // TURNO 3: Cliente elige "🙋‍♂️ Uso Personal"
+  // ---------------------------------------------------------------------------
+  console.log('💬 [TURNO 3] Cliente responde "🙋‍♂️ Uso Personal"...');
   await sendWaMessageTurn('🙋‍♂️ Uso Personal');
-  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue el Catálogo y Pregunta de Cantidad (Paso 2)...');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue Galería de Fotos y Pregunta de Cantidad...');
   await new Promise(r => setTimeout(r, 10000));
 
   // ---------------------------------------------------------------------------
-  // TURNO 3: Cliente elige la escala de cantidad ("🧢 6 a 12 unidades")
+  // TURNO 4: Cliente elige escala de cantidad "🧢 6 a 12 unidades"
   // ---------------------------------------------------------------------------
-  console.log('💬 [TURNO 3] Cliente responde "🧢 6 a 12 unidades"...');
+  console.log('💬 [TURNO 4] Cliente responde "🧢 6 a 12 unidades"...');
   await sendWaMessageTurn('🧢 6 a 12 unidades');
-  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue la Cotización por Mayor y Pregunta de Cierre (Paso 3 y 4)...');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue Cotización por Mayor y Pregunta de Cierre...');
   await new Promise(r => setTimeout(r, 10000));
 
   // ---------------------------------------------------------------------------
-  // TURNO 4: Cliente confirma el pedido ("🚚 Envío a Domicilio")
+  // TURNO 5: Cliente confirma "🚚 Envío a Domicilio"
   // ---------------------------------------------------------------------------
-  console.log('💬 [TURNO 4] Cliente responde "🚚 Envío a Domicilio"...');
+  console.log('💬 [TURNO 5] Cliente responde "🚚 Envío a Domicilio"...');
   await sendWaMessageTurn('🚚 Envío a Domicilio');
-  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue los Datos de Pago BCP / Yape (Paso 5)...');
+  console.log('   ⏱️ Esperando 10 segundos para que el Bot entregue Datos de Pago BCP / Yape...');
   await new Promise(r => setTimeout(r, 10000));
 
   console.log('🎉 =========================================================================');
-  console.log(`✅ CONVERSACIÓN REALISTA PASO A PASO GENERADA CON ÉXITO PARA: ${waName}`);
-  console.log('👉 Abre Chatwoot (https://chatwoot.jgispublicidad.pe) para ver los 4 turnos separados.');
+  console.log(`✅ CONVERSACIÓN REALISTA DEL FLUJO MAESTRO COMPLETA PARA: ${waName}`);
+  console.log('👉 Abre Chatwoot (https://chatwoot.jgispublicidad.pe) para ver la secuencia fluida.');
   console.log('🎉 =========================================================================\n');
   return;
 }
