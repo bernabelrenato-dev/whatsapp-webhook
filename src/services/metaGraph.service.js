@@ -90,8 +90,6 @@ class MetaGraphService {
     if (!recipientId || recipientId.startsWith('chatwoot_conv_')) return;
 
     const accessToken = process.env.ACCESS_TOKEN;
-    const pageId = process.env.PHONE_NUMBER_ID;
-
     if (!accessToken) {
       throw new Error('ACCESS_TOKEN no disponible para Meta Graph API');
     }
@@ -100,7 +98,7 @@ class MetaGraphService {
       const url = `https://graph.facebook.com/v19.0/me/messages?access_token=${accessToken}`;
       const payload = {
         recipient: { id: recipientId },
-        messaging_type: 'RESPONSE', // Usar RESPONSE permitido por Meta en ventana de 24h sin requirir aprobación de HUMAN_AGENT
+        messaging_type: 'RESPONSE',
         message: { text }
       };
 
@@ -110,6 +108,59 @@ class MetaGraphService {
     } catch (err) {
       logger.error({ msg: 'Error enviando mensaje por Meta Messenger Graph API', recipientId, error: err.response ? err.response.data : err.message });
       throw err;
+    }
+  }
+
+  /**
+   * Responde PÚBLICAMENTE a un comentario en una publicación o anuncio de Facebook/Instagram.
+   * @param {string} commentId ID del comentario de Meta.
+   * @param {string} message Texto de la respuesta pública.
+   */
+  async replyToCommentPublic(commentId, message) {
+    if (!commentId) return;
+    const accessToken = process.env.ACCESS_TOKEN;
+    if (!accessToken) {
+      logger.warn('ACCESS_TOKEN no disponible para responder públicamente al comentario');
+      return null;
+    }
+
+    try {
+      const url = `https://graph.facebook.com/v19.0/${commentId}/comments?access_token=${accessToken}`;
+      const res = await axios.post(url, { message }, { timeout: 5000 });
+      logger.info({ msg: '✅ Respuesta pública en comentario realizada con éxito', commentId, replyId: res.data?.id });
+      return res.data;
+    } catch (err) {
+      logger.error({ msg: 'Error al responder públicamente al comentario en Meta Graph API', commentId, error: err.response ? err.response.data : err.message });
+      return null;
+    }
+  }
+
+  /**
+   * Envía un MENSAJE PRIVADO (DM) al Inbox de Messenger vinculado al comment_id de un anuncio (Estilo ManyChat).
+   * @param {string} commentId ID del comentario del cliente.
+   * @param {string} text Texto del mensaje privado.
+   */
+  async sendPrivateReplyToComment(commentId, text) {
+    if (!commentId) return;
+    const accessToken = process.env.ACCESS_TOKEN;
+    if (!accessToken) {
+      logger.warn('ACCESS_TOKEN no disponible para enviar mensaje privado vinculado al comentario');
+      return null;
+    }
+
+    try {
+      const url = `https://graph.facebook.com/v19.0/me/messages?access_token=${accessToken}`;
+      const payload = {
+        recipient: { comment_id: commentId },
+        message: { text }
+      };
+
+      const res = await axios.post(url, payload, { timeout: 5000 });
+      logger.info({ msg: '✅ Mensaje privado (DM) enviado exitosamente vinculado al comentario', commentId, messageId: res.data?.message_id });
+      return res.data;
+    } catch (err) {
+      logger.error({ msg: 'Error al enviar DM privado vinculado al comentario en Meta Graph API', commentId, error: err.response ? err.response.data : err.message });
+      return null;
     }
   }
 }

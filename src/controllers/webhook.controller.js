@@ -1,9 +1,10 @@
 const logger = require('../utils/logger');
 const config = require('../config/environment');
 const queueService = require('../services/queue.service');
+const commentAutomationService = require('../services/commentAutomation.service');
 
 /**
- * Controlador de peticiones para los endpoints del Webhook de WhatsApp
+ * Controlador de peticiones para los endpoints del Webhook de WhatsApp y Meta Graph
  */
 
 /**
@@ -22,7 +23,6 @@ exports.verifyWebhook = (req, res) => {
   if (mode && token) {
     if (mode === 'subscribe' && token === config.VERIFY_TOKEN) {
       logger.info('¡Verificación del Webhook exitosa! Token verificado.');
-      // Importante: Responder con el challenge en texto plano
       return res.status(200).send(challenge);
     } else {
       logger.warn({
@@ -38,7 +38,7 @@ exports.verifyWebhook = (req, res) => {
 };
 
 /**
- * Recibe los eventos de mensajería en tiempo real de Meta (POST /webhook)
+ * Recibe los eventos de mensajería y comentarios en tiempo real de Meta (POST /webhook)
  */
 exports.receiveMessage = async (req, res, next) => {
   try {
@@ -49,11 +49,27 @@ exports.receiveMessage = async (req, res, next) => {
       payload,
     });
 
-    // Validamos que el objeto sea el esperado de WhatsApp Business
-    if (payload.object === 'whatsapp_business_account') {
-      const entryId = payload.entry?.[0]?.id;
+    const entry = payload.entry?.[0];
+    const change = entry?.changes?.[0];
+    const field = change?.field;
+    const value = change?.value;
+
+    // A. Detectar Comentarios en Anuncios / Publicaciones de Facebook o Instagram (feed/comments)
+    if (field === 'feed' || value?.item === 'comment') {
+      logger.info({ msg: '💬 Webhook Meta Ads Feed/Comment detectado', field, item: value?.item });
+      setImmediate(() => {
+        commentAutomationService.handleIncomingComment(value).catch(err => {
+          logger.error({ msg: 'Error procesando automatizacion de comentario en webhook controller', error: err.message });
+        });
+      });
+      return res.status(200).send('EVENT_RECEIVED');
+    }
+
+    // B. Detectar Eventos de WhatsApp Business
+    if (payload.object === 'whatsapp_business_account' || payload.object === 'page' || payload.object === 'instagram') {
+      const entryId = entry?.id;
       const signature = req.headers['x-hub-signature-256'] || 'Sin firma';
-      const firstMessage = payload.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+      const firstMessage = change?.value?.messages?.[0];
       const messageId = firstMessage?.id || 'N/A';
       const fromPhone = firstMessage?.from || 'N/A';
 
@@ -75,13 +91,10 @@ exports.receiveMessage = async (req, res, next) => {
       return res.status(200).send('EVENT_RECEIVED');
     }
 
-    // Si no es un evento de whatsapp_business_account, se retorna 404
-    logger.warn({
-      msg: 'Carga útil recibida no válida (campo object no coincide)',
-      object: payload.object,
-    });
-    return res.status(404).send();
+    // Si no coincide, responder 200 OK para evitar bloqueos de Meta Webhook verification
+    return res.status(200).send('EVENT_RECEIVED');
   } catch (error) {
     next(error);
   }
 };
+
