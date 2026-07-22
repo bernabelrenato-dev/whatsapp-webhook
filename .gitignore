@@ -6,4 +6,5 @@ tunnel.log
 *.log
 src/public/images/*
 !src/public/images/.gitkeep
+!src/public/images/gorra_*.jpg
 
