@@ -1376,16 +1376,18 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
     // 4. Crear nueva conversación solo si la persona nunca ha tenido una
     if (!conversationId) {
       try {
+        const assigneeId = parseInt(process.env.CHATWOOT_ASSIGNEE_ID || '1');
         const createConvRes = await axios.post(
           `${config.CHATWOOT_API_URL}/api/v1/accounts/${accountId}/conversations`,
           {
             inbox_id: inboxId,
-            contact_id: contactId
+            contact_id: contactId,
+            assignee_id: assigneeId
           },
           { headers }
         );
         conversationId = createConvRes.data.id;
-        logger.info({ msg: 'Nueva conversación creada en Chatwoot', conversationId, contactId });
+        logger.info({ msg: 'Nueva conversación creada y auto-asignada a Renatogod en Chatwoot', conversationId, contactId, assigneeId });
       } catch (err) {
         logger.error({ msg: 'Error creando conversación en Chatwoot', error: err.response ? err.response.data : err.message });
         throw err;
