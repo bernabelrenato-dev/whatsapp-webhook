@@ -516,7 +516,27 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
             }
             return;
           } catch (err) {
-            logger.error({ msg: 'Error procesando intención de catálogo directa', error: err.message });
+            logger.error({ msg: 'Error procesando intención de catálogo directa vía IA, activando fallback directo de catálogo', error: err.message });
+            try {
+              const fallbackCatalog = await catalogService.searchCatalog(cleanBody);
+              if (fallbackCatalog && fallbackCatalog.length > 0) {
+                const topItem = fallbackCatalog[0];
+                const prices = topItem.precios_venta_sin_igv || {};
+                const fallbackText = `📦 *${topItem.nombre}* (Código: *${topItem.codigo}*)\n` +
+                  `🎨 Color: ${topItem.color || 'Varios'}\n` +
+                  `💰 *Precios unitarios estimativos (sin IGV):*\n` +
+                  `• 500+ unidades: *S/ ${prices.precio_500_mas || topItem.precio_unidad}*\n` +
+                  `• 50-499 unidades: *S/ ${prices.precio_50_499 || topItem.precio_unidad}*\n` +
+                  `• 1-49 unidades: *S/ ${prices.precio_1_49 || topItem.precio_unidad}*\n\n` +
+                  `¿Te gustaría cotizar este modelo o necesitas información de otro producto? 😊`;
+                await this.sendTextMessage(from, fallbackText);
+              } else {
+                await this.sendTextMessage(from, `¡Hola, ${profileName}! He recibido tu mensaje sobre nuestros productos. ¿Cuántas unidades te gustaría cotizar de tu proyecto? 😊`);
+              }
+            } catch (fallbackErr) {
+              logger.error({ msg: 'Error en el fallback de catálogo', error: fallbackErr.message });
+            }
+            return;
           }
         }
 

@@ -19,3 +19,12 @@ const gracefulShutdown = () => {
 
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
+
+process.on('unhandledRejection', (reason, promise) => {
+  logger.error({ msg: '⚠️ Advertencia Senior: Promesa no capturada detectada (Unhandled Rejection)', reason: reason?.message || reason, stack: reason?.stack });
+});
+
+process.on('uncaughtException', (error) => {
+  logger.error({ msg: '🚨 Excepción no capturada en tiempo de ejecución (Uncaught Exception)', error: error?.message, stack: error?.stack });
+});
+
