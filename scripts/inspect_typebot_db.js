@@ -15,13 +15,18 @@ async function inspectTypebotDb() {
     console.log('📋 Columnas de la tabla "Typebot":');
     colsRes.rows.forEach(c => console.log(`  - ${c.column_name} (${c.data_type})`));
 
-    const typebotsRes = await pool.query(`SELECT id, name, "publishedTypebotId", "workspaceId" FROM "Typebot" LIMIT 5;`);
+    const typebotsRes = await pool.query(`SELECT id, name, "publicId", "workspaceId" FROM "Typebot" LIMIT 5;`);
     console.log('\n🤖 Flujos existentes en "Typebot":');
     console.log(typebotsRes.rows);
+
+    const publicTypebotsRes = await pool.query(`SELECT id, name, "typebotId" FROM "PublicTypebot" LIMIT 5;`);
+    console.log('\n🌐 Flujos Publicados en "PublicTypebot":');
+    console.log(publicTypebotsRes.rows);
 
     const workspacesRes = await pool.query(`SELECT id, name FROM "Workspace" LIMIT 5;`);
     console.log('\n🏢 Workspaces existentes:');
     console.log(workspacesRes.rows);
+
 
   } catch (err) {
     console.error('❌ Error inspeccionando DB:', err.message);
