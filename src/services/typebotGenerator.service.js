@@ -204,10 +204,10 @@ class TypebotGeneratorService {
 
     // 3. Publicar directamente en tabla "PublicTypebot"
     await this.pool.query(
-      `INSERT INTO "PublicTypebot" (id, "typebotId", name, groups, variables, edges, theme, settings, "createdAt", "updatedAt", version)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $9, '6')
+      `INSERT INTO "PublicTypebot" (id, "typebotId", groups, variables, edges, theme, settings, "createdAt", "updatedAt", version)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $8, '6')
        ON CONFLICT (id) DO UPDATE SET groups = EXCLUDED.groups, variables = EXCLUDED.variables, edges = EXCLUDED.edges, "updatedAt" = EXCLUDED."updatedAt";`,
-      [publicId, typebotId, name, groups, variables, edges, theme, settings, now]
+      [publicId, typebotId, groups, variables, edges, theme, settings, now]
     );
 
     const baseUrl = process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe';
