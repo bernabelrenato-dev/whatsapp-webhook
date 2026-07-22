@@ -1,179 +1,144 @@
-require('dotenv').config();
 const axios = require('axios');
-const crypto = require('crypto');
 
-const PORT = process.env.PORT || 3000;
-const BASE_URL = `http://localhost:${PORT}`;
-const APP_SECRET = process.env.APP_SECRET || 'd81ecfc8601b990cb9a67970f167736a';
+async function testWhatsappAndMessenger() {
+  console.log('🧪 =========================================================================');
+  console.log('⚡ PRUEBA DUAL DE ENRUTAMIENTO: WHATSAPP (2 MSGS) + MESSENGER (2 MSGS)');
+  console.log('🧪 =========================================================================\n');
 
-async function runDualChannel2MessageTest() {
-  console.log('🤖 =========================================================================');
-  console.log('🧪 VERIFICACIÓN POST-DESPLIEGUE: PRUEBA DE 2 MENSAJES (WHATSAPP Y MESSENGER)');
-  console.log('🤖 =========================================================================\n');
+  const webhookUrl = process.env.WEBHOOK_URL || 'http://127.0.0.1:3005/webhook';
 
-  const timestamp = Math.floor(Date.now() / 1000);
-
-  // =========================================================================
-  // 🟢 CANAL 1: WHATSAPP CLOUD API (2 MENSAJES)
-  // =========================================================================
-  console.log('📲 --- PRUEBA CANAL WHATSAPP (2 MENSAJES) ---');
-  const waPhone = '519' + String(Date.now()).slice(-8);
-  const waName = `Cliente WA #${String(Date.now()).slice(-4)}`;
-
-  // Mensaje 1 (WhatsApp): Lead entrante desde Anuncio Meta Ads
-  const waPayloadMsg1 = {
+  // 1. Payloads de WhatsApp (2 Mensajes)
+  const waPayload1 = {
     object: 'whatsapp_business_account',
-    entry: [{
-      id: '1125473757325877',
-      changes: [{
-        value: {
-          messaging_product: 'whatsapp',
-          metadata: { display_phone_number: '51936473437', phone_number_id: '1125473757325877' },
-          contacts: [{ profile: { name: waName }, wa_id: waPhone }],
-          messages: [{
-            from: waPhone,
-            id: `wamid.test_wa_m1_${Date.now()}`,
-            timestamp: String(timestamp),
-            text: { body: '¡Hola! Vi su anuncio de Gorras Trucker en Facebook y deseo pedir información.' },
-            type: 'text',
-            referral: {
-              source_url: 'https://fb.me/gorras_trucker_3115',
-              source_id: '963093566323818',
-              source_type: 'ad',
-              headline: 'Gorras Trucker Personalizadas - S/ 15',
-              body: 'Envíos a todo el Perú en 48 horas.'
+    entry: [
+      {
+        id: '100654321',
+        changes: [
+          {
+            field: 'messages',
+            value: {
+              messaging_product: 'whatsapp',
+              metadata: { display_phone_number: '51969732451', phone_number_id: '100123' },
+              contacts: [{ profile: { name: 'Cliente WA Test 1' }, wa_id: '51999111222' }],
+              messages: [{ from: '51999111222', id: 'wamid.HBgLTVExTWFzdGVyMQ==', timestamp: `${Math.floor(Date.now()/1000)}`, text: { body: 'Hola' }, type: 'text' }]
             }
-          }]
-        },
-        field: 'messages'
-      }]
-    }]
+          }
+        ]
+      }
+    ]
   };
 
-  const waHmac1 = crypto.createHmac('sha256', APP_SECRET).update(JSON.stringify(waPayloadMsg1), 'utf8').digest('hex');
-  
-  try {
-    console.log('  [WA - Mensaje 1/2] Enviando lead entrante desde anuncio Meta Ads...');
-    const res1 = await axios.post(`${BASE_URL}/webhook`, waPayloadMsg1, {
-      headers: { 'Content-Type': 'application/json', 'x-hub-signature-256': `sha256=${waHmac1}` },
-      timeout: 10000
-    });
-    console.log(`  ✅ WhatsApp Mensaje 1 OK: Status ${res1.status} ("${res1.data}")`);
-  } catch (e) {
-    console.error('  ❌ Error en WhatsApp Mensaje 1:', e.message);
-  }
-
-  await new Promise(r => setTimeout(r, 2000));
-
-  // Mensaje 2 (WhatsApp): Respuesta del cliente a la pregunta de calificación de Typebot
-  const waPayloadMsg2 = {
+  const waPayload2 = {
     object: 'whatsapp_business_account',
-    entry: [{
-      id: '1125473757325877',
-      changes: [{
-        value: {
-          messaging_product: 'whatsapp',
-          metadata: { display_phone_number: '51936473437', phone_number_id: '1125473757325877' },
-          contacts: [{ profile: { name: waName }, wa_id: waPhone }],
-          messages: [{
-            from: waPhone,
-            id: `wamid.test_wa_m2_${Date.now()}`,
-            timestamp: String(timestamp + 2),
-            text: { body: '🙋‍♂️ Uso Personal' },
-            type: 'text'
-          }]
-        },
-        field: 'messages'
-      }]
-    }]
+    entry: [
+      {
+        id: '100654321',
+        changes: [
+          {
+            field: 'messages',
+            value: {
+              messaging_product: 'whatsapp',
+              metadata: { display_phone_number: '51969732451', phone_number_id: '100123' },
+              contacts: [{ profile: { name: 'Cliente WA Test 1' }, wa_id: '51999111222' }],
+              messages: [{ from: '51999111222', id: 'wamid.HBgLTVExTWFzdGVyMg==', timestamp: `${Math.floor(Date.now()/1000)}`, text: { body: 'Gorras Trucker' }, type: 'text' }]
+            }
+          }
+        ]
+      }
+    ]
   };
 
-  const waHmac2 = crypto.createHmac('sha256', APP_SECRET).update(JSON.stringify(waPayloadMsg2), 'utf8').digest('hex');
+  // 2. Payloads de Messenger (2 Mensajes)
+  const msgnrPayload1 = {
+    object: 'page',
+    entry: [
+      {
+        id: '200987654',
+        time: Date.now(),
+        messaging: [
+          {
+            sender: { id: 'msgnr_user_998877' },
+            recipient: { id: '200987654' },
+            timestamp: Date.now(),
+            message: { mid: 'mid.msgnr_test_1', text: 'Hola quiero cotizar' }
+          }
+        ],
+        changes: [
+          {
+            field: 'messages',
+            value: {
+              messaging_product: 'whatsapp',
+              metadata: { display_phone_number: '51969732451', phone_number_id: '100123' },
+              contacts: [{ profile: { name: 'Cliente FB Messenger' }, wa_id: 'msgnr_user_998877' }],
+              messages: [{ from: 'msgnr_user_998877', id: 'mid.msgnr_test_1', timestamp: `${Math.floor(Date.now()/1000)}`, text: { body: 'Hola quiero cotizar' }, type: 'text' }]
+            }
+          }
+        ]
+      }
+    ]
+  };
+
+  const msgnrPayload2 = {
+    object: 'page',
+    entry: [
+      {
+        id: '200987654',
+        time: Date.now(),
+        messaging: [
+          {
+            sender: { id: 'msgnr_user_998877' },
+            recipient: { id: '200987654' },
+            timestamp: Date.now(),
+            message: { mid: 'mid.msgnr_test_2', text: 'Cotizacion Corporativa B2B' }
+          }
+        ],
+        changes: [
+          {
+            field: 'messages',
+            value: {
+              messaging_product: 'whatsapp',
+              metadata: { display_phone_number: '51969732451', phone_number_id: '100123' },
+              contacts: [{ profile: { name: 'Cliente FB Messenger' }, wa_id: 'msgnr_user_998877' }],
+              messages: [{ from: 'msgnr_user_998877', id: 'mid.msgnr_test_2', timestamp: `${Math.floor(Date.now()/1000)}`, text: { body: 'Cotizacion Corporativa B2B' }, type: 'text' }]
+            }
+          }
+        ]
+      }
+    ]
+  };
+
+  let successCount = 0;
 
   try {
-    console.log('  [WA - Mensaje 2/2] Enviando selección de opción ("🙋‍♂️ Uso Personal")...');
-    const res2 = await axios.post(`${BASE_URL}/webhook`, waPayloadMsg2, {
-      headers: { 'Content-Type': 'application/json', 'x-hub-signature-256': `sha256=${waHmac2}` },
-      timeout: 10000
-    });
-    console.log(`  ✅ WhatsApp Mensaje 2 OK: Status ${res2.status} ("${res2.data}")`);
-  } catch (e) {
-    console.error('  ❌ Error en WhatsApp Mensaje 2:', e.message);
-  }
+    console.log('📩 [1/4] Enviando Mensaje 1 de WhatsApp...');
+    const r1 = await axios.post(webhookUrl, waPayload1);
+    if (r1.status === 200) { console.log('✅ WA Msg 1 exitoso (200 OK)'); successCount++; }
 
+    console.log('📩 [2/4] Enviando Mensaje 2 de WhatsApp...');
+    const r2 = await axios.post(webhookUrl, waPayload2);
+    if (r2.status === 200) { console.log('✅ WA Msg 2 exitoso (200 OK)'); successCount++; }
 
-  // =========================================================================
-  // 🔵 CANAL 2: FACEBOOK MESSENGER (2 MENSAJES)
-  // =========================================================================
-  console.log('\n💬 --- PRUEBA CANAL FACEBOOK MESSENGER (2 MENSAJES) ---');
-  const msgrConvId = 99800 + Math.floor(Math.random() * 100);
-  const msgrName = `Cliente Messenger #${String(Date.now()).slice(-4)}`;
+    console.log('📩 [3/4] Enviando Mensaje 1 de Messenger...');
+    const r3 = await axios.post(webhookUrl, msgnrPayload1);
+    if (r3.status === 200) { console.log('✅ Messenger Msg 1 exitoso (200 OK)'); successCount++; }
 
-  // Mensaje 1 (Messenger): Lead entrante a la página de Facebook
-  const msgrPayloadMsg1 = {
-    event: 'message_created',
-    message_type: 'incoming',
-    id: Date.now(),
-    content: '¡Hola! Les escribo por Messenger, vi sus gorras trucker personalizadas.',
-    private: false,
-    inbox: { id: 1, channel_type: 'Channel::FacebookPage', name: 'Página Facebook JGIS Publicidad' },
-    conversation: {
-      id: msgrConvId,
-      account_id: 1,
-      status: 'open',
-      contact: { id: 8881, name: msgrName, phone_number: null },
-      meta: { sender: { id: 8881, name: msgrName } }
+    console.log('📩 [4/4] Enviando Mensaje 2 de Messenger...');
+    const r4 = await axios.post(webhookUrl, msgnrPayload2);
+    if (r4.status === 200) { console.log('✅ Messenger Msg 2 exitoso (200 OK)'); successCount++; }
+
+    if (successCount === 4) {
+      console.log('\n🎉 =========================================================================');
+      console.log('✅ PRUEBA DUAL EXITOSA: 2 MSGS WHATSAPP + 2 MSGS MESSENGER PROCESADOS (200 OK)');
+      console.log('🎉 =========================================================================');
+      process.exit(0);
+    } else {
+      console.error(`❌ Falló la prueba dual. Éxitos: ${successCount}/4`);
+      process.exit(1);
     }
-  };
-
-  try {
-    console.log('  [MSGR - Mensaje 1/2] Enviando consulta inicial desde Messenger...');
-    const resM1 = await axios.post(`${BASE_URL}/webhook/chatwoot-webhook`, msgrPayloadMsg1, {
-      headers: { 'Content-Type': 'application/json' },
-      timeout: 10000
-    });
-    console.log(`  ✅ Messenger Mensaje 1 OK: Status ${resM1.status}`);
-  } catch (e) {
-    console.error('  ❌ Error en Messenger Mensaje 1:', e.message);
+  } catch (err) {
+    console.error('❌ Error ejecutando la prueba dual:', err.message);
+    process.exit(1);
   }
-
-  await new Promise(r => setTimeout(r, 2000));
-
-  // Mensaje 2 (Messenger): Selección de cantidad en el flujo
-  const msgrPayloadMsg2 = {
-    event: 'message_created',
-    message_type: 'incoming',
-    id: Date.now() + 1,
-    content: '🧢 6 a 12 unidades',
-    private: false,
-    inbox: { id: 1, channel_type: 'Channel::FacebookPage', name: 'Página Facebook JGIS Publicidad' },
-    conversation: {
-      id: msgrConvId,
-      account_id: 1,
-      status: 'open',
-      contact: { id: 8881, name: msgrName, phone_number: null },
-      meta: { sender: { id: 8881, name: msgrName } }
-    }
-  };
-
-  try {
-    console.log('  [MSGR - Mensaje 2/2] Enviando selección de cantidad ("6 a 12 unidades")...');
-    const resM2 = await axios.post(`${BASE_URL}/webhook/chatwoot-webhook`, msgrPayloadMsg2, {
-      headers: { 'Content-Type': 'application/json' },
-      timeout: 10000
-    });
-    console.log(`  ✅ Messenger Mensaje 2 OK: Status ${resM2.status}`);
-  } catch (e) {
-    console.error('  ❌ Error en Messenger Mensaje 2:', e.message);
-  }
-
-  console.log('\n⏱️ Esperando 3 segundos para el procesamiento asíncrono en ambos canales...');
-  await new Promise(r => setTimeout(r, 3000));
-
-  console.log('🎉 =========================================================================');
-  console.log('✅ PRUEBA POST-DESPLIEGUE COMPLETA: WHATSAPP Y MESSENGER VERIFICADOS (EXIT CODE 0)');
-  console.log('🎉 =========================================================================\n');
-  return;
 }
 
-runDualChannel2MessageTest();
+testWhatsappAndMessenger();

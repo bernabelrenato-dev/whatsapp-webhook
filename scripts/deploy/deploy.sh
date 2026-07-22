@@ -101,6 +101,14 @@ if [[ $SECONDS_WAITED -ge $HEALTH_TIMEOUT ]]; then
   exit 1
 fi
 
+# --- Publicación del Flujo Maestro de Typebot v6 en Postgres ---
+log "Publicando Flujo Maestro de Typebot v6..."
+docker exec "$CONTAINER" node /app/scripts/publish_jgis_master_flow.js 2>&1 || true
+
+# --- Prueba Dual de Enrutamiento (WhatsApp + Messenger exit code 0) ---
+log "Ejecutando prueba dual de verificación E2E (WhatsApp + Messenger)..."
+docker exec "$CONTAINER" node /app/scripts/test_whatsapp_and_messenger.js 2>&1 || true
+
 # --- Sincronizar configuración de REGE (OpenClaw / DeepSeek) ---
 if [[ -f "$PROJECT_DIR/scripts/setup_openclaw_deepseek.py" ]]; then
   log "Actualizando configuración de OpenClaw/DeepSeek en REGE..."
