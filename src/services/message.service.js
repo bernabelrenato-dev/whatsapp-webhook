@@ -1346,7 +1346,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
 
     try {
       const conversationId = await this.getOrCreateConversationId(phone);
-      await this.sendChatwootMessage(conversationId, text, imageFileName);
+      await this.sendChatwootMessage(conversationId, text, imageFileName, true);
     } catch (error) {
       logger.error({ msg: 'Error al sincronizar mensaje saliente con Chatwoot', phone, error: error.message });
     }
