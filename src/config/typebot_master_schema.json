@@ -72,7 +72,7 @@
             },
             {
               "id": "opt_menu_pedidos",
-              "content": "🚚 Pedidos y Tienda",
+              "content": "🚚 Pedidos y Pasarela de Pago",
               "outgoingEdgeId": "edge_menu_to_pedidos"
             },
             {
@@ -550,7 +550,7 @@
               {
                 "children": [
                   {
-                    "text": "🖊️ *Modelos Destacados de Lapiceros Metálicos JGIS*\nSelecciona un modelo para ver su foto, precio por volumen y realizar tu pedido 👇"
+                    "text": "🖊️ *Modelos Destacados de Lapiceros Metálicos JGIS*\nSelecciona un modelo para ver su foto real, precios por volumen y comprar 👇"
                   }
                 ]
               }
@@ -577,6 +577,11 @@
               "outgoingEdgeId": "edge_2086r_to_detail"
             },
             {
+              "id": "opt_set_1",
+              "content": "🖊️ Modelo SET-1 (Set Libreta + Lapicero Metal)",
+              "outgoingEdgeId": "edge_set1_to_detail"
+            },
+            {
               "id": "opt_cat_back1",
               "content": "⬅️ Volver a Categorías",
               "outgoingEdgeId": "edge_lmb_to_cat"
@@ -593,7 +598,7 @@
       "title": "🖊️ Detalle LM-18",
       "graphCoordinates": {
         "x": 1500,
-        "y": -200
+        "y": -300
       },
       "blocks": [
         {
@@ -649,7 +654,7 @@
       "title": "🖊️ Detalle LYS-01",
       "graphCoordinates": {
         "x": 1500,
-        "y": -50
+        "y": -150
       },
       "blocks": [
         {
@@ -705,7 +710,7 @@
       "title": "🖊️ Detalle 2086-R",
       "graphCoordinates": {
         "x": 1500,
-        "y": 100
+        "y": 0
       },
       "blocks": [
         {
@@ -757,11 +762,67 @@
       ]
     },
     {
+      "id": "group_model_set1",
+      "title": "🖊️ Detalle SET-1",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 150
+      },
+      "blocks": [
+        {
+          "id": "b_img_set1",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/SET-1.jpg"
+          }
+        },
+        {
+          "id": "b_text_set1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🖊️ *SET EJECUTIVO SET-1 (LIBRETA + LAPICERO METAL)*\n• Libreta de Corcho ecológico + Lapicero de metal grabado\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 16.00 c/u\n• 51 a 499 unidades: S/ 14.00 c/u\n• 500+ unidades: S/ 13.50 c/u\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial en tienda."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_set1_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_set1_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_set1_to_pago"
+            },
+            {
+              "id": "opt_set1_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_set1_to_handover"
+            },
+            {
+              "id": "opt_set1_back",
+              "content": "⬅️ Volver a Lapiceros Metal",
+              "outgoingEdgeId": "edge_set1_to_metal"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
       "id": "group_cat_lap_plast",
       "title": "🖊️ Lapiceros Plásticos — Modelos",
       "graphCoordinates": {
         "x": 1100,
-        "y": 250
+        "y": 300
       },
       "blocks": [
         {
@@ -772,7 +833,7 @@
               {
                 "children": [
                   {
-                    "text": "🖊️ *Lapiceros Plásticos Publicitarios JGIS*\n• Impresión serigrafía / tampografía a full color\n• Ideal para eventos masivos, campañas y ferias\n\n💰 *Precios por Mayor*: Desde S/ 0.25 c/u por millar"
+                    "text": "🖊️ *Modelos Destacados de Lapiceros Plásticos JGIS*\nImpresión serigrafía a full color. Selecciona tu modelo 👇"
                   }
                 ]
               }
@@ -780,21 +841,21 @@
           }
         },
         {
-          "id": "b_input_lap_plast_actions",
+          "id": "b_input_lap_plast_models",
           "type": "choice input",
           "items": [
             {
-              "id": "opt_lp_pago",
-              "content": "💳 Pasarela de Pago (Yape / BCP)",
-              "outgoingEdgeId": "edge_lp_to_pago"
+              "id": "opt_lp_3111",
+              "content": "🖊️ Modelo 3111 (Lapicero Plástico Click)",
+              "outgoingEdgeId": "edge_lp3111_to_detail"
             },
             {
-              "id": "opt_lp_agent",
-              "content": "👩‍💼 Cotizar con Asesor",
-              "outgoingEdgeId": "edge_lp_to_handover"
+              "id": "opt_lp_3115",
+              "content": "🖊️ Modelo 3115 (Lapicero Plástico Grip)",
+              "outgoingEdgeId": "edge_lp3115_to_detail"
             },
             {
-              "id": "opt_lp_back",
+              "id": "opt_cat_back2",
               "content": "⬅️ Volver a Categorías",
               "outgoingEdgeId": "edge_lpb_to_cat"
             }
@@ -806,11 +867,123 @@
       ]
     },
     {
+      "id": "group_model_lp3111",
+      "title": "🖊️ Detalle Modelo 3111",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 300
+      },
+      "blocks": [
+        {
+          "id": "b_img_lp3111",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/3111.jpg"
+          }
+        },
+        {
+          "id": "b_text_lp3111",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🖊️ *LAPICERO PLASTICO MODELO 3111*\n• Cuerpo plástico liviano con pulsador. Tinta Azul.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 100 unidades: S/ 0.27 c/u\n• 500+ unidades: S/ 0.25 c/u por millar\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_lp3111_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_lp3111_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_lp3111_to_pago"
+            },
+            {
+              "id": "opt_lp3111_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_lp3111_to_handover"
+            },
+            {
+              "id": "opt_lp3111_back",
+              "content": "⬅️ Volver a Lapiceros Plásticos",
+              "outgoingEdgeId": "edge_lp3111_to_plast"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_lp3115",
+      "title": "🖊️ Detalle Modelo 3115",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 450
+      },
+      "blocks": [
+        {
+          "id": "b_img_lp3115",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/3115.jpg"
+          }
+        },
+        {
+          "id": "b_text_lp3115",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🖊️ *LAPICERO PLASTICO MODELO 3115*\n• Empuñadura ergonómica de goma anti-deslizante. Tinta Azul.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 100 unidades: S/ 0.27 c/u\n• 500+ unidades: S/ 0.25 c/u por millar\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_lp3115_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_lp3115_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_lp3115_to_pago"
+            },
+            {
+              "id": "opt_lp3115_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_lp3115_to_handover"
+            },
+            {
+              "id": "opt_lp3115_back",
+              "content": "⬅️ Volver a Lapiceros Plásticos",
+              "outgoingEdgeId": "edge_lp3115_to_plast"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
       "id": "group_cat_tazas",
-      "title": "☕ Mugs y Tazas",
+      "title": "☕ Mugs y Tazas — Modelos",
       "graphCoordinates": {
         "x": 1100,
-        "y": 400
+        "y": 600
       },
       "blocks": [
         {
@@ -821,7 +994,7 @@
               {
                 "children": [
                   {
-                    "text": "☕ *Tazas y Mugs Personalizados JGIS*\n• Taza Mágica termosensible MTT-10 (desde S/ 11.00 c/u)\n• Mug Térmico Acero MUG-32 (desde S/ 15.50 c/u)\n• Taza Pizarra MTT-08 (desde S/ 7.50 c/u)"
+                    "text": "☕ *Modelos Destacados de Tazas y Mugs JGIS*\nSublimación alta definición a full color. Selecciona tu modelo 👇"
                   }
                 ]
               }
@@ -829,21 +1002,21 @@
           }
         },
         {
-          "id": "b_input_tazas_actions",
+          "id": "b_input_tazas_models",
           "type": "choice input",
           "items": [
             {
-              "id": "opt_tz_pago",
-              "content": "💳 Pasarela de Pago (Yape / BCP)",
-              "outgoingEdgeId": "edge_tz_to_pago"
+              "id": "opt_tz_mtt10",
+              "content": "☕ Modelo MTT-10 (Taza Mágica Termosensible)",
+              "outgoingEdgeId": "edge_mtt10_to_detail"
             },
             {
-              "id": "opt_tz_agent",
-              "content": "👩‍💼 Cotizar con Asesor",
-              "outgoingEdgeId": "edge_tz_to_handover"
+              "id": "opt_tz_mug32",
+              "content": "☕ Modelo MUG-32 (Mug Térmico Acero 320ml)",
+              "outgoingEdgeId": "edge_mug32_to_detail"
             },
             {
-              "id": "opt_tz_back",
+              "id": "opt_cat_back3",
               "content": "⬅️ Volver a Categorías",
               "outgoingEdgeId": "edge_tzb_to_cat"
             }
@@ -855,11 +1028,123 @@
       ]
     },
     {
+      "id": "group_model_mtt10",
+      "title": "☕ Detalle MTT-10 Taza Mágica",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 600
+      },
+      "blocks": [
+        {
+          "id": "b_img_mtt10",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/TAZAS.png"
+          }
+        },
+        {
+          "id": "b_text_mtt10",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "☕ *TAZA MAGICA TERMOSENSIBLE MTT-10*\n• Revela tu diseño personalizado al verter líquido caliente (11oz).\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 16.00 c/u\n• 13 a 50 unidades: S/ 12.50 c/u\n• 51+ unidades: S/ 11.00 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mtt10_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mtt10_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_mtt10_to_pago"
+            },
+            {
+              "id": "opt_mtt10_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_mtt10_to_handover"
+            },
+            {
+              "id": "opt_mtt10_back",
+              "content": "⬅️ Volver a Tazas y Mugs",
+              "outgoingEdgeId": "edge_mtt10_to_tazas"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_mug32",
+      "title": "☕ Detalle MUG-32 Termo",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 750
+      },
+      "blocks": [
+        {
+          "id": "b_img_mug32",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/SET-4.jpg"
+          }
+        },
+        {
+          "id": "b_text_mug32",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "☕ *MUG THERMIC STAINLESS STEEL MUG-32*\n• Doble pared de acero inoxidable 320ml con tapa hermética.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 22.00 c/u\n• 13 a 50 unidades: S/ 18.00 c/u\n• 51+ unidades: S/ 15.50 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mug32_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mug32_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_mug32_to_pago"
+            },
+            {
+              "id": "opt_mug32_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_mug32_to_handover"
+            },
+            {
+              "id": "opt_mug32_back",
+              "content": "⬅️ Volver a Tazas y Mugs",
+              "outgoingEdgeId": "edge_mug32_to_tazas"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
       "id": "group_cat_tomatodos",
-      "title": "🍶 Tomatodos y Botellas",
+      "title": "🍶 Tomatodos — Modelos",
       "graphCoordinates": {
         "x": 1100,
-        "y": 550
+        "y": 900
       },
       "blocks": [
         {
@@ -870,7 +1155,7 @@
               {
                 "children": [
                   {
-                    "text": "🍶 *Tomatodos y Botellas de Aluminio / Metal JGIS*\n• Tomatodo Metálico TMD-02 (desde S/ 9.00 c/u)\n• Tomatodo Premium Acabado Mate 1.2L TMD-38\n• Tomatodo Aluminio Tapa Bambú TMD-48"
+                    "text": "🍶 *Modelos Destacados de Tomatodos JGIS*\nAluminio / Metal con grabado o serigrafía. Selecciona tu modelo 👇"
                   }
                 ]
               }
@@ -878,23 +1163,74 @@
           }
         },
         {
-          "id": "b_input_tomatodos_actions",
+          "id": "b_input_tomatodos_models",
           "type": "choice input",
           "items": [
             {
-              "id": "opt_tm_pago",
-              "content": "💳 Pasarela de Pago (Yape / BCP)",
-              "outgoingEdgeId": "edge_tm_to_pago"
+              "id": "opt_tm_tmd38",
+              "content": "🍶 Modelo TMD-38 (Tomatodo Premium Mate 1.2L)",
+              "outgoingEdgeId": "edge_tmd38_to_detail"
             },
             {
-              "id": "opt_tm_agent",
-              "content": "👩‍💼 Cotizar con Asesor",
-              "outgoingEdgeId": "edge_tm_to_handover"
-            },
-            {
-              "id": "opt_tm_back",
+              "id": "opt_cat_back4",
               "content": "⬅️ Volver a Categorías",
               "outgoingEdgeId": "edge_tmb_to_cat"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_tmd38",
+      "title": "🍶 Detalle TMD-38 Premium 1.2L",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 900
+      },
+      "blocks": [
+        {
+          "id": "b_img_tmd38",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/METAL.jpeg"
+          }
+        },
+        {
+          "id": "b_text_tmd38",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🍶 *TOMATODO PREMIUM ACABADO MATE 1.2L TMD-38*\n• Incluye estuche tubular de regalo. Conserva temperatura fría/caliente.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 35.00 c/u\n• 13 a 50 unidades: S/ 28.00 c/u\n• 51+ unidades: S/ 24.50 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_tmd38_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_tmd38_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_tmd38_to_pago"
+            },
+            {
+              "id": "opt_tmd38_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_tmd38_to_handover"
+            },
+            {
+              "id": "opt_tmd38_back",
+              "content": "⬅️ Volver a Tomatodos",
+              "outgoingEdgeId": "edge_tmd38_to_tomatodos"
             }
           ],
           "options": {
@@ -907,7 +1243,7 @@
       "id": "group_pasarela_pago",
       "title": "💳 Pasarela de Pago Oficial JGIS",
       "graphCoordinates": {
-        "x": 1900,
+        "x": 2000,
         "y": 0
       },
       "blocks": [
@@ -977,7 +1313,7 @@
       "id": "group_handover",
       "title": "👩‍💼 Atención Humana & Chatwoot",
       "graphCoordinates": {
-        "x": 2300,
+        "x": 2400,
         "y": 0
       },
       "blocks": [
@@ -1271,6 +1607,16 @@
       }
     },
     {
+      "id": "edge_set1_to_detail",
+      "from": {
+        "blockId": "b_input_lap_metal_models",
+        "itemId": "opt_set_1"
+      },
+      "to": {
+        "groupId": "group_model_set1"
+      }
+    },
+    {
       "id": "edge_lmb_to_cat",
       "from": {
         "blockId": "b_input_lap_metal_models",
@@ -1371,93 +1717,263 @@
       }
     },
     {
-      "id": "edge_lp_to_pago",
+      "id": "edge_set1_to_pago",
       "from": {
-        "blockId": "b_input_lap_plast_actions",
-        "itemId": "opt_lp_pago"
+        "blockId": "b_input_set1_actions",
+        "itemId": "opt_set1_pay"
       },
       "to": {
         "groupId": "group_pasarela_pago"
       }
     },
     {
-      "id": "edge_lp_to_handover",
+      "id": "edge_set1_to_handover",
       "from": {
-        "blockId": "b_input_lap_plast_actions",
-        "itemId": "opt_lp_agent"
+        "blockId": "b_input_set1_actions",
+        "itemId": "opt_set1_agent"
       },
       "to": {
         "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_set1_to_metal",
+      "from": {
+        "blockId": "b_input_set1_actions",
+        "itemId": "opt_set1_back"
+      },
+      "to": {
+        "groupId": "group_cat_lap_metal"
+      }
+    },
+    {
+      "id": "edge_lp3111_to_detail",
+      "from": {
+        "blockId": "b_input_lap_plast_models",
+        "itemId": "opt_lp_3111"
+      },
+      "to": {
+        "groupId": "group_model_lp3111"
+      }
+    },
+    {
+      "id": "edge_lp3115_to_detail",
+      "from": {
+        "blockId": "b_input_lap_plast_models",
+        "itemId": "opt_lp_3115"
+      },
+      "to": {
+        "groupId": "group_model_lp3115"
       }
     },
     {
       "id": "edge_lpb_to_cat",
       "from": {
-        "blockId": "b_input_lap_plast_actions",
-        "itemId": "opt_lp_back"
+        "blockId": "b_input_lap_plast_models",
+        "itemId": "opt_cat_back2"
       },
       "to": {
         "groupId": "group_catalogo_categorias"
       }
     },
     {
-      "id": "edge_tz_to_pago",
+      "id": "edge_lp3111_to_pago",
       "from": {
-        "blockId": "b_input_tazas_actions",
-        "itemId": "opt_tz_pago"
+        "blockId": "b_input_lp3111_actions",
+        "itemId": "opt_lp3111_pay"
       },
       "to": {
         "groupId": "group_pasarela_pago"
       }
     },
     {
-      "id": "edge_tz_to_handover",
+      "id": "edge_lp3111_to_handover",
       "from": {
-        "blockId": "b_input_tazas_actions",
-        "itemId": "opt_tz_agent"
+        "blockId": "b_input_lp3111_actions",
+        "itemId": "opt_lp3111_agent"
       },
       "to": {
         "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_lp3111_to_plast",
+      "from": {
+        "blockId": "b_input_lp3111_actions",
+        "itemId": "opt_lp3111_back"
+      },
+      "to": {
+        "groupId": "group_cat_lap_plast"
+      }
+    },
+    {
+      "id": "edge_lp3115_to_pago",
+      "from": {
+        "blockId": "b_input_lp3115_actions",
+        "itemId": "opt_lp3115_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_lp3115_to_handover",
+      "from": {
+        "blockId": "b_input_lp3115_actions",
+        "itemId": "opt_lp3115_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_lp3115_to_plast",
+      "from": {
+        "blockId": "b_input_lp3115_actions",
+        "itemId": "opt_lp3115_back"
+      },
+      "to": {
+        "groupId": "group_cat_lap_plast"
+      }
+    },
+    {
+      "id": "edge_mtt10_to_detail",
+      "from": {
+        "blockId": "b_input_tazas_models",
+        "itemId": "opt_tz_mtt10"
+      },
+      "to": {
+        "groupId": "group_model_mtt10"
+      }
+    },
+    {
+      "id": "edge_mug32_to_detail",
+      "from": {
+        "blockId": "b_input_tazas_models",
+        "itemId": "opt_tz_mug32"
+      },
+      "to": {
+        "groupId": "group_model_mug32"
       }
     },
     {
       "id": "edge_tzb_to_cat",
       "from": {
-        "blockId": "b_input_tazas_actions",
-        "itemId": "opt_tz_back"
+        "blockId": "b_input_tazas_models",
+        "itemId": "opt_cat_back3"
       },
       "to": {
         "groupId": "group_catalogo_categorias"
       }
     },
     {
-      "id": "edge_tm_to_pago",
+      "id": "edge_mtt10_to_pago",
       "from": {
-        "blockId": "b_input_tomatodos_actions",
-        "itemId": "opt_tm_pago"
+        "blockId": "b_input_mtt10_actions",
+        "itemId": "opt_mtt10_pay"
       },
       "to": {
         "groupId": "group_pasarela_pago"
       }
     },
     {
-      "id": "edge_tm_to_handover",
+      "id": "edge_mtt10_to_handover",
       "from": {
-        "blockId": "b_input_tomatodos_actions",
-        "itemId": "opt_tm_agent"
+        "blockId": "b_input_mtt10_actions",
+        "itemId": "opt_mtt10_agent"
       },
       "to": {
         "groupId": "group_handover"
       }
     },
     {
+      "id": "edge_mtt10_to_tazas",
+      "from": {
+        "blockId": "b_input_mtt10_actions",
+        "itemId": "opt_mtt10_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_mug32_to_pago",
+      "from": {
+        "blockId": "b_input_mug32_actions",
+        "itemId": "opt_mug32_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_mug32_to_handover",
+      "from": {
+        "blockId": "b_input_mug32_actions",
+        "itemId": "opt_mug32_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_mug32_to_tazas",
+      "from": {
+        "blockId": "b_input_mug32_actions",
+        "itemId": "opt_mug32_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_tmd38_to_detail",
+      "from": {
+        "blockId": "b_input_tomatodos_models",
+        "itemId": "opt_tm_tmd38"
+      },
+      "to": {
+        "groupId": "group_model_tmd38"
+      }
+    },
+    {
       "id": "edge_tmb_to_cat",
       "from": {
-        "blockId": "b_input_tomatodos_actions",
-        "itemId": "opt_tm_back"
+        "blockId": "b_input_tomatodos_models",
+        "itemId": "opt_cat_back4"
       },
       "to": {
         "groupId": "group_catalogo_categorias"
+      }
+    },
+    {
+      "id": "edge_tmd38_to_pago",
+      "from": {
+        "blockId": "b_input_tmd38_actions",
+        "itemId": "opt_tmd38_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_tmd38_to_handover",
+      "from": {
+        "blockId": "b_input_tmd38_actions",
+        "itemId": "opt_tmd38_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_tmd38_to_tomatodos",
+      "from": {
+        "blockId": "b_input_tmd38_actions",
+        "itemId": "opt_tmd38_back"
+      },
+      "to": {
+        "groupId": "group_cat_tomatodos"
       }
     },
     {
@@ -1482,6 +1998,6 @@
     }
   ],
   "variables": [],
-  "createdAt": "2026-07-23T16:38:06.154Z",
-  "updatedAt": "2026-07-23T16:38:06.155Z"
+  "createdAt": "2026-07-23T16:49:43.779Z",
+  "updatedAt": "2026-07-23T16:49:43.780Z"
 }
