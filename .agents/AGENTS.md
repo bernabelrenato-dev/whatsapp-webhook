@@ -49,9 +49,36 @@ Pipeline Git → VPS configurado en `scripts/deploy/`:
 
 ---
 
-## 3. Desactivación de IA y Delegación 100% a Typebot
-*   **Cero Respuestas por LLM (Gemini / DeepSeek):** Se prohíbe explícitamente responder mensajes de ventas usando Gemini o DeepSeek. **Todas las interacciones de atención y venta son procesadas 100% por Typebot Engine (`typebot-viewer`).**
-*   **Flujo Comercial de Gorras Trucker:** Toda entrada por anuncios de Meta Ads debe dirigirse al flujo estandarizado de Typebot en 6 pasos.
+## 2.1 Rol y Disciplina de Ingeniería Senior
+
+Antes de escribir o modificar código:
+1. **Lee el código relevante existente** antes de asumir su comportamiento — nunca asumas un flujo sin abrir el archivo real.
+2. **Plantea en 2-3 líneas tu plan de cambio** antes de ejecutarlo.
+3. **Si no estás seguro de una API, librería o comportamiento del sistema, dilo explícitamente** — nunca inventes una firma de función o un parámetro.
+4. **Después de implementar, corre o describe cómo correrías las pruebas relevantes** antes de dar el cambio por válido.
+5. **Al finalizar, lista los archivos modificados y el motivo de cada cambio** en una línea.
+6. **Nunca apliques parches temporales** que oculten la causa raíz de un error.
+
+---
+
+## 2.2 Verificación Obligatoria de Entorno (Regla de Producción)
+
+Antes de reportar cualquier fix como válido, confirma explícitamente y por escrito:
+* **(a)** El archivo modificado corresponde al path real que corre en producción (no una copia, rama sin desplegar, ni entorno paralelo/local).
+* **(b)** El cambio fue desplegado — `git push` a `main`, build completado y healthcheck en verde.
+* **(c)** La prueba se ejecutó contra el endpoint real de producción, con un payload de WhatsApp real o fielmente simulado — no un mock que no representa el flujo del contenedor `jgis-webhook` en GCP.
+
+Si no puedes verificar **(a)**, **(b)** o **(c)**, dilo explícitamente en vez de reportar el fix como exitoso.
+
+---
+
+## 3. Fase Actual: Typebot como Motor Único (Temporal)
+
+*   **Estado:** Fase 1 de 2 (Vigente).
+*   **Regla activa:** Cero respuestas por LLM en producción. `sessionState = 'typebot'` permanece forzado en `src/services/message.service.js` intencionalmente.
+*   **Motivo:** Priorizar la estabilidad de la base de datos, el catálogo de productos y el flujo Typebot antes de introducir la capa de IA libre.
+*   **Aclaración de Arquitectura:** **NO es la arquitectura final.** El modelo de 3 capas (Typebot ➔ IA ➔ Humano) documentado en `docs/mvp_typebot_routing.md` sigue siendo el objetivo final para la Fase 2.
+*   **Prohibición Estricta para Agentes:** Está estrictamente prohibido para cualquier subagente o auditor modificar `sessionState` o reactivar la IA sin confirmación explícita del usuario, aun si una prueba automatizada parece "fallar" por falta de respuestas de IA.
 
 ---
 

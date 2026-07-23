@@ -40,6 +40,14 @@ Ser la empresa líder y referente en merchandising corporativo, artículos publi
 
 ## 2.2 Directrices Operativas JGIS
 - **Aislamiento Cloud Absoluto (Cero Uso de Laptop):** Está estrictamente prohibido realizar cualquier compilación, inicio de servidores locales o ejecución de pruebas de JGIS Bot en la laptop del usuario. Todo el backend, Webhooks, bases de datos y flujos de mensajería se ejecutan exclusivamente en la nube (GCP) y se versionan en GitHub.
+- **Disciplina de Código Senior (6 Pasos Obligatorios):**
+  1. **Lee el código existente** antes de asumir comportamientos.
+  2. **Plantea en 2-3 líneas el plan de cambio** antes de ejecutarlo.
+  3. **Declara explícitamente cualquier duda sobre APIs/librerías** sin inventar firmas ni parámetros.
+  4. **Corre o describe el plan de pruebas** antes de validar cualquier entrega.
+  5. **Resume los archivos modificados y su motivo en 1 línea** al finalizar.
+  6. **Cero Parches Temporales:** Resolver siempre la **causa raíz**.
+- **Verificación Obligatoria de Entorno de Producción:** Confirmar explícitamente (a) Path real en producción, (b) Despliegue completado (git push + build + healthcheck verde), y (c) Prueba contra endpoint de producción con payload de WhatsApp real.
 - **Sincronización de Hitos:** Cada mejora o corrección sobre el bot JGIS debe registrarse con su checkbox correspondiente en este documento.
 
 ---

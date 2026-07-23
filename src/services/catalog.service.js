@@ -26,26 +26,40 @@ function getImagesDirectoryFiles() {
   return imageFilesCache;
 }
 
+function normalizeCode(str) {
+  if (!str) return '';
+  return str.toString().toUpperCase().replace(/[\r\n\s\-_()]/g, '');
+}
+
 function getRealImageUrl(codigo, fallbackUrl) {
   const files = getImagesDirectoryFiles();
-  const cleanCode = (codigo || '').trim().toUpperCase();
+  const normTarget = normalizeCode(codigo);
 
-  const match = files.find(f => {
-    const baseName = path.basename(f, path.extname(f)).toUpperCase();
-    return baseName === cleanCode;
-  });
+  if (normTarget) {
+    const match = files.find(f => {
+      const normBase = normalizeCode(path.basename(f, path.extname(f)));
+      return normBase === normTarget || (normTarget.length >= 4 && (normBase.includes(normTarget) || normTarget.includes(normBase)));
+    });
 
-  if (match) {
-    return `${process.env.PUBLIC_URL}/images/${match}`;
+    if (match) {
+      return `${process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe'}/images/${match}`;
+    }
   }
 
   if (fallbackUrl) {
-    return `${process.env.PUBLIC_URL}/${fallbackUrl}`;
+    if (fallbackUrl.startsWith('http://') || fallbackUrl.startsWith('https://')) {
+      return fallbackUrl;
+    }
+    return `${process.env.PUBLIC_URL || 'https://bot.jgispublicidad.pe'}/${fallbackUrl.replace(/^\//, '')}`;
   }
   return 'No disponible';
 }
 
 class CatalogService {
+  getRealImageUrl(codigo, fallbackUrl) {
+    return getRealImageUrl(codigo, fallbackUrl);
+  }
+
   /**
    * Calcula los precios de venta al público aplicando el margen de JGIS
    * en base a los precios de costo del Excel.
@@ -185,11 +199,77 @@ class CatalogService {
       }
 
       logger.info({ msg: 'Resultados de búsqueda de catálogo Postgres procesados', count: processedResults.length, query });
-      return processedResults;
+      if (processedResults.length > 0) return processedResults;
+
+      // Fallback a JSON máster si Postgres no trajo coincidencias
+      return this.searchMasterCatalogJSON(query);
     } catch (error) {
-      logger.error({ msg: '❌ Error en searchCatalog (PostgreSQL)', error: error.message });
+      logger.error({ msg: '❌ Error en searchCatalog (PostgreSQL), ejecutando fallback a JSON máster', error: error.message });
+      return this.searchMasterCatalogJSON(query);
+    }
+  }
+
+  /**
+   * Búsqueda en el archivo JSON máster compilado de 15,751 variantes.
+   */
+  searchMasterCatalogJSON(query) {
+    if (!query || typeof query !== 'string') return [];
+    const normQuery = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const words = normQuery.split(/\s+/).filter(w => w.length >= 2);
+    if (words.length === 0) return [];
+
+    let catalogMaster = [];
+    const masterPath = path.join(__dirname, '..', 'config', 'catalog_master_v2.json');
+    const legacyPath = path.join(__dirname, '..', 'config', 'catalog.json');
+
+    try {
+      if (fs.existsSync(masterPath)) {
+        catalogMaster = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
+      } else if (fs.existsSync(legacyPath)) {
+        catalogMaster = JSON.parse(fs.readFileSync(legacyPath, 'utf8'));
+      }
+    } catch (err) {
+      logger.error({ msg: 'Error leyendo catálogo JSON máster', error: err.message });
       return [];
     }
+
+    const matches = [];
+
+    for (const item of catalogMaster) {
+      const code = (item.codigo_proveedor || item.code || '').toLowerCase();
+      const name = (item.nombre || item.name || '').toLowerCase();
+      const cat = (item.categoria || item.category || '').toLowerCase();
+      const color = (item.variante_color || item.color || '').toLowerCase();
+
+      let score = 0;
+      words.forEach(w => {
+        if (code.includes(w)) score += 50;
+        if (name.includes(w)) score += 20;
+        if (cat.includes(w)) score += 10;
+        if (color.includes(w)) score += 5;
+      });
+
+      if (score > 0) {
+        const costPrice = parseFloat(item.precio_500u || item.price_50 || item.price_1 || 0);
+        matches.push({
+          item,
+          score,
+          result: {
+            codigo: item.codigo_proveedor || item.code,
+            nombre: item.nombre || item.name,
+            descripcion: `Color: ${item.variante_color || item.color || 'Varios'}, Proveedor: ${item.proveedor || item.source || 'N/A'}, Categoría: ${item.categoria || item.category || 'General'}`,
+            color: item.variante_color || item.color,
+            stock: item.stock !== undefined ? item.stock : 'Disponible',
+            categoria: item.categoria || item.category,
+            precios_venta_sin_igv: this.calculateSellingPrices(costPrice),
+            link_imagen: getRealImageUrl(item.codigo_proveedor || item.code, item.foto_url || item.image)
+          }
+        });
+      }
+    }
+
+    matches.sort((a, b) => b.score - a.score);
+    return matches.slice(0, 8).map(m => m.result);
   }
 
   /**

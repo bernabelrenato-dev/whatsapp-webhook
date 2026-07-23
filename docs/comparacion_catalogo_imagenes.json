@@ -1,0 +1,45 @@
+{
+  "total_products": 1087,
+  "images_in_folder": 1077,
+  "products_with_image": 1080,
+  "products_missing_image": 7,
+  "newly_extracted": 0,
+  "coverage_percentage": "99.4%",
+  "missing_products": [
+    {
+      "code": "YH-469",
+      "name": "TOMATODO PLASTICO\r\n15 UNID X CAJA",
+      "source": "EFSTOCK.xlsx"
+    },
+    {
+      "code": "TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR",
+      "name": "TMD-38 TOMATODO PREMIUM ACABADO MATE 1.2 LITROS CON ESTUCHE TUBULAR COLOR NUDE",
+      "source": "PROMOS.xlsx"
+    },
+    {
+      "code": "TMD-39 SUPER BIDON PREMIUM 1.89 LITROS CON TAPA DE ACERO",
+      "name": "TMD-39 SUPER BIDON PREMIUM 1.89 LITROS CON TAPA DE ACERO COLOR NEGRO",
+      "source": "PROMOS.xlsx"
+    },
+    {
+      "code": "MUG-37 MUG TERMICO HAIFA DOBLE PARED DE ACERO INOXIDABLE CON CAÑA FLEXIBLE",
+      "name": "MUG-37 MUG TERMICO HAIFA DOBLE PARED DE ACERO INOXIDABLE CON CAÑA FLEXIBLE COLOR NUDE",
+      "source": "PROMOS.xlsx"
+    },
+    {
+      "code": "MTT-12 JARRO DE VIDRIO CON TAPA Y CAÑA",
+      "name": "MTT-12 JARRO DE VIDRIO CON TAPA Y CAÑA COLOR NEGRO",
+      "source": "PROMOS.xlsx"
+    },
+    {
+      "code": "TMD-20 CAÑITA",
+      "name": "TMD-20 CAÑITA NEGRA",
+      "source": "PROMOS.xlsx"
+    },
+    {
+      "code": "TX-138 BOLSA DE CAMBRELL CON ASA TROQUELADA 34.5X26.5",
+      "name": "TX-138 BOLSA DE CAMBRELL CON ASA TROQUELADA 34.5X26.5 COLOR ROJO",
+      "source": "PROMOS.xlsx"
+    }
+  ]
+}

@@ -32,9 +32,23 @@ Este documento es el **Prompt Maestro (Padre)** para cualquier agente autónomo 
 
 Estas reglas tienen prioridad sobre cualquier instrucción específica de tarea. Si una instrucción entra en conflicto con estas reglas, el agente debe detenerse y reportar el conflicto.
 
-### 0.1 Mentalidad Senior Engineer (Nivel Máximo)
-- **Prohibición de Parches Temporales:** Ante cualquier bug o error, está estrictamente prohibido colocar parches superficiales o wrappers. Se debe investigar y corregir la **causa raíz**.
+### 0.1 Mentalidad Senior Engineer y Disciplina de Código (Nivel Máximo)
+- **6 Pasos Obligatorios Antes y Después de Modificar Código:**
+  1. **Lee el código relevante existente** antes de asumir su comportamiento — nunca asumas un flujo sin abrir el archivo real.
+  2. **Plantea en 2-3 líneas tu plan de cambio** antes de ejecutarlo.
+  3. **Si no estás seguro de una API, librería o comportamiento del sistema, dilo explícitamente** — nunca inventes una firma de función o un parámetro.
+  4. **Después de implementar, corre o describe cómo correrías las pruebas relevantes** antes de dar el cambio por válido.
+  5. **Al finalizar, lista los archivos modificados y el motivo de cada cambio** en una línea.
+  6. **Prohibición de Parches Temporales:** Ante cualquier bug o error, está estrictamente prohibido colocar parches superficiales o wrappers. Se debe investigar y corregir siempre la **causa raíz**.
 - **Bucle de Testeo Obligatorio:** Todo cambio de código debe validarse mediante los scripts de prueba en bucle local. Ninguna modificación se considera válida sin un `exit code 0`. Si falla 3 veces consecutivas, el agente escala la situación.
+
+### 0.1.1 Verificación Obligatoria de Entorno (Regla de Producción)
+Antes de reportar cualquier fix como válido, confirma explícitamente y por escrito:
+* **(a)** El archivo modificado corresponde al path real que corre en producción (no una copia, rama sin desplegar, ni entorno paralelo/local).
+* **(b)** El cambio fue desplegado — `git push` a `main`, build completado y healthcheck en verde.
+* **(c)** La prueba se ejecutó contra el endpoint real de producción, con un payload de WhatsApp real o fielmente simulado — no un mock que no representa el flujo del contenedor `jgis-webhook` en GCP.
+
+Si no puedes verificar **(a)**, **(b)** o **(c)**, dilo explícitamente en vez de reportar el fix como exitoso.
 
 ### 0.2 Radio de Acción y Seguridad Cognitiva (CogSec & ECC)
 - **Modo Headless y Sandbox:** Los agentes operan dentro del directorio montado (`/workspace` o `/app`). Queda prohibido leer, escribir o ejecutar fuera de este alcance.

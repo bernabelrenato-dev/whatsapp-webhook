@@ -1,5 +1,7 @@
 # Documentación de Enrutamiento MVP: Typebot ➔ Capa IA ➔ Humano
 
+> ⚠️ **Estado:** Arquitectura objetivo (Fase 2), actualmente en pausa temporal (Fase 1). Ver [.agents/AGENTS.md](file:///c:/Users/USER/.gemini/antigravity/scratch/whatsapp-webhook/.agents/AGENTS.md) Sección 3 para la regla vigente.
+
 Este documento registra los detalles del enrutamiento de tres capas para el ecosistema de JGIS Publicidad.
 
 ---

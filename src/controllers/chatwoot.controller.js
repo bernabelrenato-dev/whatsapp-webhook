@@ -115,10 +115,10 @@ exports.receiveChatwootMessage = async (req, res, next) => {
       if (messageType === 'incoming') {
         const channelType = payload.inbox?.channel_type;
         const hasPhoneNumber = !!from; // from se obtiene de getContactPhone(payload)
-        const isWhatsAppOrApi = channelType === 'Channel::Whatsapp' || channelType === 'Channel::Api' || hasPhoneNumber;
+        const isWhatsAppChannel = channelType === 'Channel::Whatsapp';
 
-        if (isWhatsAppOrApi) {
-          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen WhatsApp/API): "${payload.content}"`);
+        if (isWhatsAppChannel) {
+          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen WhatsApp): "${payload.content}"`);
         } else {
           logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
           
@@ -194,11 +194,11 @@ exports.receiveChatwootMessage = async (req, res, next) => {
         logger.info(`👤 Mensaje manual de agente humano detectado en Chatwoot para ${profileName} (${pauseKey}). Pausando bot.`);
         aiService.pauseConversation(pauseKey);
 
-        // Solo reenviar a WhatsApp si el canal es de tipo API (nuestro canal de WhatsApp) y no es destinatario virtual
+        // Reenviar a WhatsApp si el canal es WhatsApp o API y no es destinatario virtual
         const channelType = payload.inbox?.channel_type;
-        const isApiChannel = channelType === 'Channel::Api';
+        const isWhatsappOrApiChannel = channelType === 'Channel::Api' || channelType === 'Channel::Whatsapp';
 
-        if (isApiChannel && from && !from.startsWith('chatwoot_conv_')) {
+        if (isWhatsappOrApiChannel && from && !from.startsWith('chatwoot_conv_')) {
           if (payload.attachments && payload.attachments.length > 0) {
             const att = payload.attachments[0];
             if (att.data_url) {

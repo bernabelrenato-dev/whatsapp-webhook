@@ -10,11 +10,11 @@ Hola colega, he terminado de refactorizar el código local en la rama `master`. 
 
 ### ⚠️ Requisito Crítico en la Configuración de Nginx:
 Para proteger la API contra spam y ataques DOS, he instalado el middleware `express-rate-limit` en la aplicación Express.
-Para evitar excepciones en tiempo de ejecución o bloqueos erróneos de IP, debes asegurarte de que la configuración del bloque `location` de Nginx en la VM pase correctamente la IP real del cliente al servidor Node.js (puerto 3000) agregando estas directivas:
+Para evitar excepciones en tiempo de ejecución o bloqueos erróneos de IP, debes asegurarte de que la configuración del bloque `location` de Nginx en la VM pase correctamente la IP real del cliente al servidor Node.js (puerto 3005 expuesto en el host) agregando estas directivas:
 
 ```nginx
 location / {
-    proxy_pass http://localhost:3000;
+    proxy_pass http://localhost:3005;
     proxy_http_version 1.1;
     
     # Cabeceras requeridas para express-rate-limit (trust proxy)

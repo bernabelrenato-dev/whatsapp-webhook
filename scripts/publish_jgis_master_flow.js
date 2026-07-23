@@ -1,4 +1,5 @@
-const pool = require('../src/utils/db');
+require('dotenv').config();
+const db = require('../src/utils/db');
 const fs = require('fs');
 const path = require('path');
 
@@ -132,6 +133,7 @@ async function publishMasterFlow() {
         }
       ]
     },
+
     // Precios Escala Trucker
     {
       id: 'group_tprecio_1_5',
@@ -181,7 +183,7 @@ async function publishMasterFlow() {
           id: 'b_tp_51_499',
           type: 'text',
           outgoingEdgeId: 'edge_tp4_to_cierre',
-          content: { richText: [{ children: [{ text: '🧢 Para *51 a 499 unidades* (Escala Corporativa) el precio es de *S/. 8.50 c/u* 💵\n\n⏱️ Tiempo de producción: 48 horas\n🚚 Envíos a todo el Perú | 🏬 Recojo en tienda' }] }] }
+          content: { richText: [{ children: [{ text: '🧢 Para *51 a 499 unidades* el precio super mayorista es de *S/. 7.50 c/u* 💵\n\n⏱️ Tiempo de producción: 48 horas\n🚚 Envíos a todo el Perú | 🏬 Recojo en tienda' }] }] }
         }
       ]
     },
@@ -194,10 +196,11 @@ async function publishMasterFlow() {
           id: 'b_tp_500_1000',
           type: 'text',
           outgoingEdgeId: 'edge_tp5_to_cierre',
-          content: { richText: [{ children: [{ text: '🧢 Para *500 a 1000 unidades* (Volumen Industrial) el precio es de *S/. 6.90 c/u* 💵\n\n⏱️ Tiempo de producción: 48 horas\n🚚 Envíos a todo el Perú | 🏬 Recojo en tienda' }] }] }
+          content: { richText: [{ children: [{ text: '🧢 Para *500 a 1,000 unidades* el precio industrial por mayor es de *S/. 5.50 c/u* 💵\n\n⏱️ Tiempo de producción: 48 horas\n🚚 Envíos a todo el Perú | 🏬 Recojo en tienda' }] }] }
         }
       ]
     },
+
     {
       id: 'group_trucker_cierre',
       title: '🧢 Gorras Trucker — Cierre',
@@ -216,7 +219,7 @@ async function publishMasterFlow() {
           id: 'b_input_trucker_cierre',
           type: 'choice input',
           items: [
-            { id: 'opt_tc_envio', content: '🚚 Envío a Domicilio', outgoingEdgeId: 'edge_tc_to_pago' },
+            { id: 'opt_tc_pago', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_tc_to_pago' },
             { id: 'opt_tc_recojo', content: '🏬 Recojo en Tienda', outgoingEdgeId: 'edge_tc_to_pago' },
             { id: 'opt_tc_asesor', content: '👩‍💼 Hablar con Asesor', outgoingEdgeId: 'edge_tc_to_handover' }
           ],
@@ -226,7 +229,7 @@ async function publishMasterFlow() {
     },
 
     // -----------------------------------------------------------------------
-    // 3️⃣ FLUJO 2: CATÁLOGO MULTICATEGORÍA
+    // 3️⃣ FLUJO 2: CATÁLOGO MULTICATEGORÍA CON MODELOS EXACTOS
     // -----------------------------------------------------------------------
     {
       id: 'group_catalogo_categorias',
@@ -238,8 +241,8 @@ async function publishMasterFlow() {
           type: 'text',
           content: {
             richText: [
-              { children: [{ text: '📦 Explora nuestro catálogo de más de 3,500 productos publicitarios 🎁✨' }] },
-              { children: [{ text: '¿Qué categoría de productos deseas cotizar?' }] }
+              { children: [{ text: '📦 Explora nuestro catálogo de más de 15,000 variantes de merchandising 🎁✨' }] },
+              { children: [{ text: 'Selecciona una categoría de productos para ver los modelos exactos 👇' }] }
             ]
           }
         },
@@ -247,141 +250,223 @@ async function publishMasterFlow() {
           id: 'b_input_cat_opcion',
           type: 'choice input',
           items: [
-            { id: 'opt_cat_tazas', content: '☕ Tazas, Tomatodos & Mugs', outgoingEdgeId: 'edge_cat_to_tazas' },
-            { id: 'opt_cat_bolsas', content: '👜 Bolsas Ecológicas & Notex', outgoingEdgeId: 'edge_cat_to_bolsas' },
-            { id: 'opt_cat_lapiceros', content: '🖊️ Lapiceros & Escritorio', outgoingEdgeId: 'edge_cat_to_lapiceros' },
-            { id: 'opt_cat_regalos', content: '🎁 Kits Corporativos Premium', outgoingEdgeId: 'edge_cat_to_regalos' },
+            { id: 'opt_cat_lap_metal', content: '🖊️ Lapiceros Metálicos (Láser)', outgoingEdgeId: 'edge_cat_to_lap_metal' },
+            { id: 'opt_cat_lap_plast', content: '🖊️ Lapiceros Plásticos (Publicitarios)', outgoingEdgeId: 'edge_cat_to_lap_plast' },
+            { id: 'opt_cat_tazas', content: '☕ Mugs y Tazas Térmicas', outgoingEdgeId: 'edge_cat_to_tazas' },
+            { id: 'opt_cat_tomatodos', content: '🍶 Tomatodos y Botellas', outgoingEdgeId: 'edge_cat_to_tomatodos' },
             { id: 'opt_cat_menu', content: '⬅️ Volver al Menú Principal', outgoingEdgeId: 'edge_cat_to_menu' }
           ],
           options: { isMultipleChoice: false }
         }
       ]
     },
+
+    // CATEGORÍA: LAPICEROS METÁLICOS
     {
-      id: 'group_cat_tazas',
-      title: '☕ Tazas & Tomatodos',
+      id: 'group_cat_lap_metal',
+      title: '🖊️ Lapiceros Metálicos — Modelos',
       graphCoordinates: { x: 1100, y: -100 },
       blocks: [
         {
-          id: 'b_tazas_msg',
-          type: 'text',
-          outgoingEdgeId: 'edge_tazas_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '☕ *Tazas y Tomatodos Personalizados JGIS*\n\n• Taza Blanca 11oz sublimada (desde S/ 6.50 c/u por mayor)\n• Taza Mágica termosensible (desde S/ 11.00 c/u)\n• Tomatodos de Aluminio / Térmicos (desde S/ 14.00 c/u)\n\n👩‍💼 He derivado tu solicitud con un asesor comercial para darte la cotización exacta con tu logo vectorizado.' }] }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      id: 'group_cat_bolsas',
-      title: '👜 Bolsas Ecológicas',
-      graphCoordinates: { x: 1100, y: 50 },
-      blocks: [
-        {
-          id: 'b_bolsas_msg',
-          type: 'text',
-          outgoingEdgeId: 'edge_bolsas_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '👜 *Bolsas Ecológicas, Tocuyo y Notex JGIS*\n\n• Bolsas Notex estampadas (desde S/ 1.80 c/u por mayor)\n• Bolsas Tocuyo 100% Algodón (desde S/ 4.50 c/u)\n• Mochilas ejecutivas y cartucheras corporativas\n\n👩‍💼 Un asesor tomará tu mensaje para cotizar las medidas y colores exactos que necesitas.' }] }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      id: 'group_cat_lapiceros',
-      title: '🖊️ Lapiceros & Escritorio',
-      graphCoordinates: { x: 1100, y: 200 },
-      blocks: [
-        {
-          id: 'b_lapiceros_msg',
-          type: 'text',
-          outgoingEdgeId: 'edge_lapiceros_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '🖊️ *Lapiceros y Artículos de Escritorio JGIS*\n\n• Lapiceros plásticos corporativos (desde S/ 0.80 c/u por millar)\n• Lapiceros metálicos con grabado Láser (desde S/ 3.50 c/u)\n• Libretas y Agendas ejecutivas\n\n👩‍💼 Un asesor comercial te adjuntará la muestra digital con tu logo.' }] }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      id: 'group_cat_regalos',
-      title: '🎁 Kits Corporativos',
-      graphCoordinates: { x: 1100, y: 350 },
-      blocks: [
-        {
-          id: 'b_regalos_msg',
-          type: 'text',
-          outgoingEdgeId: 'edge_regalos_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '🎁 *Kits Corporativos & Merchandising Premium JGIS*\n\n• USBs publicitarios, Powerbanks y Pad Mouse\n• Kits de Bienvenida (Welcome Kits) personalizados\n• Trofeos y reconocimientos acrílicos/cristal\n\n👩‍💼 Te estamos transfiriendo con nuestro equipo ejecutivo para tu propuesta personalizada.' }] }
-            ]
-          }
-        }
-      ]
-    },
-
-    // -----------------------------------------------------------------------
-    // 4️⃣ FLUJO 3: COTIZACIÓN B2B CORPORATIVA (FACTURACIÓN & RUC)
-    // -----------------------------------------------------------------------
-    {
-      id: 'group_b2b_form',
-      title: '🏢 Cotización Corporativa B2B',
-      graphCoordinates: { x: 700, y: 400 },
-      blocks: [
-        {
-          id: 'b_b2b_intro',
+          id: 'b_lap_metal_intro',
           type: 'text',
           content: {
             richText: [
-              { children: [{ text: '🏢 *Atención Especial a Empresas y Compras Corporativas B2B* 🇵🇪' }] },
-              { children: [{ text: 'Emitimos Factura / Boleta y ofrecemos atención personalizada para requerimientos de gran volumen.' }] },
-              { children: [{ text: '\nPor favor, responde en un solo mensaje: *¿Nombre de tu Empresa o RUC?* 📝' }] }
+              { children: [{ text: '🖊️ *Modelos Destacados de Lapiceros Metálicos JGIS*\nSelecciona un modelo para ver su foto, precio por volumen y realizar tu pedido 👇' }] }
             ]
           }
         },
         {
-          id: 'b_b2b_cierre',
-          type: 'text',
-          outgoingEdgeId: 'edge_b2b_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '🙌 ¡Muchas gracias! Tu requerimiento corporativo ha sido marcado como *Prioridad B2B*. Renato Bernabel o un ejecutivo sénior te asistirá de inmediato. 💼' }] }
-            ]
-          }
-        }
-      ]
-    },
-
-    // -----------------------------------------------------------------------
-    // 5️⃣ FLUJO 4: PEDIDOS & UBICACIÓN DE TIENDA
-    // -----------------------------------------------------------------------
-    {
-      id: 'group_pedidos_tienda',
-      title: '🚚 Estado de Pedidos & Tienda',
-      graphCoordinates: { x: 700, y: 700 },
-      blocks: [
-        {
-          id: 'b_tienda_info',
-          type: 'text',
-          content: {
-            richText: [
-              { children: [{ text: '📍 *Ubicación de Tienda y Centro de Entregas JGIS*\n\n🏢 *Dirección:* Galería Centro Comercial Centro Lima, Sótano Pasaje "H", Stand 560 (Av. Bolivia / Jr. Camaná, Cercado de Lima).\n⏰ *Horario:* Lunes a Sábado de 9:00 AM a 7:00 PM.\n🚪 *Referencia:* Cerca de la Puerta 7 (Boulevard).\n\n🚚 *Envíos Nacionales:* Enviamos por Olva Courier, Shalom, Marvisur y agencias a todo el Perú.' }] }
-            ]
-          }
-        },
-        {
-          id: 'b_input_pedidos_opcion',
+          id: 'b_input_lap_metal_models',
           type: 'choice input',
           items: [
-            { id: 'opt_ped_pago', content: '💳 Ver Datos de Pago', outgoingEdgeId: 'edge_pedidos_to_pago' },
-            { id: 'opt_ped_estado', content: '📦 Consultar Mi Pedido', outgoingEdgeId: 'edge_pedidos_to_handover' },
-            { id: 'opt_ped_menu', content: '⬅️ Volver al Menú', outgoingEdgeId: 'edge_pedidos_to_menu' }
+            { id: 'opt_lm_18', content: '🖊️ Modelo LM-18 (Lapicero Metal Grueso)', outgoingEdgeId: 'edge_lm18_to_detail' },
+            { id: 'opt_lys_01', content: '🖊️ Modelo LYS-01 (Set Lapicero + Llavero)', outgoingEdgeId: 'edge_lys01_to_detail' },
+            { id: 'opt_2086_r', content: '🖊️ Modelo 2086-R (Lapicero Executive)', outgoingEdgeId: 'edge_2086r_to_detail' },
+            { id: 'opt_cat_back1', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_lmb_to_cat' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // DETALLE MODELO LM-18
+    {
+      id: 'group_model_lm18',
+      title: '🖊️ Detalle LM-18',
+      graphCoordinates: { x: 1500, y: -200 },
+      blocks: [
+        {
+          id: 'b_img_lm18',
+          type: 'image',
+          content: { url: 'https://bot.jgispublicidad.pe/images/METAL.jpeg' }
+        },
+        {
+          id: 'b_text_lm18',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🖊️ *LAPICERO METALICO GRUESO LM-18*\n• Grabado personalizado con tecnología Láser en metal\n• Presentación: Estuche / Caja ejecutiva opcional\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 4.50 c/u\n• 51 a 499 unidades: S/ 3.80 c/u\n• 500+ unidades: S/ 3.20 c/u\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial en tienda.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_lm18_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_lm18_pay', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_lm18_to_pago' },
+            { id: 'opt_lm18_agent', content: '👩‍💼 Confirmar con Asesor', outgoingEdgeId: 'edge_lm18_to_handover' },
+            { id: 'opt_lm18_back', content: '⬅️ Volver a Lapiceros Metal', outgoingEdgeId: 'edge_lm18_to_metal' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // DETALLE MODELO LYS-01
+    {
+      id: 'group_model_lys01',
+      title: '🖊️ Detalle LYS-01',
+      graphCoordinates: { x: 1500, y: -50 },
+      blocks: [
+        {
+          id: 'b_img_lys01',
+          type: 'image',
+          content: { url: 'https://bot.jgispublicidad.pe/images/LYS-01.jpg' }
+        },
+        {
+          id: 'b_text_lys01',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🖊️ *SET LAPICERO METALICO + LLAVERO LYS-01*\n• Incluye estuche regalo 16x9 cm + lapicero + llavero metal\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 7.00 c/u\n• 51 a 499 unidades: S/ 5.20 c/u\n• 500+ unidades: S/ 5.00 c/u\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial en tienda.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_lys01_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_lys01_pay', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_lys01_to_pago' },
+            { id: 'opt_lys01_agent', content: '👩‍💼 Confirmar con Asesor', outgoingEdgeId: 'edge_lys01_to_handover' },
+            { id: 'opt_lys01_back', content: '⬅️ Volver a Lapiceros Metal', outgoingEdgeId: 'edge_lys01_to_metal' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // DETALLE MODELO 2086-R
+    {
+      id: 'group_model_2086r',
+      title: '🖊️ Detalle 2086-R',
+      graphCoordinates: { x: 1500, y: 100 },
+      blocks: [
+        {
+          id: 'b_img_2086r',
+          type: 'image',
+          content: { url: 'https://bot.jgispublicidad.pe/images/2086-R-RP-2351.jpeg' }
+        },
+        {
+          id: 'b_text_2086r',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🖊️ *LAPICERO METALICO EXECUTIVE 2086-R*\n• Cuerpo metálico mate con acabados cromados\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 5.50 c/u\n• 51 a 499 unidades: S/ 4.20 c/u\n• 500+ unidades: S/ 3.90 c/u\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial en tienda.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_2086r_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_2086r_pay', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_2086r_to_pago' },
+            { id: 'opt_2086r_agent', content: '👩‍💼 Confirmar con Asesor', outgoingEdgeId: 'edge_2086r_to_handover' },
+            { id: 'opt_2086r_back', content: '⬅️ Volver a Lapiceros Metal', outgoingEdgeId: 'edge_2086r_to_metal' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // CATEGORÍA: LAPICEROS PLÁSTICOS
+    {
+      id: 'group_cat_lap_plast',
+      title: '🖊️ Lapiceros Plásticos — Modelos',
+      graphCoordinates: { x: 1100, y: 250 },
+      blocks: [
+        {
+          id: 'b_lap_plast_intro',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🖊️ *Lapiceros Plásticos Publicitarios JGIS*\n• Impresión serigrafía / tampografía a full color\n• Ideal para eventos masivos, campañas y ferias\n\n💰 *Precios por Mayor*: Desde S/ 0.25 c/u por millar' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_lap_plast_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_lp_pago', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_lp_to_pago' },
+            { id: 'opt_lp_agent', content: '👩‍💼 Cotizar con Asesor', outgoingEdgeId: 'edge_lp_to_handover' },
+            { id: 'opt_lp_back', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_lpb_to_cat' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // CATEGORÍA: TAZAS Y MUGS
+    {
+      id: 'group_cat_tazas',
+      title: '☕ Mugs y Tazas',
+      graphCoordinates: { x: 1100, y: 400 },
+      blocks: [
+        {
+          id: 'b_tazas_intro',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '☕ *Tazas y Mugs Personalizados JGIS*\n• Taza Mágica termosensible MTT-10 (desde S/ 11.00 c/u)\n• Mug Térmico Acero MUG-32 (desde S/ 15.50 c/u)\n• Taza Pizarra MTT-08 (desde S/ 7.50 c/u)' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_tazas_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_tz_pago', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_tz_to_pago' },
+            { id: 'opt_tz_agent', content: '👩‍💼 Cotizar con Asesor', outgoingEdgeId: 'edge_tz_to_handover' },
+            { id: 'opt_tz_back', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_tzb_to_cat' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // CATEGORÍA: TOMATODOS
+    {
+      id: 'group_cat_tomatodos',
+      title: '🍶 Tomatodos y Botellas',
+      graphCoordinates: { x: 1100, y: 550 },
+      blocks: [
+        {
+          id: 'b_tomatodos_intro',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🍶 *Tomatodos y Botellas de Aluminio / Metal JGIS*\n• Tomatodo Metálico TMD-02 (desde S/ 9.00 c/u)\n• Tomatodo Premium Acabado Mate 1.2L TMD-38\n• Tomatodo Aluminio Tapa Bambú TMD-48' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_tomatodos_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_tm_pago', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_tm_to_pago' },
+            { id: 'opt_tm_agent', content: '👩‍💼 Cotizar con Asesor', outgoingEdgeId: 'edge_tm_to_handover' },
+            { id: 'opt_tm_back', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_tmb_to_cat' }
           ],
           options: { isMultipleChoice: false }
         }
@@ -389,28 +474,32 @@ async function publishMasterFlow() {
     },
 
     // -----------------------------------------------------------------------
-    // 6️⃣ DATOS DE PAGO Y RECEPCIÓN DE COMPROBANTE
+    // 4️⃣ PASARELA DE PAGO OFICIAL JGIS (YAPE / BCP / PLIN)
     // -----------------------------------------------------------------------
     {
-      id: 'group_datos_pago',
-      title: '💳 Datos de Pago & Cuentas',
+      id: 'group_pasarela_pago',
+      title: '💳 Pasarela de Pago Oficial JGIS',
       graphCoordinates: { x: 1900, y: 0 },
       blocks: [
         {
-          id: 'b_datos_pago_msg',
+          id: 'b_pago_speech',
           type: 'text',
           content: {
             richText: [
-              { children: [{ text: '💳 *Cuentas Oficiales de Corporación JGIS*\n\n🏦 *Banco BCP*\n👤 Titular: Corporación JGIS\n💰 Cuenta Corriente (Soles): *1912434894087*\n🔢 CCI: *00219100243489408755*\n\n📱 *Yape / Plin:* *969732451*\n\n💡 *Reserva:* Puedes separar la producción de tu pedido con el *50% de adelanto*.\n📍 *Dirección de Tienda:* Galería Centro Comercial Centro Lima, Sótano Pasaje "H", Stand 560.' }] }
+              { children: [{ text: '💳 *PASARELA DE PAGO OFICIAL — CORPORACION JGIS* 🇵🇪\n\n' }] },
+              { children: [{ text: '📱 *Yape / Plin*: `969732451` (Titular: Corporación JGIS)\n\n' }] },
+              { children: [{ text: '🏦 *Banco BCP*\n• Cuenta Corriente (Soles): `1912434894087`\n• CCI: `00219100243489408755`' }] },
+              { children: [{ text: '\n\n📍 *Recojo en Tienda*: C.C. Centro Lima, Sótano Pasaje "H" Stand 560 (Puerta 7 Boulevard).\n⏱️ *Tiempo de Producción*: 48 horas tras confirmación.' }] }
             ]
           }
         },
         {
-          id: 'b_input_pago_confirmacion',
+          id: 'b_input_pago_final',
           type: 'choice input',
           items: [
-            { id: 'opt_pago_realizado', content: '✅ Ya aboné / Enviar voucher', outgoingEdgeId: 'edge_pago_to_produccion' },
-            { id: 'opt_pago_asesor', content: '👩‍💼 Hablar con Asesor', outgoingEdgeId: 'edge_pago_to_handover' }
+            { id: 'opt_pago_voucher', content: '✅ Ya realicé mi pago (Enviar Voucher)', outgoingEdgeId: 'edge_pago_to_handover' },
+            { id: 'opt_pago_asesor', content: '👩‍💼 Hablar con un Asesor', outgoingEdgeId: 'edge_pago_to_handover' },
+            { id: 'opt_pago_menu', content: '⬅️ Volver al Menú Principal', outgoingEdgeId: 'edge_pago_to_menu' }
           ],
           options: { isMultipleChoice: false }
         }
@@ -418,40 +507,20 @@ async function publishMasterFlow() {
     },
 
     // -----------------------------------------------------------------------
-    // 7️⃣ CONFIRMACIÓN DE PAGO & PASO A PRODUCCIÓN
+    // 5️⃣ ATENCIÓN HUMANA & HANDOVER (CHATWOOT)
     // -----------------------------------------------------------------------
     {
-      id: 'group_confirmacion_produccion',
-      title: '🏭 Confirmación de Pago & Producción',
+      id: 'group_handover',
+      title: '👩‍💼 Atención Humana & Chatwoot',
       graphCoordinates: { x: 2300, y: 0 },
-      blocks: [
-        {
-          id: 'b_confirmacion_produccion_msg',
-          type: 'text',
-          outgoingEdgeId: 'edge_produccion_to_handover',
-          content: {
-            richText: [
-              { children: [{ text: '🎉 ¡Comprobante registrado e ingresado exitosamente! 🙌✨\n\n📌 *Estado de tu Pedido:* *EN PRODUCCIÓN 🏭*\n⏱️ *Tiempo estimado de fabricación:* 48 horas\n🚚 *Modalidad:* Según la opción que seleccionaste (Envío / Recojo)\n\n👩‍💼 Renato Bernabel o nuestro equipo de producción se pondrá en contacto contigo por este mismo chat para enviarte la muestra o vista previa digital antes del acabado final.\n\n¡Gracias por tu confianza y preferencia en Corporación JGIS Publicidad! 🧢📦' }] }
-            ]
-          }
-        }
-      ]
-    },
-
-    // -----------------------------------------------------------------------
-    // 8️⃣ HANDOVER A CHATWOOT (ASESOR HUMANO)
-    // -----------------------------------------------------------------------
-    {
-      id: 'group_handover_humano',
-      title: '👩‍💼 Transferencia a Asesor Humano',
-      graphCoordinates: { x: 2700, y: 0 },
       blocks: [
         {
           id: 'b_handover_msg',
           type: 'text',
           content: {
             richText: [
-              { children: [{ text: '👩‍💼 ¡Perfecto! He transferido tu conversación con Renato Bernabel y nuestro equipo comercial de JGIS Publicidad. Te responderemos por aquí en breve. ¡Gracias por tu preferencia! 😊' }] }
+              { children: [{ text: '👩‍💼 ¡Perfecto! He derivado tu conversación con nuestro equipo comercial en Chatwoot.' }] },
+              { children: [{ text: 'Un asesor continuará tu atención en breve por este mismo medio. ¡Gracias por confiar en Corporación JGIS! 🏬✨' }] }
             ]
           }
         }
@@ -460,91 +529,138 @@ async function publishMasterFlow() {
   ];
 
   const edges = [
-    // Start -> Apertura
-    { id: 'edge_start_apertura', from: { eventId: 'event_start' }, to: { groupId: 'group_apertura' } },
-
-    // Menú Principal -> Ramas
+    { id: 'edge_start_apertura', from: { blockId: 'event_start' }, to: { groupId: 'group_apertura' } },
     { id: 'edge_menu_to_trucker', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_trucker' }, to: { groupId: 'group_trucker_calificacion' } },
     { id: 'edge_menu_to_catalogo', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_catalogo' }, to: { groupId: 'group_catalogo_categorias' } },
-    { id: 'edge_menu_to_b2b', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_b2b' }, to: { groupId: 'group_b2b_form' } },
-    { id: 'edge_menu_to_pedidos', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_pedidos' }, to: { groupId: 'group_pedidos_tienda' } },
-    { id: 'edge_menu_to_handover', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_asesor' }, to: { groupId: 'group_handover_humano' } },
+    { id: 'edge_menu_to_b2b', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_b2b' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_menu_to_pedidos', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_pedidos' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_menu_to_handover', from: { blockId: 'b_input_menu_principal', itemId: 'opt_menu_asesor' }, to: { groupId: 'group_handover' } },
 
-    // Trucker Flow Connections
-    { id: 'edge_trucker_to_galeria', from: { blockId: 'b_input_trucker_uso', itemId: 'opt_trucker_personal' }, to: { groupId: 'group_trucker_galeria_cantidad' } },
+    // Edges Trucker
+    { id: 'edge_trucker_to_galeria', from: { blockId: 'b_input_trucker_uso' }, to: { groupId: 'group_trucker_galeria_cantidad' } },
     { id: 'edge_tprecio_1_5', from: { blockId: 'b_input_trucker_cant', itemId: 'opt_tcant_1_5' }, to: { groupId: 'group_tprecio_1_5' } },
     { id: 'edge_tprecio_6_12', from: { blockId: 'b_input_trucker_cant', itemId: 'opt_tcant_6_12' }, to: { groupId: 'group_tprecio_6_12' } },
     { id: 'edge_tprecio_13_50', from: { blockId: 'b_input_trucker_cant', itemId: 'opt_tcant_13_50' }, to: { groupId: 'group_tprecio_13_50' } },
     { id: 'edge_tprecio_51_499', from: { blockId: 'b_input_trucker_cant', itemId: 'opt_tcant_51_499' }, to: { groupId: 'group_tprecio_51_499' } },
     { id: 'edge_tprecio_500_1000', from: { blockId: 'b_input_trucker_cant', itemId: 'opt_tcant_500_1000' }, to: { groupId: 'group_tprecio_500_1000' } },
-
     { id: 'edge_tp1_to_cierre', from: { blockId: 'b_tp_1_5' }, to: { groupId: 'group_trucker_cierre' } },
     { id: 'edge_tp2_to_cierre', from: { blockId: 'b_tp_6_12' }, to: { groupId: 'group_trucker_cierre' } },
     { id: 'edge_tp3_to_cierre', from: { blockId: 'b_tp_13_50' }, to: { groupId: 'group_trucker_cierre' } },
     { id: 'edge_tp4_to_cierre', from: { blockId: 'b_tp_51_499' }, to: { groupId: 'group_trucker_cierre' } },
     { id: 'edge_tp5_to_cierre', from: { blockId: 'b_tp_500_1000' }, to: { groupId: 'group_trucker_cierre' } },
+    { id: 'edge_tc_to_pago', from: { blockId: 'b_input_trucker_cierre', itemId: 'opt_tc_pago' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_tc_to_handover', from: { blockId: 'b_input_trucker_cierre', itemId: 'opt_tc_asesor' }, to: { groupId: 'group_handover' } },
 
-    { id: 'edge_tc_to_pago', from: { blockId: 'b_input_trucker_cierre', itemId: 'opt_tc_envio' }, to: { groupId: 'group_datos_pago' } },
-    { id: 'edge_tc_to_handover', from: { blockId: 'b_input_trucker_cierre', itemId: 'opt_tc_asesor' }, to: { groupId: 'group_handover_humano' } },
-
-    // Catálogo General Connections
+    // Edges Categorías & Modelos
+    { id: 'edge_cat_to_lap_metal', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_lap_metal' }, to: { groupId: 'group_cat_lap_metal' } },
+    { id: 'edge_cat_to_lap_plast', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_lap_plast' }, to: { groupId: 'group_cat_lap_plast' } },
     { id: 'edge_cat_to_tazas', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_tazas' }, to: { groupId: 'group_cat_tazas' } },
-    { id: 'edge_cat_to_bolsas', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_bolsas' }, to: { groupId: 'group_cat_bolsas' } },
-    { id: 'edge_cat_to_lapiceros', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_lapiceros' }, to: { groupId: 'group_cat_lapiceros' } },
-    { id: 'edge_cat_to_regalos', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_regalos' }, to: { groupId: 'group_cat_regalos' } },
+    { id: 'edge_cat_to_tomatodos', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_tomatodos' }, to: { groupId: 'group_cat_tomatodos' } },
     { id: 'edge_cat_to_menu', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_menu' }, to: { groupId: 'group_apertura' } },
 
-    { id: 'edge_tazas_to_handover', from: { blockId: 'b_tazas_msg' }, to: { groupId: 'group_handover_humano' } },
-    { id: 'edge_bolsas_to_handover', from: { blockId: 'b_bolsas_msg' }, to: { groupId: 'group_handover_humano' } },
-    { id: 'edge_lapiceros_to_handover', from: { blockId: 'b_lapiceros_msg' }, to: { groupId: 'group_handover_humano' } },
-    { id: 'edge_regalos_to_handover', from: { blockId: 'b_regalos_msg' }, to: { groupId: 'group_handover_humano' } },
+    // Edges Lapiceros Metal
+    { id: 'edge_lm18_to_detail', from: { blockId: 'b_input_lap_metal_models', itemId: 'opt_lm_18' }, to: { groupId: 'group_model_lm18' } },
+    { id: 'edge_lys01_to_detail', from: { blockId: 'b_input_lap_metal_models', itemId: 'opt_lys_01' }, to: { groupId: 'group_model_lys01' } },
+    { id: 'edge_2086r_to_detail', from: { blockId: 'b_input_lap_metal_models', itemId: 'opt_2086_r' }, to: { groupId: 'group_model_2086r' } },
+    { id: 'edge_lmb_to_cat', from: { blockId: 'b_input_lap_metal_models', itemId: 'opt_cat_back1' }, to: { groupId: 'group_catalogo_categorias' } },
 
-    // B2B Connections
-    { id: 'edge_b2b_to_handover', from: { blockId: 'b_b2b_cierre' }, to: { groupId: 'group_handover_humano' } },
+    // Edges Detalle Modelo -> Pago / Handover
+    { id: 'edge_lm18_to_pago', from: { blockId: 'b_input_lm18_actions', itemId: 'opt_lm18_pay' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_lm18_to_handover', from: { blockId: 'b_input_lm18_actions', itemId: 'opt_lm18_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_lm18_to_metal', from: { blockId: 'b_input_lm18_actions', itemId: 'opt_lm18_back' }, to: { groupId: 'group_cat_lap_metal' } },
 
-    // Pedidos Connections
-    { id: 'edge_pedidos_to_pago', from: { blockId: 'b_input_pedidos_opcion', itemId: 'opt_ped_pago' }, to: { groupId: 'group_datos_pago' } },
-    { id: 'edge_pedidos_to_handover', from: { blockId: 'b_input_pedidos_opcion', itemId: 'opt_ped_estado' }, to: { groupId: 'group_handover_humano' } },
-    { id: 'edge_pedidos_to_menu', from: { blockId: 'b_input_pedidos_opcion', itemId: 'opt_ped_menu' }, to: { groupId: 'group_apertura' } },
+    { id: 'edge_lys01_to_pago', from: { blockId: 'b_input_lys01_actions', itemId: 'opt_lys01_pay' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_lys01_to_handover', from: { blockId: 'b_input_lys01_actions', itemId: 'opt_lys01_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_lys01_to_metal', from: { blockId: 'b_input_lys01_actions', itemId: 'opt_lys01_back' }, to: { groupId: 'group_cat_lap_metal' } },
 
-    // Pago & Producción Connections
-    { id: 'edge_pago_to_produccion', from: { blockId: 'b_input_pago_confirmacion', itemId: 'opt_pago_realizado' }, to: { groupId: 'group_confirmacion_produccion' } },
-    { id: 'edge_pago_to_handover', from: { blockId: 'b_input_pago_confirmacion', itemId: 'opt_pago_asesor' }, to: { groupId: 'group_handover_humano' } },
-    { id: 'edge_produccion_to_handover', from: { blockId: 'b_confirmacion_produccion_msg' }, to: { groupId: 'group_handover_humano' } }
+    { id: 'edge_2086r_to_pago', from: { blockId: 'b_input_2086r_actions', itemId: 'opt_2086r_pay' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_2086r_to_handover', from: { blockId: 'b_input_2086r_actions', itemId: 'opt_2086r_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_2086r_to_metal', from: { blockId: 'b_input_2086r_actions', itemId: 'opt_2086r_back' }, to: { groupId: 'group_cat_lap_metal' } },
+
+    // Edges Categorías Varios -> Pago / Handover / Volver
+    { id: 'edge_lp_to_pago', from: { blockId: 'b_input_lap_plast_actions', itemId: 'opt_lp_pago' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_lp_to_handover', from: { blockId: 'b_input_lap_plast_actions', itemId: 'opt_lp_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_lpb_to_cat', from: { blockId: 'b_input_lap_plast_actions', itemId: 'opt_lp_back' }, to: { groupId: 'group_catalogo_categorias' } },
+
+    { id: 'edge_tz_to_pago', from: { blockId: 'b_input_tazas_actions', itemId: 'opt_tz_pago' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_tz_to_handover', from: { blockId: 'b_input_tazas_actions', itemId: 'opt_tz_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_tzb_to_cat', from: { blockId: 'b_input_tazas_actions', itemId: 'opt_tz_back' }, to: { groupId: 'group_catalogo_categorias' } },
+
+    { id: 'edge_tm_to_pago', from: { blockId: 'b_input_tomatodos_actions', itemId: 'opt_tm_pago' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_tm_to_handover', from: { blockId: 'b_input_tomatodos_actions', itemId: 'opt_tm_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_tmb_to_cat', from: { blockId: 'b_input_tomatodos_actions', itemId: 'opt_tm_back' }, to: { groupId: 'group_catalogo_categorias' } },
+
+    // Edges Pasarela de Pago -> Handover / Menú
+    { id: 'edge_pago_to_handover', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_voucher' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_pago_to_menu', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_menu' }, to: { groupId: 'group_apertura' } }
   ];
 
-  const variables = [
-    { id: 'v_nombre', name: 'name' },
-    { id: 'v_telefono', name: 'phone' }
-  ];
+  const typebotSchema = {
+    version: '6',
+    id: typebotId,
+    name: name,
+    events: events,
+    groups: groups,
+    edges: edges,
+    variables: [],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
 
-  const theme = { general: { background: { type: 'Color', content: '#ffffff' } } };
-  const settings = { typingEmulation: { speed: 40, enabled: true } };
+  const schemaPath = path.join(__dirname, '..', 'src', 'config', 'typebot_master_schema.json');
+  fs.writeFileSync(schemaPath, JSON.stringify(typebotSchema, null, 2), 'utf8');
 
+  const pool = db.getPool();
+  if (!pool) {
+    console.log('⚠️ DATABASE_URL no está configurada en entorno local.');
+    console.log(`📄 Esquema de Typebot V6 guardado en archivo local: src/config/typebot_master_schema.json`);
+    console.log('✅ FLUJO MAESTRO COMPILADO Y LISTO PARA DEPLOY VPS');
+    return;
+  }
+
+  const client = await pool.connect();
   try {
-    // Actualizar Typebot y PublicTypebot en PostgreSQL
-    await pool.query(
-      `UPDATE "Typebot" SET name = $1, groups = $2, events = $3, edges = $4, variables = $5, theme = $6, settings = $7, "updatedAt" = NOW(), version = '6', "publicId" = $8 WHERE id = $8;`,
-      [name, JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
-    );
+    await client.query('BEGIN');
 
-    await pool.query(
-      `UPDATE "PublicTypebot" SET groups = $1, events = $2, edges = $3, variables = $4, theme = $5, settings = $6, "updatedAt" = NOW(), version = '6' WHERE id = $7;`,
-      [JSON.stringify(groups), JSON.stringify(events), JSON.stringify(edges), JSON.stringify(variables), JSON.stringify(theme), JSON.stringify(settings), typebotId]
-    );
+    const updateTypebotQuery = `
+      UPDATE "Typebot"
+      SET name = $1,
+          "groups" = $2::jsonb,
+          events = $3::jsonb,
+          edges = $4::jsonb,
+          "updatedAt" = NOW()
+      WHERE id = $5;
+    `;
+    await client.query(updateTypebotQuery, [
+      name,
+      JSON.stringify(groups),
+      JSON.stringify(events),
+      JSON.stringify(edges),
+      typebotId
+    ]);
 
-    console.log('🎉 =========================================================================');
-    console.log('✅ ¡FLUJO MAESTRO MULTICANAL (TYPEBOT V6) PUBLICADO CON ÉXITO!');
-    console.log('🎉 =========================================================================');
-    console.log(`📌 Nombre del Flujo : ${name}`);
-    console.log(`🔑 Typebot ID       : ${typebotId}`);
-    console.log(`🔗 Editor UI        : https://bot.jgispublicidad.pe/typebots/${typebotId}/edit`);
-    console.log('=========================================================================\n');
+    const updatePublicTypebotQuery = `
+      UPDATE "PublicTypebot"
+      SET typebot = $1::jsonb,
+          "updatedAt" = NOW()
+      WHERE "typebotId" = $2;
+    `;
+    await client.query(updatePublicTypebotQuery, [
+      JSON.stringify(typebotSchema),
+      typebotId
+    ]);
+
+    await client.query('COMMIT');
+    console.log('✅ FLUJO MAESTRO PUBLICADO EXITOSAMENTE EN TYPEBOT V6 (POSTGRESQL)');
+    console.log(`🤖 ID de Typebot: ${typebotId}`);
+    console.log('✨ Menús jerárquicos por botones, modelos exactos y pasarela de pago Yape/BCP integrados.');
   } catch (err) {
-    console.error('❌ Error al actualizar la base de datos PostgreSQL de Typebot:', err);
+    await client.query('ROLLBACK');
+    console.error('❌ ERROR AL PUBLICAR FLUJO EN TYPEBOT:', err.message);
+    throw err;
   } finally {
-    process.exit(0);
+    client.release();
   }
 }
 
-publishMasterFlow();
+publishMasterFlow().catch(console.error);
