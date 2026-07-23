@@ -229,9 +229,14 @@ class MessageService {
    * Procesa la lista de mensajes agrupados después de la pausa (debouncing)
    */
   async processCombinedMessages(from, profileName, messages, value) {
-    // 1. Separar mensajes de texto e imágenes, y detectar meta referrals
+    // 1. Separar mensajes de texto, imágenes, audios, videos, documentos, ubicaciones y stickers
     const texts = [];
     const images = [];
+    const audios = [];
+    const videos = [];
+    const documents = [];
+    const locations = [];
+    const stickers = [];
     let referral = null;
     
     for (const msg of messages) {
@@ -252,11 +257,38 @@ class MessageService {
         if (msg.image && msg.image.caption) {
           texts.push(msg.image.caption.trim());
         }
+      } else if (msg.type === 'audio' || msg.type === 'voice') {
+        const aud = msg.audio || msg.voice;
+        if (aud) audios.push(aud);
+      } else if (msg.type === 'video') {
+        if (msg.video) {
+          videos.push(msg.video);
+          if (msg.video.caption) texts.push(msg.video.caption.trim());
+        }
+      } else if (msg.type === 'document') {
+        if (msg.document) {
+          documents.push(msg.document);
+          if (msg.document.caption) texts.push(msg.document.caption.trim());
+        }
+      } else if (msg.type === 'location') {
+        if (msg.location) locations.push(msg.location);
+      } else if (msg.type === 'sticker') {
+        if (msg.sticker) stickers.push(msg.sticker);
       }
+    }
+
+    // Formatear ubicaciones si las hay
+    for (const loc of locations) {
+      const locText = `📍 [Ubicación compartida por el cliente]\n• Latitud: ${loc.latitude}\n• Longitud: ${loc.longitude}${loc.name ? '\n• Nombre: ' + loc.name : ''}${loc.address ? '\n• Dirección: ' + loc.address : ''}\n• Ver en Google Maps: https://maps.google.com/?q=${loc.latitude},${loc.longitude}`;
+      texts.push(locText);
     }
 
     const combinedText = texts.join('\n').trim();
     const hasImage = images.length > 0;
+    const hasAudio = audios.length > 0;
+    const hasVideo = videos.length > 0;
+    const hasDocument = documents.length > 0;
+    const hasSticker = stickers.length > 0;
 
     const isChatwootConv = typeof from === 'string' && from.startsWith('chatwoot_conv_');
 
@@ -289,6 +321,60 @@ class MessageService {
         } catch (err) {
           logger.error({ msg: 'Error al descargar/sincronizar imagen a Chatwoot/Disco', error: err.message });
           await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '[Imagen recibida]');
+        }
+      } else if (hasAudio) {
+        const aud = audios[audios.length - 1];
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(aud.id);
+          let ext = '.ogg';
+          if (mimeType.includes('mp3')) ext = '.mp3';
+          else if (mimeType.includes('mp4') || mimeType.includes('m4a')) ext = '.m4a';
+          else if (mimeType.includes('aac')) ext = '.aac';
+          const fileName = 'whatsapp_audio_' + Date.now() + ext;
+
+          const syncText = combinedText || '🎤 [Nota de voz / Audio recibido]';
+          await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType || 'audio/ogg');
+        } catch (err) {
+          logger.error({ msg: 'Error al descargar/sincronizar audio a Chatwoot', error: err.message });
+          await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '🎤 [Nota de voz / Audio recibido]');
+        }
+      } else if (hasVideo) {
+        const vid = videos[videos.length - 1];
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(vid.id);
+          let ext = '.mp4';
+          if (mimeType.includes('webm')) ext = '.webm';
+          const fileName = 'whatsapp_video_' + Date.now() + ext;
+
+          const syncText = combinedText || '🎥 [Video recibido]';
+          await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType || 'video/mp4');
+        } catch (err) {
+          logger.error({ msg: 'Error al descargar/sincronizar video a Chatwoot', error: err.message });
+          await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '🎥 [Video recibido]');
+        }
+      } else if (hasDocument) {
+        const doc = documents[documents.length - 1];
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(doc.id);
+          const fileName = doc.filename || ('whatsapp_doc_' + Date.now() + '.pdf');
+
+          const syncText = combinedText || `📄 [Documento: ${fileName}]`;
+          await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType || 'application/pdf');
+        } catch (err) {
+          logger.error({ msg: 'Error al descargar/sincronizar documento a Chatwoot', error: err.message });
+          await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '📄 [Documento recibido]');
+        }
+      } else if (hasSticker) {
+        const stk = stickers[stickers.length - 1];
+        try {
+          const { buffer, mimeType } = await this.downloadMetaMedia(stk.id);
+          const fileName = 'whatsapp_sticker_' + Date.now() + '.webp';
+
+          const syncText = combinedText || '👾 [Sticker recibido]';
+          await this.syncIncomingMessageToChatwoot(from, profileName, syncText, buffer, fileName, mimeType || 'image/webp');
+        } catch (err) {
+          logger.error({ msg: 'Error al descargar/sincronizar sticker a Chatwoot', error: err.message });
+          await this.syncIncomingMessageToChatwoot(from, profileName, combinedText || '👾 [Sticker recibido]');
         }
       } else if (combinedText) {
         await this.syncIncomingMessageToChatwoot(from, profileName, combinedText);
