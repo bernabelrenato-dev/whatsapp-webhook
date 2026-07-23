@@ -1,5 +1,7 @@
 require('dotenv').config();
 const { Pool } = require('pg');
+const fs = require('fs');
+const path = require('path');
 
 async function publishJgisCommercialFlow() {
   const pool = new Pool({
@@ -9,6 +11,17 @@ async function publishJgisCommercialFlow() {
   console.log('🤖 =========================================================================');
   console.log('⚡ CONFIGURANDO Y PUBLICANDO FLUJO COMERCIAL TYPEBOT PARA JGIS PUBLICIDAD');
   console.log('🤖 =========================================================================\n');
+
+  const imagesDir = path.join(__dirname, '..', 'src', 'public', 'images');
+  const capFiles = fs.existsSync(imagesDir)
+    ? fs.readdirSync(imagesDir).filter(f => f.startsWith('gorra_') && (f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.png'))).sort()
+    : ['gorra_01.jpg', 'gorra_02.jpg', 'gorra_03.jpg', 'gorra_04.jpg'];
+
+  const commCapImageBlocks = capFiles.map((f, i) => ({
+    id: `b_img_${i + 1}`,
+    type: 'image',
+    content: { url: `https://bot.jgispublicidad.pe/images/${f}` }
+  }));
 
   const typebotId = 'jgis-publicidad-bot-f33vo50';
   const name = 'JGIS Flujo Comercial Principal (Gorras + Pagos + Menú Navigation)';
@@ -40,26 +53,7 @@ async function publishJgisCommercialFlow() {
               ]
             }
           },
-          {
-            id: 'b_img_1',
-            type: 'image',
-            content: { url: 'https://bot.jgispublicidad.pe/images/gorra_01.jpg' }
-          },
-          {
-            id: 'b_img_2',
-            type: 'image',
-            content: { url: 'https://bot.jgispublicidad.pe/images/gorra_02.jpg' }
-          },
-          {
-            id: 'b_img_3',
-            type: 'image',
-            content: { url: 'https://bot.jgispublicidad.pe/images/gorra_03.jpg' }
-          },
-          {
-            id: 'b_img_4',
-            type: 'image',
-            content: { url: 'https://bot.jgispublicidad.pe/images/gorra_04.jpg' }
-          },
+          ...commCapImageBlocks,
           {
             id: 'b_terminos_pago',
             type: 'text',

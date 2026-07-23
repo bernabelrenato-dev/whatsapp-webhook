@@ -12,7 +12,7 @@ const imagesDir = path.join(__dirname, '..', 'src', 'public', 'images');
 async function compressImages() {
   console.log('🖼️ Comprimiendo imágenes de gorras en src/public/images/...');
 
-  const files = ['gorra_01.jpg', 'gorra_02.jpg', 'gorra_03.jpg', 'gorra_04.jpg', 'gorra_05.jpg', 'gorra_06.jpg', 'gorra_07.jpg'];
+  const files = fs.readdirSync(imagesDir).filter(f => f.startsWith('gorra_') && (f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.png')));
 
   for (const file of files) {
     const filePath = path.join(imagesDir, file);

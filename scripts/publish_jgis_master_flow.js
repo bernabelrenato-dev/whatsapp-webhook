@@ -1,9 +1,22 @@
 const pool = require('../src/utils/db');
+const fs = require('fs');
+const path = require('path');
 
 async function publishMasterFlow() {
   console.log('🤖 =========================================================================');
   console.log('⚡ PUBLICANDO FLUJO MAESTRO MULTICANAL - JGIS PUBLICIDAD (TYPEBOT V6)');
   console.log('🤖 =========================================================================\n');
+
+  const imagesDir = path.join(__dirname, '..', 'src', 'public', 'images');
+  const capFiles = fs.existsSync(imagesDir)
+    ? fs.readdirSync(imagesDir).filter(f => f.startsWith('gorra_') && (f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.png'))).sort()
+    : ['gorra_01.jpg', 'gorra_02.jpg', 'gorra_03.jpg', 'gorra_04.jpg'];
+
+  const masterCapImageBlocks = capFiles.map((f, i) => ({
+    id: `b_trucker_img_${i + 1}`,
+    type: 'image',
+    content: { url: `https://bot.jgispublicidad.pe/images/${f}` }
+  }));
 
   const typebotId = process.env.TYPEBOT_ID || 'jgis-publicidad-bot-f33vo50';
   const name = 'Flujo Maestro Omnicanal — JGIS Publicidad';
@@ -95,10 +108,7 @@ async function publishMasterFlow() {
             ]
           }
         },
-        { id: 'b_trucker_img_1', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/gorra_01.jpg' } },
-        { id: 'b_trucker_img_2', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/gorra_02.jpg' } },
-        { id: 'b_trucker_img_3', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/gorra_03.jpg' } },
-        { id: 'b_trucker_img_4', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/gorra_04.jpg' } },
+        ...masterCapImageBlocks,
         {
           id: 'b_trucker_pregunta_cant',
           type: 'text',
