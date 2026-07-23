@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const FormData = require('form-data');
 const config = require('../config/environment');
 const logger = require('../utils/logger');
 const aiService = require('./ai.service');
@@ -115,7 +116,7 @@ class MessageService {
       
       const response = await axios({
         method: 'POST',
-        url: `https://graph.facebook.com/v25.0/${config.PHONE_NUMBER_ID}/messages`,
+        url: `https://graph.facebook.com/v19.0/${config.PHONE_NUMBER_ID}/messages`,
         headers: {
           'Authorization': `Bearer ${config.ACCESS_TOKEN}`,
           'Content-Type': 'application/json'
@@ -248,6 +249,9 @@ class MessageService {
         }
       } else if (msg.type === 'image') {
         images.push(msg.image);
+        if (msg.image && msg.image.caption) {
+          texts.push(msg.image.caption.trim());
+        }
       }
     }
 
@@ -712,7 +716,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       
       const response = await axios({
         method: 'POST',
-        url: 'https://graph.facebook.com/v25.0/' + config.PHONE_NUMBER_ID + '/messages',
+        url: 'https://graph.facebook.com/v19.0/' + config.PHONE_NUMBER_ID + '/messages',
         headers: {
           'Authorization': 'Bearer ' + config.ACCESS_TOKEN,
           'Content-Type': 'application/json'
@@ -833,7 +837,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       if (data) {
         const response = await axios({
           method: 'POST',
-          url: `https://graph.facebook.com/v25.0/${config.PHONE_NUMBER_ID}/messages`,
+          url: `https://graph.facebook.com/v19.0/${config.PHONE_NUMBER_ID}/messages`,
           headers: {
             'Authorization': `Bearer ${config.ACCESS_TOKEN}`,
             'Content-Type': 'application/json'
@@ -880,7 +884,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
         if (fs.existsSync(imagePath)) {
           logger.debug({ msg: 'Enviando mensaje con imagen adjunta a Chatwoot', conversationId, imageFileName });
           const formData = new FormData();
-          formData.append('content', text);
+          formData.append('content', text || '');
           formData.append('message_type', 'outgoing');
           formData.append('private', 'false');
 
@@ -888,12 +892,15 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
           const ext = path.extname(imageFileName).toLowerCase();
           const mimeType = ext === '.png' ? 'image/png' : 'image/jpeg';
           
-          const blob = new Blob([fileBuffer], { type: mimeType });
-          formData.append('attachments[]', blob, imageFileName);
+          formData.append('attachments[]', fileBuffer, {
+            filename: imageFileName,
+            contentType: mimeType
+          });
 
           response = await axios.post(url, formData, {
             headers: {
-              'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+              'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+              ...formData.getHeaders()
             }
           });
         } else {
@@ -1015,7 +1022,7 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
       // 1. Obtener la URL de descarga binaria
       const metadataResponse = await axios({
         method: 'GET',
-        url: 'https://graph.facebook.com/v25.0/' + mediaId,
+        url: 'https://graph.facebook.com/v19.0/' + mediaId,
         headers: {
           'Authorization': 'Bearer ' + config.ACCESS_TOKEN
         }
@@ -1081,12 +1088,15 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
         formData.append('message_type', 'incoming');
         formData.append('private', 'false');
         
-        const blob = new Blob([fileBuffer], { type: mimeType || 'image/jpeg' });
-        formData.append('attachments[]', blob, fileName || 'whatsapp_image.jpg');
+        formData.append('attachments[]', fileBuffer, {
+          filename: fileName || 'whatsapp_image.jpg',
+          contentType: mimeType || 'image/jpeg'
+        });
 
         response = await axios.post(url, formData, {
           headers: {
-            'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+            'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+            ...formData.getHeaders()
           }
         });
       } else {
@@ -1156,12 +1166,15 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
           formData.append('message_type', 'outgoing');
           formData.append('private', 'true');
           
-          const blob = new Blob([buffer], { type: mimeType || 'image/jpeg' });
-          formData.append('attachments[]', blob, fileName);
+          formData.append('attachments[]', buffer, {
+            filename: fileName,
+            contentType: mimeType || 'image/jpeg'
+          });
 
           response = await axios.post(url, formData, {
             headers: {
-              'api_access_token': config.CHATWOOT_ACCESS_TOKEN
+              'api_access_token': config.CHATWOOT_ACCESS_TOKEN,
+              ...formData.getHeaders()
             }
           });
           
