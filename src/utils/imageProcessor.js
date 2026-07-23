@@ -28,14 +28,15 @@ async function processAndStoreImage(source, customFileName) {
     } else if (typeof source === 'string') {
       let downloadUrl = source;
 
-      // Si la URL apunta a localhost o chatwoot interno, ajustar para resolución interna de docker si aplica
-      if (downloadUrl.includes('localhost:3010') || downloadUrl.includes('127.0.0.1:3010')) {
-        const chatwootHost = process.env.CHATWOOT_INTERNAL_URL || 'http://chatwoot:3000';
-        downloadUrl = downloadUrl.replace(/http:\/\/(localhost|127\.0\.0\.1):3010/, chatwootHost);
+      // Normalizar URLs relativas o externas de Chatwoot a la red interna de Docker (chatwoot-web:3000)
+      if (downloadUrl.startsWith('/')) {
+        downloadUrl = `http://chatwoot-web:3000${downloadUrl}`;
+      } else if (downloadUrl.includes('bot.jgispublicidad.pe/rails/') || downloadUrl.includes('localhost:3010') || downloadUrl.includes('127.0.0.1:3010')) {
+        downloadUrl = downloadUrl.replace(/https?:\/\/(bot\.jgispublicidad\.pe|localhost:3010|127\.0\.0\.1:3010)/, 'http://chatwoot-web:3000');
       }
 
       const headers = {};
-      if (config.CHATWOOT_ACCESS_TOKEN && downloadUrl.includes('chatwoot')) {
+      if (config.CHATWOOT_ACCESS_TOKEN) {
         headers['api_access_token'] = config.CHATWOOT_ACCESS_TOKEN;
       }
 
