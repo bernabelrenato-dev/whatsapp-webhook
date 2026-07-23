@@ -86,6 +86,8 @@ while [[ $SECONDS_WAITED -lt $HEALTH_TIMEOUT ]]; do
     HEALTH=$(docker exec "$CONTAINER" wget -q -O- http://localhost:3000/health 2>/dev/null || echo "fail")
     if [[ "$HEALTH" != "fail" ]]; then
       log "OK: Contenedor $CONTAINER está healthy."
+      log "Publicando Flujo Maestro de Typebot en la base de datos de producción (jgis-postgres)..."
+      docker exec "$CONTAINER" node scripts/publish_jgis_master_flow.js 2>&1 || true
       break
     fi
   fi

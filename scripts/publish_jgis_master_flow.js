@@ -832,4 +832,8 @@ async function publishMasterFlow() {
   }
 }
 
-publishMasterFlow().catch(console.error);
+if (require.main === module) {
+  publishMasterFlow().catch(console.error);
+}
+
+module.exports = { publishMasterFlow };
