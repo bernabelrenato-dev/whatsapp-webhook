@@ -114,48 +114,49 @@ exports.receiveChatwootMessage = async (req, res, next) => {
 
       if (messageType === 'incoming') {
         const channelType = payload.inbox?.channel_type;
-        const hasPhoneNumber = !!from; // from se obtiene de getContactPhone(payload)
-        const isWhatsAppChannel = channelType === 'Channel::Whatsapp';
+        const isWhatsappOrApiChannel = channelType === 'Channel::Whatsapp' || channelType === 'Channel::Api';
+        const isVirtualConv = typeof from === 'string' && from.startsWith('chatwoot_conv_');
 
-        if (isWhatsAppChannel) {
-          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen WhatsApp): "${payload.content}"`);
-        } else {
-          logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
-          
-          if (!conversationId) {
-            logger.warn('Mensaje de Chatwoot no tiene conversation.id, omitiendo.');
-            return res.status(200).json({ success: true });
-          }
-
-          const hasAttachments = payload.attachments && payload.attachments.length > 0;
-          const mockMsg = {
-            from: `chatwoot_conv_${conversationId}`,
-            id: `cw_msg_${payload.id}`,
-            type: hasAttachments ? 'image' : 'text',
-          };
-
-          if (mockMsg.type === 'text') {
-            mockMsg.text = { body: payload.content || '' };
-          } else {
-            const att = payload.attachments[0];
-            mockMsg.image = { id: att.data_url };
-          }
-
-          const mockVal = {
-            contacts: [
-              { profile: { name: profileName } }
-            ]
-          };
-
-          // Procesar en background (asíncrono)
-          setImmediate(async () => {
-            try {
-              await messageService.handleIncomingMessage(mockMsg, mockVal);
-            } catch (err) {
-              logger.error({ msg: 'Error al procesar mensaje multicanal en background', error: err.message });
-            }
-          });
+        if (isWhatsappOrApiChannel || !isVirtualConv) {
+          logger.debug(`💬 Mensaje entrante de Chatwoot ignorado (ya procesado en origen WhatsApp/API): "${payload.content}"`);
+          return res.status(200).json({ success: true });
         }
+
+        logger.info(`💬 Mensaje entrante multicanal de Chatwoot (${channelType}) recibido: "${payload.content}"`);
+        
+        if (!conversationId) {
+          logger.warn('Mensaje de Chatwoot no tiene conversation.id, omitiendo.');
+          return res.status(200).json({ success: true });
+        }
+
+        const hasAttachments = payload.attachments && payload.attachments.length > 0;
+        const mockMsg = {
+          from: `chatwoot_conv_${conversationId}`,
+          id: `cw_msg_${payload.id}`,
+          type: hasAttachments ? 'image' : 'text',
+        };
+
+        if (mockMsg.type === 'text') {
+          mockMsg.text = { body: payload.content || '' };
+        } else {
+          const att = payload.attachments[0];
+          mockMsg.image = { id: att.data_url };
+        }
+
+        const mockVal = {
+          contacts: [
+            { profile: { name: profileName } }
+          ]
+        };
+
+        // Procesar en background (asíncrono)
+        setImmediate(async () => {
+          try {
+            await messageService.handleIncomingMessage(mockMsg, mockVal);
+          } catch (err) {
+            logger.error({ msg: 'Error al procesar mensaje multicanal en background', error: err.message });
+          }
+        });
       } else if (messageType === 'outgoing') {
         // Ignorar si es una nota privada (las notas de atribución de Meta Ads se crean como privadas)
         const isPrivateNote = payload.private === true || 
