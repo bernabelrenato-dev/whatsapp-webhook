@@ -796,6 +796,14 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
                   matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('gorra'));
                 } else if (lowerText.includes('yape') || lowerText.includes('bcp') || lowerText.includes('pasarela') || lowerText.includes('pago')) {
                   matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('pago') || (item.content || item.title || '').toLowerCase().includes('pasarela'));
+                } else if (lowerText.includes('mug') || lowerText.includes('termo') || lowerText.includes('taza')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('mug') || (item.content || item.title || '').toLowerCase().includes('taza'));
+                } else if (lowerText.includes('chico') || lowerText.includes('pequeño') || lowerText.includes('380') || lowerText.includes('400')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('chico'));
+                } else if (lowerText.includes('mediano') || lowerText.includes('500')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('mediano'));
+                } else if (lowerText.includes('grande') || lowerText.includes('750')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('grande'));
                 } else if (lowerText.includes('empresa') || lowerText.includes('evento')) {
                   matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('empresa'));
                 } else if (lowerText.includes('personal')) {

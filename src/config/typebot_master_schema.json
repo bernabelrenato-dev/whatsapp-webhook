@@ -523,6 +523,16 @@
               "outgoingEdgeId": "edge_cat_to_tomatodos"
             },
             {
+              "id": "opt_cat_libretas",
+              "content": "📓 Libretas y Ecológicos",
+              "outgoingEdgeId": "edge_cat_to_libretas"
+            },
+            {
+              "id": "opt_cat_bolsas",
+              "content": "🎒 Bolsas Notex y Cambrell",
+              "outgoingEdgeId": "edge_cat_to_bolsas"
+            },
+            {
               "id": "opt_cat_menu",
               "content": "⬅️ Volver al Menú Principal",
               "outgoingEdgeId": "edge_cat_to_menu"
@@ -980,7 +990,7 @@
     },
     {
       "id": "group_cat_tazas",
-      "title": "☕ Mugs y Tazas — Modelos",
+      "title": "☕ Mugs Térmicos de Acero — Capacidad",
       "graphCoordinates": {
         "x": 1100,
         "y": 600
@@ -994,7 +1004,7 @@
               {
                 "children": [
                   {
-                    "text": "☕ *Modelos Destacados de Tazas y Mugs JGIS*\nSublimación alta definición a full color. Selecciona tu modelo 👇"
+                    "text": "☕ *Mugs Térmicos de Acero Inoxidable JGIS*\nDoble pared insulada. Conserva la temperatura de tus bebidas por horas.\n\n¿Qué capacidad de mug buscas? Selecciona una opción 👇"
                   }
                 ]
               }
@@ -1006,14 +1016,24 @@
           "type": "choice input",
           "items": [
             {
-              "id": "opt_tz_mtt10",
-              "content": "☕ Modelo MTT-10 (Taza Mágica Termosensible)",
-              "outgoingEdgeId": "edge_mtt10_to_detail"
+              "id": "opt_mug_cap_chico",
+              "content": "🥤 Chico (380ml - 400ml)",
+              "outgoingEdgeId": "edge_mug_to_cap_chico"
             },
             {
-              "id": "opt_tz_mug32",
-              "content": "☕ Modelo MUG-32 (Mug Térmico Acero 320ml)",
-              "outgoingEdgeId": "edge_mug32_to_detail"
+              "id": "opt_mug_cap_mediano",
+              "content": "☕ Mediano (500ml)",
+              "outgoingEdgeId": "edge_mug_to_cap_mediano"
+            },
+            {
+              "id": "opt_mug_cap_grande",
+              "content": "🍶 Grande (750ml)",
+              "outgoingEdgeId": "edge_mug_to_cap_grande"
+            },
+            {
+              "id": "opt_mug_cap_todos",
+              "content": "👀 No estoy seguro, muéstrame todos",
+              "outgoingEdgeId": "edge_mug_to_all_models"
             },
             {
               "id": "opt_cat_back3",
@@ -1028,29 +1048,22 @@
       ]
     },
     {
-      "id": "group_model_mtt10",
-      "title": "☕ Detalle MTT-10 Taza Mágica",
+      "id": "group_mugs_cap_chico",
+      "title": "🥤 Mugs Térmicos Chicos (380ml - 400ml)",
       "graphCoordinates": {
-        "x": 1500,
-        "y": 600
+        "x": 1400,
+        "y": 500
       },
       "blocks": [
         {
-          "id": "b_img_mtt10",
-          "type": "image",
-          "content": {
-            "url": "https://bot.jgispublicidad.pe/images/TAZAS.png"
-          }
-        },
-        {
-          "id": "b_text_mtt10",
+          "id": "b_mugs_chico_intro",
           "type": "text",
           "content": {
             "richText": [
               {
                 "children": [
                   {
-                    "text": "☕ *TAZA MAGICA TERMOSENSIBLE MTT-10*\n• Revela tu diseño personalizado al verter líquido caliente (11oz).\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 16.00 c/u\n• 13 a 50 unidades: S/ 12.50 c/u\n• 51+ unidades: S/ 11.00 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                    "text": "🥤 *Modelos de Mugs Térmicos Chicos (380ml - 400ml)*\nSelecciona el modelo de tu preferencia 👇"
                   }
                 ]
               }
@@ -1058,23 +1071,23 @@
           }
         },
         {
-          "id": "b_input_mtt10_actions",
+          "id": "b_input_mugs_chico",
           "type": "choice input",
           "items": [
             {
-              "id": "opt_mtt10_pay",
-              "content": "💳 Pasarela de Pago (Yape / BCP)",
-              "outgoingEdgeId": "edge_mtt10_to_pago"
+              "id": "opt_mug_7059",
+              "content": "☕ Jarro Mug Acero 7059 (400ml)",
+              "outgoingEdgeId": "edge_mug7059_to_detail"
             },
             {
-              "id": "opt_mtt10_agent",
-              "content": "👩‍💼 Confirmar con Asesor",
-              "outgoingEdgeId": "edge_mtt10_to_handover"
+              "id": "opt_mug_ptkl360",
+              "content": "🥤 Tomatodo Acero PTKL360 (380ml)",
+              "outgoingEdgeId": "edge_ptkl360_to_detail"
             },
             {
-              "id": "opt_mtt10_back",
-              "content": "⬅️ Volver a Tazas y Mugs",
-              "outgoingEdgeId": "edge_mtt10_to_tazas"
+              "id": "opt_mugs_back_cap1",
+              "content": "⬅️ Volver a Selección de Capacidad",
+              "outgoingEdgeId": "edge_chico_to_cap"
             }
           ],
           "options": {
@@ -1084,29 +1097,22 @@
       ]
     },
     {
-      "id": "group_model_mug32",
-      "title": "☕ Detalle MUG-32 Termo",
+      "id": "group_mugs_cap_mediano",
+      "title": "☕ Mugs Térmicos Medianos (500ml)",
       "graphCoordinates": {
-        "x": 1500,
-        "y": 750
+        "x": 1400,
+        "y": 650
       },
       "blocks": [
         {
-          "id": "b_img_mug32",
-          "type": "image",
-          "content": {
-            "url": "https://bot.jgispublicidad.pe/images/SET-4.jpg"
-          }
-        },
-        {
-          "id": "b_text_mug32",
+          "id": "b_mugs_mediano_intro",
           "type": "text",
           "content": {
             "richText": [
               {
                 "children": [
                   {
-                    "text": "☕ *MUG THERMIC STAINLESS STEEL MUG-32*\n• Doble pared de acero inoxidable 320ml con tapa hermética.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 22.00 c/u\n• 13 a 50 unidades: S/ 18.00 c/u\n• 51+ unidades: S/ 15.50 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                    "text": "☕ *Modelos de Mugs Térmicos Medianos (500ml)*\nSelecciona el modelo de tu preferencia 👇"
                   }
                 ]
               }
@@ -1114,23 +1120,472 @@
           }
         },
         {
-          "id": "b_input_mug32_actions",
+          "id": "b_input_mugs_mediano",
           "type": "choice input",
           "items": [
             {
-              "id": "opt_mug32_pay",
+              "id": "opt_mug_tm075",
+              "content": "🔥 Thermo Mug TM075 / TM072 (500ml)",
+              "outgoingEdgeId": "edge_tm075_to_detail"
+            },
+            {
+              "id": "opt_mug_tm075_1",
+              "content": "✨ Thermo Mug Sublimar TM075-1 (500ml)",
+              "outgoingEdgeId": "edge_tm075_1_to_detail"
+            },
+            {
+              "id": "opt_mugs_back_cap2",
+              "content": "⬅️ Volver a Selección de Capacidad",
+              "outgoingEdgeId": "edge_mediano_to_cap"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_mugs_cap_grande",
+      "title": "🍶 Mugs Térmicos Grandes (750ml)",
+      "graphCoordinates": {
+        "x": 1400,
+        "y": 800
+      },
+      "blocks": [
+        {
+          "id": "b_mugs_grande_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🍶 *Modelos de Mugs Térmicos / Tomatodos Grandes (750ml)*\nSelecciona el modelo de tu preferencia 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mugs_grande",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mug_8091",
+              "content": "🍶 Tomatodo Acero Inoxidable 8091 (750ml)",
+              "outgoingEdgeId": "edge_mug8091_to_detail"
+            },
+            {
+              "id": "opt_mug_8077zn",
+              "content": "🛡️ Tomatodo Acero 8077ZN (750ml)",
+              "outgoingEdgeId": "edge_mug8077zn_to_detail"
+            },
+            {
+              "id": "opt_mugs_back_cap3",
+              "content": "⬅️ Volver a Selección de Capacidad",
+              "outgoingEdgeId": "edge_grande_to_cap"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_mugs_all_models",
+      "title": "👀 Todos los Mugs Térmicos",
+      "graphCoordinates": {
+        "x": 1400,
+        "y": 950
+      },
+      "blocks": [
+        {
+          "id": "b_mugs_all_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "✨ *Catálogo Completo de Mugs Térmicos de Acero*\nElige tu modelo favorito para ver precios y fotos 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mugs_all",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_all_tm075",
+              "content": "🔥 Thermo Mug TM075 (500ml)",
+              "outgoingEdgeId": "edge_tm075_to_detail"
+            },
+            {
+              "id": "opt_all_7059",
+              "content": "☕ Jarro Mug Acero 7059 (400ml)",
+              "outgoingEdgeId": "edge_mug7059_to_detail"
+            },
+            {
+              "id": "opt_all_ptkl360",
+              "content": "🥤 Tomatodo Acero PTKL360 (380ml)",
+              "outgoingEdgeId": "edge_ptkl360_to_detail"
+            },
+            {
+              "id": "opt_all_8091",
+              "content": "🍶 Tomatodo Acero 8091 (750ml)",
+              "outgoingEdgeId": "edge_mug8091_to_detail"
+            },
+            {
+              "id": "opt_all_8077zn",
+              "content": "🛡️ Tomatodo Acero 8077ZN (750ml)",
+              "outgoingEdgeId": "edge_mug8077zn_to_detail"
+            },
+            {
+              "id": "opt_mugs_back_cap4",
+              "content": "⬅️ Volver a Selección de Capacidad",
+              "outgoingEdgeId": "edge_all_to_cap"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_mug7059",
+      "title": "☕ Detalle Jarro Mug 7059",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 500
+      },
+      "blocks": [
+        {
+          "id": "b_img_mug7059",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/7059.jpg"
+          }
+        },
+        {
+          "id": "b_text_mug7059",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "☕ *JARRO MUG DE ACERO 7059 (400ml)*\n• Jarro metálico por dentro y fuera con asa ergonómica de plástico.\n• Grabado láser o serigrafía de tu logo.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 16.00 c/u\n• 13 a 50 unidades: S/ 14.50 c/u\n• 51+ unidades: S/ 14.00 c/u por mayor\n\nℹ️ *Descuentos especiales por volumen de 100+ unidades.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mug7059_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mug7059_pay",
               "content": "💳 Pasarela de Pago (Yape / BCP)",
-              "outgoingEdgeId": "edge_mug32_to_pago"
+              "outgoingEdgeId": "edge_mug7059_to_pago"
             },
             {
-              "id": "opt_mug32_agent",
-              "content": "👩‍💼 Confirmar con Asesor",
-              "outgoingEdgeId": "edge_mug32_to_handover"
+              "id": "opt_mug7059_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_mug7059_to_handover"
             },
             {
-              "id": "opt_mug32_back",
-              "content": "⬅️ Volver a Tazas y Mugs",
-              "outgoingEdgeId": "edge_mug32_to_tazas"
+              "id": "opt_mug7059_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_mug7059_to_mugs"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_tm075",
+      "title": "🔥 Detalle Thermo Mug TM075",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 650
+      },
+      "blocks": [
+        {
+          "id": "b_img_tm075",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/TM075.jpg"
+          }
+        },
+        {
+          "id": "b_text_tm075",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🔥 *THERMO MUG PREMIUM TM075 (500ml)*\n• Doble pared de acero inoxidable con tapa hermética anti-derrames.\n• Acabado mate de alta durabilidad.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 18.00 c/u\n• 13 a 50 unidades: S/ 17.50 c/u\n• 51+ unidades: S/ 17.00 c/u por mayor\n\nℹ️ *Incluye caja individual de presentación.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_tm075_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_tm075_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_tm075_to_pago"
+            },
+            {
+              "id": "opt_tm075_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_tm075_to_handover"
+            },
+            {
+              "id": "opt_tm075_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_tm075_to_mugs"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_tm075_1",
+      "title": "✨ Detalle Thermo Mug Sublimar TM075-1",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 800
+      },
+      "blocks": [
+        {
+          "id": "b_img_tm075_1",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/TM075-1.jpg"
+          }
+        },
+        {
+          "id": "b_text_tm075_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "✨ *THERMO MUG PARA SUBLIMAR TM075-1 (500ml)*\n• Recubrimiento especial para sublimación full color en alta definición.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 19.00 c/u\n• 13 a 50 unidades: S/ 18.50 c/u\n• 51+ unidades: S/ 18.00 c/u por mayor\n\nℹ️ *Ideal para diseños corporativos a todo color.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_tm075_1_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_tm075_1_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_tm075_1_to_pago"
+            },
+            {
+              "id": "opt_tm075_1_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_tm075_1_to_handover"
+            },
+            {
+              "id": "opt_tm075_1_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_tm075_1_to_mugs"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_mug8091",
+      "title": "🍶 Detalle Tomatodo Acero 8091",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 950
+      },
+      "blocks": [
+        {
+          "id": "b_img_mug8091",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/8091-750.jpg"
+          }
+        },
+        {
+          "id": "b_text_mug8091",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🍶 *TOMATODO DE ACERO INOXIDABLE 8091 (750ml)*\n• Gran capacidad 750ml con tapa hermética de acero y asa de transporte.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 15.00 c/u\n• 13 a 50 unidades: S/ 14.20 c/u\n• 51+ unidades: S/ 13.80 c/u por mayor\n\nℹ️ *Disponible en Blanco, Negro, Azul, Plata y Rojo.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mug8091_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mug8091_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_mug8091_to_pago"
+            },
+            {
+              "id": "opt_mug8091_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_mug8091_to_handover"
+            },
+            {
+              "id": "opt_mug8091_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_mug8091_to_mugs"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_ptkl360",
+      "title": "🥤 Detalle Tomatodo PTKL360",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 1100
+      },
+      "blocks": [
+        {
+          "id": "b_img_ptkl360",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/PTKL360.jpg"
+          }
+        },
+        {
+          "id": "b_text_ptkl360",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🥤 *TOMATODO METALICO PTKL360 (380ml)*\n• Compacto y elegante. Medida: 17.5 x 6 cm. Presentación en cajita blanca.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 14.00 c/u\n• 13 a 50 unidades: S/ 13.00 c/u\n• 51+ unidades: S/ 12.50 c/u por mayor\n\nℹ️ *Ideal para souvenirs y regalos ejecutivos.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_ptkl360_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_ptkl360_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_ptkl360_to_pago"
+            },
+            {
+              "id": "opt_ptkl360_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_ptkl360_to_handover"
+            },
+            {
+              "id": "opt_ptkl360_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_ptkl360_to_mugs"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_mug8077zn",
+      "title": "🛡️ Detalle Tomatodo 8077ZN",
+      "graphCoordinates": {
+        "x": 1800,
+        "y": 1250
+      },
+      "blocks": [
+        {
+          "id": "b_img_mug8077zn",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/8077ZN.jpg"
+          }
+        },
+        {
+          "id": "b_text_mug8077zn",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🛡️ *TOMATODO DE ACERO 8077ZN (750ml)*\n• Tapa de acero inoxidable reforzada. Diseñado para trabajo pesado.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 12 unidades: S/ 14.50 c/u\n• 13 a 50 unidades: S/ 13.50 c/u\n• 51+ unidades: S/ 12.80 c/u por mayor\n\nℹ️ *Disponible en acabado Negro Mate y Plata.*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_mug8077zn_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_mug8077zn_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_mug8077zn_to_pago"
+            },
+            {
+              "id": "opt_mug8077zn_agent",
+              "content": "👩‍💼 Cotizar Pedido / Grabado Láser",
+              "outgoingEdgeId": "edge_mug8077zn_to_handover"
+            },
+            {
+              "id": "opt_mug8077zn_back",
+              "content": "⬅️ Volver a Mugs",
+              "outgoingEdgeId": "edge_mug8077zn_to_mugs"
             }
           ],
           "options": {
@@ -1240,6 +1695,206 @@
       ]
     },
     {
+      "id": "group_cat_libretas",
+      "title": "📓 Libretas y Ecológicos — Modelos",
+      "graphCoordinates": {
+        "x": 1100,
+        "y": 1200
+      },
+      "blocks": [
+        {
+          "id": "b_libretas_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "📓 *Modelos Destacados de Libretas y Ecológicos JGIS*\nImpresión en bambú, cartón reciclado y ecocuero con grabado o serigrafía 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_libretas_models",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_lib_01",
+              "content": "📓 Modelo LIB-01 (Libreta Ecológica con Lapicero)",
+              "outgoingEdgeId": "edge_lib01_to_detail"
+            },
+            {
+              "id": "opt_cat_back5",
+              "content": "⬅️ Volver a Categorías",
+              "outgoingEdgeId": "edge_libb_to_cat"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_lib01",
+      "title": "📓 Detalle LIB-01 Ecológica",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 1200
+      },
+      "blocks": [
+        {
+          "id": "b_img_lib01",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/ECO.jpg"
+          }
+        },
+        {
+          "id": "b_text_lib01",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "📓 *LIBRETA ECOLOGICA LIB-01 CON LAPICERO DE CARTON*\n• Anillada, 80 hojas rayadas recicladas, incluye lapicero ecológico.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 6.50 c/u\n• 51 a 499 unidades: S/ 4.80 c/u\n• 500+ unidades: S/ 4.20 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_lib01_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_lib01_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_lib01_to_pago"
+            },
+            {
+              "id": "opt_lib01_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_lib01_to_handover"
+            },
+            {
+              "id": "opt_lib01_back",
+              "content": "⬅️ Volver a Libretas",
+              "outgoingEdgeId": "edge_lib01_to_libretas"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_cat_bolsas",
+      "title": "🎒 Bolsas Notex y Cambrell — Modelos",
+      "graphCoordinates": {
+        "x": 1100,
+        "y": 1500
+      },
+      "blocks": [
+        {
+          "id": "b_bolsas_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🎒 *Modelos Destacados de Bolsas Notex y Cambrell*\nEstructura termosellada y cosida, estampado serigráfico a 1 o más colores 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_bolsas_models",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_bol_10",
+              "content": "🎒 Modelo BOL-10 (Bolsa Notex 30x40cm)",
+              "outgoingEdgeId": "edge_bol10_to_detail"
+            },
+            {
+              "id": "opt_cat_back6",
+              "content": "⬅️ Volver a Categorías",
+              "outgoingEdgeId": "edge_bolb_to_cat"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_model_bol10",
+      "title": "🎒 Detalle BOL-10 Notex 30x40",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 1500
+      },
+      "blocks": [
+        {
+          "id": "b_img_bol10",
+          "type": "image",
+          "content": {
+            "url": "https://bot.jgispublicidad.pe/images/NOTEX.jpg"
+          }
+        },
+        {
+          "id": "b_text_bol10",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "🎒 *BOLSA NOTEX TERMOSELLADA 30x40cm BOL-10*\n• 80 gramos. Ideal para ferias, merchandising y regalos corporativos.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 100 unidades: S/ 1.50 c/u\n• 500 unidades: S/ 1.10 c/u\n• 1,000+ unidades: S/ 0.85 c/u por millar\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_bol10_actions",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "opt_bol10_pay",
+              "content": "💳 Pasarela de Pago (Yape / BCP)",
+              "outgoingEdgeId": "edge_bol10_to_pago"
+            },
+            {
+              "id": "opt_bol10_agent",
+              "content": "👩‍💼 Confirmar con Asesor",
+              "outgoingEdgeId": "edge_bol10_to_handover"
+            },
+            {
+              "id": "opt_bol10_back",
+              "content": "⬅️ Volver a Bolsas",
+              "outgoingEdgeId": "edge_bol10_to_bolsas"
+            }
+          ],
+          "options": {
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
       "id": "group_pasarela_pago",
       "title": "💳 Pasarela de Pago Oficial JGIS",
       "graphCoordinates": {
@@ -1290,7 +1945,7 @@
             {
               "id": "opt_pago_voucher",
               "content": "✅ Ya realicé mi pago (Enviar Voucher)",
-              "outgoingEdgeId": "edge_pago_to_handover"
+              "outgoingEdgeId": "edge_pago_to_solicitar_voucher"
             },
             {
               "id": "opt_pago_asesor",
@@ -1310,10 +1965,78 @@
       ]
     },
     {
+      "id": "group_solicitar_voucher",
+      "title": "📸 Recepción & Validación de Voucher",
+      "graphCoordinates": {
+        "x": 2200,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "b_solicitar_voucher_msg",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "📸 *¡Excelente! Por favor, adjunta aquí la foto o captura de pantalla de tu voucher de pago (Yape/BCP).*"
+                  }
+                ]
+              },
+              {
+                "children": [
+                  {
+                    "text": "\n\nNuestros asesores comprobarán la transferencia y pasarán tu pedido inmediatamente a producción 🚀."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b_input_voucher_file",
+          "type": "picture input",
+          "outgoingEdgeId": "edge_voucher_to_confirmacion",
+          "options": {
+            "labels": {
+              "placeholder": "Adjunta tu imagen de voucher aquí..."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "group_confirmacion_voucher",
+      "title": "✅ Confirmación de Voucher Recibido",
+      "graphCoordinates": {
+        "x": 2400,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "b_confirmacion_voucher_msg",
+          "type": "text",
+          "outgoingEdgeId": "edge_voucher_confirm_to_handover",
+          "content": {
+            "richText": [
+              {
+                "children": [
+                  {
+                    "text": "✅ *¡Voucher de pago recibido con éxito!* 📸\n\nHe notificado a nuestro equipo comercial en Chatwoot para validar tu transferencia. Un asesor confirmará tu orden en breve. ¡Gracias por tu compra en Corporación JGIS! 🏬✨"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "group_handover",
       "title": "👩‍💼 Atención Humana & Chatwoot",
       "graphCoordinates": {
-        "x": 2400,
+        "x": 2600,
         "y": 0
       },
       "blocks": [
@@ -1837,23 +2560,43 @@
       }
     },
     {
-      "id": "edge_mtt10_to_detail",
+      "id": "edge_mug_to_cap_chico",
       "from": {
         "blockId": "b_input_tazas_models",
-        "itemId": "opt_tz_mtt10"
+        "itemId": "opt_mug_cap_chico"
       },
       "to": {
-        "groupId": "group_model_mtt10"
+        "groupId": "group_mugs_cap_chico"
       }
     },
     {
-      "id": "edge_mug32_to_detail",
+      "id": "edge_mug_to_cap_mediano",
       "from": {
         "blockId": "b_input_tazas_models",
-        "itemId": "opt_tz_mug32"
+        "itemId": "opt_mug_cap_mediano"
       },
       "to": {
-        "groupId": "group_model_mug32"
+        "groupId": "group_mugs_cap_mediano"
+      }
+    },
+    {
+      "id": "edge_mug_to_cap_grande",
+      "from": {
+        "blockId": "b_input_tazas_models",
+        "itemId": "opt_mug_cap_grande"
+      },
+      "to": {
+        "groupId": "group_mugs_cap_grande"
+      }
+    },
+    {
+      "id": "edge_mug_to_all_models",
+      "from": {
+        "blockId": "b_input_tazas_models",
+        "itemId": "opt_mug_cap_todos"
+      },
+      "to": {
+        "groupId": "group_mugs_all_models"
       }
     },
     {
@@ -1867,63 +2610,403 @@
       }
     },
     {
-      "id": "edge_mtt10_to_pago",
+      "id": "edge_mug7059_to_detail",
       "from": {
-        "blockId": "b_input_mtt10_actions",
-        "itemId": "opt_mtt10_pay"
+        "blockId": "b_input_mugs_chico",
+        "itemId": "opt_mug_7059"
       },
       "to": {
-        "groupId": "group_pasarela_pago"
+        "groupId": "group_model_mug7059"
       }
     },
     {
-      "id": "edge_mtt10_to_handover",
+      "id": "edge_ptkl360_to_detail",
       "from": {
-        "blockId": "b_input_mtt10_actions",
-        "itemId": "opt_mtt10_agent"
+        "blockId": "b_input_mugs_chico",
+        "itemId": "opt_mug_ptkl360"
       },
       "to": {
-        "groupId": "group_handover"
+        "groupId": "group_model_ptkl360"
       }
     },
     {
-      "id": "edge_mtt10_to_tazas",
+      "id": "edge_chico_to_cap",
       "from": {
-        "blockId": "b_input_mtt10_actions",
-        "itemId": "opt_mtt10_back"
+        "blockId": "b_input_mugs_chico",
+        "itemId": "opt_mugs_back_cap1"
       },
       "to": {
         "groupId": "group_cat_tazas"
       }
     },
     {
-      "id": "edge_mug32_to_pago",
+      "id": "edge_tm075_to_detail",
       "from": {
-        "blockId": "b_input_mug32_actions",
-        "itemId": "opt_mug32_pay"
+        "blockId": "b_input_mugs_mediano",
+        "itemId": "opt_mug_tm075"
+      },
+      "to": {
+        "groupId": "group_model_tm075"
+      }
+    },
+    {
+      "id": "edge_tm075_1_to_detail",
+      "from": {
+        "blockId": "b_input_mugs_mediano",
+        "itemId": "opt_mug_tm075_1"
+      },
+      "to": {
+        "groupId": "group_model_tm075_1"
+      }
+    },
+    {
+      "id": "edge_mediano_to_cap",
+      "from": {
+        "blockId": "b_input_mugs_mediano",
+        "itemId": "opt_mugs_back_cap2"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_mug8091_to_detail",
+      "from": {
+        "blockId": "b_input_mugs_grande",
+        "itemId": "opt_mug_8091"
+      },
+      "to": {
+        "groupId": "group_model_mug8091"
+      }
+    },
+    {
+      "id": "edge_mug8077zn_to_detail",
+      "from": {
+        "blockId": "b_input_mugs_grande",
+        "itemId": "opt_mug_8077zn"
+      },
+      "to": {
+        "groupId": "group_model_mug8077zn"
+      }
+    },
+    {
+      "id": "edge_grande_to_cap",
+      "from": {
+        "blockId": "b_input_mugs_grande",
+        "itemId": "opt_mugs_back_cap3"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_all_to_cap",
+      "from": {
+        "blockId": "b_input_mugs_all",
+        "itemId": "opt_mugs_back_cap4"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_mug7059_to_pago",
+      "from": {
+        "blockId": "b_input_mug7059_actions",
+        "itemId": "opt_mug7059_pay"
       },
       "to": {
         "groupId": "group_pasarela_pago"
       }
     },
     {
-      "id": "edge_mug32_to_handover",
+      "id": "edge_mug7059_to_handover",
       "from": {
-        "blockId": "b_input_mug32_actions",
-        "itemId": "opt_mug32_agent"
+        "blockId": "b_input_mug7059_actions",
+        "itemId": "opt_mug7059_agent"
       },
       "to": {
         "groupId": "group_handover"
       }
     },
     {
-      "id": "edge_mug32_to_tazas",
+      "id": "edge_mug7059_to_mugs",
       "from": {
-        "blockId": "b_input_mug32_actions",
-        "itemId": "opt_mug32_back"
+        "blockId": "b_input_mug7059_actions",
+        "itemId": "opt_mug7059_back"
       },
       "to": {
         "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_tm075_to_pago",
+      "from": {
+        "blockId": "b_input_tm075_actions",
+        "itemId": "opt_tm075_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_tm075_to_handover",
+      "from": {
+        "blockId": "b_input_tm075_actions",
+        "itemId": "opt_tm075_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_tm075_to_mugs",
+      "from": {
+        "blockId": "b_input_tm075_actions",
+        "itemId": "opt_tm075_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_tm075_1_to_pago",
+      "from": {
+        "blockId": "b_input_tm075_1_actions",
+        "itemId": "opt_tm075_1_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_tm075_1_to_handover",
+      "from": {
+        "blockId": "b_input_tm075_1_actions",
+        "itemId": "opt_tm075_1_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_tm075_1_to_mugs",
+      "from": {
+        "blockId": "b_input_tm075_1_actions",
+        "itemId": "opt_tm075_1_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_mug8091_to_pago",
+      "from": {
+        "blockId": "b_input_mug8091_actions",
+        "itemId": "opt_mug8091_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_mug8091_to_handover",
+      "from": {
+        "blockId": "b_input_mug8091_actions",
+        "itemId": "opt_mug8091_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_mug8091_to_mugs",
+      "from": {
+        "blockId": "b_input_mug8091_actions",
+        "itemId": "opt_mug8091_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_ptkl360_to_pago",
+      "from": {
+        "blockId": "b_input_ptkl360_actions",
+        "itemId": "opt_ptkl360_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_ptkl360_to_handover",
+      "from": {
+        "blockId": "b_input_ptkl360_actions",
+        "itemId": "opt_ptkl360_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_ptkl360_to_mugs",
+      "from": {
+        "blockId": "b_input_ptkl360_actions",
+        "itemId": "opt_ptkl360_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_mug8077zn_to_pago",
+      "from": {
+        "blockId": "b_input_mug8077zn_actions",
+        "itemId": "opt_mug8077zn_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_mug8077zn_to_handover",
+      "from": {
+        "blockId": "b_input_mug8077zn_actions",
+        "itemId": "opt_mug8077zn_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_mug8077zn_to_mugs",
+      "from": {
+        "blockId": "b_input_mug8077zn_actions",
+        "itemId": "opt_mug8077zn_back"
+      },
+      "to": {
+        "groupId": "group_cat_tazas"
+      }
+    },
+    {
+      "id": "edge_cat_to_libretas",
+      "from": {
+        "blockId": "b_input_cat_opcion",
+        "itemId": "opt_cat_libretas"
+      },
+      "to": {
+        "groupId": "group_cat_libretas"
+      }
+    },
+    {
+      "id": "edge_cat_to_bolsas",
+      "from": {
+        "blockId": "b_input_cat_opcion",
+        "itemId": "opt_cat_bolsas"
+      },
+      "to": {
+        "groupId": "group_cat_bolsas"
+      }
+    },
+    {
+      "id": "edge_lib01_to_detail",
+      "from": {
+        "blockId": "b_input_libretas_models",
+        "itemId": "opt_lib_01"
+      },
+      "to": {
+        "groupId": "group_model_lib01"
+      }
+    },
+    {
+      "id": "edge_libb_to_cat",
+      "from": {
+        "blockId": "b_input_libretas_models",
+        "itemId": "opt_cat_back5"
+      },
+      "to": {
+        "groupId": "group_catalogo_categorias"
+      }
+    },
+    {
+      "id": "edge_lib01_to_pago",
+      "from": {
+        "blockId": "b_input_lib01_actions",
+        "itemId": "opt_lib01_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_lib01_to_handover",
+      "from": {
+        "blockId": "b_input_lib01_actions",
+        "itemId": "opt_lib01_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_lib01_to_libretas",
+      "from": {
+        "blockId": "b_input_lib01_actions",
+        "itemId": "opt_lib01_back"
+      },
+      "to": {
+        "groupId": "group_cat_libretas"
+      }
+    },
+    {
+      "id": "edge_bol10_to_detail",
+      "from": {
+        "blockId": "b_input_bolsas_models",
+        "itemId": "opt_bol_10"
+      },
+      "to": {
+        "groupId": "group_model_bol10"
+      }
+    },
+    {
+      "id": "edge_bolb_to_cat",
+      "from": {
+        "blockId": "b_input_bolsas_models",
+        "itemId": "opt_cat_back6"
+      },
+      "to": {
+        "groupId": "group_catalogo_categorias"
+      }
+    },
+    {
+      "id": "edge_bol10_to_pago",
+      "from": {
+        "blockId": "b_input_bol10_actions",
+        "itemId": "opt_bol10_pay"
+      },
+      "to": {
+        "groupId": "group_pasarela_pago"
+      }
+    },
+    {
+      "id": "edge_bol10_to_handover",
+      "from": {
+        "blockId": "b_input_bol10_actions",
+        "itemId": "opt_bol10_agent"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
+    },
+    {
+      "id": "edge_bol10_to_bolsas",
+      "from": {
+        "blockId": "b_input_bol10_actions",
+        "itemId": "opt_bol10_back"
+      },
+      "to": {
+        "groupId": "group_cat_bolsas"
       }
     },
     {
@@ -1977,10 +3060,20 @@
       }
     },
     {
-      "id": "edge_pago_to_handover",
+      "id": "edge_pago_to_solicitar_voucher",
       "from": {
         "blockId": "b_input_pago_final",
         "itemId": "opt_pago_voucher"
+      },
+      "to": {
+        "groupId": "group_solicitar_voucher"
+      }
+    },
+    {
+      "id": "edge_pago_to_handover_asesor",
+      "from": {
+        "blockId": "b_input_pago_final",
+        "itemId": "opt_pago_asesor"
       },
       "to": {
         "groupId": "group_handover"
@@ -1995,9 +3088,27 @@
       "to": {
         "groupId": "group_apertura"
       }
+    },
+    {
+      "id": "edge_voucher_to_confirmacion",
+      "from": {
+        "blockId": "b_input_voucher_file"
+      },
+      "to": {
+        "groupId": "group_confirmacion_voucher"
+      }
+    },
+    {
+      "id": "edge_voucher_confirm_to_handover",
+      "from": {
+        "blockId": "b_confirmacion_voucher_msg"
+      },
+      "to": {
+        "groupId": "group_handover"
+      }
     }
   ],
   "variables": [],
-  "createdAt": "2026-07-23T16:49:43.779Z",
-  "updatedAt": "2026-07-23T16:49:43.780Z"
+  "createdAt": "2026-07-24T04:46:21.560Z",
+  "updatedAt": "2026-07-24T04:46:21.560Z"
 }

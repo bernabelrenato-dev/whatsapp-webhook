@@ -67,16 +67,33 @@ Si no se pueden verificar **(a)**, **(b)** o **(c)**, debe ser reportado explíc
 
 ---
 
-## 5. 🚦 Fase Actual de Desarrollo y Arquitectura de Enrutamiento
+## 5. 🚦 Fase Actual de Desarrollo y Arquitectura de Enrutamiento (Omniflujo Conversacional)
 
-* **Estado Vigente:** **Fase 1 (Typebot como Motor Único Temporal)**.
+* **Estado Vigente:** **Fase 1 (Typebot v6 como Motor Único Temporal)**.
 * **Regla Activa:** Cero respuestas por LLM en producción. `sessionState = 'typebot'` permanece forzado en `src/services/message.service.js` intencionalmente.
 * **Arquitectura Objetivo (Fase 2):** Enrutamiento de 3 capas:
   1. **Capa 1: Typebot v6 (Filtro inicial y captura de datos):** Saludo, menú interactivo y selección de categoría.
   2. **Capa 2: IA (Gemini / DeepSeek):** Consultas libres y soporte tras finalizar Typebot.
   3. **Capa 3: Humano (Chatwoot):** Traspaso a asesores humanos ante intenciones de compra explícitas o solicitud de atención personalizada.
 
-*Nota:* Queda estrictamente prohibido reactivar la capa de IA libre en producción sin autorización explícita.
+### Especificaciones del Omniflujo Multicategoría
+
+1. **Estructura de Categorías en Typebot v6:**
+   * 🧢 **Gorras Trucker:** ✅ Operativo (Plantilla de flujo base).
+   * ☕ **Mugs Térmicos de Acero:** ✅ Construido y desplegado (Filtro de 2 pasos: Capacidad ➔ Diseño/Modelo con foto ➔ Cantidad ➔ Cierre).
+   * 🍶 **Tomatodos de Acero:** ✅ Operativo.
+   * 🖊️ **Lapiceros (Plásticos y Metálicos):** ✅ Operativo.
+   * 📘 **Libretas:** ✅ Operativo.
+   * 🎒 **Bolsas Notex y Cambrell:** ✅ Operativo.
+
+2. **Entrada Híbrida (Menú + Texto Libre):**
+   * El cliente puede navegar por botones de menú o escribir en texto libre (ej. *"termo de café"*, *"mug mediano 500ml"*).
+   * El resolutor inteligente de botones (`Text-to-Button Choice Resolver`) mapea automáticamente la intención al sub-flujo correspondiente.
+
+3. **Segmentación de Cierre Commercial:**
+   * **1 a 12 unidades sin personalización adicional:** Cierre automático con resumen de pedido, cotización por escala y pasarela de pago (BCP/Yape) + solicitud de comprobante.
+   * **13+ unidades o personalización (grabado láser / impresión especial):** Handover inmediato a asesor humano en Chatwoot adjuntando el resumen del pedido.
+   * **Objeción de precio o consulta compleja:** Escalamiento inmediato a Chatwoot.
 
 ---
 
