@@ -161,6 +161,87 @@ class MessageService {
   }
 
   /**
+   * Envía un documento (PDF, Word, Excel, etc.) llamando a la API Graph de Meta.
+   */
+  async sendDocumentMessage(to, documentUrl, filename, caption, skipChatwootSync = false) {
+    if (typeof to === 'string' && to.startsWith('chatwoot_conv_')) {
+      const conversationId = to.replace('chatwoot_conv_', '');
+      await this.sendChatwootMessage(conversationId, `[Documento ${filename}]: ${documentUrl}`);
+      return;
+    }
+
+    if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) return;
+
+    try {
+      logger.debug({ msg: 'Enviando documento de WhatsApp a Meta', to, documentUrl });
+      const response = await axios({
+        method: 'POST',
+        url: `https://graph.facebook.com/v19.0/${config.PHONE_NUMBER_ID}/messages`,
+        headers: {
+          'Authorization': `Bearer ${config.ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        data: {
+          messaging_product: 'whatsapp',
+          recipient_type: 'individual',
+          to: to,
+          type: 'document',
+          document: {
+            link: documentUrl,
+            filename: filename || 'documento.pdf',
+            caption: caption || ''
+          }
+        }
+      });
+      const sentMessageId = response.data.messages[0].id;
+      this.botSentMessageIds.add(sentMessageId);
+      logger.info({ msg: 'Documento enviado a Meta exitosamente', recipient: to, messageId: sentMessageId });
+    } catch (error) {
+      logger.error({ msg: 'Fallo al enviar documento a Meta', to, error: error.response ? error.response.data : error.message });
+    }
+  }
+
+  /**
+   * Envía un video llamando a la API Graph de Meta.
+   */
+  async sendVideoMessage(to, videoUrl, caption, skipChatwootSync = false) {
+    if (typeof to === 'string' && to.startsWith('chatwoot_conv_')) {
+      const conversationId = to.replace('chatwoot_conv_', '');
+      await this.sendChatwootMessage(conversationId, `[Video]: ${videoUrl}`);
+      return;
+    }
+
+    if (!config.ACCESS_TOKEN || !config.PHONE_NUMBER_ID) return;
+
+    try {
+      logger.debug({ msg: 'Enviando video de WhatsApp a Meta', to, videoUrl });
+      const response = await axios({
+        method: 'POST',
+        url: `https://graph.facebook.com/v19.0/${config.PHONE_NUMBER_ID}/messages`,
+        headers: {
+          'Authorization': `Bearer ${config.ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        data: {
+          messaging_product: 'whatsapp',
+          recipient_type: 'individual',
+          to: to,
+          type: 'video',
+          video: {
+            link: videoUrl,
+            caption: caption || ''
+          }
+        }
+      });
+      const sentMessageId = response.data.messages[0].id;
+      this.botSentMessageIds.add(sentMessageId);
+      logger.info({ msg: 'Video enviado a Meta exitosamente', recipient: to, messageId: sentMessageId });
+    } catch (error) {
+      logger.error({ msg: 'Fallo al enviar video a Meta', to, error: error.response ? error.response.data : error.message });
+    }
+  }
+
+  /**
    * Maneja un mensaje entrante.
    * @param {Object} message Objeto del mensaje individual.
    * @param {Object} value Cambios del webhook.
@@ -959,7 +1040,11 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
 
     try {
       // Pre-registrar en caché de contenido pendiente ANTES de enviar HTTP para evitar race condition con el webhook de Chatwoot
-      if (text) this.pendingBotSentContent.set(text.trim(), true);
+      if (text) {
+        const cleanText = text.trim();
+        this.pendingBotSentContent.set(cleanText, true);
+        this.pendingBotSentContent.set(cleanText.slice(-40), true);
+      }
       if (imageFileName) this.pendingBotSentContent.set(imageFileName.trim(), true);
 
       const url = `${config.CHATWOOT_API_URL}/api/v1/accounts/${config.CHATWOOT_ACCOUNT_ID}/conversations/${conversationId}/messages`;

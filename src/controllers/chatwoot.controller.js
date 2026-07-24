@@ -171,15 +171,22 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           return res.status(200).json({ success: true });
         }
 
-        // Si es un mensaje saliente, verificar de forma estricta por ID (Number o String) o por contenido pendiente
+        // Si es un mensaje saliente, verificar de forma estricta por ID (Number o String), sender type o por contenido pendiente
         const rawContent = (payload.content || '').trim();
+        const cleanContent = rawContent.replace(/\r\n/g, '\n').trim();
+        const shortContent = cleanContent.slice(-40);
         const firstAttachmentUrl = payload.attachments && payload.attachments.length > 0 ? payload.attachments[0].data_url : null;
         const attachmentFileName = firstAttachmentUrl ? firstAttachmentUrl.split('/').pop() : null;
 
-        const isContentPending = (rawContent && messageService.pendingBotSentContent.has(rawContent)) ||
+        const senderType = payload.sender?.type;
+        const isBotSender = senderType === 'agent_bot' || payload.sender?.name === 'Bot' || !payload.sender;
+
+        const isContentPending = (cleanContent && messageService.pendingBotSentContent.has(cleanContent)) ||
+                                 (shortContent && messageService.pendingBotSentContent.has(shortContent)) ||
                                  (attachmentFileName && messageService.pendingBotSentContent.has(attachmentFileName));
 
-        const isBotSent = messageService.botSentMessageIds.has(messageId) || 
+        const isBotSent = isBotSender ||
+                          messageService.botSentMessageIds.has(messageId) || 
                           messageService.botSentMessageIds.has(String(messageId)) || 
                           messageService.botSentMessageIds.has(Number(messageId)) ||
                           isContentPending;
@@ -202,11 +209,22 @@ exports.receiveChatwootMessage = async (req, res, next) => {
           if (payload.attachments && payload.attachments.length > 0) {
             const att = payload.attachments[0];
             if (att.data_url) {
+              const fileType = att.file_type || '';
+              const ext = att.data_url.split('.').pop().toLowerCase().split('?')[0];
+
               try {
-                const publicImageUrl = await processAndStoreImage(att.data_url);
-                await messageService.sendImageMessage(from, publicImageUrl, true);
-              } catch (imgErr) {
-                logger.error({ msg: 'Error procesando imagen saliente de Chatwoot, intentando URL directa', error: imgErr.message });
+                const publicMediaUrl = await processAndStoreImage(att.data_url);
+                
+                if (fileType === 'file' || ['pdf', 'doc', 'docx', 'xlsx', 'txt'].includes(ext)) {
+                  const filename = att.data_url.split('/').pop().split('?')[0] || 'documento.pdf';
+                  await messageService.sendDocumentMessage(from, publicMediaUrl, filename, payload.content || '', true);
+                } else if (fileType === 'video' || ['mp4', 'mov', 'avi'].includes(ext)) {
+                  await messageService.sendVideoMessage(from, publicMediaUrl, payload.content || '', true);
+                } else {
+                  await messageService.sendImageMessage(from, publicMediaUrl, true);
+                }
+              } catch (mediaErr) {
+                logger.error({ msg: 'Error procesando archivo multimedia saliente de Chatwoot, intentando envio directo', error: mediaErr.message });
                 await messageService.sendImageMessage(from, att.data_url, true);
               }
             }
