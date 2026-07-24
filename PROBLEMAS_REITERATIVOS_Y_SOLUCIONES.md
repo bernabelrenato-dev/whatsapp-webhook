@@ -49,3 +49,15 @@ Este documento registra los fallos de arquitectura, despliegue y sincronización
 - **Síntoma:** La vista previa del anuncio en la nota de atribución de Meta Ads mostraba una foto de lapiceros/multicargadores en lugar de una gorra.
 - **Causa Raíz:** La URL de la imagen de prueba (`media_url`) estaba apuntando al archivo `3115.jpg` (lapiceros de catálogo) en lugar de una imagen de gorras.
 - **Solución Definitiva:** Se corrigió la referencia por `2125B.jpg`, que corresponde a la **Gorra Trucker Azul/Blanco** del catálogo de JGIS Publicidad.
+
+---
+
+## 📌 Registro #5: Fallo de Transacción SQL `PublicTypebot` (Columna `typebot` Inexistente) Causaba Rollback al Publicar Flujo
+
+### 🚨 Descripción del Problema
+- **Síntoma:** Al interactuar en WhatsApp seleccionando la opción *"☕ Tazas, Tomatodos & Mug"*, el bot en producción derivaba inmediatamente la conversación a un asesor humano en lugar de mostrar el nuevo sub-flujo de Mugs Térmicos de Acero por capacidad y modelo.
+- **Causa Raíz:** En `scripts/publish_jgis_master_flow.js`, la consulta SQL para actualizar la tabla `"PublicTypebot"` ejecutaba `UPDATE "PublicTypebot" SET typebot = $1::jsonb ...`. La tabla `"PublicTypebot"` en PostgreSQL no posee la columna `typebot` (las columnas reales son `groups`, `events`, `edges`, `theme`, `settings`). Esta inconsistencia producía una excepción `column "typebot" of relation "PublicTypebot" does not exist` que disparaba un `ROLLBACK` de la transacción SQL completa, impidiendo que el nuevo esquema se guardara en la base de datos de producción y manteniendo activo el flujo antiguo.
+- **Solución Definitiva:**
+  1. Se corrigió la sentencia SQL en `scripts/publish_jgis_master_flow.js` para actualizar explícitamente `"groups" = $1::jsonb, events = $2::jsonb, edges = $3::jsonb, "updatedAt" = NOW() WHERE "typebotId" = $4`.
+  2. Se configuró la auto-ejecución de `publishMasterFlow()` al arrancar `src/server.js` para que cada despliegue de producción actualice y publique de forma atómica el Flujo Maestro en la base de datos PostgreSQL de Typebot.
+
