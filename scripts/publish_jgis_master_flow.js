@@ -251,6 +251,8 @@ async function publishMasterFlow() {
             { id: 'opt_cat_lap_plast', content: '🖊️ Lapiceros Plásticos (Publicitarios)', outgoingEdgeId: 'edge_cat_to_lap_plast' },
             { id: 'opt_cat_tazas', content: '☕ Mugs y Tazas Térmicas', outgoingEdgeId: 'edge_cat_to_tazas' },
             { id: 'opt_cat_tomatodos', content: '🍶 Tomatodos y Botellas', outgoingEdgeId: 'edge_cat_to_tomatodos' },
+            { id: 'opt_cat_libretas', content: '📓 Libretas y Ecológicos', outgoingEdgeId: 'edge_cat_to_libretas' },
+            { id: 'opt_cat_bolsas', content: '🎒 Bolsas Notex y Cambrell', outgoingEdgeId: 'edge_cat_to_bolsas' },
             { id: 'opt_cat_menu', content: '⬅️ Volver al Menú Principal', outgoingEdgeId: 'edge_cat_to_menu' }
           ],
           options: { isMultipleChoice: false }
@@ -616,6 +618,114 @@ async function publishMasterFlow() {
       ]
     },
 
+    // CATEGORÍA 5: LIBRETAS Y ECOLÓGICOS
+    {
+      id: 'group_cat_libretas',
+      title: '📓 Libretas y Ecológicos — Modelos',
+      graphCoordinates: { x: 1100, y: 1200 },
+      blocks: [
+        {
+          id: 'b_libretas_intro',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '📓 *Modelos Destacados de Libretas y Ecológicos JGIS*\nImpresión en bambú, cartón reciclado y ecocuero con grabado o serigrafía 👇' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_libretas_models',
+          type: 'choice input',
+          items: [
+            { id: 'opt_lib_01', content: '📓 Modelo LIB-01 (Libreta Ecológica con Lapicero)', outgoingEdgeId: 'edge_lib01_to_detail' },
+            { id: 'opt_cat_back5', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_libb_to_cat' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+    {
+      id: 'group_model_lib01',
+      title: '📓 Detalle LIB-01 Ecológica',
+      graphCoordinates: { x: 1500, y: 1200 },
+      blocks: [
+        { id: 'b_img_lib01', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/ECO.jpg' } },
+        {
+          id: 'b_text_lib01',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '📓 *LIBRETA ECOLOGICA LIB-01 CON LAPICERO DE CARTON*\n• Anillada, 80 hojas rayadas recicladas, incluye lapicero ecológico.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 1 a 50 unidades: S/ 6.50 c/u\n• 51 a 499 unidades: S/ 4.80 c/u\n• 500+ unidades: S/ 4.20 c/u por mayor\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_lib01_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_lib01_pay', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_lib01_to_pago' },
+            { id: 'opt_lib01_agent', content: '👩‍💼 Confirmar con Asesor', outgoingEdgeId: 'edge_lib01_to_handover' },
+            { id: 'opt_lib01_back', content: '⬅️ Volver a Libretas', outgoingEdgeId: 'edge_lib01_to_libretas' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
+    // CATEGORÍA 6: BOLSAS NOTEX Y CAMBRELL
+    {
+      id: 'group_cat_bolsas',
+      title: '🎒 Bolsas Notex y Cambrell — Modelos',
+      graphCoordinates: { x: 1100, y: 1500 },
+      blocks: [
+        {
+          id: 'b_bolsas_intro',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🎒 *Modelos Destacados de Bolsas Notex y Cambrell*\nEstructura termosellada y cosida, estampado serigráfico a 1 o más colores 👇' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_bolsas_models',
+          type: 'choice input',
+          items: [
+            { id: 'opt_bol_10', content: '🎒 Modelo BOL-10 (Bolsa Notex 30x40cm)', outgoingEdgeId: 'edge_bol10_to_detail' },
+            { id: 'opt_cat_back6', content: '⬅️ Volver a Categorías', outgoingEdgeId: 'edge_bolb_to_cat' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+    {
+      id: 'group_model_bol10',
+      title: '🎒 Detalle BOL-10 Notex 30x40',
+      graphCoordinates: { x: 1500, y: 1500 },
+      blocks: [
+        { id: 'b_img_bol10', type: 'image', content: { url: 'https://bot.jgispublicidad.pe/images/NOTEX.jpg' } },
+        {
+          id: 'b_text_bol10',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '🎒 *BOLSA NOTEX TERMOSELLADA 30x40cm BOL-10*\n• 80 gramos. Ideal para ferias, merchandising y regalos corporativos.\n\n💰 *Escala de Precios (Sin IGV)*:\n• 100 unidades: S/ 1.50 c/u\n• 500 unidades: S/ 1.10 c/u\n• 1,000+ unidades: S/ 0.85 c/u por millar\n\nℹ️ *Disponibilidad*: Confirmada por asesor comercial.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_bol10_actions',
+          type: 'choice input',
+          items: [
+            { id: 'opt_bol10_pay', content: '💳 Pasarela de Pago (Yape / BCP)', outgoingEdgeId: 'edge_bol10_to_pago' },
+            { id: 'opt_bol10_agent', content: '👩‍💼 Confirmar con Asesor', outgoingEdgeId: 'edge_bol10_to_handover' },
+            { id: 'opt_bol10_back', content: '⬅️ Volver a Bolsas', outgoingEdgeId: 'edge_bol10_to_bolsas' }
+          ],
+          options: { isMultipleChoice: false }
+        }
+      ]
+    },
+
     // -----------------------------------------------------------------------
     // 4️⃣ PASARELA DE PAGO OFICIAL JGIS (YAPE / BCP / PLIN)
     // -----------------------------------------------------------------------
@@ -790,6 +900,23 @@ async function publishMasterFlow() {
     { id: 'edge_mug32_to_pago', from: { blockId: 'b_input_mug32_actions', itemId: 'opt_mug32_pay' }, to: { groupId: 'group_pasarela_pago' } },
     { id: 'edge_mug32_to_handover', from: { blockId: 'b_input_mug32_actions', itemId: 'opt_mug32_agent' }, to: { groupId: 'group_handover' } },
     { id: 'edge_mug32_to_tazas', from: { blockId: 'b_input_mug32_actions', itemId: 'opt_mug32_back' }, to: { groupId: 'group_cat_tazas' } },
+
+    { id: 'edge_cat_to_libretas', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_libretas' }, to: { groupId: 'group_cat_libretas' } },
+    { id: 'edge_cat_to_bolsas', from: { blockId: 'b_input_cat_opcion', itemId: 'opt_cat_bolsas' }, to: { groupId: 'group_cat_bolsas' } },
+
+    // Libretas
+    { id: 'edge_lib01_to_detail', from: { blockId: 'b_input_libretas_models', itemId: 'opt_lib_01' }, to: { groupId: 'group_model_lib01' } },
+    { id: 'edge_libb_to_cat', from: { blockId: 'b_input_libretas_models', itemId: 'opt_cat_back5' }, to: { groupId: 'group_catalogo_categorias' } },
+    { id: 'edge_lib01_to_pago', from: { blockId: 'b_input_lib01_actions', itemId: 'opt_lib01_pay' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_lib01_to_handover', from: { blockId: 'b_input_lib01_actions', itemId: 'opt_lib01_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_lib01_to_libretas', from: { blockId: 'b_input_lib01_actions', itemId: 'opt_lib01_back' }, to: { groupId: 'group_cat_libretas' } },
+
+    // Bolsas Notex
+    { id: 'edge_bol10_to_detail', from: { blockId: 'b_input_bolsas_models', itemId: 'opt_bol_10' }, to: { groupId: 'group_model_bol10' } },
+    { id: 'edge_bolb_to_cat', from: { blockId: 'b_input_bolsas_models', itemId: 'opt_cat_back6' }, to: { groupId: 'group_catalogo_categorias' } },
+    { id: 'edge_bol10_to_pago', from: { blockId: 'b_input_bol10_actions', itemId: 'opt_bol10_pay' }, to: { groupId: 'group_pasarela_pago' } },
+    { id: 'edge_bol10_to_handover', from: { blockId: 'b_input_bol10_actions', itemId: 'opt_bol10_agent' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_bol10_to_bolsas', from: { blockId: 'b_input_bol10_actions', itemId: 'opt_bol10_back' }, to: { groupId: 'group_cat_bolsas' } },
 
     // Tomatodos
     { id: 'edge_tmd38_to_detail', from: { blockId: 'b_input_tomatodos_models', itemId: 'opt_tm_tmd38' }, to: { groupId: 'group_model_tmd38' } },
