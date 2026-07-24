@@ -289,7 +289,25 @@ class MessageService {
     // 2. Add message to queue
     userQueue.messages.push(message);
 
-    // 3. Reset/Set debounce timer (8 seconds)
+    // Si es un clic en un botón interactivo, procesar inmediatamente (0ms delay) sin esperar el temporizador
+    const isInteractiveClick = messageType === 'interactive' || messageType === 'button';
+
+    if (isInteractiveClick) {
+      if (userQueue.timer) clearTimeout(userQueue.timer);
+      const messagesToProcess = [...userQueue.messages];
+      this.debounceQueues.delete(from);
+      
+      setImmediate(async () => {
+        try {
+          await this.processCombinedMessages(from, profileName, messagesToProcess, value);
+        } catch (err) {
+          logger.error({ msg: 'Error procesando clic de botón interactivo', from, error: err.message });
+        }
+      });
+      return;
+    }
+
+    // 3. Reset/Set debounce timer (2.5 seconds for text messages)
     if (userQueue.timer) {
       clearTimeout(userQueue.timer);
     }
@@ -303,7 +321,7 @@ class MessageService {
       } catch (err) {
         logger.error({ msg: 'Error processing combined messages', from, error: err.message, stack: err.stack });
       }
-    }, 2500); // 2.5 seconds debounce for fast responsive turns
+    }, 2500); // 2.5 seconds debounce for text messages
   }
 
   /**
@@ -832,8 +850,31 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
             }
           }
         } catch (err) {
-          logger.error({ msg: 'Error al comunicarse con Typebot Engine:', error: err.message });
-          await this.sendTextMessage(from, "👋 ¡Hola! Un asesor comercial de *Corporación JGIS* te atenderá en breve. Escribe *'inicio'* para reiniciar el menú.");
+          logger.error({ msg: 'Error al comunicarse con Typebot Engine, auto-recuperando sesión:', error: err.message });
+          // Eliminar sesión expirada/inválida de la caché
+          this.userSessions.delete(from);
+          try {
+            logger.info(`🔄 Reiniciando sesión fresca de Typebot para ${profileName} (${from}) tras falla de continueChat`);
+            const typebotUrl = process.env.TYPEBOT_API_URL || 'http://typebot-viewer:3000';
+            const typebotId = process.env.TYPEBOT_ID || 'jgis-publicidad-bot-f33vo50';
+            const freshRes = await axios.post(`${typebotUrl}/api/v1/typebots/${typebotId}/startChat`, {
+              prefilledVariables: {
+                phone: from.startsWith('chatwoot_conv_') ? '' : from,
+                name: profileName || 'Cliente Meta Ads',
+                ad_headline: referral?.headline || 'Campaña Anuncio de Gorras Meta Ads',
+                ad_body: referral?.body || '',
+                ad_id: referral?.ad_id || ''
+              }
+            });
+            if (freshRes && freshRes.data) {
+              const newSessionId = freshRes.data.sessionId;
+              this.userSessions.set(from, { sessionId: newSessionId, state: 'typebot' });
+              await this.processTypebotMessages(from, freshRes.data.messages || [], freshRes.data.input);
+            }
+          } catch (recoveryErr) {
+            logger.error({ msg: 'Falla en auto-recuperación de Typebot, enviando menú básico', error: recoveryErr.message });
+            await this.sendTextMessage(from, "👋 ¡Hola! Un asesor comercial de *Corporación JGIS* te atenderá en breve. Escribe *'inicio'* para reiniciar el menú.");
+          }
         }
       }
     }
