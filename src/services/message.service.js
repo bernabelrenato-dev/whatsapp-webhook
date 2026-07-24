@@ -222,7 +222,7 @@ class MessageService {
       } catch (err) {
         logger.error({ msg: 'Error processing combined messages', from, error: err.message, stack: err.stack });
       }
-    }, 8000); // 8 seconds debounce
+    }, 2500); // 2.5 seconds debounce for fast responsive turns
   }
 
   /**
