@@ -10,10 +10,10 @@ Hola colega, he terminado de refactorizar el código local en la rama `master`. 
 
 ### ⚠️ Requisito Crítico en la Configuración de Nginx:
 Para proteger la API contra spam y ataques DOS, he instalado el middleware `express-rate-limit` en la aplicación Express.
-Para evitar excepciones en tiempo de ejecución o bloqueos erróneos de IP, debes asegurarte de que la configuración del bloque `location` de Nginx en la VM pase correctamente la IP real del cliente al servidor Node.js (puerto 3005 expuesto en el host) agregando estas directivas:
+Para evitar excepciones en tiempo de ejecución o bloqueos erróneos de IP, debes asegurarte de que la configuración del bloque `location /webhook` del Nginx del Host en la VM apunte al puerto **3005** (puerto del host mapeado al puerto 3000 del contenedor `jgis-webhook`):
 
 ```nginx
-location / {
+location /webhook {
     proxy_pass http://localhost:3005;
     proxy_http_version 1.1;
     
@@ -26,6 +26,8 @@ location / {
     proxy_cache_bypass $http_upgrade;
 }
 ```
+
+*Nota de Arquitectura Nginx:* Nginx corre directamente en el Host (`nginx/1.18.0 Ubuntu`). No debe cambiarse `proxy_pass` a `localhost:3000` (puerto interno del contenedor), ya que rompería el webhook al no estar expuesto directamente en el host en ese puerto. El proxy de Dify en Docker (`docker-nginx-1`) en el puerto 8090 es exclusivo del stack Dify.AI.
 
 ### 📦 Estado de Git y Código:
 *   Todo el código local está limpio, testeado E2E exitosamente, y subido a la rama `master` del repositorio remoto. 
