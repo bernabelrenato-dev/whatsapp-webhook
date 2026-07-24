@@ -741,7 +741,56 @@ Trabajamos con productos personalizados y merchandising, como polos, gorras, taz
             this.userSessions.set(from, { sessionId: currentSessionId, state: 'typebot' });
           } else {
             logger.info(`💬 Continuando sesión de Typebot ${currentSessionId} para ${from}`);
-            const textToSend = uploadedImageUrl || body;
+            let textToSend = uploadedImageUrl || body;
+
+            // Resolutor Inteligente de Opciones (Text-to-Button Choice Resolver)
+            const lastInput = this.lastUserInputs.get(from);
+            if (lastInput && lastInput.type === 'choice input' && lastInput.items && lastInput.items.length > 0 && !uploadedImageUrl) {
+              const lowerText = (body || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+              
+              // 1. Buscar coincidencia exacta por texto o ID
+              let matchedItem = lastInput.items.find(item => 
+                (item.content && item.content.toLowerCase().includes(lowerText)) ||
+                (item.title && item.title.toLowerCase().includes(lowerText)) ||
+                item.id === lowerText
+              );
+
+              // 2. Buscar por coincidencia numérico-semántica (ej. 30 -> 13 a 50 unidades)
+              if (!matchedItem) {
+                const numMatch = lowerText.match(/\d+/);
+                if (numMatch) {
+                  const num = parseInt(numMatch[0]);
+                  matchedItem = lastInput.items.find(item => {
+                    const label = (item.content || item.title || '').toLowerCase();
+                    if (num >= 1 && num <= 5 && label.includes('1 a 5')) return true;
+                    if (num >= 6 && num <= 12 && label.includes('6 a 12')) return true;
+                    if (num >= 13 && num <= 50 && (label.includes('13 a 50') || label.includes('13 a 499') || label.includes('1 a 49'))) return true;
+                    if (num >= 51 && num <= 499 && label.includes('51 a 499')) return true;
+                    if (num >= 500 && label.includes('500')) return true;
+                    return false;
+                  });
+                }
+              }
+
+              // 3. Buscar por palabras clave de intención (gorras, pasarela, yape, empresa, personal, etc.)
+              if (!matchedItem) {
+                if (lowerText.includes('gorra') || lowerText.includes('trucker')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('gorra'));
+                } else if (lowerText.includes('yape') || lowerText.includes('bcp') || lowerText.includes('pasarela') || lowerText.includes('pago')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('pago') || (item.content || item.title || '').toLowerCase().includes('pasarela'));
+                } else if (lowerText.includes('empresa') || lowerText.includes('evento')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('empresa'));
+                } else if (lowerText.includes('personal')) {
+                  matchedItem = lastInput.items.find(item => (item.content || item.title || '').toLowerCase().includes('personal'));
+                }
+              }
+
+              if (matchedItem) {
+                textToSend = matchedItem.content || matchedItem.title || matchedItem.id;
+                logger.info(`🎯 Resolución inteligente de botón aplicada para ${from}: "${body}" ➔ "${textToSend}"`);
+              }
+            }
+
             response = await axios.post(`${typebotUrl}/api/v1/sessions/${currentSessionId}/continueChat`, {
               message: { type: 'text', text: textToSend }
             });
