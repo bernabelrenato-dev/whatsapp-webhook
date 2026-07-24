@@ -29,8 +29,8 @@ class MessageService {
     this.userSessions = new TTLCache(24 * 3600 * 1000, 2000);
     // Almacena las últimas opciones interactivas presentadas de Typebot con TTL de 12h
     this.lastUserInputs = new TTLCache(12 * 3600 * 1000, 2000);
-    // Cache para mapear números de teléfono a IDs de conversación de Chatwoot con TTL de 24h
-    this.chatwootConversations = new TTLCache(24 * 3600 * 1000, 2000);
+    // Cache corto para mapear números a IDs de conversación de Chatwoot (TTL 60s para no congelar hilos antiguos)
+    this.chatwootConversations = new TTLCache(60 * 1000, 2000);
     // Cola de espera/pausa (debounce) para agrupar mensajes por cliente
     this.debounceQueues = new Map();
   }
