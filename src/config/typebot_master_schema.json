@@ -2000,7 +2000,9 @@
           "outgoingEdgeId": "edge_voucher_to_confirmacion",
           "options": {
             "labels": {
-              "placeholder": "Adjunta tu imagen de voucher aquí..."
+              "placeholder": "Adjunta tu imagen de voucher aquí...",
+              "button": "Adjuntar voucher",
+              "label": "Adjuntar voucher"
             }
           }
         }
@@ -3109,6 +3111,6 @@
     }
   ],
   "variables": [],
-  "createdAt": "2026-07-24T04:46:21.560Z",
-  "updatedAt": "2026-07-24T04:46:21.560Z"
+  "createdAt": "2026-07-24T05:32:46.800Z",
+  "updatedAt": "2026-07-24T05:32:46.801Z"
 }
