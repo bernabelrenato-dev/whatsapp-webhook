@@ -640,11 +640,51 @@ async function publishMasterFlow() {
           id: 'b_input_pago_final',
           type: 'choice input',
           items: [
-            { id: 'opt_pago_voucher', content: '✅ Ya realicé mi pago (Enviar Voucher)', outgoingEdgeId: 'edge_pago_to_handover' },
+            { id: 'opt_pago_voucher', content: '✅ Ya realicé mi pago (Enviar Voucher)', outgoingEdgeId: 'edge_pago_to_solicitar_voucher' },
             { id: 'opt_pago_asesor', content: '👩‍💼 Hablar con un Asesor', outgoingEdgeId: 'edge_pago_to_handover' },
             { id: 'opt_pago_menu', content: '⬅️ Volver al Menú Principal', outgoingEdgeId: 'edge_pago_to_menu' }
           ],
           options: { isMultipleChoice: false }
+        }
+      ]
+    },
+    {
+      id: 'group_solicitar_voucher',
+      title: '📸 Recepción & Validación de Voucher',
+      graphCoordinates: { x: 2200, y: 0 },
+      blocks: [
+        {
+          id: 'b_solicitar_voucher_msg',
+          type: 'text',
+          content: {
+            richText: [
+              { children: [{ text: '📸 *¡Excelente! Por favor, adjunta aquí la foto o captura de pantalla de tu voucher de pago (Yape/BCP).*' }] },
+              { children: [{ text: '\n\nNuestros asesores comprobarán la transferencia y pasarán tu pedido inmediatamente a producción 🚀.' }] }
+            ]
+          }
+        },
+        {
+          id: 'b_input_voucher_file',
+          type: 'picture input',
+          outgoingEdgeId: 'edge_voucher_to_confirmacion',
+          options: { labels: { placeholder: 'Adjunta tu imagen de voucher aquí...' } }
+        }
+      ]
+    },
+    {
+      id: 'group_confirmacion_voucher',
+      title: '✅ Confirmación de Voucher Recibido',
+      graphCoordinates: { x: 2400, y: 0 },
+      blocks: [
+        {
+          id: 'b_confirmacion_voucher_msg',
+          type: 'text',
+          outgoingEdgeId: 'edge_voucher_confirm_to_handover',
+          content: {
+            richText: [
+              { children: [{ text: '✅ *¡Voucher de pago recibido con éxito!* 📸\n\nHe notificado a nuestro equipo comercial en Chatwoot para validar tu transferencia. Un asesor confirmará tu orden en breve. ¡Gracias por tu compra en Corporación JGIS! 🏬✨' }] }
+            ]
+          }
         }
       ]
     },
@@ -655,7 +695,7 @@ async function publishMasterFlow() {
     {
       id: 'group_handover',
       title: '👩‍💼 Atención Humana & Chatwoot',
-      graphCoordinates: { x: 2400, y: 0 },
+      graphCoordinates: { x: 2600, y: 0 },
       blocks: [
         {
           id: 'b_handover_msg',
@@ -759,9 +799,12 @@ async function publishMasterFlow() {
     { id: 'edge_tmd38_to_handover', from: { blockId: 'b_input_tmd38_actions', itemId: 'opt_tmd38_agent' }, to: { groupId: 'group_handover' } },
     { id: 'edge_tmd38_to_tomatodos', from: { blockId: 'b_input_tmd38_actions', itemId: 'opt_tmd38_back' }, to: { groupId: 'group_cat_tomatodos' } },
 
-    // Pasarela de Pago
-    { id: 'edge_pago_to_handover', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_voucher' }, to: { groupId: 'group_handover' } },
-    { id: 'edge_pago_to_menu', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_menu' }, to: { groupId: 'group_apertura' } }
+    // Pasarela de Pago & Solicitud de Voucher
+    { id: 'edge_pago_to_solicitar_voucher', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_voucher' }, to: { groupId: 'group_solicitar_voucher' } },
+    { id: 'edge_pago_to_handover_asesor', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_asesor' }, to: { groupId: 'group_handover' } },
+    { id: 'edge_pago_to_menu', from: { blockId: 'b_input_pago_final', itemId: 'opt_pago_menu' }, to: { groupId: 'group_apertura' } },
+    { id: 'edge_voucher_to_confirmacion', from: { blockId: 'b_input_voucher_file' }, to: { groupId: 'group_confirmacion_voucher' } },
+    { id: 'edge_voucher_confirm_to_handover', from: { blockId: 'b_confirmacion_voucher_msg' }, to: { groupId: 'group_handover' } }
   ];
 
   const typebotSchema = {
