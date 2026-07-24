@@ -61,3 +61,16 @@ Este documento registra los fallos de arquitectura, despliegue y sincronización
   1. Se corrigió la sentencia SQL en `scripts/publish_jgis_master_flow.js` para actualizar explícitamente `"groups" = $1::jsonb, events = $2::jsonb, edges = $3::jsonb, "updatedAt" = NOW() WHERE "typebotId" = $4`.
   2. Se configuró la auto-ejecución de `publishMasterFlow()` al arrancar `src/server.js` para que cada despliegue de producción actualice y publique de forma atómica el Flujo Maestro en la base de datos PostgreSQL de Typebot.
 
+---
+
+## 📌 Registro #6: Excepción Zod `No matching discriminator` por Tipo de Bloque `"picture input"` Invalidadaba `startChat` en `typebot-viewer` (Error 500)
+
+### 🚨 Descripción del Problema
+- **Síntoma:** Al enviar cualquier mensaje en WhatsApp (ej. *"inicio"*, *"termo de cafe"*), el bot respondía repetidamente con el mensaje de seguridad de fallback *"👋 ¡Hola! Un asesor comercial de Corporación JGIS te atenderá en breve. Escribe 'inicio' para reiniciar el menú."* y no desplegaba las opciones interactiva ni el sub-flujo de Mugs.
+- **Causa Raíz:** El contenedor `typebot-viewer` retornaba un `HTTP 500 Internal Server Error` debido a un fallo de validación Zod Schema en la ruta `groups[36].blocks[1]`. El bloque `b_input_voucher_file` estaba definido como `"type": "picture input"`. En Typebot v6 Zod Schema, el discriminador válido para recepción de archivos/imágenes es `"type": "file input"`. La falta de discriminador válido causaba un error de parseo Zod en `typebot-viewer`, rechazando el esquema con HTTP 500.
+- **Solución Definitiva:**
+  1. Se corrigió el tipo de bloque en `scripts/publish_jgis_master_flow.js` de `"picture input"` a `"file input"`, e incluyó las propiedades requeridas `options.labels.button` y `options.labels.placeholder`.
+  2. Se creó el script de auditoría preventiva `scripts/tools/validate_schema_zod.js` para validar automáticamente todos los discriminadores de Typebot v6 antes del despliegue.
+  3. Se reinició `typebot-viewer` tras republicar el esquema corregido en PostgreSQL, confirmando respuesta **HTTP 200 OK** directa desde `startChat`.
+
+
