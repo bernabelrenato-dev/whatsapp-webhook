@@ -1234,12 +1234,16 @@ async function publishMasterFlow() {
 
     const updatePublicTypebotQuery = `
       UPDATE "PublicTypebot"
-      SET typebot = $1::jsonb,
+      SET "groups" = $1::jsonb,
+          events = $2::jsonb,
+          edges = $3::jsonb,
           "updatedAt" = NOW()
-      WHERE "typebotId" = $2;
+      WHERE "typebotId" = $4;
     `;
     await client.query(updatePublicTypebotQuery, [
-      JSON.stringify(typebotSchema),
+      JSON.stringify(groups),
+      JSON.stringify(events),
+      JSON.stringify(edges),
       typebotId
     ]);
 
