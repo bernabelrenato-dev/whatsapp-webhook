@@ -1996,13 +1996,12 @@
         },
         {
           "id": "b_input_voucher_file",
-          "type": "picture input",
+          "type": "file input",
           "outgoingEdgeId": "edge_voucher_to_confirmacion",
           "options": {
             "labels": {
               "placeholder": "Adjunta tu imagen de voucher aquí...",
-              "button": "Adjuntar voucher",
-              "label": "Adjuntar voucher"
+              "button": "Adjuntar voucher"
             }
           }
         }
@@ -3111,6 +3110,6 @@
     }
   ],
   "variables": [],
-  "createdAt": "2026-07-24T05:32:46.800Z",
-  "updatedAt": "2026-07-24T05:32:46.801Z"
+  "createdAt": "2026-07-24T05:44:58.898Z",
+  "updatedAt": "2026-07-24T05:44:58.899Z"
 }

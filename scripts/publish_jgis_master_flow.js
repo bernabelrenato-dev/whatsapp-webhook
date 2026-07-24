@@ -992,9 +992,9 @@ async function publishMasterFlow() {
         },
         {
           id: 'b_input_voucher_file',
-          type: 'picture input',
+          type: 'file input',
           outgoingEdgeId: 'edge_voucher_to_confirmacion',
-          options: { labels: { placeholder: 'Adjunta tu imagen de voucher aquí...', button: 'Adjuntar voucher', label: 'Adjuntar voucher' } }
+          options: { labels: { placeholder: 'Adjunta tu imagen de voucher aquí...', button: 'Adjuntar voucher' } }
         }
       ]
     },
